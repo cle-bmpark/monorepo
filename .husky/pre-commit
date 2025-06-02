@@ -1,3 +1,5 @@
+cd apps/admin
+
 npm run i18n-check
 npx next lint
 npx lint-staged
