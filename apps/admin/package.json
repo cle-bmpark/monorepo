@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
-    "prepare": "husky",
+    "prepare": "husky install",
     "i18n-check": "i18n-check --locales messages --source en --format icu --only missingKeys invalidKeys unused undefined --unused src --reporter console"
   },
   "dependencies": {
@@ -51,12 +51,7 @@
     }
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "npx eslint --fix",
-      "npx prettier --write"
-    ],
-    "*.json": [
-      "npx prettier --write"
-    ]
+    "*.{js,jsx,ts,tsx}": ["npx eslint --fix", "npx prettier --write"],
+    "*.json": ["npx prettier --write"]
   }
 }
