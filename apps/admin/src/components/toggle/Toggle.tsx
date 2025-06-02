@@ -70,7 +70,7 @@ export default function Toggle({
         disabled={isDisable}
       >
         <div
-          className={`mx-0.5 flex h-4.5 w-4.5 items-center justify-center rounded-full border shadow-strong ${variantStyle[variantKey].button}`}
+          className={`h-4.5 w-4.5 shadow-strong mx-0.5 flex items-center justify-center rounded-full border ${variantStyle[variantKey].button}`}
         >
           {isDisable && <AiOutlineMinus size={14} color={grey200} />}
         </div>

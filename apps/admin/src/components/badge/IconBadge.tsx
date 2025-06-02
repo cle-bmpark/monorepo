@@ -47,7 +47,7 @@ export default function IconBadge({
 
   return (
     <button
-      className={`text-medium flex w-fit cursor-pointer items-center gap-2 rounded-lg border-1 ${variantStyle[color].button} ${sizeStyle[size].button}`}
+      className={`text-medium border-1 flex w-fit cursor-pointer items-center gap-2 rounded-lg ${variantStyle[color].button} ${sizeStyle[size].button}`}
       onClick={onClick}
     >
       {icon}

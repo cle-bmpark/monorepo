@@ -34,7 +34,7 @@ export default function CardRadio({
       onClick={onClick}
     >
       <div
-        className={`flex h-5 w-5 items-center justify-center rounded-full border-2 bg-grey-0 ${variantStyle[style].circle}`}
+        className={`bg-grey-0 flex h-5 w-5 items-center justify-center rounded-full border-2 ${variantStyle[style].circle}`}
       >
         {value && <div className={`h-2.5 w-2.5 rounded-full ${variantStyle[style].circleIn}`} />}
       </div>

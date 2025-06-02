@@ -1,5 +1,7 @@
-cd apps/admin
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
 
 npm run i18n-check
-npx next lint
-npx lint-staged
+npm run lint
+npm run lint-staged
+npm run format

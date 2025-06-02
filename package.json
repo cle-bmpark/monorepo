@@ -4,9 +4,11 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
-    "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "check-types": "turbo run check-types"
+    "check-types": "turbo run check-types",
+    "i18n-check": "npm --prefix ./apps/admin run i18n-check",
+    "lint": "npm --prefix ./apps/admin run lint",
+    "format": "npm --prefix ./apps/admin run format",
+    "lint-staged": "npm --prefix ./apps/admin run lint-staged"
   },
   "devDependencies": {
     "prettier": "^3.5.3",
@@ -24,14 +26,5 @@
     "lint-staged": "^16.1.0",
     "prettier-plugin-organize-imports": "^4.1.0",
     "prettier-plugin-tailwindcss": "^0.6.12"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npx lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx}": ["npx eslint --fix", "npx prettier --write"],
-    "*.json": ["npx prettier --write"]
   }
 }

@@ -51,14 +51,14 @@ export default function Pagination({ selectPage, setSelectPage, totalPages }: Pa
   return (
     <div className='flex flex-wrap justify-center px-1 py-4'>
       <button
-        className={`font-16 flex h-10 w-10 items-center justify-center rounded-lg border-transparent leading-20 ${variantStyle[isDisabled.doublePre ? 'disabled' : 'default']}`}
+        className={`font-16 leading-20 flex h-10 w-10 items-center justify-center rounded-lg border-transparent ${variantStyle[isDisabled.doublePre ? 'disabled' : 'default']}`}
         disabled={isDisabled.doublePre}
         onClick={() => onClickButton(-STEP)}
       >
         <CgChevronDoubleLeft />
       </button>
       <button
-        className={`font-16 flex h-10 w-10 items-center justify-center rounded-lg border-transparent leading-20 ${variantStyle[isDisabled.pre ? 'disabled' : 'default']}`}
+        className={`font-16 leading-20 flex h-10 w-10 items-center justify-center rounded-lg border-transparent ${variantStyle[isDisabled.pre ? 'disabled' : 'default']}`}
         disabled={isDisabled.pre}
         onClick={() => onClickButton(-1)}
       >
@@ -67,21 +67,21 @@ export default function Pagination({ selectPage, setSelectPage, totalPages }: Pa
       {pages.map((page) => (
         <button
           key={`pagination_${page}`}
-          className={`font-14 flex h-10 w-10 items-center justify-center rounded-lg border leading-20 ${variantStyle[page === selectPage ? 'selected' : 'default']}`}
+          className={`font-14 leading-20 flex h-10 w-10 items-center justify-center rounded-lg border ${variantStyle[page === selectPage ? 'selected' : 'default']}`}
           onClick={() => setSelectPage(page)}
         >
           {page}
         </button>
       ))}
       <button
-        className={`font-16 flex h-10 w-10 items-center justify-center rounded-lg border-transparent leading-20 ${variantStyle[isDisabled.next ? 'disabled' : 'default']}`}
+        className={`font-16 leading-20 flex h-10 w-10 items-center justify-center rounded-lg border-transparent ${variantStyle[isDisabled.next ? 'disabled' : 'default']}`}
         disabled={isDisabled.next}
         onClick={() => onClickButton(1)}
       >
         <CgChevronRight />
       </button>
       <button
-        className={`font-16 flex h-10 w-10 items-center justify-center rounded-lg border-transparent leading-20 ${variantStyle[isDisabled.doubleNext ? 'disabled' : 'default']}`}
+        className={`font-16 leading-20 flex h-10 w-10 items-center justify-center rounded-lg border-transparent ${variantStyle[isDisabled.doubleNext ? 'disabled' : 'default']}`}
         disabled={isDisabled.doubleNext}
         onClick={() => onClickButton(STEP)}
       >
