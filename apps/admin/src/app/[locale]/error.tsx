@@ -8,8 +8,6 @@ export default function Error() {
   const router = useRouter();
   const t = useTranslations('error');
 
-  const abcdefg;
-
   return (
     <div className='flex flex-1 flex-col items-center justify-center gap-12'>
       <p className='text-primary-500 animate-bounce text-9xl font-extrabold'>Oops!</p>
