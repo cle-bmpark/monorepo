@@ -8,7 +8,7 @@ export default function Error() {
   const router = useRouter();
   const t = useTranslations('error');
 
-  const abcdef;
+  const abcdefg;
 
   return (
     <div className='flex flex-1 flex-col items-center justify-center gap-12'>
