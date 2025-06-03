@@ -5,10 +5,10 @@
     "build": "turbo run build",
     "dev": "turbo run dev",
     "check-types": "turbo run check-types",
-    "i18n-check": "npm --prefix ./apps/admin run i18n-check",
-    "lint": "npm --prefix ./apps/admin run lint && npm --prefix ./packages/ui run lint",
-    "format": "npm --prefix ./apps/admin run format && npm --prefix ./packages/ui run format",
-    "lint-staged": "npm --prefix ./apps/admin run lint-staged && npm --prefix ./packages/ui run lint-staged",
+    "i18n-check": "npm --prefix ./apps/admin run i18n-check && npm --prefix ./apps/next run i18n-check",
+    "lint": "npm --prefix ./apps/admin run lint && npm --prefix ./packages/ui run lint && npm --prefix ./apps/next run lint",
+    "format": "npm --prefix ./apps/admin run format && npm --prefix ./packages/ui run format && npm --prefix ./apps/next run format",
+    "lint-staged": "npm --prefix ./apps/admin run lint-staged && npm --prefix ./packages/ui run lint-staged && npm --prefix ./apps/next run lint-staged",
     "prepare": "husky"
   },
   "devDependencies": {
