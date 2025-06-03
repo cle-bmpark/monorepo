@@ -1,10 +1,10 @@
 import '@/app/[locale]/globals.css';
-import Footer from '@/components/layout/Footer';
-import Modal from '@/components/modal/Modal';
-import Popup from '@/components/modal/Popup';
-import ProgressModal from '@/components/modal/ProgressModal';
-import Toast from '@/components/modal/Toast';
 import { routing } from '@/i18n/routing';
+import Footer from '@repo/ui/src/components/layout/Footer';
+import Modal from '@repo/ui/src/components/modal/Modal';
+import Popup from '@repo/ui/src/components/modal/Popup';
+import ProgressModal from '@repo/ui/src/components/modal/ProgressModal';
+import Toast from '@repo/ui/src/components/modal/Toast';
 import { Provider } from 'jotai';
 
 import type { Metadata } from 'next';

@@ -1,6 +1,6 @@
-import Badge from '@/components/badge/Badge';
-import LinkButton from '@/components/button/LinkButton';
 import { defaultType, enumColors } from '@/dummy/HMGMA';
+import Badge from '@repo/ui/src/components/badge/Badge';
+import LinkButton from '@repo/ui/src/components/button/LinkButton';
 import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
 

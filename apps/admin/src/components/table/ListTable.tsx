@@ -1,9 +1,9 @@
-import Dropdown from '@/components/button/Dropdown';
 import Filter from '@/components/table/Filter';
-import Pagination from '@/components/table/Pagination';
 import Search from '@/components/table/Search';
 import TableBody from '@/components/table/TableBody';
 import TableHeader from '@/components/table/TableHeader';
+import Dropdown from '@repo/ui/src/components/button/Dropdown';
+import Pagination from '@repo/ui/src/components/table/Pagination';
 import { ReactNode, useState } from 'react';
 
 interface ListTableProps<T extends object> {

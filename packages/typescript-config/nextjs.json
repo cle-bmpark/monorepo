@@ -38,11 +38,7 @@
       {
         "name": "next" // Next.js TypeScript 플러그인 활성화
       }
-    ],
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./src/*"] // `@` 경로로 `src` 폴더 내부 파일에 접근 가능 (절대 경로)
-    }
+    ]
   },
   "include": [
     "next-env.d.ts", // Next.js 환경 변수 타입 정의 포함

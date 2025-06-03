@@ -1,5 +1,5 @@
 import LanguageSwitch from '@/app/[locale]/LanguageSwitch';
-import DarkModeToggle from '@/app/[locale]/ThemeMode';
+import DarkModeToggle from '@repo/ui/src/app/ThemeMode';
 import { ReactNode } from 'react';
 
 export default function Layout({

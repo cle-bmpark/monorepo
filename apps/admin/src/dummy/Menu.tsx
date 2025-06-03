@@ -1,4 +1,4 @@
-import { MenuType } from '@/components/layout/Navigation';
+import { MenuType } from '@repo/ui/src/components/layout/Navigation';
 import { FaRegCheckSquare } from 'react-icons/fa';
 import { LuLayoutDashboard } from 'react-icons/lu';
 import { MdDoNotDisturb } from 'react-icons/md';

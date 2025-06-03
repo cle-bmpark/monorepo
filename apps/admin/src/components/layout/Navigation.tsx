@@ -1,6 +1,6 @@
 'use client';
-import { useColorByTheme } from '@/hooks/useColorByTheme';
 import { usePathname } from '@/i18n/navigation';
+import { useColorByTheme } from '@repo/ui/src/hooks/useColorByTheme';
 import { useRouter } from 'next/navigation';
 import React, { JSX } from 'react';
 

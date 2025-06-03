@@ -1,6 +1,6 @@
 'use client';
 
-import Button from '@/components/button/Button';
+import Button from '@repo/ui/src/components/button/Button';
 import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
 import { TiHome } from 'react-icons/ti';

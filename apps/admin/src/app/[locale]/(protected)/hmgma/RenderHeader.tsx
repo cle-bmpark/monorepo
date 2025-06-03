@@ -1,6 +1,6 @@
-import Button from '@/components/button/Button';
 import { listType } from '@/dummy/HMGMA';
 import { toastAtom } from '@/jotai/modalAtoms';
+import Button from '@repo/ui/src/components/button/Button';
 import { useAtom } from 'jotai';
 import { useTranslations } from 'next-intl';
 import { Dispatch, SetStateAction } from 'react';

@@ -6,6 +6,16 @@
   "exports": {
     "./next-mjs": "./next.mjs"
   },
-  "devDependencies": {},
-  "dependencies": {}
+  "devDependencies": {
+    "@next/eslint-plugin-next": "^15.3.3",
+    "eslint": "^9.28.0",
+    "eslint-config-next": "^15.3.3",
+    "eslint-import-resolver-typescript": "^4.4.2",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-react-hooks": "^5.2.0"
+  },
+  "dependencies": {
+    "eslint-config-prettier": "^10.1.3",
+    "eslint-plugin-prettier": "^5.4.0"
+  }
 }

@@ -1,4 +1,4 @@
-import IconInput from '@/components/input/IconInput';
+import IconInput from '@repo/ui/src/components/input/IconInput';
 import { useTranslations } from 'next-intl';
 import { KeyboardEvent, useState } from 'react';
 import { IoMdSearch } from 'react-icons/io';

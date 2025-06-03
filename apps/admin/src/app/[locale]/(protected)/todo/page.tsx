@@ -1,6 +1,6 @@
 'use client';
 
-import CheckBox from '@/components/radio/CheckBox';
+import CheckBox from '@repo/ui/src/components/radio/CheckBox';
 import { useTranslations } from 'next-intl';
 
 // 런처 이전

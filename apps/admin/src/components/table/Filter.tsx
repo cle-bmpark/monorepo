@@ -1,5 +1,5 @@
-import Button from '@/components/button/Button';
-import useClickOutside from '@/hooks/useClickOutside';
+import Button from '@repo/ui/src/components/button/Button';
+import useClickOutside from '@repo/ui/src/hooks/useClickOutside';
 import { useTranslations } from 'next-intl';
 import { ReactNode, useRef, useState } from 'react';
 import { IoFilter } from 'react-icons/io5';

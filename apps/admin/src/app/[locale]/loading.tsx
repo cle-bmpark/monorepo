@@ -1,7 +1,7 @@
 'use client';
 
-import LoadingIcon from '@/components/svg/LoadingIcon';
-import useScrollLock from '@/hooks/useScrollLock';
+import LoadingIcon from '@repo/ui/src/components/svg/LoadingIcon';
+import useScrollLock from '@repo/ui/src/hooks/useScrollLock';
 
 export default function Loading() {
   useScrollLock(true);

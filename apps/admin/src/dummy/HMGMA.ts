@@ -1,4 +1,4 @@
-import { BadgeColor } from '@/components/badge/Badge';
+import { BadgeColor } from '@repo/ui/src/components/badge/Badge';
 
 // Enum
 export enum LineEnum {

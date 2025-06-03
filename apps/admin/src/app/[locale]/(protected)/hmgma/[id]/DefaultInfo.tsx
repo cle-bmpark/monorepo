@@ -1,11 +1,11 @@
-import Badge from '@/components/badge/Badge';
-import Button from '@/components/button/Button';
-import LinkButton from '@/components/button/LinkButton';
-import CheckBox from '@/components/radio/CheckBox';
 import ObjectTable from '@/components/table/ObjectTable';
 import { defaultType, enumColors } from '@/dummy/HMGMA';
 import useClipboard from '@/hooks/useClipboard';
 import { popupAtom, toastAtom } from '@/jotai/modalAtoms';
+import Badge from '@repo/ui/src/components/badge/Badge';
+import Button from '@repo/ui/src/components/button/Button';
+import LinkButton from '@repo/ui/src/components/button/LinkButton';
+import CheckBox from '@repo/ui/src/components/radio/CheckBox';
 import { useAtom } from 'jotai';
 import { useTranslations } from 'next-intl';
 import { ReactNode } from 'react';

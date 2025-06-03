@@ -1,6 +1,6 @@
-import Slider from '@/components/slider/Slider';
 import { pcStatusType } from '@/dummy/HMGMA';
-import { useColorByTheme } from '@/hooks/useColorByTheme';
+import Slider from '@repo/ui/src/components/slider/Slider';
+import { useColorByTheme } from '@repo/ui/src/hooks/useColorByTheme';
 import { FiHardDrive } from 'react-icons/fi';
 
 interface StorageInfoProps {

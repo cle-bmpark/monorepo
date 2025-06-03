@@ -17,6 +17,7 @@ const nextJsConfig = [
     ignores: ['eslint.config.mjs', 'postcss.config.mjs', 'prettier.config.mjs'],
   },
   ...compat.extends(
+    'next',
     'next/core-web-vitals', // Next.js 핵심 웹 바이탈 관련 권장 규칙
     'next/typescript', // Next.js TypeScript 관련 권장 규칙
     'eslint:recommended', // ESLint 기본 권장 규칙
@@ -37,6 +38,8 @@ const nextJsConfig = [
       },
     },
     rules: {
+      // --- Next 기본 규칙 ---
+
       // --- ESLint 자체 규칙 강화 ---
       'no-template-curly-in-string': 'error', // 문자열 템플릿 내 표현식 오류 방지
       'no-dupe-keys': 'error', // 객체 리터럴 내 중복 키 금지

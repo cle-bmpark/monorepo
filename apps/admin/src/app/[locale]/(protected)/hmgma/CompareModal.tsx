@@ -1,9 +1,9 @@
 'use client';
 
-import Tooltip from '@/components/modal/Tooltip';
 import { detailData } from '@/dummy/HMGMA';
-import useClickOutside from '@/hooks/useClickOutside';
-import { useColorByTheme } from '@/hooks/useColorByTheme';
+import Tooltip from '@repo/ui/src/components/modal/Tooltip';
+import useClickOutside from '@repo/ui/src/hooks/useClickOutside';
+import { useColorByTheme } from '@repo/ui/src/hooks/useColorByTheme';
 import { SetStateAction } from 'jotai';
 import { useTranslations } from 'next-intl';
 import { Dispatch, useEffect, useRef, useState } from 'react';

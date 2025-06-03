@@ -1,8 +1,8 @@
-import Dropdown from '@/components/button/Dropdown';
-import { DateRange } from '@/components/headless/Calendar';
-import CalendarInput from '@/components/headless/CalendarInput';
 import ScrollTable from '@/components/table/ScrollTable';
 import { driverType } from '@/dummy/HMGMA';
+import Dropdown from '@repo/ui/src/components/button/Dropdown';
+import { DateRange } from '@repo/ui/src/components/headless/Calendar';
+import CalendarInput from '@repo/ui/src/components/headless/CalendarInput';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { ReactNode } from 'react';
@@ -26,8 +26,8 @@ export default function DriverInfo({ data }: DriverInfoProps) {
       from: new Date(),
       to: new Date(),
     },
-    name: data[0].name,
-    version: data[0].version,
+    name: data[0]?.name ?? '',
+    version: data[0]?.version ?? '',
   });
 
   const refetchData = () => {

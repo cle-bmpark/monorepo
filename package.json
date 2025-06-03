@@ -6,9 +6,9 @@
     "dev": "turbo run dev",
     "check-types": "turbo run check-types",
     "i18n-check": "npm --prefix ./apps/admin run i18n-check",
-    "lint": "npm --prefix ./apps/admin run lint",
-    "format": "npm --prefix ./apps/admin run format",
-    "lint-staged": "npm --prefix ./apps/admin run lint-staged",
+    "lint": "npm --prefix ./apps/admin run lint && npm --prefix ./packages/ui run lint",
+    "format": "npm --prefix ./apps/admin run format && npm --prefix ./packages/ui run format",
+    "lint-staged": "npm --prefix ./apps/admin run lint-staged && npm --prefix ./packages/ui run lint-staged",
     "prepare": "husky"
   },
   "devDependencies": {
@@ -20,15 +20,13 @@
     "node": ">=18"
   },
   "packageManager": "npm@10.9.2",
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
+  "workspaces": ["apps/*", "packages/*"],
   "dependencies": {
     "@trivago/prettier-plugin-sort-imports": "^5.2.2",
     "husky": "^9.1.7",
     "lint-staged": "^16.1.0",
     "prettier-plugin-organize-imports": "^4.1.0",
-    "prettier-plugin-tailwindcss": "^0.6.12"
+    "prettier-plugin-tailwindcss": "^0.6.12",
+    "prettier": "^3.5.3"
   }
 }
