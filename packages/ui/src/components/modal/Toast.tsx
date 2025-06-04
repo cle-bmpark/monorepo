@@ -45,6 +45,9 @@ export default function Toast() {
 
       return () => clearTimeout(timer);
     }
+    return () => {
+      return;
+    };
   }, [toast.visible, setToast]);
 
   useClickOutside({ ref: toastRef, onClick: handleClose });

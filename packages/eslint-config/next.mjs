@@ -1,6 +1,8 @@
 // Prettier가 코드 포맷팅을 담당하므로, ESLint는 문법 오류 및 잠재적 문제 검사에 집중합니다.
 import { FlatCompat } from '@eslint/eslintrc';
 import js from '@eslint/js';
+import nextPlugin from '@next/eslint-plugin-next';
+import commonJsGlobals from 'globals';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -17,9 +19,6 @@ const nextJsConfig = [
     ignores: ['eslint.config.mjs', 'postcss.config.mjs', 'prettier.config.mjs'],
   },
   ...compat.extends(
-    'next',
-    'next/core-web-vitals', // Next.js 핵심 웹 바이탈 관련 권장 규칙
-    'next/typescript', // Next.js TypeScript 관련 권장 규칙
     'eslint:recommended', // ESLint 기본 권장 규칙
     'eslint-config-prettier', // Prettier와 ESLint 통합 (충돌 방지)
     'plugin:@typescript-eslint/recommended-type-checked', // TypeScript 타입 검사 강화 규칙 (tsconfig.json 필요)
@@ -33,12 +32,20 @@ const nextJsConfig = [
   ),
   {
     languageOptions: {
+      globals: {
+        ...commonJsGlobals.browser,
+      },
       parserOptions: {
         project: ['./tsconfig.json'], // TypeScript 프로젝트 설정 파일 경로 (type-checked 규칙에 필요)
       },
     },
+    plugins: {
+      '@next/next': nextPlugin,
+    },
     rules: {
       // --- Next 기본 규칙 ---
+      ...nextPlugin.configs.recommended.rules, // Next.js의 추천 규칙
+      ...nextPlugin.configs['core-web-vitals'].rules, // Next.js의 Core Web Vitals 규칙
 
       // --- ESLint 자체 규칙 강화 ---
       'no-template-curly-in-string': 'error', // 문자열 템플릿 내 표현식 오류 방지
@@ -125,6 +132,9 @@ const nextJsConfig = [
       'prettier/prettier': 'error',
     },
     settings: {
+      react: {
+        version: 'detect', // 'detect'는 설치된 React 버전을 자동으로 감지
+      },
       'import/resolver': {
         typescript: {
           // `tsconfig.json`에서 paths를 인식하게 함
