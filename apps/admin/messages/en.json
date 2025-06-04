@@ -1,0 +1,100 @@
+{
+  "enum": {
+    "ASC": "ASC",
+    "DESC": "DESC",
+    "ACTIVE": "ACTIVE",
+    "INACTIVE": "INACTIVE"
+  },
+  "mockup": {
+    "line": "Line",
+    "process": "Process",
+    "position": "Position",
+    "pc": "PC",
+    "serialNumber": "Serial Number",
+    "anyDeskIP": "AnyDesk IP",
+    "ipv4Address": "IP Address",
+    "activeServer": "Active Server",
+    "isLicense": "License Status",
+    "isNetwork": "Network Connectivity",
+    "isProgram": "Program Status",
+    "launcherUpdateAt": "Launcher Updated",
+    "fileName": "File Name",
+    "fileRelPath": "File Relative Path",
+    "buildVersion": "Build Version",
+    "deployer": "Deployer",
+    "updateAt": "Updated Date",
+    "hash": "Hash",
+    "cpu": "CPU",
+    "gpu": "GPU",
+    "temp": "Temp",
+    "ram": "RAM",
+    "storage": "Storage",
+    "network": "Network",
+    "device-name": "Device Name",
+    "usage": "Usage",
+    "current": "Current",
+    "average": "Average",
+    "lowest": "Lowest",
+    "highest": "Highest",
+    "send": "Send",
+    "receive": "Receive",
+    "total": "Total",
+    "program-name": "Program Name",
+    "image": "Image",
+    "version": "Version",
+    "driver-name": "Driver Name",
+    "installedAt": "Installed Date"
+  },
+  "table": {
+    "search": "Search",
+    "sort": "Sort",
+    "filter": "Filter",
+    "date": "Date",
+    "license": "License",
+    "reset": "Reset"
+  },
+  "modal": {
+    "cancelLabel": "Cancel",
+    "confirmLabel": "Confirm"
+  },
+  "root": {
+    "theme-mode": "Dark Mode",
+    "language-switch": "Language"
+  },
+  "error": {
+    "title": "An unexpected error occurred while loading the page.",
+    "content": "Please try again shortly, or go back to the previous page.",
+    "backButton": "Go Back",
+    "refreshButton": "Refresh"
+  },
+  "not-found": {
+    "title": "404 PAGE NOT FOUND",
+    "content": "This page doesn't exist.",
+    "button": "Go to Home"
+  },
+  "todo": {
+    "title": "To Do List",
+    "sub-title-1": "Before Luncher",
+    "sub-title-2": "After Luncher"
+  },
+  "hmgma": {
+    "clipboard-success": "Copied {key} to clipboard successfully.",
+    "clipboard-error": "Failed {key} to copy to clipboard.",
+    "feature-unavailable": "{feature} feature is not yet implemented.",
+    "default-information": "Default Information",
+    "deploy-assistant": "Deploy Assistant",
+    "update-button": "Update",
+    "system-performance": "System Performance",
+    "license-popup-title": "License application",
+    "license-popup-content": "Would you like to request a license {state, select, true {release} other {issuance}}?",
+    "yes": "YES",
+    "no": "NO",
+    "on&off": "{state, select, true {ON} other {OFF}}",
+    "program-title": "Program Information",
+    "driver-title": "Driver Information",
+    "program-open-button": "{state, select, true {Close} other {Open}} All Programs",
+    "compare-modal-open-button": "Compare PC",
+    "error-compare-modal": "Please select at least two PC serial numbers to compare.",
+    "esc-close-context": "Pressing the ESC key will close the window."
+  }
+}

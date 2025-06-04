@@ -1,4 +1,25 @@
-import { config } from "@repo/eslint-config/react-internal";
+import nextJsConfig from '@repo/eslint-config/next-mjs';
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
 
-/** @type {import("eslint").Linter.Config} */
-export default config;
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+export default [
+  ...nextJsConfig,
+  {
+    languageOptions: {
+      parserOptions: {
+        project: './tsconfig.json',
+        tsconfigRootDir: __dirname,
+      },
+    },
+    settings: {
+      'import/resolver': {
+        typescript: {
+          project: './tsconfig.json',
+        },
+      },
+    },
+  },
+];

@@ -16,6 +16,9 @@
     "dev": {
       "cache": false,
       "persistent": true
+    },
+    "i18n-check": {
+      "cache": false
     }
   }
 }
