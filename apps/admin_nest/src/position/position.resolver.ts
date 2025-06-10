@@ -1,0 +1,35 @@
+import { Args, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { CreatePositionInput } from './dto/create-position.input';
+import { UpdatePositionInput } from './dto/update-position.input';
+import { Position } from './entities/position.entity';
+import { PositionService } from './position.service';
+
+@Resolver(() => Position)
+export class PositionResolver {
+  constructor(private readonly positionService: PositionService) {}
+
+  @Mutation(() => Position)
+  createPosition(@Args('createPositionInput') createPositionInput: CreatePositionInput) {
+    return this.positionService.create(createPositionInput);
+  }
+
+  @Query(() => [Position], { name: 'position' })
+  findAll() {
+    return this.positionService.findAll();
+  }
+
+  @Query(() => Position, { name: 'position' })
+  findOne(@Args('id', { type: () => Int }) id: number) {
+    return this.positionService.findOne(id);
+  }
+
+  @Mutation(() => Position)
+  updatePosition(@Args('updatePositionInput') updatePositionInput: UpdatePositionInput) {
+    return this.positionService.update(updatePositionInput.id, updatePositionInput);
+  }
+
+  @Mutation(() => Position)
+  removePosition(@Args('id', { type: () => Int }) id: number) {
+    return this.positionService.remove(id);
+  }
+}
