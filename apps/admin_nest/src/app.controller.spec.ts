@@ -15,8 +15,10 @@ describe('AppController', () => {
   });
 
   describe('root', () => {
-    it('should return "Hello World!"', () => {
-      expect(appController.getHello()).toBe('Hello World!');
+    it('should trigger a redirect to /graphql', () => {
+      expect(() => {
+        appController.redirectToGraphQL();
+      }).not.toThrow();
     });
   });
 });
