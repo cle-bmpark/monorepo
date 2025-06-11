@@ -14,7 +14,7 @@ export class CpuStatus {
   pcId: number;
 
   @Field(() => Pc, { description: '관련 PC 정보 (관계 필드)' })
-  @OneToOne(() => Pc, (pc) => pc.gpuStatus, {
+  @OneToOne(() => Pc, (pc) => pc.cpuStatus, {
     onDelete: 'CASCADE',
   })
   @JoinColumn({ name: 'pcId' })

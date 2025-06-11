@@ -1,0 +1,150 @@
+Table line {
+  id int [pk, increment]
+  code string [unique] // ONE, TWO, PANORAMA
+  name string // 1, 2, PANORAMA
+  createdAt timestamp
+  updatedAt timestamp
+}
+
+Table process {
+  id int [pk, increment]
+  code string [unique] // GLASS_INSPECT, SEALER_INSPECT, PRIMER_INSPECT, WHEEL_INSPECT
+  name string // GLASS INSPECT, SEALER INSPECT, PRIMER INSPECT, WHEEL INSPECT
+  createdAt timestamp
+  updatedAt timestamp
+}
+
+Table position {
+  id int [pk, increment]
+  code string [unique] // FRONT, REAR, RIGHT_HAND, LEFT_HAND
+  name string // 전면, 후면, 우측, 좌축
+  createdAt timestamp
+  updatedAt timestamp
+}
+
+Enum brain_enum {
+  MAIN
+  SPARE
+}
+
+Table pc {
+  id int [pk, increment]
+  serial_number string
+  line_id int [ref: > line.id]
+  position_id int [ref: > position.id]
+  process_id int [ref: > process.id]
+  brain brain_enum
+  isLicense boolean
+  isNetwork boolean
+  isProgram boolean
+  anydeskIp string
+  ipv4 string
+  activeServer string
+  launcherUpdatedAt timestamp
+  createdAt timestamp
+  updatedAt timestamp
+}
+
+Table cpu_status {
+  id int [pk, increment]
+  pc_id int [ref: > pc.id]
+  name string
+  usage double
+  unit string // %
+  createdAt timestamp
+  updatedAt timestamp
+}
+
+Table gpu_status {
+  id int [pk, increment]
+  pcId int [ref: > pc.id]
+  name string
+  usage double
+  unit string // %
+  createdAt timestamp
+  updatedAt timestamp
+}
+
+Table ram_status {
+  id int [pk, increment]
+  pcId int [ref: > pc.id]
+  total double
+  current double
+  average double
+  lowest double
+  highest double
+  unit string // GB
+  createdAt timestamp
+  updatedAt timestamp
+}
+
+Table network_status {
+  id int [pk, increment]
+  pcId int [ref: > pc.id]
+  send double
+  receive double
+  unit string // Kbps
+  createdAt timestamp
+  updatedAt timestamp
+}
+
+Table temp_status {
+  id int [pk, increment]
+  pcId int [ref: > pc.id]
+  current double
+  average double
+  lowest double
+  highest double
+  unit string // °C
+  createdAt timestamp
+  updatedAt timestamp
+}
+
+
+Table storage_status {
+  id int [pk, increment]
+  pcId int [ref: > pc.id]
+  name string
+  total double
+  usage double
+  unit string // GB
+  createdAt timestamp
+  updatedAt timestamp
+}
+
+
+Table program {
+  id int [pk, increment]
+  image string
+  name string
+  version string
+  programUpdatedAt timestamp // 버전 변경 시점
+  createdAt timestamp
+  updatedAt timestamp
+}
+
+Table pc_program {
+  id int [pk, increment]
+  pcId int [ref: > pc.id]
+  programId int [ref: > program.id]
+  createdAt timestamp
+  updatedAt timestamp
+}
+
+Table driver {
+  id int [pk, increment]
+  image string
+  name string
+  version string
+  driverUpdatedAt timestamp // 버전 변경 시점
+  createdAt timestamp
+  updatedAt timestamp
+}
+
+Table pc_driver {
+  id int [pk, increment]
+  pcId int [ref: > pc.id]
+  driverId int [ref: > driver.id]
+  createdAt timestamp
+  updatedAt timestamp // 모니터링 수집 시점
+}

@@ -107,37 +107,37 @@ export class Pc {
   activeServer: string;
 
   @Field(() => CpuStatus, { description: 'CPU 상태 정보 테이블 ID' })
-  @OneToOne(() => CpuStatus, (gpuStatus) => gpuStatus.pcId, {
+  @OneToOne(() => CpuStatus, (cpuStatus) => cpuStatus.pc, {
     nullable: true,
   })
   cpuStatus?: CpuStatus;
 
   @Field(() => GpuStatus, { description: 'GPU 상태 정보 테이블 ID' })
-  @OneToOne(() => GpuStatus, (gpuStatus) => gpuStatus.pcId, {
+  @OneToOne(() => GpuStatus, (gpuStatus) => gpuStatus.pc, {
     nullable: true,
   })
   gpuStatus?: GpuStatus;
 
   @Field(() => NetworkStatus, { description: 'Network 상태 정보 테이블 ID' })
-  @OneToOne(() => NetworkStatus, (networkStatus) => networkStatus.pcId, {
+  @OneToOne(() => NetworkStatus, (networkStatus) => networkStatus.pc, {
     nullable: true,
   })
   networkStatus?: NetworkStatus;
 
   @Field(() => RamStatus, { description: 'RAM 상태 정보 테이블 ID' })
-  @OneToOne(() => RamStatus, (ramStatus) => ramStatus.pcId, {
+  @OneToOne(() => RamStatus, (ramStatus) => ramStatus.pc, {
     nullable: true,
   })
   ramStatus?: RamStatus;
 
   @Field(() => StorageStatus, { description: 'Storage 상태 정보 테이블 ID' })
-  @OneToOne(() => StorageStatus, (storageStatus) => storageStatus.pcId, {
+  @OneToOne(() => StorageStatus, (storageStatus) => storageStatus.pc, {
     nullable: true,
   })
   storageStatus?: StorageStatus;
 
   @Field(() => TempStatus, { description: '온도 상태 정보 테이블 ID' })
-  @OneToOne(() => TempStatus, (tempStatus) => tempStatus.pcId, {
+  @OneToOne(() => TempStatus, (tempStatus) => tempStatus.pc, {
     nullable: true,
   })
   tempStatus?: TempStatus;

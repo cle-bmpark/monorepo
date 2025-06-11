@@ -1,0 +1,636 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+"""PC 종류: MAIN, SPARE"""
+enum BrainEnum {
+  MAIN
+  SPARE
+}
+
+type CpuStatus {
+  """생성 일시"""
+  createdAt: DateTime!
+
+  """고유번호 ID"""
+  id: Int!
+
+  """CPU 이름: i7-00..."""
+  name: String!
+
+  """관련 PC 정보 (관계 필드)"""
+  pc: Pc!
+
+  """PC 고유 ID (외래 키)"""
+  pcId: Int!
+
+  """CPU 사용량 단위: %"""
+  unit: String!
+
+  """업데이트 일시"""
+  updatedAt: DateTime!
+
+  """CPU 사용량"""
+  usage: Float!
+}
+
+input CreateCpuStatusInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input CreateDriverInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input CreateGpuStatusInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input CreateLineInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input CreateNetworkStatusInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input CreatePcDriverInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input CreatePcInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input CreatePcProgramInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input CreatePositionInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input CreateProcessInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input CreateProgramInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input CreateRamStatusInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input CreateStorageStatusInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input CreateTempStatusInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Driver {
+  """생성 일시"""
+  createdAt: DateTime!
+
+  """드라이버 버전 업데이트 일시"""
+  driverUpdatedAt: DateTime!
+
+  """고유번호 ID"""
+  id: Int!
+
+  """이미지 URL"""
+  image: String!
+
+  """드라이버명"""
+  name: String!
+
+  """업데이트 일시"""
+  updatedAt: DateTime!
+
+  """버전 정보"""
+  version: String!
+}
+
+type GpuStatus {
+  """생성 일시"""
+  createdAt: DateTime!
+
+  """고유번호 ID"""
+  id: Int!
+
+  """GPU 명"""
+  name: String!
+
+  """관련 PC 정보 (관계 필드)"""
+  pc: Pc!
+
+  """PC 고유 ID (외래 키)"""
+  pcId: Int!
+
+  """GPU 사용량 단위: %"""
+  unit: String!
+
+  """업데이트 일시"""
+  updatedAt: DateTime!
+
+  """GPU 사용량"""
+  usage: Float!
+}
+
+type Line {
+  """Line 코드: ONE, TWO, PANORAMA"""
+  code: String!
+
+  """생성 일시"""
+  createdAt: DateTime!
+
+  """고유번호 ID"""
+  id: Int!
+
+  """Line 이름: ONE, TWO, PANORAMA"""
+  name: String!
+
+  """업데이트 일시"""
+  updatedAt: DateTime!
+}
+
+type Mutation {
+  createCpuStatus(createCpuStatusInput: CreateCpuStatusInput!): CpuStatus!
+  createDriver(createDriverInput: CreateDriverInput!): Driver!
+  createGpuStatus(createGpuStatusInput: CreateGpuStatusInput!): GpuStatus!
+  createLine(createLineInput: CreateLineInput!): Line!
+  createNetworkStatus(createNetworkStatusInput: CreateNetworkStatusInput!): NetworkStatus!
+  createPc(createPcInput: CreatePcInput!): Pc!
+  createPcDriver(createPcDriverInput: CreatePcDriverInput!): PcDriver!
+  createPcProgram(createPcProgramInput: CreatePcProgramInput!): PcProgram!
+  createPosition(createPositionInput: CreatePositionInput!): Position!
+  createProcess(createProcessInput: CreateProcessInput!): Process!
+  createProgram(createProgramInput: CreateProgramInput!): Program!
+  createRamStatus(createRamStatusInput: CreateRamStatusInput!): RamStatus!
+  createStorageStatus(createStorageStatusInput: CreateStorageStatusInput!): StorageStatus!
+  createTempStatus(createTempStatusInput: CreateTempStatusInput!): TempStatus!
+  removeCpuStatus(id: Int!): CpuStatus!
+  removeDriver(id: Int!): Driver!
+  removeGpuStatus(id: Int!): GpuStatus!
+  removeLine(id: Int!): Line!
+  removeNetworkStatus(id: Int!): NetworkStatus!
+  removePc(id: Int!): Pc!
+  removePcDriver(id: Int!): PcDriver!
+  removePcProgram(id: Int!): PcProgram!
+  removePosition(id: Int!): Position!
+  removeProcess(id: Int!): Process!
+  removeProgram(id: Int!): Program!
+  removeRamStatus(id: Int!): RamStatus!
+  removeStorageStatus(id: Int!): StorageStatus!
+  removeTempStatus(id: Int!): TempStatus!
+  updateCpuStatus(updateCpuStatusInput: UpdateCpuStatusInput!): CpuStatus!
+  updateDriver(updateDriverInput: UpdateDriverInput!): Driver!
+  updateGpuStatus(updateGpuStatusInput: UpdateGpuStatusInput!): GpuStatus!
+  updateLine(updateLineInput: UpdateLineInput!): Line!
+  updateNetworkStatus(updateNetworkStatusInput: UpdateNetworkStatusInput!): NetworkStatus!
+  updatePc(updatePcInput: UpdatePcInput!): Pc!
+  updatePcDriver(updatePcDriverInput: UpdatePcDriverInput!): PcDriver!
+  updatePcProgram(updatePcProgramInput: UpdatePcProgramInput!): PcProgram!
+  updatePosition(updatePositionInput: UpdatePositionInput!): Position!
+  updateProcess(updateProcessInput: UpdateProcessInput!): Process!
+  updateProgram(updateProgramInput: UpdateProgramInput!): Program!
+  updateRamStatus(updateRamStatusInput: UpdateRamStatusInput!): RamStatus!
+  updateStorageStatus(updateStorageStatusInput: UpdateStorageStatusInput!): StorageStatus!
+  updateTempStatus(updateTempStatusInput: UpdateTempStatusInput!): TempStatus!
+}
+
+type NetworkStatus {
+  """생성 일시"""
+  createdAt: DateTime!
+
+  """고유번호 ID"""
+  id: Int!
+
+  """관련 PC 정보 (관계 필드)"""
+  pc: Pc!
+
+  """PC 고유 ID (외래 키)"""
+  pcId: Int!
+
+  """송신량"""
+  receive: Float!
+
+  """수신량"""
+  send: Float!
+
+  """Network 사용량 단위: Kbps"""
+  unit: String!
+
+  """업데이트 일시"""
+  updatedAt: DateTime!
+}
+
+type Pc {
+  """런처 접속 서버 주소"""
+  activeServer: String!
+
+  """AnyDesk IP 주소"""
+  anydeskIp: String!
+
+  """PC 종류: MAIN, SPARE"""
+  brain: BrainEnum!
+
+  """CPU 상태 정보 테이블 ID"""
+  cpuStatus: CpuStatus!
+
+  """생성 일시"""
+  createdAt: DateTime!
+
+  """GPU 상태 정보 테이블 ID"""
+  gpuStatus: GpuStatus!
+
+  """고유번호 ID"""
+  id: Int!
+
+  """PC 로컬 IP 주소"""
+  ipv4: String!
+
+  """라이선스 여부"""
+  isLicense: Boolean!
+
+  """네트워크 접속 여부"""
+  isNetwork: Boolean!
+
+  """프로그램 작동 여부"""
+  isProgram: Boolean!
+
+  """런처 업데이트 일시"""
+  launcherUpdatedAt: DateTime!
+
+  """라인 객체 정보 (관계 필드)"""
+  line: Line!
+
+  """라인 고유 ID"""
+  lineId: Int!
+
+  """Network 상태 정보 테이블 ID"""
+  networkStatus: NetworkStatus!
+
+  """설치된 드라이버 정보 (중간 엔티티)"""
+  pcDrivers: [PcDriver!]!
+
+  """설치된 프로그램 정보 (중간 엔티티)"""
+  pcPrograms: [PcProgram!]!
+
+  """방향 객체 정보 (관계 필드)"""
+  position: Position!
+
+  """방향 고유 ID"""
+  positionId: Int!
+
+  """공정 객체 정보 (관계 필드)"""
+  process: Process!
+
+  """공정 고유 ID"""
+  processId: Int!
+
+  """RAM 상태 정보 테이블 ID"""
+  ramStatus: RamStatus!
+
+  """PC 시리얼 번호"""
+  serialNumber: String!
+
+  """Storage 상태 정보 테이블 ID"""
+  storageStatus: StorageStatus!
+
+  """온도 상태 정보 테이블 ID"""
+  tempStatus: TempStatus!
+
+  """업데이트 일시"""
+  updatedAt: DateTime!
+}
+
+type PcDriver {
+  """생성 일시"""
+  createdAt: DateTime!
+
+  """관련 Driver 정보 (관계 필드)"""
+  driver: Driver!
+
+  """Driver 고유 ID (외래 키)"""
+  driverId: Int!
+
+  """고유번호 ID"""
+  id: Int!
+
+  """관련 PC 정보 (관계 필드)"""
+  pc: Pc!
+
+  """PC 고유 ID (외래 키)"""
+  pcId: Int!
+
+  """업데이트 일시"""
+  updatedAt: DateTime!
+}
+
+type PcProgram {
+  """생성 일시"""
+  createdAt: DateTime!
+
+  """고유번호 ID"""
+  id: Int!
+
+  """관련 PC 정보 (관계 필드)"""
+  pc: Pc!
+
+  """PC 고유 ID (외래 키)"""
+  pcId: Int!
+
+  """관련 Program 정보 (관계 필드)"""
+  program: Program!
+
+  """Program 고유 ID (외래 키)"""
+  programId: Int!
+
+  """업데이트 일시"""
+  updatedAt: DateTime!
+}
+
+type Position {
+  """Position 코드: FRONT, REAR, RIGHT_HAND, LEFT_HAND"""
+  code: String!
+
+  """생성 일시"""
+  createdAt: DateTime!
+
+  """고유번호 ID"""
+  id: Int!
+
+  """Line 이름: FRONT, REAR, RIGHT_HAND, LEFT_HAND"""
+  name: String!
+
+  """업데이트 일시"""
+  updatedAt: DateTime!
+}
+
+type Process {
+  """
+  Process 코드: GLASS INSPECT, SEALER INSPECT, PRIMER INSPECT, WHEEL INSPECT
+  """
+  code: String!
+
+  """생성 일시"""
+  createdAt: DateTime!
+
+  """고유번호 ID"""
+  id: Int!
+
+  """
+  Process 이름: GLASS INSPECT, SEALER INSPECT, PRIMER INSPECT, WHEEL INSPECT
+  """
+  name: String!
+
+  """업데이트 일시"""
+  updatedAt: DateTime!
+}
+
+type Program {
+  """생성 일시"""
+  createdAt: DateTime!
+
+  """고유번호 ID"""
+  id: Int!
+
+  """이미지 URL"""
+  image: String!
+
+  """프로그램명"""
+  name: String!
+
+  """프로그램 버전 업데이트 일시"""
+  programUpdatedAt: DateTime!
+
+  """업데이트 일시"""
+  updatedAt: DateTime!
+
+  """버전 정보"""
+  version: String!
+}
+
+type Query {
+  cpuStatus(id: Int!): CpuStatus!
+  driver(id: Int!): Driver!
+  gpuStatus(id: Int!): GpuStatus!
+  line(id: Int!): Line!
+  networkStatus(id: Int!): NetworkStatus!
+
+  """특정 ID의 PC 정보 조회"""
+  pc(id: Int!): Pc!
+  pcDriver(id: Int!): PcDriver!
+  pcProgram(id: Int!): PcProgram!
+
+  """모든 PC 목록 조회"""
+  pcs: [Pc!]!
+  position(id: Int!): Position!
+  process(id: Int!): Process!
+  program(id: Int!): Program!
+  ramStatus(id: Int!): RamStatus!
+  storageStatus(id: Int!): StorageStatus!
+  tempStatus(id: Int!): TempStatus!
+}
+
+type RamStatus {
+  """RAM 평균 사용량"""
+  average: Float!
+
+  """생성 일시"""
+  createdAt: DateTime!
+
+  """RAM 최근 사용량"""
+  current: Float!
+
+  """RAM 최고 사용량"""
+  highest: Float!
+
+  """고유번호 ID"""
+  id: Int!
+
+  """RAM 최저 사용량"""
+  lowest: Float!
+
+  """관련 PC 정보 (관계 필드)"""
+  pc: Pc!
+
+  """PC 고유 ID (외래 키)"""
+  pcId: Int!
+
+  """RAM 총 용량"""
+  total: Float!
+
+  """CPU 사용량 단위: GB"""
+  unit: String!
+
+  """업데이트 일시"""
+  updatedAt: DateTime!
+}
+
+type StorageStatus {
+  """생성 일시"""
+  createdAt: DateTime!
+
+  """고유번호 ID"""
+  id: Int!
+
+  """Storage 이름: C, D..."""
+  name: String!
+
+  """관련 PC 정보 (관계 필드)"""
+  pc: Pc!
+
+  """PC 고유 ID (외래 키)"""
+  pcId: Int!
+
+  """Storage 총 용량"""
+  total: Float!
+
+  """Storage 사용량 단위: GB"""
+  unit: String!
+
+  """업데이트 일시"""
+  updatedAt: DateTime!
+
+  """Storage 사용량"""
+  usage: Float!
+}
+
+type TempStatus {
+  """평균 온도"""
+  average: Float!
+
+  """생성 일시"""
+  createdAt: DateTime!
+
+  """최근 온도"""
+  current: Float!
+
+  """최고 온도"""
+  highest: Float!
+
+  """고유번호 ID"""
+  id: Int!
+
+  """최저 온도"""
+  lowest: Float!
+
+  """관련 PC 정보 (관계 필드)"""
+  pc: Pc!
+
+  """PC 고유 ID (외래 키)"""
+  pcId: Int!
+
+  """온도 단위: °C"""
+  unit: String!
+
+  """업데이트 일시"""
+  updatedAt: DateTime!
+}
+
+input UpdateCpuStatusInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input UpdateDriverInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input UpdateGpuStatusInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input UpdateLineInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input UpdateNetworkStatusInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input UpdatePcDriverInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input UpdatePcInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input UpdatePcProgramInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input UpdatePositionInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input UpdateProcessInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input UpdateProgramInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input UpdateRamStatusInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input UpdateStorageStatusInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input UpdateTempStatusInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}

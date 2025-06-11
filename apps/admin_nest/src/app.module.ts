@@ -24,8 +24,9 @@ import { join } from 'path';
   imports: [
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
-      autoSchemaFile: join(process.cwd(), 'src/schema.gql'), // 자동 생성된 스키마가 생성될 경로
+      autoSchemaFile: join(process.cwd(), './schema.gql'), // 자동 생성된 스키마가 생성될 경로
       sortSchema: true, // 스키마 사전순 정렬
+      playground: true,
     }),
 
     // PostgreSQL DB 연결

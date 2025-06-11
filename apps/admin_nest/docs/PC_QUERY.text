@@ -1,0 +1,263 @@
+query {
+  pcs {
+    id
+    serialNumber
+    lineId
+    positionId
+    processId
+    brain
+    isLicense
+    isNetwork
+    isProgram
+    anydeskIp
+    ipv4
+    activeServer
+    launcherUpdatedAt
+    createdAt
+    updatedAt
+    line {
+      id
+      code
+      name
+      createdAt
+      updatedAt
+    }
+    position {
+      id
+      code
+      name
+      createdAt
+      updatedAt
+    }
+    process {
+     	id
+      code
+      name
+      createdAt
+      updatedAt
+    }
+    cpuStatus {
+      id
+      pcId
+      name
+      usage
+      unit
+      createdAt
+      updatedAt
+    }
+    gpuStatus {
+      id
+      pcId
+      name
+      usage
+      unit
+      createdAt
+      updatedAt
+    }
+    networkStatus {
+      id
+      pcId
+      send
+      receive
+      createdAt
+      updatedAt
+    }
+    ramStatus {
+      id
+      pcId
+      total
+      current
+      average
+      lowest
+      highest
+      unit
+      createdAt
+      updatedAt
+    }
+    storageStatus {
+      id
+      pcId
+      name
+      total
+      usage
+      unit
+      createdAt
+      updatedAt
+    }
+    tempStatus {
+      id
+      pcId
+      current
+      average
+      lowest
+      highest
+      unit
+      createdAt
+      updatedAt
+    }
+    pcDrivers {
+      id
+      pcId
+      driverId
+      createdAt
+      updatedAt
+      driver { 
+        id
+        image
+        name
+        version
+        driverUpdatedAt
+        createdAt
+        updatedAt
+      }
+    }
+    pcPrograms {
+      id
+      pcId
+      programId
+      createdAt
+      updatedAt
+      program { 
+        id
+        image
+        name
+        version
+        programUpdatedAt
+        createdAt
+        updatedAt
+      }
+    }
+  }
+}
+
+query {
+  pc(id: 1) {
+    id
+    serialNumber
+    lineId
+    positionId
+    processId
+    brain
+    isLicense
+    isNetwork
+    isProgram
+    anydeskIp
+    ipv4
+    activeServer
+    launcherUpdatedAt
+    createdAt
+    updatedAt
+    line {
+      id
+      code
+      name
+      createdAt
+      updatedAt
+    }
+    position {
+      id
+      code
+      name
+      createdAt
+      updatedAt
+    }
+    process {
+     	id
+      code
+      name
+      createdAt
+      updatedAt
+    }
+    cpuStatus {
+      id
+      pcId
+      name
+      usage
+      unit
+      createdAt
+      updatedAt
+    }
+    gpuStatus {
+      id
+      pcId
+      name
+      usage
+      unit
+      createdAt
+      updatedAt
+    }
+    networkStatus {
+      id
+      pcId
+      send
+      receive
+      createdAt
+      updatedAt
+    }
+    ramStatus {
+      id
+      pcId
+      total
+      current
+      average
+      lowest
+      highest
+      unit
+      createdAt
+      updatedAt
+    }
+    storageStatus {
+      id
+      pcId
+      name
+      total
+      usage
+      unit
+      createdAt
+      updatedAt
+    }
+    tempStatus {
+      id
+      pcId
+      current
+      average
+      lowest
+      highest
+      unit
+      createdAt
+      updatedAt
+    }
+    pcDrivers {
+      id
+      pcId
+      driverId
+      createdAt
+      updatedAt
+      driver { 
+        id
+        image
+        name
+        version
+        driverUpdatedAt
+        createdAt
+        updatedAt
+      }
+    }
+    pcPrograms {
+      id
+      pcId
+      programId
+      createdAt
+      updatedAt
+      program { 
+        id
+        image
+        name
+        version
+        programUpdatedAt
+        createdAt
+        updatedAt
+      }
+    }
+  }
+}
