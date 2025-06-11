@@ -1,5 +1,5 @@
+import { PcProgram } from '@/pc_program/entities/pc_program.entity';
 import { Field, Int, ObjectType } from '@nestjs/graphql';
-import { PcProgram } from 'src/pc_program/entities/pc_program.entity';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @ObjectType()

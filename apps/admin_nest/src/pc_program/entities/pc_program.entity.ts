@@ -1,6 +1,6 @@
+import { Pc } from '@/pc/entities/pc.entity';
+import { Program } from '@/program/entities/program.entity';
 import { Field, Int, ObjectType } from '@nestjs/graphql';
-import { Pc } from 'src/pc/entities/pc.entity';
-import { Program } from 'src/program/entities/program.entity';
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @ObjectType()

@@ -1,6 +1,6 @@
+import { TempStatusResolver } from '@/temp_status/temp_status.resolver';
+import { TempStatusService } from '@/temp_status/temp_status.service';
 import { Test, TestingModule } from '@nestjs/testing';
-import { TempStatusResolver } from './temp_status.resolver';
-import { TempStatusService } from './temp_status.service';
 
 describe('TempStatusResolver', () => {
   let resolver: TempStatusResolver;

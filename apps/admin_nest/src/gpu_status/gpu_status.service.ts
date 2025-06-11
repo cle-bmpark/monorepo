@@ -1,6 +1,6 @@
+import { CreateGpuStatusInput } from '@/gpu_status/dto/create-gpu_status.input';
+import { UpdateGpuStatusInput } from '@/gpu_status/dto/update-gpu_status.input';
 import { Injectable } from '@nestjs/common';
-import { CreateGpuStatusInput } from './dto/create-gpu_status.input';
-import { UpdateGpuStatusInput } from './dto/update-gpu_status.input';
 
 @Injectable()
 export class GpuStatusService {

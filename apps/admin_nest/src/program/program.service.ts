@@ -1,6 +1,6 @@
+import { CreateProgramInput } from '@/program/dto/create-program.input';
+import { UpdateProgramInput } from '@/program/dto/update-program.input';
 import { Injectable } from '@nestjs/common';
-import { CreateProgramInput } from './dto/create-program.input';
-import { UpdateProgramInput } from './dto/update-program.input';
 
 @Injectable()
 export class ProgramService {

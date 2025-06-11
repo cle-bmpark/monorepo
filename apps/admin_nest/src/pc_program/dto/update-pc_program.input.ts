@@ -1,5 +1,5 @@
+import { CreatePcProgramInput } from '@/pc_program/dto/create-pc_program.input';
 import { Field, InputType, Int, PartialType } from '@nestjs/graphql';
-import { CreatePcProgramInput } from './create-pc_program.input';
 
 @InputType()
 export class UpdatePcProgramInput extends PartialType(CreatePcProgramInput) {

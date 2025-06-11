@@ -1,8 +1,8 @@
+import { DriverService } from '@/driver/driver.service';
+import { CreateDriverInput } from '@/driver/dto/create-driver.input';
+import { UpdateDriverInput } from '@/driver/dto/update-driver.input';
+import { Driver } from '@/driver/entities/driver.entity';
 import { Args, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { DriverService } from './driver.service';
-import { CreateDriverInput } from './dto/create-driver.input';
-import { UpdateDriverInput } from './dto/update-driver.input';
-import { Driver } from './entities/driver.entity';
 
 @Resolver(() => Driver)
 export class DriverResolver {

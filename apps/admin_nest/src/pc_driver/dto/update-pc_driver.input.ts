@@ -1,5 +1,5 @@
+import { CreatePcDriverInput } from '@/pc_driver/dto/create-pc_driver.input';
 import { Field, InputType, Int, PartialType } from '@nestjs/graphql';
-import { CreatePcDriverInput } from './create-pc_driver.input';
 
 @InputType()
 export class UpdatePcDriverInput extends PartialType(CreatePcDriverInput) {

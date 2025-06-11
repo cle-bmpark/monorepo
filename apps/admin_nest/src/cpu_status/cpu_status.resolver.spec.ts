@@ -1,6 +1,6 @@
+import { CpuStatusResolver } from '@/cpu_status/cpu_status.resolver';
+import { CpuStatusService } from '@/cpu_status/cpu_status.service';
 import { Test, TestingModule } from '@nestjs/testing';
-import { CpuStatusResolver } from './cpu_status.resolver';
-import { CpuStatusService } from './cpu_status.service';
 
 describe('CpuStatusResolver', () => {
   let resolver: CpuStatusResolver;

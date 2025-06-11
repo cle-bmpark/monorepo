@@ -1,8 +1,8 @@
+import { CreateNetworkStatusInput } from '@/network_status/dto/create-network_status.input';
+import { UpdateNetworkStatusInput } from '@/network_status/dto/update-network_status.input';
+import { NetworkStatus } from '@/network_status/entities/network_status.entity';
+import { NetworkStatusService } from '@/network_status/network_status.service';
 import { Args, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { CreateNetworkStatusInput } from './dto/create-network_status.input';
-import { UpdateNetworkStatusInput } from './dto/update-network_status.input';
-import { NetworkStatus } from './entities/network_status.entity';
-import { NetworkStatusService } from './network_status.service';
 
 @Resolver(() => NetworkStatus)
 export class NetworkStatusResolver {

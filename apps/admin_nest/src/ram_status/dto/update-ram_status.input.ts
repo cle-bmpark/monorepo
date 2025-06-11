@@ -1,5 +1,5 @@
+import { CreateRamStatusInput } from '@/ram_status/dto/create-ram_status.input';
 import { Field, InputType, Int, PartialType } from '@nestjs/graphql';
-import { CreateRamStatusInput } from './create-ram_status.input';
 
 @InputType()
 export class UpdateRamStatusInput extends PartialType(CreateRamStatusInput) {

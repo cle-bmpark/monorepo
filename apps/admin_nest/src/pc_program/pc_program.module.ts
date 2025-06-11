@@ -1,6 +1,6 @@
+import { PcProgramResolver } from '@/pc_program/pc_program.resolver';
+import { PcProgramService } from '@/pc_program/pc_program.service';
 import { Module } from '@nestjs/common';
-import { PcProgramResolver } from './pc_program.resolver';
-import { PcProgramService } from './pc_program.service';
 
 @Module({
   providers: [PcProgramResolver, PcProgramService],

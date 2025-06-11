@@ -1,5 +1,5 @@
+import { GpuStatusService } from '@/gpu_status/gpu_status.service';
 import { Test, TestingModule } from '@nestjs/testing';
-import { GpuStatusService } from './gpu_status.service';
 
 describe('GpuStatusService', () => {
   let service: GpuStatusService;

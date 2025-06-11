@@ -1,8 +1,8 @@
+import { CreateStorageStatusInput } from '@/storage_status/dto/create-storage_status.input';
+import { UpdateStorageStatusInput } from '@/storage_status/dto/update-storage_status.input';
+import { StorageStatus } from '@/storage_status/entities/storage_status.entity';
+import { StorageStatusService } from '@/storage_status/storage_status.service';
 import { Args, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { CreateStorageStatusInput } from './dto/create-storage_status.input';
-import { UpdateStorageStatusInput } from './dto/update-storage_status.input';
-import { StorageStatus } from './entities/storage_status.entity';
-import { StorageStatusService } from './storage_status.service';
 
 @Resolver(() => StorageStatus)
 export class StorageStatusResolver {

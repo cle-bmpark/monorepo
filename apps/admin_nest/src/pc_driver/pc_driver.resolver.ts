@@ -1,8 +1,8 @@
+import { CreatePcDriverInput } from '@/pc_driver/dto/create-pc_driver.input';
+import { UpdatePcDriverInput } from '@/pc_driver/dto/update-pc_driver.input';
+import { PcDriver } from '@/pc_driver/entities/pc_driver.entity';
+import { PcDriverService } from '@/pc_driver/pc_driver.service';
 import { Args, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { CreatePcDriverInput } from './dto/create-pc_driver.input';
-import { UpdatePcDriverInput } from './dto/update-pc_driver.input';
-import { PcDriver } from './entities/pc_driver.entity';
-import { PcDriverService } from './pc_driver.service';
 
 @Resolver(() => PcDriver)
 export class PcDriverResolver {

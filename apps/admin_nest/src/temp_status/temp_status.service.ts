@@ -1,6 +1,6 @@
+import { CreateTempStatusInput } from '@/temp_status/dto/create-temp_status.input';
+import { UpdateTempStatusInput } from '@/temp_status/dto/update-temp_status.input';
 import { Injectable } from '@nestjs/common';
-import { CreateTempStatusInput } from './dto/create-temp_status.input';
-import { UpdateTempStatusInput } from './dto/update-temp_status.input';
 
 @Injectable()
 export class TempStatusService {

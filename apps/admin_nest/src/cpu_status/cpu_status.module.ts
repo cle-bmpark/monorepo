@@ -1,5 +1,5 @@
+import { CpuStatusResolver } from '@/cpu_status/cpu_status.resolver';
 import { Module } from '@nestjs/common';
-import { CpuStatusResolver } from './cpu_status.resolver';
 import { CpuStatusService } from './cpu_status.service';
 
 @Module({

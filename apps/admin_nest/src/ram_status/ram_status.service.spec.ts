@@ -1,5 +1,5 @@
+import { RamStatusService } from '@/ram_status/ram_status.service';
 import { Test, TestingModule } from '@nestjs/testing';
-import { RamStatusService } from './ram_status.service';
 
 describe('RamStatusService', () => {
   let service: RamStatusService;

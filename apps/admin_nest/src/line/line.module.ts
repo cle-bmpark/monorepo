@@ -1,6 +1,6 @@
+import { LineResolver } from '@/line/line.resolver';
+import { LineService } from '@/line/line.service';
 import { Module } from '@nestjs/common';
-import { LineResolver } from './line.resolver';
-import { LineService } from './line.service';
 
 @Module({
   providers: [LineResolver, LineService],

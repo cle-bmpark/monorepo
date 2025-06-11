@@ -1,6 +1,6 @@
+import { CreatePcDriverInput } from '@/pc_driver/dto/create-pc_driver.input';
+import { UpdatePcDriverInput } from '@/pc_driver/dto/update-pc_driver.input';
 import { Injectable } from '@nestjs/common';
-import { CreatePcDriverInput } from './dto/create-pc_driver.input';
-import { UpdatePcDriverInput } from './dto/update-pc_driver.input';
 
 @Injectable()
 export class PcDriverService {

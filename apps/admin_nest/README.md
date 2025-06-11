@@ -27,3 +27,6 @@
 
 ## 네이밍 컨벤션
 - DB Column: [camelCase] TypeORM 은 기본적으로 camelCase 엔티티 필드명을 사용합니다.
+
+## 코드 컨벤션
+- 절대 경로

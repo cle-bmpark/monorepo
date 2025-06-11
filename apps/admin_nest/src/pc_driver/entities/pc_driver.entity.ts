@@ -1,6 +1,6 @@
+import { Driver } from '@/driver/entities/driver.entity';
+import { Pc } from '@/pc/entities/pc.entity';
 import { Field, Int, ObjectType } from '@nestjs/graphql';
-import { Driver } from 'src/driver/entities/driver.entity';
-import { Pc } from 'src/pc/entities/pc.entity';
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @ObjectType()

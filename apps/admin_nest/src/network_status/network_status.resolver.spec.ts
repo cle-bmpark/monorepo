@@ -1,6 +1,6 @@
+import { NetworkStatusResolver } from '@/network_status/network_status.resolver';
+import { NetworkStatusService } from '@/network_status/network_status.service';
 import { Test, TestingModule } from '@nestjs/testing';
-import { NetworkStatusResolver } from './network_status.resolver';
-import { NetworkStatusService } from './network_status.service';
 
 describe('NetworkStatusResolver', () => {
   let resolver: NetworkStatusResolver;

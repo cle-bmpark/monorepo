@@ -1,8 +1,8 @@
+import { CreateProcessInput } from '@/process/dto/create-process.input';
+import { UpdateProcessInput } from '@/process/dto/update-process.input';
+import { Process } from '@/process/entities/process.entity';
+import { ProcessService } from '@/process/process.service';
 import { Args, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { CreateProcessInput } from './dto/create-process.input';
-import { UpdateProcessInput } from './dto/update-process.input';
-import { Process } from './entities/process.entity';
-import { ProcessService } from './process.service';
 
 @Resolver(() => Process)
 export class ProcessResolver {

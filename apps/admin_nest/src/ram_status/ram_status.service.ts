@@ -1,6 +1,6 @@
+import { CreateRamStatusInput } from '@/ram_status/dto/create-ram_status.input';
+import { UpdateRamStatusInput } from '@/ram_status/dto/update-ram_status.input';
 import { Injectable } from '@nestjs/common';
-import { CreateRamStatusInput } from './dto/create-ram_status.input';
-import { UpdateRamStatusInput } from './dto/update-ram_status.input';
 
 @Injectable()
 export class RamStatusService {

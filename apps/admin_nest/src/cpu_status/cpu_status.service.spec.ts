@@ -1,5 +1,5 @@
+import { CpuStatusService } from '@/cpu_status/cpu_status.service';
 import { Test, TestingModule } from '@nestjs/testing';
-import { CpuStatusService } from './cpu_status.service';
 
 describe('CpuStatusService', () => {
   let service: CpuStatusService;

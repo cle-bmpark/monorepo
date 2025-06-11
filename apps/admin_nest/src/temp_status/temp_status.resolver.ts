@@ -1,8 +1,8 @@
+import { CreateTempStatusInput } from '@/temp_status/dto/create-temp_status.input';
+import { UpdateTempStatusInput } from '@/temp_status/dto/update-temp_status.input';
+import { TempStatus } from '@/temp_status/entities/temp_status.entity';
+import { TempStatusService } from '@/temp_status/temp_status.service';
 import { Args, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { CreateTempStatusInput } from './dto/create-temp_status.input';
-import { UpdateTempStatusInput } from './dto/update-temp_status.input';
-import { TempStatus } from './entities/temp_status.entity';
-import { TempStatusService } from './temp_status.service';
 
 @Resolver(() => TempStatus)
 export class TempStatusResolver {

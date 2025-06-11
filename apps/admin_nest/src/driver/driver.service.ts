@@ -1,6 +1,6 @@
+import { CreateDriverInput } from '@/driver/dto/create-driver.input';
+import { UpdateDriverInput } from '@/driver/dto/update-driver.input';
 import { Injectable } from '@nestjs/common';
-import { CreateDriverInput } from './dto/create-driver.input';
-import { UpdateDriverInput } from './dto/update-driver.input';
 
 @Injectable()
 export class DriverService {

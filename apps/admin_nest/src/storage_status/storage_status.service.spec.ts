@@ -1,5 +1,5 @@
+import { StorageStatusService } from '@/storage_status/storage_status.service';
 import { Test, TestingModule } from '@nestjs/testing';
-import { StorageStatusService } from './storage_status.service';
 
 describe('StorageStatusService', () => {
   let service: StorageStatusService;

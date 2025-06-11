@@ -1,6 +1,6 @@
+import { CreateCpuStatusInput } from '@/cpu_status/dto/create-cpu_status.input';
+import { UpdateCpuStatusInput } from '@/cpu_status/dto/update-cpu_status.input';
 import { Injectable } from '@nestjs/common';
-import { CreateCpuStatusInput } from './dto/create-cpu_status.input';
-import { UpdateCpuStatusInput } from './dto/update-cpu_status.input';
 
 @Injectable()
 export class CpuStatusService {

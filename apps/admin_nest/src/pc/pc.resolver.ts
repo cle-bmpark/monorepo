@@ -1,8 +1,8 @@
+import { CreatePcInput } from '@/pc/dto/create-pc.input';
+import { UpdatePcInput } from '@/pc/dto/update-pc.input';
+import { Pc } from '@/pc/entities/pc.entity';
+import { PcService } from '@/pc/pc.service';
 import { Args, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { CreatePcInput } from './dto/create-pc.input';
-import { UpdatePcInput } from './dto/update-pc.input';
-import { Pc } from './entities/pc.entity';
-import { PcService } from './pc.service';
 
 @Resolver(() => Pc)
 export class PcResolver {

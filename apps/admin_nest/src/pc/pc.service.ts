@@ -1,6 +1,6 @@
+import { CreatePcInput } from '@/pc/dto/create-pc.input';
+import { UpdatePcInput } from '@/pc/dto/update-pc.input';
 import { Injectable } from '@nestjs/common';
-import { CreatePcInput } from './dto/create-pc.input';
-import { UpdatePcInput } from './dto/update-pc.input';
 
 @Injectable()
 export class PcService {

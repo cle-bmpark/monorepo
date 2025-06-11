@@ -1,5 +1,5 @@
+import { Pc } from '@/pc/entities/pc.entity';
 import { Field, Float, Int, ObjectType } from '@nestjs/graphql';
-import { Pc } from 'src/pc/entities/pc.entity';
 import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @ObjectType()

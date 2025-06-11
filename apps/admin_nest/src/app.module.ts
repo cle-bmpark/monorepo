@@ -1,24 +1,24 @@
+import { AppController } from '@/app.controller';
+import { AppService } from '@/app.service';
+import { CpuStatusModule } from '@/cpu_status/cpu_status.module';
+import { DriverModule } from '@/driver/driver.module';
+import { GpuStatusModule } from '@/gpu_status/gpu_status.module';
+import { LineModule } from '@/line/line.module';
+import { NetworkStatusModule } from '@/network_status/network_status.module';
+import { PcModule } from '@/pc/pc.module';
+import { PcDriverModule } from '@/pc_driver/pc_driver.module';
+import { PcProgramModule } from '@/pc_program/pc_program.module';
+import { PositionModule } from '@/position/position.module';
+import { ProcessModule } from '@/process/process.module';
+import { ProgramModule } from '@/program/program.module';
+import { RamStatusModule } from '@/ram_status/ram_status.module';
+import { StorageStatusModule } from '@/storage_status/storage_status.module';
+import { TempStatusModule } from '@/temp_status/temp_status.module';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { join } from 'path';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { CpuStatusModule } from './cpu_status/cpu_status.module';
-import { DriverModule } from './driver/driver.module';
-import { GpuStatusModule } from './gpu_status/gpu_status.module';
-import { LineModule } from './line/line.module';
-import { NetworkStatusModule } from './network_status/network_status.module';
-import { PcModule } from './pc/pc.module';
-import { PcDriverModule } from './pc_driver/pc_driver.module';
-import { PcProgramModule } from './pc_program/pc_program.module';
-import { PositionModule } from './position/position.module';
-import { ProcessModule } from './process/process.module';
-import { ProgramModule } from './program/program.module';
-import { RamStatusModule } from './ram_status/ram_status.module';
-import { StorageStatusModule } from './storage_status/storage_status.module';
-import { TempStatusModule } from './temp_status/temp_status.module';
 
 @Module({
   imports: [

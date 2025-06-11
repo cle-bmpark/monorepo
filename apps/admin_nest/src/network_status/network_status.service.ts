@@ -1,6 +1,6 @@
+import { CreateNetworkStatusInput } from '@/network_status/dto/create-network_status.input';
+import { UpdateNetworkStatusInput } from '@/network_status/dto/update-network_status.input';
 import { Injectable } from '@nestjs/common';
-import { CreateNetworkStatusInput } from './dto/create-network_status.input';
-import { UpdateNetworkStatusInput } from './dto/update-network_status.input';
 
 @Injectable()
 export class NetworkStatusService {

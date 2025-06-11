@@ -1,8 +1,8 @@
+import { CreateGpuStatusInput } from '@/gpu_status/dto/create-gpu_status.input';
+import { UpdateGpuStatusInput } from '@/gpu_status/dto/update-gpu_status.input';
+import { GpuStatus } from '@/gpu_status/entities/gpu_status.entity';
+import { GpuStatusService } from '@/gpu_status/gpu_status.service';
 import { Args, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { CreateGpuStatusInput } from './dto/create-gpu_status.input';
-import { UpdateGpuStatusInput } from './dto/update-gpu_status.input';
-import { GpuStatus } from './entities/gpu_status.entity';
-import { GpuStatusService } from './gpu_status.service';
 
 @Resolver(() => GpuStatus)
 export class GpuStatusResolver {

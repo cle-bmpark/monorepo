@@ -1,15 +1,15 @@
+import { CpuStatus } from '@/cpu_status/entities/cpu_status.entity';
+import { GpuStatus } from '@/gpu_status/entities/gpu_status.entity';
+import { Line } from '@/line/entities/line.entity';
+import { NetworkStatus } from '@/network_status/entities/network_status.entity';
+import { PcDriver } from '@/pc_driver/entities/pc_driver.entity';
+import { PcProgram } from '@/pc_program/entities/pc_program.entity';
+import { Position } from '@/position/entities/position.entity';
+import { Process } from '@/process/entities/process.entity';
+import { RamStatus } from '@/ram_status/entities/ram_status.entity';
+import { StorageStatus } from '@/storage_status/entities/storage_status.entity';
+import { TempStatus } from '@/temp_status/entities/temp_status.entity';
 import { Field, Int, ObjectType, registerEnumType } from '@nestjs/graphql';
-import { CpuStatus } from 'src/cpu_status/entities/cpu_status.entity';
-import { GpuStatus } from 'src/gpu_status/entities/gpu_status.entity';
-import { Line } from 'src/line/entities/line.entity';
-import { NetworkStatus } from 'src/network_status/entities/network_status.entity';
-import { PcDriver } from 'src/pc_driver/entities/pc_driver.entity';
-import { PcProgram } from 'src/pc_program/entities/pc_program.entity';
-import { Position } from 'src/position/entities/position.entity';
-import { Process } from 'src/process/entities/process.entity';
-import { RamStatus } from 'src/ram_status/entities/ram_status.entity';
-import { StorageStatus } from 'src/storage_status/entities/storage_status.entity';
-import { TempStatus } from 'src/temp_status/entities/temp_status.entity';
 import {
   Column,
   Entity,

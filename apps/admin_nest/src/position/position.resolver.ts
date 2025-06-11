@@ -1,8 +1,8 @@
+import { CreatePositionInput } from '@/position/dto/create-position.input';
+import { UpdatePositionInput } from '@/position/dto/update-position.input';
+import { Position } from '@/position/entities/position.entity';
+import { PositionService } from '@/position/position.service';
 import { Args, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { CreatePositionInput } from './dto/create-position.input';
-import { UpdatePositionInput } from './dto/update-position.input';
-import { Position } from './entities/position.entity';
-import { PositionService } from './position.service';
 
 @Resolver(() => Position)
 export class PositionResolver {

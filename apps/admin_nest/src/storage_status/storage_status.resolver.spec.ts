@@ -1,6 +1,6 @@
+import { StorageStatusResolver } from '@/storage_status/storage_status.resolver';
+import { StorageStatusService } from '@/storage_status/storage_status.service';
 import { Test, TestingModule } from '@nestjs/testing';
-import { StorageStatusResolver } from './storage_status.resolver';
-import { StorageStatusService } from './storage_status.service';
 
 describe('StorageStatusResolver', () => {
   let resolver: StorageStatusResolver;

@@ -1,8 +1,8 @@
+import { CreateRamStatusInput } from '@/ram_status/dto/create-ram_status.input';
+import { UpdateRamStatusInput } from '@/ram_status/dto/update-ram_status.input';
+import { RamStatus } from '@/ram_status/entities/ram_status.entity';
+import { RamStatusService } from '@/ram_status/ram_status.service';
 import { Args, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { CreateRamStatusInput } from './dto/create-ram_status.input';
-import { UpdateRamStatusInput } from './dto/update-ram_status.input';
-import { RamStatus } from './entities/ram_status.entity';
-import { RamStatusService } from './ram_status.service';
 
 @Resolver(() => RamStatus)
 export class RamStatusResolver {

@@ -1,6 +1,6 @@
+import { ProcessResolver } from '@/process/process.resolver';
+import { ProcessService } from '@/process/process.service';
 import { Test, TestingModule } from '@nestjs/testing';
-import { ProcessResolver } from './process.resolver';
-import { ProcessService } from './process.service';
 
 describe('ProcessResolver', () => {
   let resolver: ProcessResolver;

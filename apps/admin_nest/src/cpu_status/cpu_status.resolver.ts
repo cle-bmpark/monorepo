@@ -1,8 +1,8 @@
+import { CpuStatusService } from '@/cpu_status/cpu_status.service';
+import { CreateCpuStatusInput } from '@/cpu_status/dto/create-cpu_status.input';
+import { UpdateCpuStatusInput } from '@/cpu_status/dto/update-cpu_status.input';
+import { CpuStatus } from '@/cpu_status/entities/cpu_status.entity';
 import { Args, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { CpuStatusService } from './cpu_status.service';
-import { CreateCpuStatusInput } from './dto/create-cpu_status.input';
-import { UpdateCpuStatusInput } from './dto/update-cpu_status.input';
-import { CpuStatus } from './entities/cpu_status.entity';
 
 @Resolver(() => CpuStatus)
 export class CpuStatusResolver {

@@ -27,6 +27,15 @@ export default tseslint.config(
     },
   },
   {
+    settings: {
+      'import/resolver': {
+        typescript: {
+          project: './tsconfig.json',
+        },
+      },
+    },
+  },
+  {
     rules: {
       // ----------------- 일반 ESLint 규칙 강화 -----------------
       'no-console': 'warn', // console.log 사용 경고
@@ -35,7 +44,7 @@ export default tseslint.config(
       'no-empty': 'error', // 빈 블록 금지 (오류)
 
       // ----------------- TypeScript ESLint 규칙 강화 -----------------
-      '@typescript-eslint/no-explicit-any': 'off', // `any` 타입 사용 허용 (프로젝트 상황에 따라 `warn` 또는 `error`로 변경 고려)
+      '@typescript-eslint/no-explicit-any': 'error', // `any` 타입 사용 허용 (프로젝트 상황에 따라 `warn` 또는 `error`로 변경 고려)
       '@typescript-eslint/no-unused-vars': [
         'error',
         { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }, // 사용되지 않는 변수/인자 오류, `_`로 시작하는 것은 무시

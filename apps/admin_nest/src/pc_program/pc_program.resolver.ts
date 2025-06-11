@@ -1,8 +1,8 @@
+import { CreatePcProgramInput } from '@/pc_program/dto/create-pc_program.input';
+import { UpdatePcProgramInput } from '@/pc_program/dto/update-pc_program.input';
+import { PcProgram } from '@/pc_program/entities/pc_program.entity';
+import { PcProgramService } from '@/pc_program/pc_program.service';
 import { Args, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { CreatePcProgramInput } from './dto/create-pc_program.input';
-import { UpdatePcProgramInput } from './dto/update-pc_program.input';
-import { PcProgram } from './entities/pc_program.entity';
-import { PcProgramService } from './pc_program.service';
 
 @Resolver(() => PcProgram)
 export class PcProgramResolver {

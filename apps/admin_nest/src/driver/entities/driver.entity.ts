@@ -1,5 +1,5 @@
+import { PcDriver } from '@/pc_driver/entities/pc_driver.entity';
 import { Field, Int, ObjectType } from '@nestjs/graphql';
-import { PcDriver } from 'src/pc_driver/entities/pc_driver.entity';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @ObjectType()

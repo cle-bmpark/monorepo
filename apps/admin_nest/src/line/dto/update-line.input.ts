@@ -1,5 +1,5 @@
+import { CreateLineInput } from '@/line/dto/create-line.input';
 import { Field, InputType, Int, PartialType } from '@nestjs/graphql';
-import { CreateLineInput } from './create-line.input';
 
 @InputType()
 export class UpdateLineInput extends PartialType(CreateLineInput) {

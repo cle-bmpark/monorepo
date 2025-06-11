@@ -1,6 +1,6 @@
+import { CreatePositionInput } from '@/position/dto/create-position.input';
+import { UpdatePositionInput } from '@/position/dto/update-position.input';
 import { Injectable } from '@nestjs/common';
-import { CreatePositionInput } from './dto/create-position.input';
-import { UpdatePositionInput } from './dto/update-position.input';
 
 @Injectable()
 export class PositionService {

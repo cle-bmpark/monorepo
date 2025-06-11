@@ -1,6 +1,6 @@
+import { CreateLineInput } from '@/line/dto/create-line.input';
+import { UpdateLineInput } from '@/line/dto/update-line.input';
 import { Injectable } from '@nestjs/common';
-import { CreateLineInput } from './dto/create-line.input';
-import { UpdateLineInput } from './dto/update-line.input';
 
 @Injectable()
 export class LineService {

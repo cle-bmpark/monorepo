@@ -1,6 +1,6 @@
+import { CreateProcessInput } from '@/process/dto/create-process.input';
+import { UpdateProcessInput } from '@/process/dto/update-process.input';
 import { Injectable } from '@nestjs/common';
-import { CreateProcessInput } from './dto/create-process.input';
-import { UpdateProcessInput } from './dto/update-process.input';
 
 @Injectable()
 export class ProcessService {

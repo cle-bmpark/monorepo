@@ -1,6 +1,6 @@
+import { CreateStorageStatusInput } from '@/storage_status/dto/create-storage_status.input';
+import { UpdateStorageStatusInput } from '@/storage_status/dto/update-storage_status.input';
 import { Injectable } from '@nestjs/common';
-import { CreateStorageStatusInput } from './dto/create-storage_status.input';
-import { UpdateStorageStatusInput } from './dto/update-storage_status.input';
 
 @Injectable()
 export class StorageStatusService {

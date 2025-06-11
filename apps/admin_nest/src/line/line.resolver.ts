@@ -1,8 +1,8 @@
+import { CreateLineInput } from '@/line/dto/create-line.input';
+import { UpdateLineInput } from '@/line/dto/update-line.input';
+import { Line } from '@/line/entities/line.entity';
+import { LineService } from '@/line/line.service';
 import { Args, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { CreateLineInput } from './dto/create-line.input';
-import { UpdateLineInput } from './dto/update-line.input';
-import { Line } from './entities/line.entity';
-import { LineService } from './line.service';
 
 @Resolver(() => Line)
 export class LineResolver {

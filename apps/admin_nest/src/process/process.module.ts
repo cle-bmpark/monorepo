@@ -1,6 +1,6 @@
+import { ProcessResolver } from '@/process/process.resolver';
+import { ProcessService } from '@/process/process.service';
 import { Module } from '@nestjs/common';
-import { ProcessResolver } from './process.resolver';
-import { ProcessService } from './process.service';
 
 @Module({
   providers: [ProcessResolver, ProcessService],

@@ -1,8 +1,8 @@
+import { CreateProgramInput } from '@/program/dto/create-program.input';
+import { UpdateProgramInput } from '@/program/dto/update-program.input';
+import { Program } from '@/program/entities/program.entity';
+import { ProgramService } from '@/program/program.service';
 import { Args, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { CreateProgramInput } from './dto/create-program.input';
-import { UpdateProgramInput } from './dto/update-program.input';
-import { Program } from './entities/program.entity';
-import { ProgramService } from './program.service';
 
 @Resolver(() => Program)
 export class ProgramResolver {
