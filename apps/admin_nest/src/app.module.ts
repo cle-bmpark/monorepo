@@ -31,14 +31,17 @@ import { join } from 'path';
     // PostgreSQL DB 연결
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'localhost',
+      host: 'dpg-d14h9j3uibrs73aets30-a.oregon-postgres.render.com',
       port: 5432,
-      username: 'postgres',
-      password: 'qwer1234', // .env 파일 관리 필요
-      database: 'HMGMA',
+      username: 'monitoring_admin_db_user',
+      password: 'EVeXmxaq2gJpbyDtaK6T65fXxVm1jfV8', // .env 파일 관리 필요
+      database: 'monitoring_admin_db',
       entities: [__dirname + '/**/*.entity.{ts,js}'],
       // synchronize: true, // 개발 시 true (운영 환경에서는 false 권장)
       logging: 'all',
+      ssl: {
+        rejectUnauthorized: false,
+      },
     }),
     PcModule,
     LineModule,
