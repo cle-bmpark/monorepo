@@ -39,8 +39,11 @@ import { join } from 'path';
       entities: [__dirname + '/**/*.entity.{ts,js}'],
       // synchronize: true, // 개발 시 true (운영 환경에서는 false 권장)
       logging: 'all',
-      ssl: {
-        rejectUnauthorized: false,
+      ssl: true,
+      extra: {
+        ssl: {
+          rejectUnauthorized: false,
+        },
       },
     }),
     PcModule,
