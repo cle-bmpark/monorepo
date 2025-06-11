@@ -27,6 +27,7 @@ import { join } from 'path';
       autoSchemaFile: join(process.cwd(), './schema.gql'), // 자동 생성된 스키마가 생성될 경로
       sortSchema: true, // 스키마 사전순 정렬
       playground: true,
+      csrfPrevention: false,
     }),
 
     // PostgreSQL DB 연결
