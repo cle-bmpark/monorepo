@@ -25,6 +25,9 @@
 - Mockup Data
 - DB 구조(docs/db_diagram.svg): [text](https://dbdiagram.io/d/68468226058073439759dbef)
 
+### PostgreSQL 로컬 DB 를 서버에 올리기
+
+
 ## 네이밍 컨벤션
 - DB Column: [camelCase] TypeORM 은 기본적으로 camelCase 엔티티 필드명을 사용합니다.
 
