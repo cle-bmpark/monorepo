@@ -16,6 +16,7 @@ import { StorageStatusModule } from '@/storage_status/storage_status.module';
 import { TempStatusModule } from '@/temp_status/temp_status.module';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { join } from 'path';
@@ -30,13 +31,19 @@ import { join } from 'path';
       csrfPrevention: false,
     }),
 
+    // .env 관리
+    ConfigModule.forRoot({
+      envFilePath: ['.dev.env'],
+      isGlobal: true,
+    }),
+
     // PostgreSQL DB 연결
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'dpg-d14h9j3uibrs73aets30-a.oregon-postgres.render.com',
+      host: process.env.DB_HOST,
       port: 5432,
       username: 'monitoring_admin_db_user',
-      password: 'EVeXmxaq2gJpbyDtaK6T65fXxVm1jfV8', // .env 파일 관리 필요
+      password: process.env.DB_PASSWORD,
       database: 'monitoring_admin_db',
       entities: [__dirname + '/**/*.entity.{ts,js}'],
       // synchronize: true, // 개발 시 true (운영 환경에서는 false 권장)
