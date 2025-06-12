@@ -6,6 +6,13 @@ import { FastifyAdapter, NestFastifyApplication } from '@nestjs/platform-fastify
 async function bootstrap() {
   const app = await NestFactory.create<NestFastifyApplication>(AppModule, new FastifyAdapter());
   await app.register(fastifyCsrf);
+
+  app.enableCors({
+    origin: ['http://localhost:3000', 'https://monitoring-admin.vercel.app'],
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true, // 쿠키/인증 헤더를 함께 보내려면 true
+  });
+
   await app.listen(3000, '0.0.0.0');
 }
 
