@@ -34,7 +34,7 @@ export default function ProgramInfo({ data }: ProgramInfoProps) {
     return;
   };
 
-  const filterBody = [
+  const filterBody = () => [
     {
       title: t('updateAt'),
       content: (

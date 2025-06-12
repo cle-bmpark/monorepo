@@ -34,7 +34,7 @@ export default function DriverInfo({ data }: DriverInfoProps) {
     return;
   };
 
-  const filterBody = [
+  const filterBody = () => [
     {
       title: t('installedAt'),
       content: (

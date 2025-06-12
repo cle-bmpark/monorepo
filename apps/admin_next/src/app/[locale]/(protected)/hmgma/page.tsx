@@ -3,14 +3,16 @@
 import FilterBody from '@/app/[locale]/(protected)/hmgma/FilterBody';
 import RenderCell from '@/app/[locale]/(protected)/hmgma/RenderCell';
 import RenderHeader from '@/app/[locale]/(protected)/hmgma/RenderHeader';
+import Error from '@/app/[locale]/error';
+import Loading from '@/app/[locale]/loading';
 import ListTable from '@/components/table/ListTable';
 import { listData, listType } from '@/dummy/HMGMA';
 import { useGetPcListQuery } from '@/graphql/generated/graphql';
-import { ReactNode, useEffect, useState } from 'react';
+import { ReactNode, useState } from 'react';
 import CompareModal from './CompareModal';
 
 export default function HMGMAListPage() {
-  const { data } = useGetPcListQuery();
+  const { loading, error } = useGetPcListQuery();
 
   const [isOpenProgram, setIsOpenProgram] = useState<boolean>(false);
   const [isOpenCompare, setIsOpenCompare] = useState<boolean>(false);
@@ -42,9 +44,8 @@ export default function HMGMAListPage() {
     />
   );
 
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
+  if (loading) return <Loading />;
+  if (error) return <Error />;
 
   return (
     <>
@@ -52,7 +53,7 @@ export default function HMGMAListPage() {
         title='HMGMA'
         data={listData}
         refetchData={refetchData}
-        filterBody={FilterBody()}
+        filterBody={FilterBody}
         renderHeader={renderHeader}
         renderCell={renderCell}
       />

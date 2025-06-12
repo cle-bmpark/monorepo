@@ -4,8 +4,13 @@ import { useTranslations } from 'next-intl';
 import { ReactNode, useRef, useState } from 'react';
 import { IoFilter } from 'react-icons/io5';
 
+export interface filterBodyType {
+  title: string;
+  content: ReactNode;
+}
+
 interface FilterProps {
-  filterBody: { title: string; content: ReactNode }[];
+  filterBody: () => filterBodyType[];
   refetchData: (value?: string) => void;
 }
 
@@ -40,7 +45,7 @@ export default function Filter({ filterBody, refetchData }: FilterProps) {
 
           {/* body */}
           <ul>
-            {filterBody.map((key) => (
+            {filterBody().map((key) => (
               <li
                 className='border-grey-300 flex flex-col gap-1.5 border-b p-2'
                 key={`filter_${key.title}`}

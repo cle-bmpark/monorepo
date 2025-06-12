@@ -1,3 +1,6 @@
+'use client';
+
+import { filterBodyType } from '@/components/table/Filter';
 import { LineEnum, PCEnum, PositionEnum, ProcessEnum } from '@/dummy/HMGMA';
 import { getObjectKeys } from '@/utils/object';
 import Dropdown from '@repo/ui/src/components/button/Dropdown';
@@ -6,7 +9,7 @@ import CalendarInput from '@repo/ui/src/components/headless/CalendarInput';
 import { useTranslations } from 'next-intl';
 import { useImmer } from 'use-immer';
 
-export default function FilterBody() {
+export default function FilterBody(): filterBodyType[] {
   const t = useTranslations('mockup');
 
   const [filter, setFilter] = useImmer<{

@@ -1,4 +1,4 @@
-import Filter from '@/components/table/Filter';
+import Filter, { filterBodyType } from '@/components/table/Filter';
 import Search from '@/components/table/Search';
 import TableBody from '@/components/table/TableBody';
 import TableHeader from '@/components/table/TableHeader';
@@ -7,7 +7,7 @@ import { ReactNode } from 'react';
 interface ScrollTableProps<T extends object> {
   title: string;
   data: T[];
-  filterBody: { title: string; content: ReactNode }[];
+  filterBody: () => filterBodyType[];
   refetchData: (value?: string) => void;
   renderHeader: (key: keyof T) => ReactNode;
   renderCell: (row: T, key: keyof T) => ReactNode;
