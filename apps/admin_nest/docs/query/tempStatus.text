@@ -1,0 +1,27 @@
+query {
+  tempStatusList {
+    id
+    pcId
+    current
+    average
+    lowest
+    highest
+    unit
+    createdAt
+    updatedAt
+  }
+}
+
+query {
+  tempStatusDetail(id: 100) {
+    id
+    pcId
+    current
+    average
+    lowest
+    highest
+    unit
+    createdAt
+    updatedAt
+  }
+}

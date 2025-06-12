@@ -1,0 +1,25 @@
+query {
+  storageStatusList {
+    id
+    pcId
+    name
+    total
+    usage
+    unit
+    createdAt
+    updatedAt
+  }
+}
+
+query {
+  storageStatusDetail(id:100) {
+    id
+    pcId
+    name
+    total
+    usage
+    unit
+    createdAt
+    updatedAt
+  }
+}

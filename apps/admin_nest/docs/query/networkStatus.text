@@ -1,0 +1,23 @@
+query {
+  networkStatusList {
+    id
+    pcId
+    send
+    receive
+    unit
+    createdAt
+    updatedAt
+  }
+}
+
+query {
+  networkStatusDetail(id: 10) {
+    id
+    pcId
+    send
+    receive
+    unit
+    createdAt
+    updatedAt
+  }
+}

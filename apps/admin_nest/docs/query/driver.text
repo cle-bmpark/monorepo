@@ -1,0 +1,23 @@
+query {
+  driverList {
+    id
+    image
+    name
+    version
+    driverUpdatedAt
+    createdAt
+    updatedAt
+  }
+}
+
+query {
+  driverDetail(id: 1) {
+    id
+    image
+    name
+    version
+    driverUpdatedAt
+    createdAt
+    updatedAt
+  }
+}

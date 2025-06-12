@@ -1,0 +1,19 @@
+query {
+  positionList {
+    id
+    code
+    name
+    createdAt
+    updatedAt
+  }
+}
+
+query {
+  positionDetail(id: 1) {
+    id
+    code
+    name
+    createdAt
+    updatedAt
+  }
+}

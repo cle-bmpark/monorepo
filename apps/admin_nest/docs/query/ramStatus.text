@@ -1,0 +1,29 @@
+query {
+  ramStatusList {
+    id
+    pcId
+    total
+    current
+    average
+    lowest
+    highest
+    unit
+    createdAt
+    updatedAt
+  }
+}
+
+query {
+  ramStatusDetail(id: 289) {
+    id
+    pcId
+    total
+    current
+    average
+    lowest
+    highest
+    unit
+    createdAt
+    updatedAt
+  }
+}

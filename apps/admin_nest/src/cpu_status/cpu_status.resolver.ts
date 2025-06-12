@@ -13,12 +13,12 @@ export class CpuStatusResolver {
     return this.cpuStatusService.create(createCpuStatusInput);
   }
 
-  @Query(() => [CpuStatus], { name: 'cpuStatus' })
+  @Query(() => [CpuStatus], { name: 'cpuStatusList', description: '모든 CPU 상태 조회' })
   findAll() {
     return this.cpuStatusService.findAll();
   }
 
-  @Query(() => CpuStatus, { name: 'cpuStatus' })
+  @Query(() => CpuStatus, { name: 'cpuStatusDetail', description: '특정 ID의 CPU 상태 조회' })
   findOne(@Args('id', { type: () => Int }) id: number) {
     return this.cpuStatusService.findOne(id);
   }

@@ -1,0 +1,19 @@
+query {
+  processList {
+    id
+    code
+    name
+    createdAt
+    updatedAt
+  }
+}
+
+query {
+  processDetail(id: 1) {
+    id
+    code
+    name
+    createdAt
+    updatedAt
+  }
+}

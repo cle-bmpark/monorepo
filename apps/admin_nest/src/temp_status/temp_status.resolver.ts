@@ -13,12 +13,15 @@ export class TempStatusResolver {
     return this.tempStatusService.create(createTempStatusInput);
   }
 
-  @Query(() => [TempStatus], { name: 'tempStatus' })
+  @Query(() => [TempStatus], { name: 'tempStatusList', description: '모든 Temp Status 목록 조회' })
   findAll() {
     return this.tempStatusService.findAll();
   }
 
-  @Query(() => TempStatus, { name: 'tempStatus' })
+  @Query(() => TempStatus, {
+    name: 'tempStatusDetail',
+    description: '특정 ID의 Temp Status 정보 조회',
+  })
   findOne(@Args('id', { type: () => Int }) id: number) {
     return this.tempStatusService.findOne(id);
   }

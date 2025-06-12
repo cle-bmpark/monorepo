@@ -1,5 +1,5 @@
 query {
-  pcs {
+  pcList {
     id
     serialNumber
     lineId
@@ -131,7 +131,7 @@ query {
 }
 
 query {
-  pc(id: 1) {
+  pcDetail(id: 1) {
     id
     serialNumber
     lineId

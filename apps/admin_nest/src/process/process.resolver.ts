@@ -13,12 +13,12 @@ export class ProcessResolver {
     return this.processService.create(createProcessInput);
   }
 
-  @Query(() => [Process], { name: 'process' })
+  @Query(() => [Process], { name: 'processList', description: '모든 Process 목록 조회' })
   findAll() {
     return this.processService.findAll();
   }
 
-  @Query(() => Process, { name: 'process' })
+  @Query(() => Process, { name: 'processDetail', description: '특정 ID의 Process 정보 조회' })
   findOne(@Args('id', { type: () => Int }) id: number) {
     return this.processService.findOne(id);
   }

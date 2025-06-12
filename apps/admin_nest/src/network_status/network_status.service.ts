@@ -1,19 +1,29 @@
 import { CreateNetworkStatusInput } from '@/network_status/dto/create-network_status.input';
 import { UpdateNetworkStatusInput } from '@/network_status/dto/update-network_status.input';
+import { NetworkStatus } from '@/network_status/entities/network_status.entity';
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class NetworkStatusService {
+  constructor(
+    @InjectRepository(NetworkStatus)
+    private readonly networkStatusRepository: Repository<NetworkStatus>,
+  ) {}
+
   create(_createNetworkStatusInput: CreateNetworkStatusInput) {
     return 'This action adds a new networkStatus';
   }
 
-  findAll() {
-    return `This action returns all networkStatus`;
+  async findAll(): Promise<NetworkStatus[]> {
+    return this.networkStatusRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id.toString()} networkStatus`;
+  async findOne(id: number): Promise<NetworkStatus | null> {
+    return this.networkStatusRepository.findOne({
+      where: { id },
+    });
   }
 
   update(id: number, _updateNetworkStatusInput: UpdateNetworkStatusInput) {

@@ -1,0 +1,37 @@
+query {
+  pcProgramList {
+    id
+    pcId
+    programId
+    createdAt
+    updatedAt
+    program {
+      id
+      image
+      name
+      version
+      programUpdatedAt
+      createdAt
+      updatedAt
+    }
+  }
+}
+
+query {
+  pcProgramDetail(id: 1) {
+    id
+    pcId
+    programId
+    createdAt
+    updatedAt
+    program {
+      id
+      image
+      name
+      version
+      programUpdatedAt
+      createdAt
+      updatedAt
+    }
+  }
+}

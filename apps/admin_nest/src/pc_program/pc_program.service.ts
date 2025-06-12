@@ -1,19 +1,32 @@
 import { CreatePcProgramInput } from '@/pc_program/dto/create-pc_program.input';
 import { UpdatePcProgramInput } from '@/pc_program/dto/update-pc_program.input';
+import { PcProgram } from '@/pc_program/entities/pc_program.entity';
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class PcProgramService {
+  constructor(
+    @InjectRepository(PcProgram)
+    private readonly pcProgramRepository: Repository<PcProgram>,
+  ) {}
+
   create(_createPcProgramInput: CreatePcProgramInput) {
     return 'This action adds a new pcProgram';
   }
 
-  findAll() {
-    return `This action returns all pcProgram`;
+  async findAll(): Promise<PcProgram[]> {
+    return this.pcProgramRepository.find({
+      relations: ['program'],
+    });
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id.toString()} pcProgram`;
+  async findOne(id: number): Promise<PcProgram | null> {
+    return this.pcProgramRepository.findOne({
+      where: { id },
+      relations: ['program'],
+    });
   }
 
   update(id: number, _updatePcProgramInput: UpdatePcProgramInput) {

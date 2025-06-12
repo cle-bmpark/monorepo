@@ -13,12 +13,15 @@ export class PcProgramResolver {
     return this.pcProgramService.create(createPcProgramInput);
   }
 
-  @Query(() => [PcProgram], { name: 'pcProgram' })
+  @Query(() => [PcProgram], { name: 'pcProgramList', description: '모든 PC Program 목록 조회' })
   findAll() {
     return this.pcProgramService.findAll();
   }
 
-  @Query(() => PcProgram, { name: 'pcProgram' })
+  @Query(() => PcProgram, {
+    name: 'pcProgramDetail',
+    description: '특정 ID의 PC Program 정보 조회',
+  })
   findOne(@Args('id', { type: () => Int }) id: number) {
     return this.pcProgramService.findOne(id);
   }

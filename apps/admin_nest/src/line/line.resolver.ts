@@ -13,12 +13,12 @@ export class LineResolver {
     return this.lineService.create(createLineInput);
   }
 
-  @Query(() => [Line], { name: 'line' })
+  @Query(() => [Line], { name: 'lineList', description: '모든 Line 목록 조회' })
   findAll() {
     return this.lineService.findAll();
   }
 
-  @Query(() => Line, { name: 'line' })
+  @Query(() => Line, { name: 'lineDetail', description: '특정 ID의 Line 정보 조회' })
   findOne(@Args('id', { type: () => Int }) id: number) {
     return this.lineService.findOne(id);
   }

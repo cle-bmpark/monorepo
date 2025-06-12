@@ -13,12 +13,15 @@ export class GpuStatusResolver {
     return this.gpuStatusService.create(createGpuStatusInput);
   }
 
-  @Query(() => [GpuStatus], { name: 'gpuStatus' })
+  @Query(() => [GpuStatus], { name: 'gpuStatusList', description: '모든 GPU Status 목록 조회' })
   findAll() {
     return this.gpuStatusService.findAll();
   }
 
-  @Query(() => GpuStatus, { name: 'gpuStatus' })
+  @Query(() => GpuStatus, {
+    name: 'gpuStatusDetail',
+    description: '특정 ID의 GPU Status 정보 조회',
+  })
   findOne(@Args('id', { type: () => Int }) id: number) {
     return this.gpuStatusService.findOne(id);
   }

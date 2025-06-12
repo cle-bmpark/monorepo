@@ -1,0 +1,19 @@
+query {
+  lineList {
+    id
+    code
+    name
+    createdAt
+    updatedAt
+  }
+}
+
+query {
+  lineDetail(id: 1) {
+    id
+    code
+    name
+    createdAt
+    updatedAt
+  }
+}

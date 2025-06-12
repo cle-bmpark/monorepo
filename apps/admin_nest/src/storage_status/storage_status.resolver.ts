@@ -15,12 +15,18 @@ export class StorageStatusResolver {
     return this.storageStatusService.create(createStorageStatusInput);
   }
 
-  @Query(() => [StorageStatus], { name: 'storageStatus' })
+  @Query(() => [StorageStatus], {
+    name: 'storageStatusList',
+    description: '모든 Storage Status 목록 조회',
+  })
   findAll() {
     return this.storageStatusService.findAll();
   }
 
-  @Query(() => StorageStatus, { name: 'storageStatus' })
+  @Query(() => StorageStatus, {
+    name: 'storageStatusDetail',
+    description: '특정 ID의 Storage Status 정보 조회',
+  })
   findOne(@Args('id', { type: () => Int }) id: number) {
     return this.storageStatusService.findOne(id);
   }

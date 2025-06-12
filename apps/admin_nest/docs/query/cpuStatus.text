@@ -1,0 +1,23 @@
+query {
+  cpuStatusList {
+    id
+    pcId
+    name
+    usage
+    unit
+    createdAt
+    updatedAt
+  }
+}
+
+query {
+  cpuStatusDetail(id:10) {
+    id
+    pcId
+    name
+    usage
+    unit
+    createdAt
+    updatedAt
+  }
+}

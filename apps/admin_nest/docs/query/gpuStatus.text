@@ -1,0 +1,23 @@
+query {
+  gpuStatusList {
+    id
+    pcId
+    name
+    usage
+    unit
+    createdAt
+    updatedAt
+  }
+}
+
+query {
+  gpuStatusDetail(id: 1) {
+    id
+    pcId
+    name
+    usage
+    unit
+    createdAt
+    updatedAt
+  }
+}

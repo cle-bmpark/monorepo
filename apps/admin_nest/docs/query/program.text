@@ -1,0 +1,23 @@
+query {
+  programList {
+    id
+    image
+    name
+    version
+    programUpdatedAt
+    createdAt
+    updatedAt
+  }
+}
+
+query {
+  programDetail(id: 1) {
+    id
+    image
+    name
+    version
+    programUpdatedAt
+    createdAt
+    updatedAt
+  }
+}

@@ -13,12 +13,12 @@ export class DriverResolver {
     return this.driverService.create(createDriverInput);
   }
 
-  @Query(() => [Driver], { name: 'driver' })
+  @Query(() => [Driver], { name: 'driverList', description: '모든 Driver 목록 조회' })
   findAll() {
     return this.driverService.findAll();
   }
 
-  @Query(() => Driver, { name: 'driver' })
+  @Query(() => Driver, { name: 'driverDetail', description: '특정 ID의 Driver 정보 조회' })
   findOne(@Args('id', { type: () => Int }) id: number) {
     return this.driverService.findOne(id);
   }

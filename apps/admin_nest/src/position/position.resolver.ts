@@ -13,12 +13,12 @@ export class PositionResolver {
     return this.positionService.create(createPositionInput);
   }
 
-  @Query(() => [Position], { name: 'position' })
+  @Query(() => [Position], { name: 'positionList', description: '모든 Position 목록 조회' })
   findAll() {
     return this.positionService.findAll();
   }
 
-  @Query(() => Position, { name: 'position' })
+  @Query(() => Position, { name: 'positionDetail', description: '특정 ID의 Position 정보 조회' })
   findOne(@Args('id', { type: () => Int }) id: number) {
     return this.positionService.findOne(id);
   }

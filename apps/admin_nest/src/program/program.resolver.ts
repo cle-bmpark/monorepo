@@ -13,12 +13,12 @@ export class ProgramResolver {
     return this.programService.create(createProgramInput);
   }
 
-  @Query(() => [Program], { name: 'program' })
+  @Query(() => [Program], { name: 'programList', description: '모든 Program 목록 조회' })
   findAll() {
     return this.programService.findAll();
   }
 
-  @Query(() => Program, { name: 'program' })
+  @Query(() => Program, { name: 'programDetail', description: '특정 ID의 Program 정보 조회' })
   findOne(@Args('id', { type: () => Int }) id: number) {
     return this.programService.findOne(id);
   }

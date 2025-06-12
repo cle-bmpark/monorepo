@@ -10,7 +10,7 @@ enum BrainEnum {
 
 type CpuStatus {
   """생성 일시"""
-  createdAt: DateTime!
+  createdAt: String!
 
   """고유번호 ID"""
   id: Int!
@@ -28,7 +28,7 @@ type CpuStatus {
   unit: String!
 
   """업데이트 일시"""
-  updatedAt: DateTime!
+  updatedAt: String!
 
   """CPU 사용량"""
   usage: Float!
@@ -104,17 +104,12 @@ input CreateTempStatusInput {
   exampleField: Int!
 }
 
-"""
-A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
-"""
-scalar DateTime
-
 type Driver {
   """생성 일시"""
-  createdAt: DateTime!
+  createdAt: String!
 
   """드라이버 버전 업데이트 일시"""
-  driverUpdatedAt: DateTime!
+  driverUpdatedAt: String!
 
   """고유번호 ID"""
   id: Int!
@@ -126,7 +121,7 @@ type Driver {
   name: String!
 
   """업데이트 일시"""
-  updatedAt: DateTime!
+  updatedAt: String!
 
   """버전 정보"""
   version: String!
@@ -134,7 +129,7 @@ type Driver {
 
 type GpuStatus {
   """생성 일시"""
-  createdAt: DateTime!
+  createdAt: String!
 
   """고유번호 ID"""
   id: Int!
@@ -152,7 +147,7 @@ type GpuStatus {
   unit: String!
 
   """업데이트 일시"""
-  updatedAt: DateTime!
+  updatedAt: String!
 
   """GPU 사용량"""
   usage: Float!
@@ -163,7 +158,7 @@ type Line {
   code: String!
 
   """생성 일시"""
-  createdAt: DateTime!
+  createdAt: String!
 
   """고유번호 ID"""
   id: Int!
@@ -172,7 +167,7 @@ type Line {
   name: String!
 
   """업데이트 일시"""
-  updatedAt: DateTime!
+  updatedAt: String!
 }
 
 type Mutation {
@@ -222,7 +217,7 @@ type Mutation {
 
 type NetworkStatus {
   """생성 일시"""
-  createdAt: DateTime!
+  createdAt: String!
 
   """고유번호 ID"""
   id: Int!
@@ -243,7 +238,7 @@ type NetworkStatus {
   unit: String!
 
   """업데이트 일시"""
-  updatedAt: DateTime!
+  updatedAt: String!
 }
 
 type Pc {
@@ -260,7 +255,7 @@ type Pc {
   cpuStatus: CpuStatus!
 
   """생성 일시"""
-  createdAt: DateTime!
+  createdAt: String!
 
   """GPU 상태 정보 테이블 ID"""
   gpuStatus: GpuStatus!
@@ -281,7 +276,7 @@ type Pc {
   isProgram: Boolean!
 
   """런처 업데이트 일시"""
-  launcherUpdatedAt: DateTime!
+  launcherUpdatedAt: String!
 
   """라인 객체 정보 (관계 필드)"""
   line: Line!
@@ -323,12 +318,12 @@ type Pc {
   tempStatus: TempStatus!
 
   """업데이트 일시"""
-  updatedAt: DateTime!
+  updatedAt: String!
 }
 
 type PcDriver {
   """생성 일시"""
-  createdAt: DateTime!
+  createdAt: String!
 
   """관련 Driver 정보 (관계 필드)"""
   driver: Driver!
@@ -346,12 +341,12 @@ type PcDriver {
   pcId: Int!
 
   """업데이트 일시"""
-  updatedAt: DateTime!
+  updatedAt: String!
 }
 
 type PcProgram {
   """생성 일시"""
-  createdAt: DateTime!
+  createdAt: String!
 
   """고유번호 ID"""
   id: Int!
@@ -369,7 +364,7 @@ type PcProgram {
   programId: Int!
 
   """업데이트 일시"""
-  updatedAt: DateTime!
+  updatedAt: String!
 }
 
 type Position {
@@ -377,7 +372,7 @@ type Position {
   code: String!
 
   """생성 일시"""
-  createdAt: DateTime!
+  createdAt: String!
 
   """고유번호 ID"""
   id: Int!
@@ -386,7 +381,7 @@ type Position {
   name: String!
 
   """업데이트 일시"""
-  updatedAt: DateTime!
+  updatedAt: String!
 }
 
 type Process {
@@ -396,7 +391,7 @@ type Process {
   code: String!
 
   """생성 일시"""
-  createdAt: DateTime!
+  createdAt: String!
 
   """고유번호 ID"""
   id: Int!
@@ -407,12 +402,12 @@ type Process {
   name: String!
 
   """업데이트 일시"""
-  updatedAt: DateTime!
+  updatedAt: String!
 }
 
 type Program {
   """생성 일시"""
-  createdAt: DateTime!
+  createdAt: String!
 
   """고유번호 ID"""
   id: Int!
@@ -424,35 +419,99 @@ type Program {
   name: String!
 
   """프로그램 버전 업데이트 일시"""
-  programUpdatedAt: DateTime!
+  programUpdatedAt: String!
 
   """업데이트 일시"""
-  updatedAt: DateTime!
+  updatedAt: String!
 
   """버전 정보"""
   version: String!
 }
 
 type Query {
-  cpuStatus(id: Int!): CpuStatus!
-  driver(id: Int!): Driver!
-  gpuStatus(id: Int!): GpuStatus!
-  line(id: Int!): Line!
-  networkStatus(id: Int!): NetworkStatus!
+  """특정 ID의 CPU 상태 조회"""
+  cpuStatusDetail(id: Int!): CpuStatus!
+
+  """모든 CPU 상태 조회"""
+  cpuStatusList: [CpuStatus!]!
+
+  """특정 ID의 Driver 정보 조회"""
+  driverDetail(id: Int!): Driver!
+
+  """모든 Driver 목록 조회"""
+  driverList: [Driver!]!
+
+  """특정 ID의 GPU Status 정보 조회"""
+  gpuStatusDetail(id: Int!): GpuStatus!
+
+  """모든 GPU Status 목록 조회"""
+  gpuStatusList: [GpuStatus!]!
+
+  """특정 ID의 Line 정보 조회"""
+  lineDetail(id: Int!): Line!
+
+  """모든 Line 목록 조회"""
+  lineList: [Line!]!
+
+  """특정 ID의 Network Status 정보 조회"""
+  networkStatusDetail(id: Int!): NetworkStatus!
+
+  """모든 Network Status 목록 조회"""
+  networkStatusList: [NetworkStatus!]!
 
   """특정 ID의 PC 정보 조회"""
-  pc(id: Int!): Pc!
-  pcDriver(id: Int!): PcDriver!
-  pcProgram(id: Int!): PcProgram!
+  pcDetail(id: Int!): Pc!
+
+  """특정 ID의 PC Driver 정보 조회"""
+  pcDriverDetail(id: Int!): PcDriver!
+
+  """모든 PC Driver 목록 조회"""
+  pcDriverList: [PcDriver!]!
 
   """모든 PC 목록 조회"""
-  pcs: [Pc!]!
-  position(id: Int!): Position!
-  process(id: Int!): Process!
-  program(id: Int!): Program!
-  ramStatus(id: Int!): RamStatus!
-  storageStatus(id: Int!): StorageStatus!
-  tempStatus(id: Int!): TempStatus!
+  pcList: [Pc!]!
+
+  """특정 ID의 PC Program 정보 조회"""
+  pcProgramDetail(id: Int!): PcProgram!
+
+  """모든 PC Program 목록 조회"""
+  pcProgramList: [PcProgram!]!
+
+  """특정 ID의 Position 정보 조회"""
+  positionDetail(id: Int!): Position!
+
+  """모든 Position 목록 조회"""
+  positionList: [Position!]!
+
+  """특정 ID의 Process 정보 조회"""
+  processDetail(id: Int!): Process!
+
+  """모든 Process 목록 조회"""
+  processList: [Process!]!
+
+  """특정 ID의 Program 정보 조회"""
+  programDetail(id: Int!): Program!
+
+  """모든 Program 목록 조회"""
+  programList: [Program!]!
+
+  """특정 ID의 Ram Status 정보 조회"""
+  ramStatusDetail(id: Int!): RamStatus!
+
+  """모든 Ram Status 목록 조회"""
+  ramStatusList: [RamStatus!]!
+
+  """특정 ID의 Storage Status 정보 조회"""
+  storageStatusDetail(id: Int!): StorageStatus!
+
+  """모든 Storage Status 목록 조회"""
+  storageStatusList: [StorageStatus!]!
+
+  """특정 ID의 Temp Status 정보 조회"""
+  tempStatusDetail(id: Int!): TempStatus!
+
+  """모든 Temp Status 목록 조회"""
+  tempStatusList: [TempStatus!]!
 }
 
 type RamStatus {
@@ -460,7 +519,7 @@ type RamStatus {
   average: Float!
 
   """생성 일시"""
-  createdAt: DateTime!
+  createdAt: String!
 
   """RAM 최근 사용량"""
   current: Float!
@@ -487,12 +546,12 @@ type RamStatus {
   unit: String!
 
   """업데이트 일시"""
-  updatedAt: DateTime!
+  updatedAt: String!
 }
 
 type StorageStatus {
   """생성 일시"""
-  createdAt: DateTime!
+  createdAt: String!
 
   """고유번호 ID"""
   id: Int!
@@ -513,7 +572,7 @@ type StorageStatus {
   unit: String!
 
   """업데이트 일시"""
-  updatedAt: DateTime!
+  updatedAt: String!
 
   """Storage 사용량"""
   usage: Float!
@@ -524,7 +583,7 @@ type TempStatus {
   average: Float!
 
   """생성 일시"""
-  createdAt: DateTime!
+  createdAt: String!
 
   """최근 온도"""
   current: Float!
@@ -548,7 +607,7 @@ type TempStatus {
   unit: String!
 
   """업데이트 일시"""
-  updatedAt: DateTime!
+  updatedAt: String!
 }
 
 input UpdateCpuStatusInput {

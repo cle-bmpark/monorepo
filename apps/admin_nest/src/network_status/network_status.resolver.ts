@@ -15,12 +15,18 @@ export class NetworkStatusResolver {
     return this.networkStatusService.create(createNetworkStatusInput);
   }
 
-  @Query(() => [NetworkStatus], { name: 'networkStatus' })
+  @Query(() => [NetworkStatus], {
+    name: 'networkStatusList',
+    description: '모든 Network Status 목록 조회',
+  })
   findAll() {
     return this.networkStatusService.findAll();
   }
 
-  @Query(() => NetworkStatus, { name: 'networkStatus' })
+  @Query(() => NetworkStatus, {
+    name: 'networkStatusDetail',
+    description: '특정 ID의 Network Status 정보 조회',
+  })
   findOne(@Args('id', { type: () => Int }) id: number) {
     return this.networkStatusService.findOne(id);
   }

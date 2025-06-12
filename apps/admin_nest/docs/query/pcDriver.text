@@ -1,0 +1,38 @@
+query {
+  pcDriverList {
+    id
+    pcId
+    driverId
+    createdAt
+    updatedAt
+    driver {
+      id
+      image
+      name
+      version
+      driverUpdatedAt
+      createdAt
+      updatedAt
+    }
+  }
+}
+
+
+query {
+  pcDriverDetail(id: 1) {
+    id
+    pcId
+    driverId
+    createdAt
+    updatedAt
+    driver {
+      id
+      image
+      name
+      version
+      driverUpdatedAt
+      createdAt
+      updatedAt
+    }
+  }
+}

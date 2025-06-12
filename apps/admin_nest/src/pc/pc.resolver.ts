@@ -13,12 +13,12 @@ export class PcResolver {
     return this.pcService.create(createPcInput);
   }
 
-  @Query(() => [Pc], { name: 'pcs', description: '모든 PC 목록 조회' })
+  @Query(() => [Pc], { name: 'pcList', description: '모든 PC 목록 조회' })
   findAll() {
     return this.pcService.findAll();
   }
 
-  @Query(() => Pc, { name: 'pc', description: '특정 ID의 PC 정보 조회' })
+  @Query(() => Pc, { name: 'pcDetail', description: '특정 ID의 PC 정보 조회' })
   findOne(@Args('id', { type: () => Int }) id: number) {
     return this.pcService.findOne(id);
   }
