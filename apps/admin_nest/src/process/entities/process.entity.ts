@@ -26,7 +26,7 @@ export class Process {
     type: 'timestamp with time zone',
     default: () => 'CURRENT_TIMESTAMP',
   })
-  createdAt: Date;
+  createdAt: string;
 
   @Field({ description: '업데이트 일시' })
   @Column({
@@ -34,7 +34,7 @@ export class Process {
     default: () => 'CURRENT_TIMESTAMP',
     onUpdate: 'CURRENT_TIMESTAMP',
   })
-  updatedAt: Date;
+  updatedAt: string;
 
   // Pc 엔티티와의 1:N 관계 설정: 데이터 모델링
   @OneToMany(() => Pc, (pc) => pc.process)

@@ -33,7 +33,7 @@ export class PcProgram {
     type: 'timestamp with time zone',
     default: () => 'CURRENT_TIMESTAMP',
   })
-  createdAt: Date;
+  createdAt: string;
 
   @Field({ description: '업데이트 일시' })
   @Column({
@@ -41,5 +41,5 @@ export class PcProgram {
     default: () => 'CURRENT_TIMESTAMP',
     onUpdate: 'CURRENT_TIMESTAMP',
   })
-  updatedAt: Date;
+  updatedAt: string;
 }

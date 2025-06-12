@@ -30,14 +30,14 @@ export class Driver {
     type: 'timestamp with time zone',
     nullable: true,
   })
-  driverUpdatedAt?: Date;
+  driverUpdatedAt?: string;
 
   @Field({ description: '생성 일시' })
   @Column({
     type: 'timestamp with time zone',
     default: () => 'CURRENT_TIMESTAMP',
   })
-  createdAt: Date;
+  createdAt: string;
 
   @Field({ description: '업데이트 일시' })
   @Column({
@@ -45,7 +45,7 @@ export class Driver {
     default: () => 'CURRENT_TIMESTAMP',
     onUpdate: 'CURRENT_TIMESTAMP',
   })
-  updatedAt: Date;
+  updatedAt: string;
 
   @OneToMany(() => PcDriver, (pcDriver) => pcDriver.driver)
   pcDrivers: PcDriver[];

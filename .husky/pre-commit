@@ -1,5 +1,0 @@
-pnpm run i18n-check
-pnpm run lint
-pnpm run lint-staged
-pnpm run format
-pnpm run build

@@ -155,14 +155,14 @@ export class Pc {
     type: 'timestamp with time zone',
     nullable: true,
   })
-  launcherUpdatedAt: Date;
+  launcherUpdatedAt: string;
 
   @Field({ description: '생성 일시' })
   @Column({
     type: 'timestamp with time zone',
     default: () => 'CURRENT_TIMESTAMP',
   })
-  createdAt: Date;
+  createdAt: string;
 
   @Field({ description: '업데이트 일시' })
   @Column({
@@ -170,5 +170,5 @@ export class Pc {
     default: () => 'CURRENT_TIMESTAMP',
     onUpdate: 'CURRENT_TIMESTAMP',
   })
-  updatedAt: Date;
+  updatedAt: string;
 }
