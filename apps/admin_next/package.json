@@ -11,12 +11,21 @@
     "format": "prettier --write \"**/*.{ts,tsx}\"",
     "prepare": "husky",
     "i18n-check": "i18n-check --locales messages --source en --format icu --only missingKeys invalidKeys unused undefined --unused src --reporter console",
-    "lint-staged": "lint-staged"
+    "lint-staged": "lint-staged",
+    "graphql:codegen": "graphql-codegen --config codegen.ts"
   },
   "dependencies": {
+    "@apollo/client": "^3.13.8",
+    "@apollo/experimental-nextjs-app-support": "^0.12.2",
+    "@graphql-codegen/cli": "^5.0.7",
+    "@graphql-codegen/typescript": "^4.1.6",
+    "@graphql-codegen/typescript-operations": "^4.6.1",
+    "@graphql-codegen/typescript-react-apollo": "^4.3.3",
     "@repo/tailwind-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "@repo/ui": "workspace:*",
+    "graphql": "^16.11.0",
+    "graphql-tag": "^2.12.6",
     "immer": "^10.1.1",
     "jotai": "^2.12.4",
     "lint-staged": "^16.1.0",

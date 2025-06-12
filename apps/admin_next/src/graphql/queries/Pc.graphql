@@ -1,0 +1,28 @@
+query GetPcList {
+  pcs {
+    id
+    serialNumber
+    brain
+    isLicense
+    isNetwork
+    isProgram
+    anydeskIp
+    launcherUpdatedAt
+    line {
+      name
+    }
+    position {
+      name
+    }
+    process {
+      name
+    }
+    pcPrograms {
+      program { 
+        image
+        name
+        version
+      }
+    }
+  }
+}

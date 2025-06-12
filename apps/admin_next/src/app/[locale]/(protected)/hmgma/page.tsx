@@ -5,10 +5,13 @@ import RenderCell from '@/app/[locale]/(protected)/hmgma/RenderCell';
 import RenderHeader from '@/app/[locale]/(protected)/hmgma/RenderHeader';
 import ListTable from '@/components/table/ListTable';
 import { listData, listType } from '@/dummy/HMGMA';
-import { ReactNode, useState } from 'react';
+import { useGetPcListQuery } from '@/graphql/generated/graphql';
+import { ReactNode, useEffect, useState } from 'react';
 import CompareModal from './CompareModal';
 
 export default function HMGMAListPage() {
+  const { data } = useGetPcListQuery();
+
   const [isOpenProgram, setIsOpenProgram] = useState<boolean>(false);
   const [isOpenCompare, setIsOpenCompare] = useState<boolean>(false);
   const [serialNumbers, setSerialNumbers] = useState<string[]>([]);
@@ -38,6 +41,10 @@ export default function HMGMAListPage() {
       setSerialNumbers={setSerialNumbers}
     />
   );
+
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
 
   return (
     <>

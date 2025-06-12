@@ -1,3 +1,8 @@
-import nextJsConfig from "@repo/eslint-config/next-mjs";
+import nextJsConfig from '@repo/eslint-config/next-mjs';
 
-export default nextJsConfig;
+export default [
+  ...nextJsConfig,
+  {
+    ignores: ['src/graphql/generated/**/*.tsx'],
+  },
+];

@@ -162,6 +162,16 @@ en.json, ko.json 관련 키 누락, 불일치 등을 확인을 위해 다음 명
 
 ---
 
+# GraphQL 스키마 업데이트 방법
+
+1. `src/graphql/generated/hmgma.graphql` 파일에서 `query`, `mutation` 문 추가
+2. `pnpm run graphql:codegen` 실행
+3. `src/graphql/generated/graphql.tsx` 파일 업데이트 완료
+
+** .graphql 파일 변경/추가/삭제 될 때마다 명령어를 실행시켜야 합니다.
+
+---
+
 # 🚀 **배포**
 
 - https://monitoring-admin.vercel.app/
