@@ -29,6 +29,7 @@ import { join } from 'path';
       sortSchema: true, // 스키마 사전순 정렬
       playground: true,
       csrfPrevention: false,
+      introspection: true, // 운영환경에서 인트로스펙션 허용 (주의: GraphQL API 스키마 노출됨)
     }),
 
     // .env 관리
