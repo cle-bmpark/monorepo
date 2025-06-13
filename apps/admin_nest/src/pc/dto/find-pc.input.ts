@@ -1,4 +1,4 @@
-import { Field, ID, InputType } from '@nestjs/graphql';
+import { Field, InputType, Int } from '@nestjs/graphql';
 import { IsArray, IsNotEmpty, IsOptional, IsString } from 'class-validator';
 
 @InputType()
@@ -17,7 +17,7 @@ export class FindPcsInput {
 @InputType()
 export class FindPcsByIds {
   // pc id 배열 검색
-  @Field(() => [ID], { description: '조회할 PC ID 목록' })
+  @Field(() => [Int], { description: '조회할 PC ID 목록' })
   @IsArray()
   @IsNotEmpty({ each: true })
   ids: number[];
