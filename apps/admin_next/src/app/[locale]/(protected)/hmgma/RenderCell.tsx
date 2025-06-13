@@ -1,9 +1,10 @@
 import ProgramAccordion from '@/app/[locale]/(protected)/hmgma/ProgramAccordion';
+import { BrainEnum } from '@/graphql/generated/graphql';
 import useClipboard from '@/hooks/useClipboard';
 import { popupAtom, toastAtom } from '@/jotai/modalAtoms';
 import { pcListType } from '@/types/graphql';
 import { formatTimestampToDate } from '@/utils/format';
-import Badge from '@repo/ui/src/components/badge/Badge';
+import Badge, { BadgeColors } from '@repo/ui/src/components/badge/Badge';
 import Button from '@repo/ui/src/components/button/Button';
 import LinkButton from '@repo/ui/src/components/button/LinkButton';
 import CheckBox from '@repo/ui/src/components/radio/CheckBox';
@@ -61,10 +62,14 @@ export default function RenderCell({
     case 'line':
     case 'position':
     case 'process':
-      return <Badge value={row[rowKey].name} color={'blue'} />;
+      return (
+        <Badge value={row[rowKey].name} color={BadgeColors[row[rowKey].id % BadgeColors.length]} />
+      );
 
     case 'brain':
-      return <Badge value={row[rowKey]} color={'blue'} />;
+      return (
+        <Badge value={row[rowKey]} color={row[rowKey] === BrainEnum.Main ? 'red' : 'yellow'} />
+      );
 
     case 'isLicense':
       return (

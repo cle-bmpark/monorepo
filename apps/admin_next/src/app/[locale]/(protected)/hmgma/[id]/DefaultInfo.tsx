@@ -1,7 +1,6 @@
 import ObjectTable from '@/components/table/ObjectTable';
 import useClipboard from '@/hooks/useClipboard';
 import { popupAtom, toastAtom } from '@/jotai/modalAtoms';
-import Badge from '@repo/ui/src/components/badge/Badge';
 import Button from '@repo/ui/src/components/button/Button';
 import LinkButton from '@repo/ui/src/components/button/LinkButton';
 import CheckBox from '@repo/ui/src/components/radio/CheckBox';
@@ -43,14 +42,6 @@ export default function DefaultInfo({ data }: DefaultInfoProps) {
     if (!value) return null;
 
     switch (key) {
-      case 'line':
-      case 'process':
-      case 'position':
-        return <Badge value={value.toString()} color={'blue'} />;
-
-      case 'brain':
-        return <Badge value={value.toString()} color={'red'} />;
-
       case 'anydeskIp':
         return (
           <LinkButton

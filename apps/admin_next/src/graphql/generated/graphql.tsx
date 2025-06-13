@@ -1473,9 +1473,9 @@ export type GetPcListQuery = {
     isProgram: boolean;
     anydeskIp: string;
     launcherUpdatedAt: string;
-    line: { __typename?: 'Line'; name: string };
-    position: { __typename?: 'Position'; name: string };
-    process: { __typename?: 'Process'; name: string };
+    line: { __typename?: 'Line'; id: number; name: string };
+    position: { __typename?: 'Position'; id: number; name: string };
+    process: { __typename?: 'Process'; id: number; name: string };
     pcPrograms: Array<{
       __typename?: 'PcProgram';
       program: { __typename?: 'Program'; image: string; name: string; version: string };
@@ -1501,9 +1501,9 @@ export type GetPcDetailQuery = {
     ipv4: string;
     activeServer: string;
     launcherUpdatedAt: string;
-    line: { __typename?: 'Line'; code: string; name: string };
-    position: { __typename?: 'Position'; code: string; name: string };
-    process: { __typename?: 'Process'; code: string; name: string };
+    line: { __typename?: 'Line'; id: number; code: string; name: string };
+    position: { __typename?: 'Position'; id: number; code: string; name: string };
+    process: { __typename?: 'Process'; id: number; code: string; name: string };
     cpuStatus: { __typename?: 'CpuStatus'; name: string; usage: number; unit: string };
     gpuStatus: { __typename?: 'GpuStatus'; name: string; usage: number; unit: string };
     networkStatus: { __typename?: 'NetworkStatus'; send: number; receive: number; unit: string };
@@ -1570,9 +1570,9 @@ export type GetPcListByIdsQuery = {
     isProgram: boolean;
     anydeskIp: string;
     launcherUpdatedAt: string;
-    line: { __typename?: 'Line'; name: string };
-    position: { __typename?: 'Position'; name: string };
-    process: { __typename?: 'Process'; name: string };
+    line: { __typename?: 'Line'; id: number; name: string };
+    position: { __typename?: 'Position'; id: number; name: string };
+    process: { __typename?: 'Process'; id: number; name: string };
     pcPrograms: Array<{
       __typename?: 'PcProgram';
       program: {
@@ -3167,12 +3167,15 @@ export const GetPcListDocument = gql`
       id
       serialNumber
       line {
+        id
         name
       }
       position {
+        id
         name
       }
       process {
+        id
         name
       }
       brain
@@ -3250,14 +3253,17 @@ export const GetPcDetailDocument = gql`
       activeServer
       launcherUpdatedAt
       line {
+        id
         code
         name
       }
       position {
+        id
         code
         name
       }
       process {
+        id
         code
         name
       }
@@ -3374,12 +3380,15 @@ export const GetPcListByIdsDocument = gql`
       id
       serialNumber
       line {
+        id
         name
       }
       position {
+        id
         name
       }
       process {
+        id
         name
       }
       brain

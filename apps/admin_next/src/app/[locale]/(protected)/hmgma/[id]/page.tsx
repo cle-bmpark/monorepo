@@ -44,8 +44,8 @@ export default function HMGMADetailPage() {
       <DefaultInfo data={defaultInfoData} />
       <ProgramInfo data={data.pcDetail.pcPrograms} />
       <DriverInfo data={data.pcDetail.pcDrivers} />
-      <PCStatus data={data.pcDetail} />
       <StorageInfo data={data.pcDetail.storageStatuses} />
+      <PCStatus data={data.pcDetail} />
     </div>
   );
 }

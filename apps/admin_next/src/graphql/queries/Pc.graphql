@@ -2,13 +2,16 @@ query GetPcList($input: FindPcsInput) {
   pcList(input: $input) {
     id
     serialNumber
-        line {
+    line {
+      id
       name
     }
     position {
+      id
       name
     }
     process {
+      id
       name
     }
     brain
@@ -40,14 +43,17 @@ query GetPcDetail($id: Int!) {
     activeServer
     launcherUpdatedAt
     line {
+      id
       code
       name
     }
     position {
+      id
       code
       name
     }
     process {
+      id
       code
       name
     }
@@ -110,13 +116,16 @@ query GetPcListByIds($input: FindPcsByIds!) {
   pcsByIds(input: $input) {
     id
     serialNumber
-        line {
+    line {
+      id
       name
     }
     position {
+      id
       name
     }
     process {
+      id
       name
     }
     brain

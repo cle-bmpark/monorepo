@@ -1,5 +1,14 @@
 import { MouseEventHandler } from 'react';
 
+export const BadgeColors = [
+  'yellow',
+  'blue',
+  'green',
+  'purple',
+  'grey',
+  'red',
+  'neo-green',
+] as const;
 export type BadgeColor = 'yellow' | 'blue' | 'green' | 'purple' | 'grey' | 'red' | 'neo-green';
 
 interface BadgeProps {
