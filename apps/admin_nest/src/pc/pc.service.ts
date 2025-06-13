@@ -1,10 +1,10 @@
 import { CreatePcInput } from '@/pc/dto/create-pc.input';
+import { FindPcsInput } from '@/pc/dto/find-pc.input';
 import { UpdatePcInput } from '@/pc/dto/update-pc.input';
 import { BrainEnum, Pc } from '@/pc/entities/pc.entity';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Brackets, In, Repository } from 'typeorm';
-import { FindPcsInput } from './dto/find-pc.input';
 
 @Injectable()
 export class PcService {
@@ -28,7 +28,7 @@ export class PcService {
       .leftJoinAndSelect('pc.gpuStatus', 'gpuStatus')
       .leftJoinAndSelect('pc.networkStatus', 'networkStatus')
       .leftJoinAndSelect('pc.ramStatus', 'ramStatus')
-      .leftJoinAndSelect('pc.storageStatus', 'storageStatus')
+      .leftJoinAndSelect('pc.storageStatuses', 'storageStatuses')
       .leftJoinAndSelect('pc.tempStatus', 'tempStatus')
       .leftJoinAndSelect('pc.pcDrivers', 'pcDrivers')
       .leftJoinAndSelect('pcDrivers.driver', 'driver')
@@ -87,7 +87,7 @@ export class PcService {
         'gpuStatus',
         'networkStatus',
         'ramStatus',
-        'storageStatus',
+        'storageStatuses',
         'tempStatus',
         'pcDrivers',
         'pcDrivers.driver',
@@ -110,7 +110,7 @@ export class PcService {
         'gpuStatus',
         'networkStatus',
         'ramStatus',
-        'storageStatus',
+        'storageStatuses',
         'tempStatus',
         'pcDrivers',
         'pcDrivers.driver',

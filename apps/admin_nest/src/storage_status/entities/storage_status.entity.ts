@@ -1,6 +1,6 @@
 import { Pc } from '@/pc/entities/pc.entity';
 import { Field, Float, Int, ObjectType } from '@nestjs/graphql';
-import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn, Unique } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, Unique } from 'typeorm';
 
 @ObjectType()
 @Entity()
@@ -15,7 +15,7 @@ export class StorageStatus {
   pcId: number;
 
   @Field(() => Pc, { description: '관련 PC 정보 (관계 필드)' })
-  @OneToOne(() => Pc, (pc) => pc.storageStatus, {
+  @ManyToOne(() => Pc, (pc) => pc.storageStatuses, {
     onDelete: 'CASCADE',
   })
   @JoinColumn({ name: 'pcId' })

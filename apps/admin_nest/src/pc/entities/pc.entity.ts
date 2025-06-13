@@ -130,11 +130,9 @@ export class Pc {
   })
   ramStatus?: RamStatus;
 
-  @Field(() => StorageStatus, { description: 'Storage 상태 정보 테이블 ID' })
-  @OneToOne(() => StorageStatus, (storageStatus) => storageStatus.pc, {
-    nullable: true,
-  })
-  storageStatus?: StorageStatus;
+  @Field(() => [StorageStatus], { description: 'Storage 상태 정보 테이블 ID' })
+  @OneToMany(() => StorageStatus, (storageStatus) => storageStatus.pc)
+  storageStatuses?: StorageStatus[];
 
   @Field(() => TempStatus, { description: '온도 상태 정보 테이블 ID' })
   @OneToOne(() => TempStatus, (tempStatus) => tempStatus.pc, {

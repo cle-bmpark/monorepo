@@ -1,9 +1,9 @@
 import { CreateRamStatusInput } from '@/ram_status/dto/create-ram_status.input';
 import { UpdateRamStatusInput } from '@/ram_status/dto/update-ram_status.input';
+import { RamStatus } from '@/ram_status/entities/ram_status.entity';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { RamStatus } from './entities/ram_status.entity';
 
 @Injectable()
 export class RamStatusService {
