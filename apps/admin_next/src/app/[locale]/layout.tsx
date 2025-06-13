@@ -7,11 +7,11 @@ import ProgressModal from '@repo/ui/src/components/modal/ProgressModal';
 import Toast from '@repo/ui/src/components/modal/Toast';
 import { Provider } from 'jotai';
 
+import ApolloClientProvider from '@/app/[locale]/ApolloClientProvider';
 import type { Metadata } from 'next';
 import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { notFound } from 'next/navigation';
 import { ReactNode } from 'react';
-import ApolloClientPriver from './ApolloClientPriver';
 
 export const metadata: Metadata = {
   title: 'CLE',
@@ -35,7 +35,7 @@ export default async function RootLayout({
       <body className='min-w-3xl flex h-screen flex-col justify-between px-40 pt-9'>
         <Provider>
           <NextIntlClientProvider>
-            <ApolloClientPriver>
+            <ApolloClientProvider>
               <main className='flex flex-1 flex-col'>{children}</main>
               <footer className='my-10'>
                 <Footer />
@@ -44,7 +44,7 @@ export default async function RootLayout({
               <Popup />
               <ProgressModal />
               <Toast />
-            </ApolloClientPriver>
+            </ApolloClientProvider>
           </NextIntlClientProvider>
         </Provider>
       </body>

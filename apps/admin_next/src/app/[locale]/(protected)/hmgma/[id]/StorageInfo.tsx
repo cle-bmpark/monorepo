@@ -1,10 +1,10 @@
-import { pcStatusType } from '@/dummy/HMGMA';
-import Slider from '@repo/ui/src/components/slider/Slider';
+import { pcDetailType } from '@/types/graphql';
 import { useColorByTheme } from '@repo/ui/src/hooks/useColorByTheme';
+import Slider from '@ui/components/slider/Slider';
 import { FiHardDrive } from 'react-icons/fi';
 
 interface StorageInfoProps {
-  data: pcStatusType;
+  data: pcDetailType['storageStatuses'];
 }
 
 export default function StorageInfo({ data }: StorageInfoProps) {
@@ -12,7 +12,7 @@ export default function StorageInfo({ data }: StorageInfoProps) {
 
   return (
     <div className='flex items-center gap-12'>
-      {data.storage.map((item) => (
+      {data.map((item) => (
         <div key={`storage_info_${item.name}`} className='flex flex-1 flex-col gap-1'>
           <div className='flex items-center justify-between'>
             <h3 className='text-grey-800'>System Drive ({item.name}:)</h3>

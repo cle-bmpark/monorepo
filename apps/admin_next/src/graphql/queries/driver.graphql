@@ -1,0 +1,23 @@
+query GetDriverList{
+  driverList {
+    id
+    image
+    name
+    version
+    driverUpdatedAt
+    createdAt
+    updatedAt
+  }
+}
+
+query GetDriverDetail($id: Int!) {
+  driverDetail(id: $id) {
+    id
+    image
+    name
+    version
+    driverUpdatedAt
+    createdAt
+    updatedAt
+  }
+}

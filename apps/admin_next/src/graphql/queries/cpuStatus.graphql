@@ -1,0 +1,23 @@
+query GetCpuStatusList {
+  cpuStatusList {
+    id
+    pcId
+    name
+    usage
+    unit
+    createdAt
+    updatedAt
+  }
+}
+
+query GetCpuStatus($id: Int!) {
+  cpuStatusDetail(id: $id) {
+    id
+    pcId
+    name
+    usage
+    unit
+    createdAt
+    updatedAt
+  }
+}

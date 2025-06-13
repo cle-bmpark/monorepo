@@ -1,4 +1,4 @@
-export function formatToYYYYMMDD(dateInput: Date | string | null | undefined): string {
+export function formatToYYYYMMDD(dateInput?: Date | string | null): string {
   if (!dateInput) {
     return '';
   }

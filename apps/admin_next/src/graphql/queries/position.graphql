@@ -1,0 +1,19 @@
+query GetPositionList{
+  positionList {
+    id
+    code
+    name
+    createdAt
+    updatedAt
+  }
+}
+
+query GetPositionDetail($id: Int!) {
+  positionDetail(id: $id) {
+    id
+    code
+    name
+    createdAt
+    updatedAt
+  }
+}

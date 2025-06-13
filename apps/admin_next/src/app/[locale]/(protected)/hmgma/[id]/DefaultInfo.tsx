@@ -1,21 +1,34 @@
 import ObjectTable from '@/components/table/ObjectTable';
-import { defaultType, enumColors } from '@/dummy/HMGMA';
 import useClipboard from '@/hooks/useClipboard';
 import { popupAtom, toastAtom } from '@/jotai/modalAtoms';
 import Badge from '@repo/ui/src/components/badge/Badge';
 import Button from '@repo/ui/src/components/button/Button';
 import LinkButton from '@repo/ui/src/components/button/LinkButton';
 import CheckBox from '@repo/ui/src/components/radio/CheckBox';
+
 import { useAtom } from 'jotai';
 import { useTranslations } from 'next-intl';
 import { ReactNode } from 'react';
 
+interface DefaultInfoDataType {
+  line?: string;
+  process?: string;
+  position?: string;
+  brain?: string;
+  anydeskIp?: string;
+  ipv4?: string;
+  isLicense?: boolean;
+  isNetwork?: boolean;
+  isProgram?: boolean;
+  launcherUpdatedAt?: string;
+}
+
 interface DefaultInfoProps {
-  data: defaultType;
+  data: DefaultInfoDataType;
 }
 
 export default function DefaultInfo({ data }: DefaultInfoProps) {
-  const t = useTranslations('mockup');
+  const t = useTranslations('pc');
   const tHMGMA = useTranslations('hmgma');
 
   const copyToClipboard = useClipboard();
@@ -27,30 +40,34 @@ export default function DefaultInfo({ data }: DefaultInfoProps) {
     key: keyof typeof data,
     value: (typeof data)[keyof typeof data],
   ): ReactNode => {
+    if (!value) return null;
+
     switch (key) {
       case 'line':
       case 'process':
       case 'position':
-      case 'pc':
-        return <Badge value={value.toString()} color={enumColors[value.toString()]} />;
+        return <Badge value={value.toString()} color={'blue'} />;
 
-      case 'anyDeskIP':
+      case 'brain':
+        return <Badge value={value.toString()} color={'red'} />;
+
+      case 'anydeskIp':
         return (
           <LinkButton
             value={value.toString()}
             onClick={() => {
-              void copyToClipboard(t('anyDeskIP'), value.toString());
+              void copyToClipboard(t('anydeskIp'), value.toString());
               window.location.href = `anydesk:${value}`;
             }}
           />
         );
 
-      case 'ipv4Address':
+      case 'ipv4':
         return (
           <LinkButton
             value={value.toString()}
             onClick={() => {
-              void copyToClipboard(t('ipv4Address'), value.toString());
+              void copyToClipboard(t('ipv4'), value.toString());
             }}
           />
         );
@@ -85,13 +102,13 @@ export default function DefaultInfo({ data }: DefaultInfoProps) {
       case 'isProgram':
         return (
           <p
-            className={`flex h-full flex-1 items-center p-2 ${value === false && 'bg-primary-100 text-primary-600'}`}
+            className={`flex h-full flex-1 items-center p-2 ${Boolean(value) === false && 'bg-primary-100 text-primary-600'}`}
           >
             {tHMGMA('on&off', { state: value.toString() })}
           </p>
         );
 
-      case 'launcherUpdateAt':
+      case 'launcherUpdatedAt':
         return (
           <div className='flex flex-col gap-1'>
             <p>{value.toString()}</p>

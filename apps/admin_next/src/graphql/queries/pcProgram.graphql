@@ -1,0 +1,37 @@
+query GetPcProgramList {
+  pcProgramList {
+    id
+    pcId
+    programId
+    createdAt
+    updatedAt
+    program {
+      id
+      image
+      name
+      version
+      programUpdatedAt
+      createdAt
+      updatedAt
+    }
+  }
+}
+
+query GetPcProgramDetail($id: Int!) {
+  pcProgramDetail(id: $id) {
+    id
+    pcId
+    programId
+    createdAt
+    updatedAt
+    program {
+      id
+      image
+      name
+      version
+      programUpdatedAt
+      createdAt
+      updatedAt
+    }
+  }
+}

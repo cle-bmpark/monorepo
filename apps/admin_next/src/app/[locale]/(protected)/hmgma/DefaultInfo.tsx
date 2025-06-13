@@ -1,15 +1,15 @@
-import { defaultType, enumColors } from '@/dummy/HMGMA';
+import { pcListType } from '@/types/graphql';
 import Badge from '@repo/ui/src/components/badge/Badge';
 import LinkButton from '@repo/ui/src/components/button/LinkButton';
 import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
 
 interface DefaultInfoProps {
-  data: defaultType;
+  data: pcListType;
 }
 
 export default function DefaultInfo({ data }: DefaultInfoProps) {
-  const t = useTranslations('mockup');
+  const t = useTranslations('pc');
   const tHMGMA = useTranslations('hmgma');
   const router = useRouter();
 
@@ -29,10 +29,10 @@ export default function DefaultInfo({ data }: DefaultInfoProps) {
         )}
       </div>
       <div className='flex gap-2'>
-        <Badge value={data.line} color={enumColors[data.line]} />
-        <Badge value={data.process} color={enumColors[data.process]} />
-        <Badge value={data.position} color={enumColors[data.position]} />
-        <Badge value={data.pc} color={enumColors[data.pc]} />
+        <Badge value={data.line.name} color={'blue'} />
+        <Badge value={data.process.name} color={'green'} />
+        <Badge value={data.position.name} color={'red'} />
+        <Badge value={data.brain} color={'yellow'} />
       </div>
     </div>
   );

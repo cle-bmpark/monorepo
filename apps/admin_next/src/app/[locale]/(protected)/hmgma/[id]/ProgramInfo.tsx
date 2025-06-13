@@ -1,89 +1,31 @@
 import ScrollTable from '@/components/table/ScrollTable';
-import { programType } from '@/dummy/HMGMA';
-import Dropdown from '@repo/ui/src/components/button/Dropdown';
-import { DateRange } from '@repo/ui/src/components/headless/Calendar';
-import CalendarInput from '@repo/ui/src/components/headless/CalendarInput';
+import { pcProgramsType, programsType } from '@/types/graphql';
+import { formatTimestampToDate } from '@/utils/format';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { ReactNode } from 'react';
 import { HiOutlineSwitchVertical } from 'react-icons/hi';
-import { useImmer } from 'use-immer';
 
 interface ProgramInfoProps {
-  data: programType[];
+  data: pcProgramsType;
 }
 
 export default function ProgramInfo({ data }: ProgramInfoProps) {
-  const t = useTranslations('mockup');
+  const t = useTranslations('pc');
   const tHMGMA = useTranslations('hmgma');
 
-  const [filter, setFilter] = useImmer<{
-    updateAt: DateRange;
-    name: string;
-    version: string;
-  }>({
-    updateAt: {
-      from: new Date(),
-      to: new Date(),
-    },
-    name: data[0]?.name ?? '',
-    version: data[0]?.version ?? '',
-  });
+  const actualData = data.map((item) => item.program);
 
   const refetchData = () => {
     return;
   };
 
-  const filterBody = () => [
-    {
-      title: t('updateAt'),
-      content: (
-        <CalendarInput
-          value={filter.updateAt}
-          setValue={(value: DateRange) =>
-            setFilter((draft) => {
-              draft.updateAt = value;
-            })
-          }
-          size='s'
-        />
-      ),
-    },
-    {
-      title: t('program-name'),
-      content: (
-        <Dropdown
-          value={filter.name}
-          valueList={[...new Set(data.map((item) => item.name))]}
-          onClick={(value) => {
-            setFilter((draft) => {
-              draft.name = value;
-            });
-          }}
-          size='s'
-        />
-      ),
-    },
-    {
-      title: t('version'),
-      content: (
-        <Dropdown
-          value={filter.version}
-          valueList={[...new Set(data.map((item) => item.version))]}
-          onClick={(value) => {
-            setFilter((draft) => {
-              draft.version = value;
-            });
-          }}
-          size='s'
-        />
-      ),
-    },
-  ];
-
-  const renderHeader = (key: keyof programType): ReactNode => {
+  const renderHeader = (key: keyof programsType): ReactNode => {
     {
       switch (key) {
+        case '__typename':
+          return null;
+
         case 'image':
           return <span>{t(`${key}`)}</span>;
 
@@ -114,10 +56,17 @@ export default function ProgramInfo({ data }: ProgramInfoProps) {
     }
   };
 
-  const renderCell = (row: programType, key: keyof programType): ReactNode => {
+  const renderCell = (row: programsType, key: keyof programsType): ReactNode => {
     switch (key) {
+      case '__typename':
+        return null;
+
       case 'image':
         return <Image src={row[key]} alt={`image_${row[key]}`} width={20} height={20} />;
+
+      case 'programUpdatedAt':
+        return <span>{formatTimestampToDate(row[key])}</span>;
+
       default:
         return row[key];
     }
@@ -126,8 +75,7 @@ export default function ProgramInfo({ data }: ProgramInfoProps) {
   return (
     <ScrollTable
       title={tHMGMA('program-title')}
-      data={data}
-      filterBody={filterBody}
+      data={actualData}
       refetchData={refetchData}
       renderHeader={renderHeader}
       renderCell={renderCell}

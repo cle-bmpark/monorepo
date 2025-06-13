@@ -1,0 +1,23 @@
+query GetNetworkStatusList {
+  networkStatusList {
+    id
+    pcId
+    send
+    receive
+    unit
+    createdAt
+    updatedAt
+  }
+}
+
+query GetNetworkStatusDetail($id: Int!) {
+  networkStatusDetail(id: $id) {
+    id
+    pcId
+    send
+    receive
+    unit
+    createdAt
+    updatedAt
+  }
+}

@@ -1,0 +1,27 @@
+query GetTempStatusList{
+  tempStatusList {
+    id
+    pcId
+    current
+    average
+    lowest
+    highest
+    unit
+    createdAt
+    updatedAt
+  }
+}
+
+query GetTempStatusDetail($id: Int!) {
+  tempStatusDetail(id: $id) {
+    id
+    pcId
+    current
+    average
+    lowest
+    highest
+    unit
+    createdAt
+    updatedAt
+  }
+}

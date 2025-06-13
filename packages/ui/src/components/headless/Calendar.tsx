@@ -5,7 +5,7 @@ import { ko } from 'react-day-picker/locale';
 
 export interface DateRange {
   from: Date | undefined;
-  to?: Date | undefined;
+  to?: Date;
 }
 
 interface CalendarProps {

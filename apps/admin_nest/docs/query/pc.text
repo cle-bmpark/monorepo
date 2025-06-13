@@ -74,7 +74,7 @@ query ($input: FindPcsInput) {
       createdAt
       updatedAt
     }
-    storageStatus {
+    storageStatuses {
       id
       pcId
       name
@@ -206,7 +206,7 @@ query {
       createdAt
       updatedAt
     }
-    storageStatus {
+    storageStatuses {
       id
       pcId
       name
@@ -338,7 +338,7 @@ query {
       createdAt
       updatedAt
     }
-    storageStatus {
+    storageStatuses {
       id
       pcId
       name
@@ -472,7 +472,7 @@ query {
       createdAt
       updatedAt
     }
-    storageStatus {
+    storageStatuses {
       id
       pcId
       name

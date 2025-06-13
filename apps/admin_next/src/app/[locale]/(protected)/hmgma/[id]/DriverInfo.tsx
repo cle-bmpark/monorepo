@@ -1,89 +1,30 @@
 import ScrollTable from '@/components/table/ScrollTable';
-import { driverType } from '@/dummy/HMGMA';
-import Dropdown from '@repo/ui/src/components/button/Dropdown';
-import { DateRange } from '@repo/ui/src/components/headless/Calendar';
-import CalendarInput from '@repo/ui/src/components/headless/CalendarInput';
+import { driverType, pcDriversType } from '@/types/graphql';
+import { formatTimestampToDate } from '@/utils/format';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { ReactNode } from 'react';
 import { HiOutlineSwitchVertical } from 'react-icons/hi';
-import { useImmer } from 'use-immer';
 
 interface DriverInfoProps {
-  data: driverType[];
+  data: pcDriversType;
 }
 
 export default function DriverInfo({ data }: DriverInfoProps) {
-  const t = useTranslations('mockup');
+  const t = useTranslations('pc');
   const tHMGMA = useTranslations('hmgma');
-
-  const [filter, setFilter] = useImmer<{
-    installedAt: DateRange;
-    name: string;
-    version: string;
-  }>({
-    installedAt: {
-      from: new Date(),
-      to: new Date(),
-    },
-    name: data[0]?.name ?? '',
-    version: data[0]?.version ?? '',
-  });
+  const actualData = data.map((item) => item.driver);
 
   const refetchData = () => {
     return;
   };
 
-  const filterBody = () => [
-    {
-      title: t('installedAt'),
-      content: (
-        <CalendarInput
-          value={filter.installedAt}
-          setValue={(value: DateRange) =>
-            setFilter((draft) => {
-              draft.installedAt = value;
-            })
-          }
-          size='s'
-        />
-      ),
-    },
-    {
-      title: t('driver-name'),
-      content: (
-        <Dropdown
-          value={filter.name}
-          valueList={[...new Set(data.map((item) => item.name))]}
-          onClick={(value) => {
-            setFilter((draft) => {
-              draft.name = value;
-            });
-          }}
-          size='s'
-        />
-      ),
-    },
-    {
-      title: t('version'),
-      content: (
-        <Dropdown
-          value={filter.version}
-          valueList={[...new Set(data.map((item) => item.version))]}
-          onClick={(value) => {
-            setFilter((draft) => {
-              draft.version = value;
-            });
-          }}
-          size='s'
-        />
-      ),
-    },
-  ];
-
   const renderHeader = (key: keyof driverType): ReactNode => {
     {
       switch (key) {
+        case '__typename':
+          return null;
+
         case 'image':
           return <span>{t(`${key}`)}</span>;
 
@@ -116,8 +57,15 @@ export default function DriverInfo({ data }: DriverInfoProps) {
 
   const renderCell = (row: driverType, key: keyof driverType): ReactNode => {
     switch (key) {
+      case '__typename':
+        return null;
+
       case 'image':
         return <Image src={row[key]} alt={`image_${row[key]}`} width={20} height={20} />;
+
+      case 'driverUpdatedAt':
+        return <span>{formatTimestampToDate(row[key])}</span>;
+
       default:
         return row[key];
     }
@@ -126,8 +74,7 @@ export default function DriverInfo({ data }: DriverInfoProps) {
   return (
     <ScrollTable
       title={tHMGMA('driver-title')}
-      data={data}
-      filterBody={filterBody}
+      data={actualData}
       refetchData={refetchData}
       renderHeader={renderHeader}
       renderCell={renderCell}

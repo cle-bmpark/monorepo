@@ -1,7 +1,13 @@
 'use client';
 
 import { filterBodyType } from '@/components/table/Filter';
-import { LineEnum, PCEnum, PositionEnum, ProcessEnum } from '@/dummy/HMGMA';
+import {
+  BrainEnum,
+  useGetLineListQuery,
+  useGetPositionListQuery,
+  useGetProcessListQuery,
+} from '@/graphql/generated/graphql';
+import { lineType, positionType, processType } from '@/types/graphql';
 import { getObjectKeys } from '@/utils/object';
 import Dropdown from '@repo/ui/src/components/button/Dropdown';
 import { DateRange } from '@repo/ui/src/components/headless/Calendar';
@@ -10,22 +16,23 @@ import { useTranslations } from 'next-intl';
 import { useImmer } from 'use-immer';
 
 export default function FilterBody(): filterBodyType[] {
-  const t = useTranslations('mockup');
+  const t = useTranslations('pc');
+
+  const { data: line } = useGetLineListQuery();
+  const { data: position } = useGetPositionListQuery();
+  const { data: process } = useGetProcessListQuery();
 
   const [filter, setFilter] = useImmer<{
-    line: keyof typeof LineEnum;
-    process: keyof typeof ProcessEnum;
-    position: keyof typeof PositionEnum;
-    pc: keyof typeof PCEnum;
+    line?: lineType;
+    position?: positionType;
+    process?: processType;
+    brain: keyof typeof BrainEnum;
     isLicense: boolean;
     isNetwork: boolean;
     isProgram: boolean;
     launcherUpdateAt: DateRange;
   }>({
-    line: 'LINE_ONE',
-    process: 'GLASS',
-    position: 'FRONT',
-    pc: 'MAIN',
+    brain: 'Main',
     isLicense: true,
     isNetwork: true,
     isProgram: true,
@@ -37,7 +44,7 @@ export default function FilterBody(): filterBodyType[] {
 
   return [
     {
-      title: t('launcherUpdateAt'),
+      title: t('launcherUpdatedAt'),
       content: (
         <CalendarInput
           value={filter.launcherUpdateAt}
@@ -52,10 +59,10 @@ export default function FilterBody(): filterBodyType[] {
     },
     {
       title: t('line'),
-      content: (
+      content: line ? (
         <Dropdown
           value={filter.line}
-          valueList={getObjectKeys(LineEnum)}
+          valueList={line.lineList}
           onClick={(value) => {
             setFilter((draft) => {
               draft.line = value;
@@ -63,29 +70,14 @@ export default function FilterBody(): filterBodyType[] {
           }}
           size='s'
         />
-      ),
-    },
-    {
-      title: t('process'),
-      content: (
-        <Dropdown
-          value={filter.process}
-          valueList={getObjectKeys(ProcessEnum)}
-          onClick={(value) => {
-            setFilter((draft) => {
-              draft.process = value;
-            });
-          }}
-          size='s'
-        />
-      ),
+      ) : null,
     },
     {
       title: t('position'),
-      content: (
+      content: position ? (
         <Dropdown
           value={filter.position}
-          valueList={getObjectKeys(PositionEnum)}
+          valueList={position.positionList}
           onClick={(value) => {
             setFilter((draft) => {
               draft.position = value;
@@ -93,17 +85,32 @@ export default function FilterBody(): filterBodyType[] {
           }}
           size='s'
         />
-      ),
+      ) : null,
     },
     {
-      title: t('pc'),
-      content: (
+      title: t('process'),
+      content: process ? (
         <Dropdown
-          value={filter.pc}
-          valueList={getObjectKeys(PCEnum)}
+          value={filter.process}
+          valueList={process.processList}
           onClick={(value) => {
             setFilter((draft) => {
-              draft.pc = value;
+              draft.process = value;
+            });
+          }}
+          size='s'
+        />
+      ) : null,
+    },
+    {
+      title: t('brain'),
+      content: (
+        <Dropdown
+          value={filter.brain}
+          valueList={getObjectKeys(BrainEnum)}
+          onClick={(value) => {
+            setFilter((draft) => {
+              draft.brain = value;
             });
           }}
           size='s'

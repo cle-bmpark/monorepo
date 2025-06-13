@@ -1,16 +1,16 @@
 import ObjectTable from '@/components/table/ObjectTable';
-import { pcStatusType } from '@/dummy/HMGMA';
+import { pcDetailType } from '@/types/graphql';
 import { useTranslations } from 'next-intl';
 import { ReactNode } from 'react';
 
 interface PCStatusProps {
-  data: pcStatusType;
+  data: pcDetailType;
 }
 
 export default function PCStatus({ data }: PCStatusProps) {
-  const t = useTranslations('mockup');
+  const t = useTranslations('pc');
 
-  const renderCPUKey = (key: keyof (typeof data)['cpu' | 'gpu']): ReactNode => {
+  const renderCPUKey = (key: keyof pcDetailType['cpuStatus']): ReactNode => {
     switch (key) {
       case 'name':
         return t('device-name');
@@ -18,84 +18,83 @@ export default function PCStatus({ data }: PCStatusProps) {
         return t(`${key}`);
     }
   };
+
   const renderCPUValue = (
-    key: keyof (typeof data)['cpu' | 'gpu'],
-    value: (typeof data)['cpu' | 'gpu']['name' | 'usage'],
+    key: keyof pcDetailType['cpuStatus'],
+    value?: string | number,
   ): ReactNode => {
     switch (key) {
-      case 'usage':
-        return `${value} %`;
       default:
-        return value;
+        return `${value} ${data.cpuStatus.unit}`;
     }
   };
 
-  const renderRamKey = (key: keyof (typeof data)['ram']): ReactNode => t(`${key}`);
+  const renderRamKey = (key: keyof pcDetailType['ramStatus']): ReactNode => t(`${key}`);
   const renderRamValue = (
-    key: keyof (typeof data)['ram'],
-    value: (typeof data)['ram']['average' | 'current' | 'highest' | 'lowest' | 'total'],
+    key: keyof pcDetailType['ramStatus'],
+    value?: string | number,
   ): ReactNode => {
     switch (key) {
       default:
-        return `${value} GB`;
+        return `${value} ${data.ramStatus.unit}`;
     }
   };
 
-  const renderNetworkKey = (key: keyof (typeof data)['network']): ReactNode => t(`${key}`);
+  const renderNetworkKey = (key: keyof pcDetailType['networkStatus']): ReactNode => t(`${key}`);
   const renderNetworkValue = (
-    key: keyof (typeof data)['network'],
-    value: (typeof data)['network']['receive' | 'send'],
+    key: keyof pcDetailType['networkStatus'],
+    value?: string | number,
   ): ReactNode => {
     switch (key) {
       default:
-        return `${value} Kbps`;
+        return `${value} ${data.networkStatus.unit}`;
     }
   };
 
-  const renderTempKey = (key: keyof (typeof data)['temp']): ReactNode => t(`${key}`);
+  const renderTempKey = (key: keyof pcDetailType['tempStatus']): ReactNode => t(`${key}`);
   const renderTempValue = (
-    key: keyof (typeof data)['temp'],
-    value: (typeof data)['temp']['average' | 'current' | 'highest' | 'lowest'],
+    key: keyof pcDetailType['tempStatus'],
+    value?: string | number,
   ): ReactNode => {
     switch (key) {
       default:
-        return `${value} °C`;
+        return `${value} ${data.tempStatus.unit}`;
     }
   };
 
   return (
     <div className='flex gap-3'>
       <ObjectTable
-        title={t('cpu')}
-        data={data.cpu}
+        title={t('cpuStatus')}
+        data={data.cpuStatus}
         renderKey={renderCPUKey}
         renderValue={renderCPUValue}
         rowCount={1}
       />
       <ObjectTable
-        title={t('gpu')}
-        data={data.gpu}
+        title={t('gpuStatus')}
+        data={data.gpuStatus}
         renderKey={renderCPUKey}
         renderValue={renderCPUValue}
         rowCount={1}
       />
       <ObjectTable
-        title={t('ram')}
-        data={data.ram}
+        title={t('ramStatus')}
+        data={data.ramStatus}
         renderKey={renderRamKey}
         renderValue={renderRamValue}
         rowCount={1}
       />
       <ObjectTable
-        title={t('network')}
-        data={data.network}
+        title={t('networkStatus')}
+        data={data.networkStatus}
         renderKey={renderNetworkKey}
         renderValue={renderNetworkValue}
         rowCount={1}
       />
       <ObjectTable
-        title={t('temp')}
-        data={data.temp}
+        title={t('tempStatus')}
+        data={data.tempStatus}
         renderKey={renderTempKey}
         renderValue={renderTempValue}
         rowCount={1}

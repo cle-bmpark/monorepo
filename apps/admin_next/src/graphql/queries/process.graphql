@@ -1,0 +1,19 @@
+query GetProcessList{
+  processList {
+    id
+    code
+    name
+    createdAt
+    updatedAt
+  }
+}
+
+query GetProcessDetail($id: Int!){
+  processDetail(id: $id) {
+    id
+    code
+    name
+    createdAt
+    updatedAt
+  }
+}

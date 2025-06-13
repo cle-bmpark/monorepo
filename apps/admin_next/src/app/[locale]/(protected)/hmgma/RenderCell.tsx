@@ -1,7 +1,8 @@
 import ProgramAccordion from '@/app/[locale]/(protected)/hmgma/ProgramAccordion';
-import { enumColors, listType } from '@/dummy/HMGMA';
 import useClipboard from '@/hooks/useClipboard';
 import { popupAtom, toastAtom } from '@/jotai/modalAtoms';
+import { pcListType } from '@/types/graphql';
+import { formatTimestampToDate } from '@/utils/format';
 import Badge from '@repo/ui/src/components/badge/Badge';
 import Button from '@repo/ui/src/components/button/Button';
 import LinkButton from '@repo/ui/src/components/button/LinkButton';
@@ -13,21 +14,21 @@ import { Dispatch } from 'react';
 import { IoWarning } from 'react-icons/io5';
 
 interface RenderCellProps {
-  row: listType;
-  rowKey: keyof listType;
+  row: pcListType;
+  rowKey: keyof pcListType;
   isOpenProgram: boolean;
-  serialNumbers: string[];
-  setSerialNumbers: Dispatch<SetStateAction<string[]>>;
+  selectedPcs: pcListType[];
+  setSelectedPcs: Dispatch<SetStateAction<pcListType[]>>;
 }
 
 export default function RenderCell({
   row,
   rowKey,
   isOpenProgram,
-  serialNumbers,
-  setSerialNumbers,
+  selectedPcs,
+  setSelectedPcs,
 }: RenderCellProps) {
-  const t = useTranslations('mockup');
+  const t = useTranslations('pc');
   const tHMGMA = useTranslations('hmgma');
   const router = useRouter();
 
@@ -41,29 +42,29 @@ export default function RenderCell({
       return (
         <div className='flex items-center gap-2'>
           <CheckBox
-            isCheck={serialNumbers.includes(row[rowKey])}
+            isCheck={selectedPcs.includes(row)}
             onClick={() =>
-              setSerialNumbers((prev) =>
-                prev.includes(row[rowKey])
-                  ? prev.filter((item) => item !== row[rowKey])
-                  : [...prev, row[rowKey]],
+              setSelectedPcs((prev) =>
+                prev.includes(row) ? prev.filter((item) => item !== row) : [...prev, row],
               )
             }
           />
           <LinkButton
             value={row[rowKey].toString()}
             onClick={() => {
-              router.push(`/hmgma/${row[rowKey]}`);
+              router.push(`/hmgma/${row.id}`);
             }}
           />
         </div>
       );
 
     case 'line':
-    case 'process':
     case 'position':
-    case 'pc':
-      return <Badge value={row[rowKey].toString()} color={enumColors[row[rowKey].toString()]} />;
+    case 'process':
+      return <Badge value={row[rowKey].name} color={'blue'} />;
+
+    case 'brain':
+      return <Badge value={row[rowKey]} color={'blue'} />;
 
     case 'isLicense':
       return (
@@ -110,21 +111,21 @@ export default function RenderCell({
         </div>
       );
 
-    case 'anyDeskIP':
+    case 'anydeskIp':
       return (
         <LinkButton
           value={row[rowKey].toString()}
           onClick={() => {
-            void copyToClipboard(t('anyDeskIP'), row[rowKey].toString());
+            void copyToClipboard(t('anydeskIp'), row[rowKey].toString());
             window.location.href = `anydesk:${row[rowKey]}`;
           }}
         />
       );
 
-    case 'launcherUpdateAt':
+    case 'launcherUpdatedAt':
       return (
         <div className='flex flex-col gap-1'>
-          <p>{row[rowKey].toString()}</p>
+          <p>{formatTimestampToDate(row[rowKey])}</p>
           <Button
             value={tHMGMA('update-button')}
             size='s'
@@ -139,7 +140,9 @@ export default function RenderCell({
         </div>
       );
 
-    case 'program':
+    case 'pcPrograms':
       return <ProgramAccordion list={row[rowKey]} isAllOpen={isOpenProgram} />;
   }
+
+  return null;
 }

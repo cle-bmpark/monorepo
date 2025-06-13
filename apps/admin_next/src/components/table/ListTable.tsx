@@ -8,7 +8,7 @@ import { ReactNode, useState } from 'react';
 
 interface ListTableProps<T extends object> {
   title: string;
-  data: T[];
+  data?: T[];
   filterBody: () => filterBodyType[];
   refetchData: (value?: string) => void;
   renderHeader: (key: keyof T) => ReactNode;
@@ -27,7 +27,7 @@ export default function ListTable<T extends object>({
   const [pageSize, setPageSize] = useState<number>(50);
   const [selectPage, setSelectPage] = useState<number>(1);
 
-  if (data.length < 1)
+  if (!data || data.length < 1)
     return (
       <div className='mt-8 flex flex-1 items-center justify-center'>
         <p>데이터가 없습니다.</p>

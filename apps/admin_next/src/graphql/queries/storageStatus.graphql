@@ -1,0 +1,39 @@
+
+query GetStorageStatusList{
+  storageStatusList {
+    id
+    pcId
+    name
+    total
+    usage
+    unit
+    createdAt
+    updatedAt
+  }
+}
+
+query GetStorageDetail($id: Int!){
+  storageStatusDetail(id: $id) {
+    id
+    pcId
+    name
+    total
+    usage
+    unit
+    createdAt
+    updatedAt
+  }
+}
+
+query GetStorageStatusByPcId($pcId: Int!) {
+  storageStatusByPcId(pcId: $pcId) {
+    id
+    pcId
+    name
+    total
+    usage
+    unit
+    createdAt
+    updatedAt
+  }
+}

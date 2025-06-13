@@ -1,0 +1,38 @@
+query GetPcDriverList {
+  pcDriverList {
+    id
+    pcId
+    driverId
+    createdAt
+    updatedAt
+    driver {
+      id
+      image
+      name
+      version
+      driverUpdatedAt
+      createdAt
+      updatedAt
+    }
+  }
+}
+
+
+query GetPcDriverDetail($id: Int!){
+  pcDriverDetail(id: $id) {
+    id
+    pcId
+    driverId
+    createdAt
+    updatedAt
+    driver {
+      id
+      image
+      name
+      version
+      driverUpdatedAt
+      createdAt
+      updatedAt
+    }
+  }
+}

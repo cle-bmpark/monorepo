@@ -1,0 +1,23 @@
+query GetProgramList{
+  programList {
+    id
+    image
+    name
+    version
+    programUpdatedAt
+    createdAt
+    updatedAt
+  }
+}
+
+query GetProgramDetail($id: Int!){
+  programDetail(id: $id) {
+    id
+    image
+    name
+    version
+    programUpdatedAt
+    createdAt
+    updatedAt
+  }
+}

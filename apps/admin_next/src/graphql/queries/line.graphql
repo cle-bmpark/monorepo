@@ -1,0 +1,19 @@
+query GetLineList {
+  lineList {
+    id
+    code
+    name
+    createdAt
+    updatedAt
+  }
+}
+
+query GetLineDetail($id: Int!) {
+  lineDetail(id: $id) {
+    id
+    code
+    name
+    createdAt
+    updatedAt
+  }
+}

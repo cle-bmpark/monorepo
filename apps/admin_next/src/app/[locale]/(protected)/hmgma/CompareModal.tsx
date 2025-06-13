@@ -1,6 +1,10 @@
 'use client';
 
-import { detailData } from '@/dummy/HMGMA';
+import DriverInfo from '@/app/[locale]/(protected)/hmgma/[id]/DriverInfo';
+import ProgramInfo from '@/app/[locale]/(protected)/hmgma/[id]/ProgramInfo';
+import DefaultInfo from '@/app/[locale]/(protected)/hmgma/DefaultInfo';
+import { useGetPcListByIdsQuery } from '@/graphql/generated/graphql';
+import { pcListType } from '@/types/graphql';
 import Tooltip from '@repo/ui/src/components/modal/Tooltip';
 import useClickOutside from '@repo/ui/src/hooks/useClickOutside';
 import { useColorByTheme } from '@repo/ui/src/hooks/useColorByTheme';
@@ -9,27 +13,26 @@ import { useTranslations } from 'next-intl';
 import { Dispatch, useEffect, useRef, useState } from 'react';
 import { BsInfoCircle } from 'react-icons/bs';
 import { IoCloseCircle } from 'react-icons/io5';
-import DriverInfo from './[id]/DriverInfo';
-import ProgramInfo from './[id]/ProgramInfo';
-import DefaultInfo from './DefaultInfo';
 
 interface CompareModalProps {
   visible: boolean;
   setVisible: Dispatch<SetStateAction<boolean>>;
-  serialNumbers: string[];
-  setSerialNumbers: Dispatch<SetStateAction<string[]>>;
+  selectedPcs: pcListType[];
+  setSelectedPcs: Dispatch<SetStateAction<pcListType[]>>;
 }
 
 export default function CompareModal({
   visible,
   setVisible,
-  serialNumbers,
-  setSerialNumbers,
+  selectedPcs,
+  setSelectedPcs,
 }: CompareModalProps) {
-  const data = detailData;
   const grey300 = useColorByTheme('grey-300');
   const tHMGMA = useTranslations('hmgma');
   const iconRef = useRef<HTMLDivElement>(null);
+
+  const pcIds = selectedPcs.map((pc) => pc.id);
+  const { data } = useGetPcListByIdsQuery({ variables: { input: { ids: pcIds } } });
 
   const [isOpenIcon, setIsOpenIcon] = useState<boolean>(false);
   useClickOutside({
@@ -38,8 +41,8 @@ export default function CompareModal({
   });
 
   useEffect(() => {
-    if (serialNumbers.length < 1) setVisible(false);
-  }, [serialNumbers, setVisible]);
+    if (selectedPcs.length < 1) setVisible(false);
+  }, [selectedPcs, setVisible]);
 
   useEffect(() => {
     // esc 키 클릭 시, 모달창 닫기
@@ -55,7 +58,8 @@ export default function CompareModal({
     };
   }, [setVisible]);
 
-  if (!visible) return null;
+  if (!visible || !data) return null;
+
   return (
     <div className='bg-grey-950/40 fixed bottom-0 left-0 right-0 top-0 z-20 flex flex-1 flex-wrap justify-between gap-4 overflow-y-auto p-4'>
       <div className='absolute flex justify-center p-4' ref={iconRef}>
@@ -74,10 +78,10 @@ export default function CompareModal({
         )}
       </div>
 
-      {serialNumbers.map((item) => (
+      {data.pcsByIds.map((item) => (
         <div
-          key={`compare_serial_number_${item}`}
-          className={`bg-grey-0 flex min-w-fit flex-1 flex-col gap-4 rounded-lg p-4 ${!data.default.isProgram && 'outline-primary-500 outline-2'}`}
+          key={`compare_serial_number_${item.serialNumber}`}
+          className={`bg-grey-0 flex min-w-fit flex-1 flex-col gap-4 rounded-lg p-4 ${!item.isProgram && 'outline-primary-500 outline-2'}`}
         >
           {/* close icon */}
           <div className='flex items-center justify-end gap-2'>
@@ -85,14 +89,14 @@ export default function CompareModal({
               size={24}
               color={grey300}
               className='cursor-pointer'
-              onClick={() => setSerialNumbers((prev) => prev.filter((numbers) => numbers !== item))}
+              onClick={() => setSelectedPcs((prev) => prev.filter((pc) => pc !== item))}
             />
           </div>
 
           {/* content */}
-          <DefaultInfo data={data.default} />
-          <DriverInfo data={data.driver} />
-          <ProgramInfo data={data.program} />
+          <DefaultInfo data={item} />
+          <DriverInfo data={item.pcDrivers} />
+          <ProgramInfo data={item.pcPrograms} />
         </div>
       ))}
     </div>

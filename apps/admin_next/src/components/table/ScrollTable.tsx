@@ -7,7 +7,7 @@ import { ReactNode } from 'react';
 interface ScrollTableProps<T extends object> {
   title: string;
   data: T[];
-  filterBody: () => filterBodyType[];
+  filterBody?: () => filterBodyType[];
   refetchData: (value?: string) => void;
   renderHeader: (key: keyof T) => ReactNode;
   renderCell: (row: T, key: keyof T) => ReactNode;
@@ -34,7 +34,7 @@ export default function ScrollTable<T extends object>({
         <h3 className='text-grey-800'>{title}</h3>
         <div className='flex gap-2'>
           <Search refetchData={refetchData} />
-          <Filter filterBody={filterBody} refetchData={refetchData} />
+          {filterBody && <Filter filterBody={filterBody} refetchData={refetchData} />}
         </div>
       </div>
 

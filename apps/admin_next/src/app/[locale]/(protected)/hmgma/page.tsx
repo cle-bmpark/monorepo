@@ -1,46 +1,46 @@
 'use client';
 
+import CompareModal from '@/app/[locale]/(protected)/hmgma/CompareModal';
 import FilterBody from '@/app/[locale]/(protected)/hmgma/FilterBody';
 import RenderCell from '@/app/[locale]/(protected)/hmgma/RenderCell';
 import RenderHeader from '@/app/[locale]/(protected)/hmgma/RenderHeader';
 import Error from '@/app/[locale]/error';
 import Loading from '@/app/[locale]/loading';
 import ListTable from '@/components/table/ListTable';
-import { listData, listType } from '@/dummy/HMGMA';
 import { useGetPcListQuery } from '@/graphql/generated/graphql';
+import { pcListType } from '@/types/graphql';
 import { ReactNode, useState } from 'react';
-import CompareModal from './CompareModal';
 
 export default function HMGMAListPage() {
-  const { loading, error } = useGetPcListQuery();
+  const { data, loading, error } = useGetPcListQuery();
 
   const [isOpenProgram, setIsOpenProgram] = useState<boolean>(false);
   const [isOpenCompare, setIsOpenCompare] = useState<boolean>(false);
-  const [serialNumbers, setSerialNumbers] = useState<string[]>([]);
+  const [selectedPcs, setSelectedPcs] = useState<pcListType[]>([]);
 
   const refetchData = () => {
     // 재검색 기능: 검색, 정렬, 필터, n개씩 기능에 모두 들어갑니다.
     return;
   };
 
-  const renderHeader = (key: keyof listType): ReactNode => (
+  const renderHeader = (key: keyof pcListType): ReactNode => (
     <RenderHeader
       headerKey={key}
       isOpenProgram={isOpenProgram}
       setIsOpenProgram={setIsOpenProgram}
       refetchData={refetchData}
-      serialNumbers={serialNumbers}
+      selectedPcs={selectedPcs}
       setIsOpenCompare={setIsOpenCompare}
     />
   );
 
-  const renderCell = (row: listType, key: keyof listType) => (
+  const renderCell = (row: pcListType, key: keyof pcListType) => (
     <RenderCell
       row={row}
       rowKey={key}
       isOpenProgram={isOpenProgram}
-      serialNumbers={serialNumbers}
-      setSerialNumbers={setSerialNumbers}
+      selectedPcs={selectedPcs}
+      setSelectedPcs={setSelectedPcs}
     />
   );
 
@@ -51,7 +51,7 @@ export default function HMGMAListPage() {
     <>
       <ListTable
         title='HMGMA'
-        data={listData}
+        data={data?.pcList}
         refetchData={refetchData}
         filterBody={FilterBody}
         renderHeader={renderHeader}
@@ -60,8 +60,8 @@ export default function HMGMAListPage() {
       <CompareModal
         visible={isOpenCompare}
         setVisible={setIsOpenCompare}
-        serialNumbers={serialNumbers}
-        setSerialNumbers={setSerialNumbers}
+        selectedPcs={selectedPcs}
+        setSelectedPcs={setSelectedPcs}
       />
     </>
   );

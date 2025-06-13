@@ -1,10 +1,10 @@
-import { programType } from '@/dummy/HMGMA';
+import { PcProgramType } from '@/types/graphql';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { FaAngleDown, FaAngleUp } from 'react-icons/fa6';
 
 interface ProgramAccordianProps {
-  list: programType[];
+  list: PcProgramType[];
   isAllOpen: boolean;
 }
 
@@ -22,15 +22,17 @@ export default function ProgramAccordion({ list, isAllOpen }: ProgramAccordianPr
         <ul key={`program_${index}`} className='flex flex-1 gap-2'>
           <li className='flex items-center text-left'>
             <Image
-              src={item.image}
-              alt={`image_${item.name}`}
+              src={item.program.image}
+              alt={`image_${item.program.name}`}
               width={20}
               height={20}
               className='shrink-0'
             />
           </li>
-          <li className='text-14 leading-16 flex flex-1 items-center text-left'>{item.name}</li>
-          <li className='text-14 leading-16 flex items-center text-left'>{item.version}</li>
+          <li className='text-14 leading-16 flex flex-1 items-center text-left'>
+            {item.program.name}
+          </li>
+          <li className='text-14 leading-16 flex items-center text-left'>{item.program.version}</li>
         </ul>
       ))}
 

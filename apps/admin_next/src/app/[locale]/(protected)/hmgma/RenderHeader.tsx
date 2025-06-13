@@ -1,17 +1,18 @@
-import { listType } from '@/dummy/HMGMA';
 import { toastAtom } from '@/jotai/modalAtoms';
+import { pcListType } from '@/types/graphql';
 import Button from '@repo/ui/src/components/button/Button';
+
 import { useAtom } from 'jotai';
 import { useTranslations } from 'next-intl';
 import { Dispatch, SetStateAction } from 'react';
 import { HiOutlineSwitchVertical } from 'react-icons/hi';
 
 interface RenderHeaderProps {
-  headerKey: keyof listType;
+  headerKey: keyof pcListType;
   isOpenProgram: boolean;
   setIsOpenProgram: Dispatch<SetStateAction<boolean>>;
   refetchData: () => void;
-  serialNumbers: string[];
+  selectedPcs: pcListType[];
   setIsOpenCompare: Dispatch<SetStateAction<boolean>>;
 }
 
@@ -20,10 +21,10 @@ export default function RenderHeader({
   isOpenProgram,
   setIsOpenProgram,
   refetchData,
-  serialNumbers,
+  selectedPcs,
   setIsOpenCompare,
 }: RenderHeaderProps) {
-  const t = useTranslations('mockup');
+  const t = useTranslations('pc');
   const tHMGMA = useTranslations('hmgma');
   const [, setToast] = useAtom(toastAtom);
 
@@ -41,7 +42,7 @@ export default function RenderHeader({
             <Button
               value={tHMGMA('compare-modal-open-button')}
               onClick={() => {
-                if (serialNumbers?.length > 1) setIsOpenCompare(true);
+                if (selectedPcs?.length > 1) setIsOpenCompare(true);
                 else
                   setToast({
                     visible: true,
@@ -56,7 +57,7 @@ export default function RenderHeader({
         </div>
       );
 
-    case 'program':
+    case 'pcPrograms':
       return (
         <div className='flex flex-wrap items-center justify-between'>
           <span>{t('program-name')}</span>
@@ -70,6 +71,10 @@ export default function RenderHeader({
           </div>
         </div>
       );
+
+    case '__typename':
+    case 'id':
+      return null;
 
     default:
       return (

@@ -4,10 +4,10 @@ import client from '@/../apollo-client';
 import { ApolloProvider } from '@apollo/client';
 import React from 'react';
 
-interface ApolloClientPriverProps {
+interface ApolloClientProviderProps {
   children: React.ReactNode;
 }
 
-export default function ApolloClientPriver({ children }: ApolloClientPriverProps) {
+export default function ApolloClientProvider({ children }: ApolloClientProviderProps) {
   return <ApolloProvider client={client}>{children}</ApolloProvider>;
 }

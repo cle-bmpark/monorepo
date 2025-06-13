@@ -1,0 +1,29 @@
+query GetRamStatusList{
+  ramStatusList {
+    id
+    pcId
+    total
+    current
+    average
+    lowest
+    highest
+    unit
+    createdAt
+    updatedAt
+  }
+}
+
+query GetRamStatusDetail($id: Int!) {
+  ramStatusDetail(id: $id) {
+    id
+    pcId
+    total
+    current
+    average
+    lowest
+    highest
+    unit
+    createdAt
+    updatedAt
+  }
+}

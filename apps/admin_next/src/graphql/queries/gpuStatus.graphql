@@ -1,0 +1,23 @@
+query GetGpuStatusList {
+  gpuStatusList {
+    id
+    pcId
+    name
+    usage
+    unit
+    createdAt
+    updatedAt
+  }
+}
+
+query GetGpuStatusDetail($id: Int!){
+  gpuStatusDetail(id: $id) {
+    id
+    pcId
+    name
+    usage
+    unit
+    createdAt
+    updatedAt
+  }
+}
