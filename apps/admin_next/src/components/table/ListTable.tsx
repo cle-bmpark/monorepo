@@ -36,13 +36,7 @@ export default function ListTable<T extends object>({
 
   return (
     <div className='mt-8 flex flex-1 flex-col'>
-      <div className='flex flex-wrap justify-between text-left'>
-        <p className='text-24 leading-32 font-700'>{title}</p>
-        <div className='flex gap-2'>
-          <Search refetchData={refetchData} />
-          <Filter filterBody={filterBody} refetchData={refetchData} />
-        </div>
-      </div>
+      <p className='text-24 leading-32 font-700 mb-8'>{title}</p>
       <div className='flex justify-between'>
         <div className='mb-5 flex items-center gap-1'>
           <div className='w-20'>
@@ -58,11 +52,16 @@ export default function ListTable<T extends object>({
           </div>
           <p>개 씩</p>
         </div>
+
+        <div className='flex gap-2'>
+          <Search refetchData={refetchData} />
+          <Filter filterBody={filterBody} refetchData={refetchData} />
+        </div>
       </div>
 
       <div
         className='border-grey-300 overflow-y-auto border'
-        style={{ maxHeight: `calc(100vh - 480px)` }}
+        style={{ maxHeight: `calc(100vh - 320px)` }}
       >
         <table className='w-full px-1 text-left'>
           <TableHeader data={data} renderHeader={renderHeader} />
