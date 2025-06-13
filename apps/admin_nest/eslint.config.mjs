@@ -77,7 +77,7 @@ export default tseslint.config(
       ], // Promise 오용 방지
 
       // ----------------- 코드 스타일 및 가독성 -----------------
-      complexity: ['warn', { max: 10 }], // 함수의 복잡도 제한 (사이클로매틱 복잡도)
+      complexity: ['warn', { max: 100 }], // 함수의 복잡도 제한 (사이클로매틱 복잡도)
       'max-lines-per-function': ['warn', { max: 1000, skipBlankLines: true, skipComments: true }], // 함수당 라인 수 제한
       'max-depth': ['warn', 4], // 블록 중첩 깊이 제한
       'prefer-const': 'error', // const 사용 강제

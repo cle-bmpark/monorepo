@@ -397,7 +397,11 @@ query {
 =========================================================================================
 
 query {
-  pcList(input: { searchQuery: "main" }) {
+  pcList(input: {
+    searchQuery: "main",
+    orderBy:ANYDESK_IP,
+    sortOrder:DESC
+  }) {
     id
     serialNumber
     lineId

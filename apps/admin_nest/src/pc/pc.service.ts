@@ -1,7 +1,8 @@
 import { CreatePcInput } from '@/pc/dto/create-pc.input';
 import { FindPcsInput } from '@/pc/dto/find-pc.input';
 import { UpdatePcInput } from '@/pc/dto/update-pc.input';
-import { BrainEnum, Pc } from '@/pc/entities/pc.entity';
+import { Pc } from '@/pc/entities/pc.entity';
+import { BrainEnum, PcSortField, SortOrder } from '@/pc/type/enum';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Brackets, In, Repository } from 'typeorm';
@@ -35,7 +36,7 @@ export class PcService {
       .leftJoinAndSelect('pc.pcPrograms', 'pcPrograms')
       .leftJoinAndSelect('pcPrograms.program', 'program');
 
-    // search
+    // 검색 로직
     if (input?.searchQuery) {
       const searchQuery = `%${input.searchQuery.toLowerCase()}%`;
 
@@ -71,6 +72,53 @@ export class PcService {
           );
         }),
       );
+    }
+
+    // 정렬 로직
+    const sortOrder = input?.sortOrder ?? SortOrder.ASC;
+
+    if (input?.orderBy) {
+      switch (input.orderBy) {
+        case PcSortField.SERIAL_NUMBER:
+          queryBuilder.addOrderBy('pc.serialNumber', sortOrder);
+          break;
+        case PcSortField.LINE_ID:
+          queryBuilder.addOrderBy('pc.lineId', sortOrder);
+          break;
+        case PcSortField.POSITION_ID:
+          queryBuilder.addOrderBy('pc.positionId', sortOrder);
+          break;
+        case PcSortField.PROCESS_ID:
+          queryBuilder.addOrderBy('pc.processId', sortOrder);
+          break;
+        case PcSortField.BRAIN:
+          queryBuilder.addOrderBy('pc.brain', sortOrder);
+          break;
+        case PcSortField.IS_LICENSE:
+          queryBuilder.addOrderBy('pc.isLicense', sortOrder);
+          break;
+        case PcSortField.IS_NETWORK:
+          queryBuilder.addOrderBy('pc.isNetwork', sortOrder);
+          break;
+        case PcSortField.IS_PROGRAM:
+          queryBuilder.addOrderBy('pc.isProgram', sortOrder);
+          break;
+        case PcSortField.ANYDESK_IP:
+          queryBuilder.addOrderBy('pc.anydeskIp', sortOrder);
+          break;
+        case PcSortField.LAUNCHER_UPDATED_AT:
+          queryBuilder.addOrderBy('pc.launcherUpdatedAt', sortOrder);
+          break;
+        default:
+          queryBuilder.addOrderBy('pc.isProgram', sortOrder);
+          queryBuilder.addOrderBy('pc.isNetwork', sortOrder);
+          queryBuilder.addOrderBy('pc.id', sortOrder);
+          break;
+      }
+    } else {
+      queryBuilder.addOrderBy('pc.isProgram', sortOrder);
+      queryBuilder.addOrderBy('pc.isNetwork', sortOrder);
+      queryBuilder.addOrderBy('pc.id', sortOrder);
     }
 
     return queryBuilder.getMany();

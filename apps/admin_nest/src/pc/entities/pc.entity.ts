@@ -9,7 +9,7 @@ import { Process } from '@/process/entities/process.entity';
 import { RamStatus } from '@/ram_status/entities/ram_status.entity';
 import { StorageStatus } from '@/storage_status/entities/storage_status.entity';
 import { TempStatus } from '@/temp_status/entities/temp_status.entity';
-import { Field, Int, ObjectType, registerEnumType } from '@nestjs/graphql';
+import { Field, Int, ObjectType } from '@nestjs/graphql';
 import {
   Column,
   Entity,
@@ -19,16 +19,7 @@ import {
   OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-
-export enum BrainEnum {
-  MAIN = 'MAIN',
-  SPARE = 'SPARE',
-}
-
-registerEnumType(BrainEnum, {
-  name: 'BrainEnum',
-  description: 'PC 종류: MAIN, SPARE',
-});
+import { BrainEnum } from '../type/enum';
 
 @ObjectType()
 @Entity()

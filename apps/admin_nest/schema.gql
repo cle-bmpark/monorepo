@@ -133,10 +133,16 @@ input FindPcsByIds {
 }
 
 input FindPcsInput {
+  """정렬 기준 필드"""
+  orderBy: PcSortField
+
   """
   serial number, brain(main, spare), anydeskIp, line, position, process, driver, program 검색어
   """
   searchQuery: String
+
+  """정렬 순서 (ASC: 오름차순, DESC: 내림차순)"""
+  sortOrder: SortOrder = ASC
 }
 
 type GpuStatus {
@@ -379,6 +385,20 @@ type PcProgram {
   updatedAt: String!
 }
 
+"""PC 목록 정렬 기준 필드"""
+enum PcSortField {
+  ANYDESK_IP
+  BRAIN
+  IS_LICENSE
+  IS_NETWORK
+  IS_PROGRAM
+  LAUNCHER_UPDATED_AT
+  LINE_ID
+  POSITION_ID
+  PROCESS_ID
+  SERIAL_NUMBER
+}
+
 type Position {
   """Position 코드: FRONT, REAR, RIGHT_HAND, LEFT_HAND"""
   code: String!
@@ -566,6 +586,12 @@ type RamStatus {
 
   """업데이트 일시"""
   updatedAt: String!
+}
+
+"""정렬 순서: 오름차순(ASC), 내림차순(DESC)"""
+enum SortOrder {
+  ASC
+  DESC
 }
 
 type StorageStatus {
