@@ -13,7 +13,8 @@ async function bootstrap() {
     credentials: true, // 쿠키/인증 헤더를 함께 보내려면 true
   });
 
-  await app.listen(3000, '0.0.0.0');
+  const port = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
+  await app.listen(port, '0.0.0.0');
 }
 
 bootstrap().catch((error: unknown) => {
