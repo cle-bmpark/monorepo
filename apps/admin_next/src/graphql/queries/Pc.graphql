@@ -16,8 +16,8 @@ query GetPcList($input: FindPcsInput) {
     }
     brain
     isLicense
-    isNetwork
     isProgram
+    isNetwork
     anydeskIp
     launcherUpdatedAt
     pcPrograms {

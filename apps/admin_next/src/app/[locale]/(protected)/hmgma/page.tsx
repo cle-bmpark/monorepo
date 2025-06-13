@@ -7,7 +7,7 @@ import RenderHeader from '@/app/[locale]/(protected)/hmgma/RenderHeader';
 import Error from '@/app/[locale]/error';
 import Loading from '@/app/[locale]/loading';
 import ListTable from '@/components/table/ListTable';
-import { useGetPcListQuery } from '@/graphql/generated/graphql';
+import { PcSortField, SortOrder, useGetPcListQuery } from '@/graphql/generated/graphql';
 import { pcListType } from '@/types/graphql';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { ReactNode, useState } from 'react';
@@ -21,9 +21,12 @@ export default function HMGMAListPage() {
   const [isOpenCompare, setIsOpenCompare] = useState<boolean>(false);
   const [selectedPcs, setSelectedPcs] = useState<pcListType[]>([]);
   const [search, setSearch] = useState<string | undefined | null>(searchQuery);
+  const [order, setOrder] = useState<{ orderBy?: PcSortField; sortOrder?: SortOrder }>({});
 
   const { data, loading, error } = useGetPcListQuery({
-    variables: { input: { searchQuery: search } },
+    variables: {
+      input: { searchQuery: search, orderBy: order.orderBy, sortOrder: order.sortOrder },
+    },
   });
   const filterBody = useFilterBody();
 
@@ -50,9 +53,10 @@ export default function HMGMAListPage() {
       headerKey={key}
       isOpenProgram={isOpenProgram}
       setIsOpenProgram={setIsOpenProgram}
-      refetchData={refetchData}
       selectedPcs={selectedPcs}
       setIsOpenCompare={setIsOpenCompare}
+      order={order}
+      setOrder={setOrder}
     />
   );
 

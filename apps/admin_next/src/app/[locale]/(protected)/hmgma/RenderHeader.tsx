@@ -1,3 +1,4 @@
+import { PcSortField, SortOrder } from '@/graphql/generated/graphql';
 import { toastAtom } from '@/jotai/modalAtoms';
 import { pcListType } from '@/types/graphql';
 import Button from '@repo/ui/src/components/button/Button';
@@ -11,18 +12,44 @@ interface RenderHeaderProps {
   headerKey: keyof pcListType;
   isOpenProgram: boolean;
   setIsOpenProgram: Dispatch<SetStateAction<boolean>>;
-  refetchData: () => void;
   selectedPcs: pcListType[];
   setIsOpenCompare: Dispatch<SetStateAction<boolean>>;
+  order: {
+    orderBy?: PcSortField;
+    sortOrder?: SortOrder;
+  };
+  setOrder: Dispatch<
+    SetStateAction<{
+      orderBy?: PcSortField;
+      sortOrder?: SortOrder;
+    }>
+  >;
 }
+
+const headerKeySort: Partial<Record<keyof pcListType, PcSortField>> = {
+  __typename: PcSortField.IsProgram,
+  id: PcSortField.IsProgram,
+  serialNumber: PcSortField.SerialNumber,
+  line: PcSortField.LineId,
+  position: PcSortField.PositionId,
+  process: PcSortField.ProcessId,
+  brain: PcSortField.Brain,
+  isLicense: PcSortField.IsLicense,
+  isNetwork: PcSortField.IsNetwork,
+  isProgram: PcSortField.IsProgram,
+  anydeskIp: PcSortField.AnydeskIp,
+  launcherUpdatedAt: PcSortField.LauncherUpdatedAt,
+  pcPrograms: PcSortField.IsProgram,
+};
 
 export default function RenderHeader({
   headerKey,
   isOpenProgram,
   setIsOpenProgram,
-  refetchData,
   selectedPcs,
   setIsOpenCompare,
+  order,
+  setOrder,
 }: RenderHeaderProps) {
   const t = useTranslations('pc');
   const tHMGMA = useTranslations('hmgma');
@@ -36,7 +63,12 @@ export default function RenderHeader({
           <HiOutlineSwitchVertical
             size={16}
             className='ml-1 mr-4 shrink-0 cursor-pointer'
-            onClick={() => refetchData()}
+            onClick={() =>
+              setOrder({
+                orderBy: PcSortField.SerialNumber,
+                sortOrder: order.sortOrder === SortOrder.Asc ? SortOrder.Desc : SortOrder.Asc,
+              })
+            }
           />
           <div>
             <Button
@@ -83,7 +115,12 @@ export default function RenderHeader({
           <HiOutlineSwitchVertical
             size={16}
             className='shrink-0 cursor-pointer'
-            onClick={() => refetchData()}
+            onClick={() =>
+              setOrder({
+                orderBy: headerKeySort[headerKey],
+                sortOrder: order.sortOrder === SortOrder.Asc ? SortOrder.Desc : SortOrder.Asc,
+              })
+            }
           />
         </div>
       );

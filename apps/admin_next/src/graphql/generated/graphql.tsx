@@ -141,8 +141,12 @@ export type FindPcsByIds = {
 };
 
 export type FindPcsInput = {
+  /** 정렬 기준 필드 */
+  orderBy?: InputMaybe<PcSortField>;
   /** serial number, brain(main, spare), anydeskIp, line, position, process, driver, program 검색어 */
   searchQuery?: InputMaybe<Scalars['String']['input']>;
+  /** 정렬 순서 (ASC: 오름차순, DESC: 내림차순) */
+  sortOrder?: InputMaybe<SortOrder>;
 };
 
 export type GpuStatus = {
@@ -505,6 +509,20 @@ export type PcProgram = {
   updatedAt: Scalars['String']['output'];
 };
 
+/** PC 목록 정렬 기준 필드 */
+export enum PcSortField {
+  AnydeskIp = 'ANYDESK_IP',
+  Brain = 'BRAIN',
+  IsLicense = 'IS_LICENSE',
+  IsNetwork = 'IS_NETWORK',
+  IsProgram = 'IS_PROGRAM',
+  LauncherUpdatedAt = 'LAUNCHER_UPDATED_AT',
+  LineId = 'LINE_ID',
+  PositionId = 'POSITION_ID',
+  ProcessId = 'PROCESS_ID',
+  SerialNumber = 'SERIAL_NUMBER',
+}
+
 export type Position = {
   __typename?: 'Position';
   /** Position 코드: FRONT, REAR, RIGHT_HAND, LEFT_HAND */
@@ -707,6 +725,12 @@ export type RamStatus = {
   /** 업데이트 일시 */
   updatedAt: Scalars['String']['output'];
 };
+
+/** 정렬 순서: 오름차순(ASC), 내림차순(DESC) */
+export enum SortOrder {
+  Asc = 'ASC',
+  Desc = 'DESC',
+}
 
 export type StorageStatus = {
   __typename?: 'StorageStatus';
@@ -1469,8 +1493,8 @@ export type GetPcListQuery = {
     serialNumber: string;
     brain: BrainEnum;
     isLicense: boolean;
-    isNetwork: boolean;
     isProgram: boolean;
+    isNetwork: boolean;
     anydeskIp: string;
     launcherUpdatedAt: string;
     line: { __typename?: 'Line'; id: number; name: string };
@@ -3180,8 +3204,8 @@ export const GetPcListDocument = gql`
       }
       brain
       isLicense
-      isNetwork
       isProgram
+      isNetwork
       anydeskIp
       launcherUpdatedAt
       pcPrograms {
