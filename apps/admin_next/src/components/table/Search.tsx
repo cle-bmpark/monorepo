@@ -4,25 +4,26 @@ import { KeyboardEvent, useState } from 'react';
 import { IoMdSearch } from 'react-icons/io';
 
 interface SearchProps {
-  refetchData: (value?: string) => void;
+  search?: string | null;
+  handleSearch: (value?: string) => void;
 }
 
-export default function Search({ refetchData }: SearchProps) {
+export default function Search({ search, handleSearch }: SearchProps) {
   const t = useTranslations('table');
-  const [search, setSearch] = useState<string>('');
+  const [tempSearch, setTempSearch] = useState<string>(search ?? '');
 
   const handleKeyEnter = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      refetchData();
+      handleSearch(tempSearch);
     }
   };
 
   return (
     <div className='w-2xs'>
       <IconInput
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-        icon={<IoMdSearch onClick={() => refetchData(search)} />}
+        value={tempSearch}
+        onChange={(e) => setTempSearch(e.target.value)}
+        icon={<IoMdSearch onClick={() => handleSearch(tempSearch)} />}
         onKeyDown={handleKeyEnter}
         placeholder={t('search')}
         size='s'

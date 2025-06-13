@@ -10,6 +10,8 @@ interface ListTableProps<T extends object> {
   title: string;
   data?: T[];
   filterBody: () => filterBodyType[];
+  search?: string | null;
+  handleSearch: (value?: string) => void;
   refetchData: (value?: string) => void;
   renderHeader: (key: keyof T) => ReactNode;
   renderCell: (row: T, key: keyof T) => ReactNode;
@@ -19,6 +21,8 @@ export default function ListTable<T extends object>({
   title,
   data,
   filterBody,
+  search,
+  handleSearch,
   refetchData,
   renderHeader,
   renderCell,
@@ -26,13 +30,6 @@ export default function ListTable<T extends object>({
   const PAGE_SIZE_LIST = [30, 50, 100];
   const [pageSize, setPageSize] = useState<number>(50);
   const [selectPage, setSelectPage] = useState<number>(1);
-
-  if (!data || data.length < 1)
-    return (
-      <div className='mt-8 flex flex-1 items-center justify-center'>
-        <p>데이터가 없습니다.</p>
-      </div>
-    );
 
   return (
     <div className='mt-8 flex flex-1 flex-col'>
@@ -54,20 +51,29 @@ export default function ListTable<T extends object>({
         </div>
 
         <div className='flex gap-2'>
-          <Search refetchData={refetchData} />
+          <Search search={search} handleSearch={handleSearch} />
           <Filter filterBody={filterBody} refetchData={refetchData} />
         </div>
       </div>
 
-      <div
-        className='border-grey-300 overflow-y-auto border'
-        style={{ maxHeight: `calc(100vh - 320px)` }}
-      >
-        <table className='w-full px-1 text-left'>
-          <TableHeader data={data} renderHeader={renderHeader} />
-          <TableBody data={data} renderCell={renderCell} />
-        </table>
-      </div>
+      {data && data.length > 0 ? (
+        <div
+          className='border-grey-300 overflow-y-auto border'
+          style={{ maxHeight: `calc(100vh - 320px)` }}
+        >
+          <table className='w-full px-1 text-left'>
+            <TableHeader data={data} renderHeader={renderHeader} />
+            <TableBody data={data} renderCell={renderCell} />
+          </table>
+        </div>
+      ) : (
+        <div
+          className='mt-8 flex flex-1 items-center justify-center'
+          style={{ minHeight: `calc(100vh - 352px)` }}
+        >
+          <p>데이터가 없습니다.</p>
+        </div>
+      )}
 
       <Pagination selectPage={selectPage} setSelectPage={setSelectPage} totalPages={1} />
     </div>

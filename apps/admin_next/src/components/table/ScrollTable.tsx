@@ -1,5 +1,4 @@
 import Filter, { filterBodyType } from '@/components/table/Filter';
-import Search from '@/components/table/Search';
 import TableBody from '@/components/table/TableBody';
 import TableHeader from '@/components/table/TableHeader';
 import { ReactNode } from 'react';
@@ -33,7 +32,6 @@ export default function ScrollTable<T extends object>({
       <div className='flex flex-wrap items-center justify-between text-left'>
         <h3 className='text-grey-800'>{title}</h3>
         <div className='flex gap-2'>
-          <Search refetchData={refetchData} />
           {filterBody && <Filter filterBody={filterBody} refetchData={refetchData} />}
         </div>
       </div>
