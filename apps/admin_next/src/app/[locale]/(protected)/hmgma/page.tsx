@@ -1,7 +1,7 @@
 'use client';
 
 import CompareModal from '@/app/[locale]/(protected)/hmgma/CompareModal';
-import FilterBody from '@/app/[locale]/(protected)/hmgma/FilterBody';
+import { default as useFilterBody } from '@/app/[locale]/(protected)/hmgma/FilterBody';
 import RenderCell from '@/app/[locale]/(protected)/hmgma/RenderCell';
 import RenderHeader from '@/app/[locale]/(protected)/hmgma/RenderHeader';
 import Error from '@/app/[locale]/error';
@@ -13,6 +13,7 @@ import { ReactNode, useState } from 'react';
 
 export default function HMGMAListPage() {
   const { data, loading, error } = useGetPcListQuery();
+  const filterBody = useFilterBody();
 
   const [isOpenProgram, setIsOpenProgram] = useState<boolean>(false);
   const [isOpenCompare, setIsOpenCompare] = useState<boolean>(false);
@@ -53,7 +54,7 @@ export default function HMGMAListPage() {
         title='HMGMA'
         data={data?.pcList}
         refetchData={refetchData}
-        filterBody={FilterBody}
+        filterBody={() => filterBody}
         renderHeader={renderHeader}
         renderCell={renderCell}
       />

@@ -13,9 +13,18 @@ import Dropdown from '@repo/ui/src/components/button/Dropdown';
 import { DateRange } from '@repo/ui/src/components/headless/Calendar';
 import CalendarInput from '@repo/ui/src/components/headless/CalendarInput';
 import { useTranslations } from 'next-intl';
+import { useEffect } from 'react';
 import { useImmer } from 'use-immer';
 
-export default function FilterBody(): filterBodyType[] {
+const COMMON_ENTITY_INITIAL = {
+  id: 0,
+  code: '',
+  name: '',
+  createdAt: '',
+  updatedAt: '',
+};
+
+export default function useFilterBody(): filterBodyType[] {
   const t = useTranslations('pc');
 
   const { data: line } = useGetLineListQuery();
@@ -23,15 +32,18 @@ export default function FilterBody(): filterBodyType[] {
   const { data: process } = useGetProcessListQuery();
 
   const [filter, setFilter] = useImmer<{
-    line?: lineType;
-    position?: positionType;
-    process?: processType;
+    line: lineType;
+    position: positionType;
+    process: processType;
     brain: keyof typeof BrainEnum;
     isLicense: boolean;
     isNetwork: boolean;
     isProgram: boolean;
     launcherUpdateAt: DateRange;
   }>({
+    line: COMMON_ENTITY_INITIAL,
+    position: COMMON_ENTITY_INITIAL,
+    process: COMMON_ENTITY_INITIAL,
     brain: 'Main',
     isLicense: true,
     isNetwork: true,
@@ -41,6 +53,14 @@ export default function FilterBody(): filterBodyType[] {
       to: new Date(),
     },
   });
+
+  useEffect(() => {
+    setFilter((draft) => {
+      draft.line = line?.lineList[0] ?? COMMON_ENTITY_INITIAL;
+      draft.position = position?.positionList[0] ?? COMMON_ENTITY_INITIAL;
+      draft.process = process?.processList[0] ?? COMMON_ENTITY_INITIAL;
+    });
+  }, [line, position, process, setFilter]);
 
   return [
     {
@@ -69,6 +89,7 @@ export default function FilterBody(): filterBodyType[] {
             });
           }}
           size='s'
+          displayKey='name'
         />
       ) : null,
     },
@@ -84,6 +105,7 @@ export default function FilterBody(): filterBodyType[] {
             });
           }}
           size='s'
+          displayKey='name'
         />
       ) : null,
     },
@@ -99,6 +121,7 @@ export default function FilterBody(): filterBodyType[] {
             });
           }}
           size='s'
+          displayKey='name'
         />
       ) : null,
     },

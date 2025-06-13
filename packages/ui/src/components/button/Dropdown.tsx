@@ -11,6 +11,7 @@ interface DropdownProps<T> {
   onClick: (value: T) => void; // 선택된 값 변경 핸들러
   style?: 'default' | 'blue' | 'ghost'; // 색상 스타일
   size?: 'm' | 's';
+  displayKey?: keyof T; // Dropdown에 표시할 객체의 속성 키
 }
 
 export default function Dropdown<T>({
@@ -19,6 +20,7 @@ export default function Dropdown<T>({
   onClick,
   style = 'default',
   size = 'm',
+  displayKey,
 }: DropdownProps<T>) {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -75,7 +77,7 @@ export default function Dropdown<T>({
       >
         <input
           className={`flex min-w-0 flex-1 text-16 outline-0 ${variantStyle[style].input}`}
-          value={String(value)}
+          value={displayKey ? String(value[displayKey]) : String(value)}
           onClick={handleClickInput}
           readOnly
         />
@@ -94,13 +96,13 @@ export default function Dropdown<T>({
           <ul className='flex flex-1 animate-fade-in flex-col gap-1'>
             {valueList.map((item) => (
               <button
-                key={String(item)}
+                key={displayKey ? String(item[displayKey]) : String(item)}
                 className={`flex flex-1 cursor-pointer items-center justify-between gap-1 text-left hover:bg-grey-950/4 ${item === value && variantStyle[style].button} ${sizeStyle[size].dropButton}`}
                 onClick={() => {
                   handleClickButton(item);
                 }}
               >
-                <p>{String(item)}</p>
+                <p>{displayKey ? String(item[displayKey]) : String(item)}</p>
                 {item === value && <FaCheck size={16} />}
               </button>
             ))}
