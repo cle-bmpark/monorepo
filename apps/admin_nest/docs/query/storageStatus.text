@@ -23,3 +23,16 @@ query {
     updatedAt
   }
 }
+
+query {
+  storageStatusByPcId(pcId: 25) {
+    id
+    pcId
+    name
+    total
+    usage
+    unit
+    createdAt
+    updatedAt
+  }
+}

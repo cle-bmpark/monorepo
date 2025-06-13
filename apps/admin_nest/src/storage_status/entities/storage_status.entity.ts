@@ -1,16 +1,17 @@
 import { Pc } from '@/pc/entities/pc.entity';
 import { Field, Float, Int, ObjectType } from '@nestjs/graphql';
-import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn, Unique } from 'typeorm';
 
 @ObjectType()
 @Entity()
+@Unique('unique_pcId_name', ['pcId', 'name'])
 export class StorageStatus {
   @Field(() => Int, { description: '고유번호 ID' })
   @PrimaryGeneratedColumn()
   id: number;
 
   @Field(() => Int, { description: 'PC 고유 ID (외래 키)' })
-  @Column({ unique: true })
+  @Column()
   pcId: number;
 
   @Field(() => Pc, { description: '관련 PC 정보 (관계 필드)' })

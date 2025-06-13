@@ -16,13 +16,19 @@ export class StorageStatusService {
     return 'This action adds a new storageStatus';
   }
 
-  async findAll(): Promise<StorageStatus[]> {
+  findAll(): Promise<StorageStatus[]> {
     return this.storageStatusRepository.find();
   }
 
-  async findOne(id: number): Promise<StorageStatus | null> {
+  findOne(id: number): Promise<StorageStatus | null> {
     return this.storageStatusRepository.findOne({
       where: { id },
+    });
+  }
+
+  findByPcId(pcId: number): Promise<StorageStatus[]> {
+    return this.storageStatusRepository.find({
+      where: { pcId },
     });
   }
 

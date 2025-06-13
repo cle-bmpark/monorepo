@@ -31,6 +31,13 @@ export class StorageStatusResolver {
     return this.storageStatusService.findOne(id);
   }
 
+  @Query(() => [StorageStatus], { name: 'storageStatusByPcId', nullable: true })
+  getStorageStatusByPcId(
+    @Args('pcId', { type: () => Int, description: '조회할 PC의 ID' }) pcId: number,
+  ): Promise<StorageStatus[]> {
+    return this.storageStatusService.findByPcId(pcId);
+  }
+
   @Mutation(() => StorageStatus)
   updateStorageStatus(
     @Args('updateStorageStatusInput') updateStorageStatusInput: UpdateStorageStatusInput,

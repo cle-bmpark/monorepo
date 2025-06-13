@@ -129,7 +129,7 @@ type Driver {
 
 input FindPcsByIds {
   """조회할 PC ID 목록"""
-  ids: [ID!]!
+  ids: [Int!]!
 }
 
 input FindPcsInput {
@@ -515,6 +515,10 @@ type Query {
 
   """모든 Ram Status 목록 조회"""
   ramStatusList: [RamStatus!]!
+  storageStatusByPcId(
+    """조회할 PC의 ID"""
+    pcId: Int!
+  ): [StorageStatus!]
 
   """특정 ID의 Storage Status 정보 조회"""
   storageStatusDetail(id: Int!): StorageStatus!
