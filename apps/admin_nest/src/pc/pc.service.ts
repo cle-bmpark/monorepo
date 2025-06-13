@@ -64,11 +64,11 @@ export class PcService {
             .orWhere('LOWER(process.code) LIKE :searchQuery', { searchQuery })
             .orWhere('LOWER(process.name) LIKE :searchQuery', { searchQuery });
 
-          // driver, program 필드 검색 (name과 version 포함)
-          qb.orWhere('LOWER(driver.name) LIKE :searchQuery', { searchQuery })
-            .orWhere('LOWER(driver.version) LIKE :searchQuery', { searchQuery })
-            .orWhere('LOWER(program.name) LIKE :searchQuery', { searchQuery })
-            .orWhere('LOWER(program.version) LIKE :searchQuery', { searchQuery });
+          // program 필드 검색 (name과 version 포함)
+          qb.orWhere('LOWER(program.name) LIKE :searchQuery', { searchQuery }).orWhere(
+            'LOWER(program.version) LIKE :searchQuery',
+            { searchQuery },
+          );
         }),
       );
     }
