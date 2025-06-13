@@ -20,7 +20,7 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
-enum BrainEnum {
+export enum BrainEnum {
   MAIN = 'MAIN',
   SPARE = 'SPARE',
 }

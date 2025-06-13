@@ -1,23 +1,84 @@
 import { CreatePcInput } from '@/pc/dto/create-pc.input';
 import { UpdatePcInput } from '@/pc/dto/update-pc.input';
-import { Pc } from '@/pc/entities/pc.entity';
+import { BrainEnum, Pc } from '@/pc/entities/pc.entity';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Brackets, In, Repository } from 'typeorm';
+import { FindPcsInput } from './dto/find-pc.input';
 
 @Injectable()
 export class PcService {
   constructor(
     @InjectRepository(Pc)
     private readonly pcRepository: Repository<Pc>,
-  ) {} // Pc Entity 에 대한 TypeORM Repository 넣기 -> Database 작업 수행
+  ) {}
 
   create(_createPcInput: CreatePcInput) {
     return 'This action adds a new pc';
   }
 
-  async findAll(): Promise<Pc[]> {
-    return this.pcRepository.find({
+  async findAll(input?: FindPcsInput): Promise<Pc[]> {
+    const queryBuilder = this.pcRepository.createQueryBuilder('pc');
+
+    queryBuilder
+      .leftJoinAndSelect('pc.line', 'line')
+      .leftJoinAndSelect('pc.position', 'position')
+      .leftJoinAndSelect('pc.process', 'process')
+      .leftJoinAndSelect('pc.cpuStatus', 'cpuStatus')
+      .leftJoinAndSelect('pc.gpuStatus', 'gpuStatus')
+      .leftJoinAndSelect('pc.networkStatus', 'networkStatus')
+      .leftJoinAndSelect('pc.ramStatus', 'ramStatus')
+      .leftJoinAndSelect('pc.storageStatus', 'storageStatus')
+      .leftJoinAndSelect('pc.tempStatus', 'tempStatus')
+      .leftJoinAndSelect('pc.pcDrivers', 'pcDrivers')
+      .leftJoinAndSelect('pcDrivers.driver', 'driver')
+      .leftJoinAndSelect('pc.pcPrograms', 'pcPrograms')
+      .leftJoinAndSelect('pcPrograms.program', 'program');
+
+    // search
+    if (input?.searchQuery) {
+      const searchQuery = `%${input.searchQuery.toLowerCase()}%`;
+
+      queryBuilder.andWhere(
+        new Brackets((qb) => {
+          // PC 엔티티의 직접 필드 검색
+          qb.where('LOWER(pc.serialNumber) LIKE :searchQuery', { searchQuery }).orWhere(
+            'LOWER(pc.anydeskIp) LIKE :searchQuery',
+            { searchQuery },
+          );
+
+          if (input.searchQuery) {
+            const lowerCaseSearchQuery = input.searchQuery.toLowerCase();
+            Object.values(BrainEnum).forEach((enumValue) => {
+              if (enumValue.toLowerCase().includes(lowerCaseSearchQuery.replace(/%/g, ''))) {
+                qb.orWhere('pc.brain = :enumValue', { enumValue });
+              }
+            });
+          }
+
+          // line, position, process 필드 검색 (code와 name 포함)
+          qb.orWhere('LOWER(line.code) LIKE :searchQuery', { searchQuery })
+            .orWhere('LOWER(line.name) LIKE :searchQuery', { searchQuery })
+            .orWhere('LOWER(position.code) LIKE :searchQuery', { searchQuery })
+            .orWhere('LOWER(position.name) LIKE :searchQuery', { searchQuery })
+            .orWhere('LOWER(process.code) LIKE :searchQuery', { searchQuery })
+            .orWhere('LOWER(process.name) LIKE :searchQuery', { searchQuery });
+
+          // driver, program 필드 검색 (name과 version 포함)
+          qb.orWhere('LOWER(driver.name) LIKE :searchQuery', { searchQuery })
+            .orWhere('LOWER(driver.version) LIKE :searchQuery', { searchQuery })
+            .orWhere('LOWER(program.name) LIKE :searchQuery', { searchQuery })
+            .orWhere('LOWER(program.version) LIKE :searchQuery', { searchQuery });
+        }),
+      );
+    }
+
+    return queryBuilder.getMany();
+  }
+
+  async findOne(id: number): Promise<Pc | null> {
+    return this.pcRepository.findOne({
+      where: { id },
       relations: [
         'line',
         'position',
@@ -36,9 +97,11 @@ export class PcService {
     });
   }
 
-  async findOne(id: number): Promise<Pc | null> {
-    return this.pcRepository.findOne({
-      where: { id },
+  async findByIds(ids: number[]): Promise<Pc[]> {
+    return this.pcRepository.find({
+      where: {
+        id: In(ids),
+      },
       relations: [
         'line',
         'position',
