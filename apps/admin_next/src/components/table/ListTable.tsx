@@ -4,7 +4,14 @@ import TableBody from '@/components/table/TableBody';
 import TableHeader from '@/components/table/TableHeader';
 import Dropdown from '@repo/ui/src/components/button/Dropdown';
 import Pagination from '@repo/ui/src/components/table/Pagination';
-import { ReactNode, useState } from 'react';
+import { SetStateAction } from 'jotai';
+import { Dispatch, ReactNode } from 'react';
+
+export interface paginationType {
+  page: number;
+  pageSize: number;
+  totalPages: number;
+}
 
 interface ListTableProps<T extends object> {
   title: string;
@@ -12,9 +19,12 @@ interface ListTableProps<T extends object> {
   filterBody: () => filterBodyType[];
   search?: string | null;
   handleSearch: (value?: string) => void;
-  refetchData: (value?: string) => void;
   renderHeader: (key: keyof T) => ReactNode;
   renderCell: (row: T, key: keyof T) => ReactNode;
+  pagination: paginationType;
+  setPagination: Dispatch<SetStateAction<paginationType>>;
+  handleFilterReset: () => void;
+  handleFilterSearch: () => void;
 }
 
 export default function ListTable<T extends object>({
@@ -23,13 +33,14 @@ export default function ListTable<T extends object>({
   filterBody,
   search,
   handleSearch,
-  refetchData,
   renderHeader,
   renderCell,
+  pagination,
+  setPagination,
+  handleFilterReset,
+  handleFilterSearch,
 }: ListTableProps<T>) {
-  const PAGE_SIZE_LIST = [30, 50, 100];
-  const [pageSize, setPageSize] = useState<number>(50);
-  const [selectPage, setSelectPage] = useState<number>(1);
+  const PAGE_SIZE_LIST = [10, 30, 50];
 
   return (
     <div className='mt-8 flex flex-1 flex-col'>
@@ -38,11 +49,10 @@ export default function ListTable<T extends object>({
         <div className='mb-5 flex items-center gap-1'>
           <div className='w-20'>
             <Dropdown
-              value={pageSize}
+              value={pagination.pageSize}
               valueList={PAGE_SIZE_LIST}
               onClick={(value) => {
-                refetchData();
-                setPageSize(value);
+                setPagination((prev) => ({ ...prev, pageSize: pagination.pageSize, page: value }));
               }}
               size='s'
             />
@@ -52,7 +62,11 @@ export default function ListTable<T extends object>({
 
         <div className='flex gap-2'>
           <Search search={search} handleSearch={handleSearch} />
-          <Filter filterBody={filterBody} refetchData={refetchData} />
+          <Filter
+            filterBody={filterBody}
+            handleReset={() => handleFilterReset}
+            handleSearch={handleFilterSearch}
+          />
         </div>
       </div>
 
@@ -75,7 +89,11 @@ export default function ListTable<T extends object>({
         </div>
       )}
 
-      <Pagination selectPage={selectPage} setSelectPage={setSelectPage} totalPages={1} />
+      <Pagination
+        selectPage={pagination.page}
+        setSelectPage={(value: number) => setPagination((prev) => ({ ...prev, page: value }))}
+        totalPages={pagination.totalPages}
+      />
     </div>
   );
 }

@@ -141,8 +141,30 @@ export type FindPcsByIds = {
 };
 
 export type FindPcsInput = {
+  /** PC 종류: MAIN, SPARE */
+  brain?: InputMaybe<BrainEnum>;
+  /** 라이선스 여부 */
+  isLicense?: InputMaybe<Scalars['Boolean']['input']>;
+  /** 네트워크 접속 여부 */
+  isNetwork?: InputMaybe<Scalars['Boolean']['input']>;
+  /** 프로그램 작동 여부 */
+  isProgram?: InputMaybe<Scalars['Boolean']['input']>;
+  /** 런처 업데이트 종료 일시 (ISO 8601 형식: YYYY-MM-DD) */
+  launcherUpdatedAtEnd?: InputMaybe<Scalars['String']['input']>;
+  /** 런처 업데이트 시작 일시 (ISO 8601 형식: YYYY-MM-DD) */
+  launcherUpdatedAtStart?: InputMaybe<Scalars['String']['input']>;
+  /** 라인 고유 ID */
+  lineId?: InputMaybe<Scalars['Int']['input']>;
   /** 정렬 기준 필드 */
   orderBy?: InputMaybe<PcSortField>;
+  /** 현재 페이지 번호 (1부터 시작) */
+  page?: InputMaybe<Scalars['Int']['input']>;
+  /** 페이지당 항목 수 */
+  pageSize?: InputMaybe<Scalars['Int']['input']>;
+  /** 방향 고유 ID */
+  positionId?: InputMaybe<Scalars['Int']['input']>;
+  /** 공정 고유 ID */
+  processId?: InputMaybe<Scalars['Int']['input']>;
   /** serial number, brain(main, spare), anydeskIp, line, position, process, driver, program 검색어 */
   searchQuery?: InputMaybe<Scalars['String']['input']>;
   /** 정렬 순서 (ASC: 오름차순, DESC: 내림차순) */
@@ -491,6 +513,18 @@ export type PcDriver = {
   updatedAt: Scalars['String']['output'];
 };
 
+export type PcPagination = {
+  __typename?: 'PcPagination';
+  /** 다음 페이지가 있는지 여부 */
+  hasNextPage: Scalars['Boolean']['output'];
+  /** 현재 페이지의 PC 목록 데이터 */
+  items: Array<Pc>;
+  /** 전체 PC 항목의 총 개수 */
+  totalCount: Scalars['Int']['output'];
+  /** 전체 페이지 수 */
+  totalPages?: Maybe<Scalars['Int']['output']>;
+};
+
 export type PcProgram = {
   __typename?: 'PcProgram';
   /** 생성 일시 */
@@ -598,7 +632,7 @@ export type Query = {
   /** 모든 PC Driver 목록 조회 */
   pcDriverList: Array<PcDriver>;
   /** PC 목록을 필터 및 검색 조건으로 조회 */
-  pcList: Array<Pc>;
+  pcList: PcPagination;
   /** 특정 ID의 PC Program 정보 조회 */
   pcProgramDetail: PcProgram;
   /** 모든 PC Program 목록 조회 */
@@ -868,149 +902,155 @@ export type GetPcsQueryVariables = Exact<{
 
 export type GetPcsQuery = {
   __typename?: 'Query';
-  pcList: Array<{
-    __typename?: 'Pc';
-    id: number;
-    serialNumber: string;
-    lineId: number;
-    positionId: number;
-    processId: number;
-    brain: BrainEnum;
-    isLicense: boolean;
-    isNetwork: boolean;
-    isProgram: boolean;
-    anydeskIp: string;
-    ipv4: string;
-    activeServer: string;
-    launcherUpdatedAt: string;
-    createdAt: string;
-    updatedAt: string;
-    line: {
-      __typename?: 'Line';
+  pcList: {
+    __typename?: 'PcPagination';
+    totalCount: number;
+    totalPages?: number | null;
+    hasNextPage: boolean;
+    items: Array<{
+      __typename?: 'Pc';
       id: number;
-      code: string;
-      name: string;
+      serialNumber: string;
+      lineId: number;
+      positionId: number;
+      processId: number;
+      brain: BrainEnum;
+      isLicense: boolean;
+      isNetwork: boolean;
+      isProgram: boolean;
+      anydeskIp: string;
+      ipv4: string;
+      activeServer: string;
+      launcherUpdatedAt: string;
       createdAt: string;
       updatedAt: string;
-    };
-    position: {
-      __typename?: 'Position';
-      id: number;
-      code: string;
-      name: string;
-      createdAt: string;
-      updatedAt: string;
-    };
-    process: {
-      __typename?: 'Process';
-      id: number;
-      code: string;
-      name: string;
-      createdAt: string;
-      updatedAt: string;
-    };
-    cpuStatus: {
-      __typename?: 'CpuStatus';
-      id: number;
-      pcId: number;
-      name: string;
-      usage: number;
-      unit: string;
-      createdAt: string;
-      updatedAt: string;
-    };
-    gpuStatus: {
-      __typename?: 'GpuStatus';
-      id: number;
-      pcId: number;
-      name: string;
-      usage: number;
-      unit: string;
-      createdAt: string;
-      updatedAt: string;
-    };
-    networkStatus: {
-      __typename?: 'NetworkStatus';
-      id: number;
-      pcId: number;
-      send: number;
-      receive: number;
-      createdAt: string;
-      updatedAt: string;
-    };
-    ramStatus: {
-      __typename?: 'RamStatus';
-      id: number;
-      pcId: number;
-      total: number;
-      current: number;
-      average: number;
-      lowest: number;
-      highest: number;
-      unit: string;
-      createdAt: string;
-      updatedAt: string;
-    };
-    storageStatuses: Array<{
-      __typename?: 'StorageStatus';
-      id: number;
-      pcId: number;
-      name: string;
-      total: number;
-      usage: number;
-      unit: string;
-      createdAt: string;
-      updatedAt: string;
-    }>;
-    tempStatus: {
-      __typename?: 'TempStatus';
-      id: number;
-      pcId: number;
-      current: number;
-      average: number;
-      lowest: number;
-      highest: number;
-      unit: string;
-      createdAt: string;
-      updatedAt: string;
-    };
-    pcDrivers: Array<{
-      __typename?: 'PcDriver';
-      id: number;
-      pcId: number;
-      driverId: number;
-      createdAt: string;
-      updatedAt: string;
-      driver: {
-        __typename?: 'Driver';
+      line: {
+        __typename?: 'Line';
         id: number;
-        image: string;
+        code: string;
         name: string;
-        version: string;
-        driverUpdatedAt: string;
         createdAt: string;
         updatedAt: string;
       };
-    }>;
-    pcPrograms: Array<{
-      __typename?: 'PcProgram';
-      id: number;
-      pcId: number;
-      programId: number;
-      createdAt: string;
-      updatedAt: string;
-      program: {
-        __typename?: 'Program';
+      position: {
+        __typename?: 'Position';
         id: number;
-        image: string;
+        code: string;
         name: string;
-        version: string;
-        programUpdatedAt: string;
         createdAt: string;
         updatedAt: string;
       };
+      process: {
+        __typename?: 'Process';
+        id: number;
+        code: string;
+        name: string;
+        createdAt: string;
+        updatedAt: string;
+      };
+      cpuStatus: {
+        __typename?: 'CpuStatus';
+        id: number;
+        pcId: number;
+        name: string;
+        usage: number;
+        unit: string;
+        createdAt: string;
+        updatedAt: string;
+      };
+      gpuStatus: {
+        __typename?: 'GpuStatus';
+        id: number;
+        pcId: number;
+        name: string;
+        usage: number;
+        unit: string;
+        createdAt: string;
+        updatedAt: string;
+      };
+      networkStatus: {
+        __typename?: 'NetworkStatus';
+        id: number;
+        pcId: number;
+        send: number;
+        receive: number;
+        createdAt: string;
+        updatedAt: string;
+      };
+      ramStatus: {
+        __typename?: 'RamStatus';
+        id: number;
+        pcId: number;
+        total: number;
+        current: number;
+        average: number;
+        lowest: number;
+        highest: number;
+        unit: string;
+        createdAt: string;
+        updatedAt: string;
+      };
+      storageStatuses: Array<{
+        __typename?: 'StorageStatus';
+        id: number;
+        pcId: number;
+        name: string;
+        total: number;
+        usage: number;
+        unit: string;
+        createdAt: string;
+        updatedAt: string;
+      }>;
+      tempStatus: {
+        __typename?: 'TempStatus';
+        id: number;
+        pcId: number;
+        current: number;
+        average: number;
+        lowest: number;
+        highest: number;
+        unit: string;
+        createdAt: string;
+        updatedAt: string;
+      };
+      pcDrivers: Array<{
+        __typename?: 'PcDriver';
+        id: number;
+        pcId: number;
+        driverId: number;
+        createdAt: string;
+        updatedAt: string;
+        driver: {
+          __typename?: 'Driver';
+          id: number;
+          image: string;
+          name: string;
+          version: string;
+          driverUpdatedAt: string;
+          createdAt: string;
+          updatedAt: string;
+        };
+      }>;
+      pcPrograms: Array<{
+        __typename?: 'PcProgram';
+        id: number;
+        pcId: number;
+        programId: number;
+        createdAt: string;
+        updatedAt: string;
+        program: {
+          __typename?: 'Program';
+          id: number;
+          image: string;
+          name: string;
+          version: string;
+          programUpdatedAt: string;
+          createdAt: string;
+          updatedAt: string;
+        };
+      }>;
     }>;
-  }>;
+  };
 };
 
 export type GetPcQueryVariables = Exact<{
@@ -1487,24 +1527,28 @@ export type GetPcListQueryVariables = Exact<{
 
 export type GetPcListQuery = {
   __typename?: 'Query';
-  pcList: Array<{
-    __typename?: 'Pc';
-    id: number;
-    serialNumber: string;
-    brain: BrainEnum;
-    isLicense: boolean;
-    isProgram: boolean;
-    isNetwork: boolean;
-    anydeskIp: string;
-    launcherUpdatedAt: string;
-    line: { __typename?: 'Line'; id: number; name: string };
-    position: { __typename?: 'Position'; id: number; name: string };
-    process: { __typename?: 'Process'; id: number; name: string };
-    pcPrograms: Array<{
-      __typename?: 'PcProgram';
-      program: { __typename?: 'Program'; image: string; name: string; version: string };
+  pcList: {
+    __typename?: 'PcPagination';
+    totalPages?: number | null;
+    items: Array<{
+      __typename?: 'Pc';
+      id: number;
+      serialNumber: string;
+      brain: BrainEnum;
+      isLicense: boolean;
+      isProgram: boolean;
+      isNetwork: boolean;
+      anydeskIp: string;
+      launcherUpdatedAt: string;
+      line: { __typename?: 'Line'; id: number; name: string };
+      position: { __typename?: 'Position'; id: number; name: string };
+      process: { __typename?: 'Process'; id: number; name: string };
+      pcPrograms: Array<{
+        __typename?: 'PcProgram';
+        program: { __typename?: 'Program'; image: string; name: string; version: string };
+      }>;
     }>;
-  }>;
+  };
 };
 
 export type GetPcDetailQueryVariables = Exact<{
@@ -1950,133 +1994,138 @@ export type GetTempStatusDetailQuery = {
 export const GetPcsDocument = gql`
   query GetPcs($input: FindPcsInput) {
     pcList(input: $input) {
-      id
-      serialNumber
-      lineId
-      positionId
-      processId
-      brain
-      isLicense
-      isNetwork
-      isProgram
-      anydeskIp
-      ipv4
-      activeServer
-      launcherUpdatedAt
-      createdAt
-      updatedAt
-      line {
+      items {
         id
-        code
-        name
+        serialNumber
+        lineId
+        positionId
+        processId
+        brain
+        isLicense
+        isNetwork
+        isProgram
+        anydeskIp
+        ipv4
+        activeServer
+        launcherUpdatedAt
         createdAt
         updatedAt
-      }
-      position {
-        id
-        code
-        name
-        createdAt
-        updatedAt
-      }
-      process {
-        id
-        code
-        name
-        createdAt
-        updatedAt
-      }
-      cpuStatus {
-        id
-        pcId
-        name
-        usage
-        unit
-        createdAt
-        updatedAt
-      }
-      gpuStatus {
-        id
-        pcId
-        name
-        usage
-        unit
-        createdAt
-        updatedAt
-      }
-      networkStatus {
-        id
-        pcId
-        send
-        receive
-        createdAt
-        updatedAt
-      }
-      ramStatus {
-        id
-        pcId
-        total
-        current
-        average
-        lowest
-        highest
-        unit
-        createdAt
-        updatedAt
-      }
-      storageStatuses {
-        id
-        pcId
-        name
-        total
-        usage
-        unit
-        createdAt
-        updatedAt
-      }
-      tempStatus {
-        id
-        pcId
-        current
-        average
-        lowest
-        highest
-        unit
-        createdAt
-        updatedAt
-      }
-      pcDrivers {
-        id
-        pcId
-        driverId
-        createdAt
-        updatedAt
-        driver {
+        line {
           id
-          image
+          code
           name
-          version
-          driverUpdatedAt
           createdAt
           updatedAt
         }
-      }
-      pcPrograms {
-        id
-        pcId
-        programId
-        createdAt
-        updatedAt
-        program {
+        position {
           id
-          image
+          code
           name
-          version
-          programUpdatedAt
           createdAt
           updatedAt
         }
+        process {
+          id
+          code
+          name
+          createdAt
+          updatedAt
+        }
+        cpuStatus {
+          id
+          pcId
+          name
+          usage
+          unit
+          createdAt
+          updatedAt
+        }
+        gpuStatus {
+          id
+          pcId
+          name
+          usage
+          unit
+          createdAt
+          updatedAt
+        }
+        networkStatus {
+          id
+          pcId
+          send
+          receive
+          createdAt
+          updatedAt
+        }
+        ramStatus {
+          id
+          pcId
+          total
+          current
+          average
+          lowest
+          highest
+          unit
+          createdAt
+          updatedAt
+        }
+        storageStatuses {
+          id
+          pcId
+          name
+          total
+          usage
+          unit
+          createdAt
+          updatedAt
+        }
+        tempStatus {
+          id
+          pcId
+          current
+          average
+          lowest
+          highest
+          unit
+          createdAt
+          updatedAt
+        }
+        pcDrivers {
+          id
+          pcId
+          driverId
+          createdAt
+          updatedAt
+          driver {
+            id
+            image
+            name
+            version
+            driverUpdatedAt
+            createdAt
+            updatedAt
+          }
+        }
+        pcPrograms {
+          id
+          pcId
+          programId
+          createdAt
+          updatedAt
+          program {
+            id
+            image
+            name
+            version
+            programUpdatedAt
+            createdAt
+            updatedAt
+          }
+        }
       }
+      totalCount
+      totalPages
+      hasNextPage
     }
   }
 `;
@@ -3188,33 +3237,36 @@ export type GetNetworkStatusDetailQueryResult = Apollo.QueryResult<
 export const GetPcListDocument = gql`
   query GetPcList($input: FindPcsInput) {
     pcList(input: $input) {
-      id
-      serialNumber
-      line {
+      items {
         id
-        name
-      }
-      position {
-        id
-        name
-      }
-      process {
-        id
-        name
-      }
-      brain
-      isLicense
-      isProgram
-      isNetwork
-      anydeskIp
-      launcherUpdatedAt
-      pcPrograms {
-        program {
-          image
+        serialNumber
+        line {
+          id
           name
-          version
+        }
+        position {
+          id
+          name
+        }
+        process {
+          id
+          name
+        }
+        brain
+        isLicense
+        isProgram
+        isNetwork
+        anydeskIp
+        launcherUpdatedAt
+        pcPrograms {
+          program {
+            image
+            name
+            version
+          }
         }
       }
+      totalPages
     }
   }
 `;

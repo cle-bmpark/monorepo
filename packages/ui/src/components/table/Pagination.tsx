@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useState } from 'react';
+import { useState } from 'react';
 import {
   CgChevronDoubleLeft,
   CgChevronDoubleRight,
@@ -8,7 +8,7 @@ import {
 
 interface PaginationProps {
   selectPage: number;
-  setSelectPage: Dispatch<SetStateAction<number>>;
+  setSelectPage: (value: number) => void;
   totalPages: number;
 }
 

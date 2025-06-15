@@ -7,7 +7,7 @@ import {
 } from '@/graphql/generated/graphql';
 
 // pc list
-export type pcListType = GetPcListQuery['pcList'][number];
+export type pcListType = GetPcListQuery['pcList']['items'][number];
 
 export type PcProgramType = pcListType['pcPrograms'][number];
 

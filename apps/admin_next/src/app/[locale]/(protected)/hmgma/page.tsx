@@ -6,11 +6,53 @@ import RenderCell from '@/app/[locale]/(protected)/hmgma/RenderCell';
 import RenderHeader from '@/app/[locale]/(protected)/hmgma/RenderHeader';
 import Error from '@/app/[locale]/error';
 import Loading from '@/app/[locale]/loading';
-import ListTable from '@/components/table/ListTable';
-import { PcSortField, SortOrder, useGetPcListQuery } from '@/graphql/generated/graphql';
-import { pcListType } from '@/types/graphql';
+import ListTable, { paginationType } from '@/components/table/ListTable';
+import { BrainEnum, PcSortField, SortOrder, useGetPcListQuery } from '@/graphql/generated/graphql';
+import { lineType, pcListType, positionType, processType } from '@/types/graphql';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { ReactNode, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
+
+export interface filterType {
+  launcherUpdatedAtStart: Date | undefined;
+  launcherUpdatedAtEnd: Date | undefined;
+  line: lineType;
+  position: positionType;
+  process: processType;
+  brain: BrainEnum | 'ALL';
+  isLicense: boolean | 'ALL';
+  isProgram: boolean | 'ALL';
+  isNetwork: boolean | 'ALL';
+}
+
+const filterInitial: filterType = {
+  launcherUpdatedAtStart: new Date(new Date().setFullYear(new Date().getFullYear() - 10)),
+  launcherUpdatedAtEnd: new Date(),
+  line: {
+    id: 0,
+    code: 'ALL',
+    name: 'ALL',
+    createdAt: '',
+    updatedAt: '',
+  },
+  position: {
+    id: 0,
+    code: 'ALL',
+    name: 'ALL',
+    createdAt: '',
+    updatedAt: '',
+  },
+  process: {
+    id: 0,
+    code: 'ALL',
+    name: 'ALL',
+    createdAt: '',
+    updatedAt: '',
+  },
+  brain: 'ALL',
+  isLicense: 'ALL',
+  isProgram: 'ALL',
+  isNetwork: 'ALL',
+};
 
 export default function HMGMAListPage() {
   const searchParams = useSearchParams();
@@ -22,17 +64,47 @@ export default function HMGMAListPage() {
   const [selectedPcs, setSelectedPcs] = useState<pcListType[]>([]);
   const [search, setSearch] = useState<string | undefined | null>(searchQuery);
   const [order, setOrder] = useState<{ orderBy?: PcSortField; sortOrder?: SortOrder }>({});
+  const [pagination, setPagination] = useState<paginationType>({
+    page: 1,
+    pageSize: 10,
+    totalPages: 1,
+  });
+  const [localFilter, setLocalFilter] = useState<filterType>(filterInitial);
+  const [activeFilter, setActiveFilter] = useState<filterType>(filterInitial);
 
   const { data, loading, error } = useGetPcListQuery({
     variables: {
-      input: { searchQuery: search, orderBy: order.orderBy, sortOrder: order.sortOrder },
+      input: {
+        searchQuery: search,
+        orderBy: order.orderBy,
+        sortOrder: order.sortOrder,
+        page: pagination.page,
+        pageSize: pagination.pageSize,
+        launcherUpdatedAtStart:
+          activeFilter.launcherUpdatedAtStart === undefined
+            ? undefined
+            : activeFilter.launcherUpdatedAtStart.toString(),
+        launcherUpdatedAtEnd:
+          activeFilter.launcherUpdatedAtEnd === undefined
+            ? undefined
+            : activeFilter.launcherUpdatedAtEnd.toString(),
+        lineId: activeFilter.line.id === 0 ? undefined : activeFilter.line.id,
+        positionId: activeFilter.position.id === 0 ? undefined : activeFilter.position.id,
+        processId: activeFilter.process.id === 0 ? undefined : activeFilter.process.id,
+        brain: activeFilter.brain === 'ALL' ? undefined : activeFilter.brain,
+        isLicense: activeFilter.isLicense === 'ALL' ? undefined : activeFilter.isLicense,
+        isProgram: activeFilter.isProgram === 'ALL' ? undefined : activeFilter.isProgram,
+        isNetwork: activeFilter.isNetwork === 'ALL' ? undefined : activeFilter.isNetwork,
+      },
     },
   });
-  const filterBody = useFilterBody();
 
-  const refetchData = () => {
-    // 재검색 기능: 검색, 정렬, 필터, n개씩 기능에 모두 들어갑니다.
-    return;
+  const filterBody = useFilterBody({ filter: localFilter, setFilter: setLocalFilter });
+  const handleFilterReset = () => {
+    setActiveFilter(filterInitial);
+  };
+  const handleFilterSearch = () => {
+    setActiveFilter(localFilter);
   };
 
   const handleSearch = (value?: string) => {
@@ -70,6 +142,13 @@ export default function HMGMAListPage() {
     />
   );
 
+  useEffect(() => {
+    setPagination((prev) => ({
+      ...prev,
+      totalPages: data?.pcList.totalPages ?? 1,
+    }));
+  }, [data]);
+
   if (error) return <Error />;
 
   return (
@@ -77,13 +156,16 @@ export default function HMGMAListPage() {
       {loading && <Loading />}
       <ListTable
         title='HMGMA'
-        data={data?.pcList}
+        data={data?.pcList.items}
         search={search}
         handleSearch={handleSearch}
-        refetchData={refetchData}
         filterBody={() => filterBody}
         renderHeader={renderHeader}
         renderCell={renderCell}
+        pagination={pagination}
+        setPagination={setPagination}
+        handleFilterReset={handleFilterReset}
+        handleFilterSearch={handleFilterSearch}
       />
       <CompareModal
         visible={isOpenCompare}

@@ -11,10 +11,11 @@ export interface filterBodyType {
 
 interface FilterProps {
   filterBody: () => filterBodyType[];
-  refetchData: (value?: string) => void;
+  handleReset?: () => void;
+  handleSearch?: () => void;
 }
 
-export default function Filter({ filterBody, refetchData }: FilterProps) {
+export default function Filter({ filterBody, handleReset, handleSearch }: FilterProps) {
   const filterRef = useRef<HTMLDivElement>(null);
   const t = useTranslations('table');
 
@@ -59,14 +60,25 @@ export default function Filter({ filterBody, refetchData }: FilterProps) {
           {/* footer */}
           <div className='flex justify-between gap-10 p-2'>
             <div className='flex w-20'>
-              <Button value={t('reset')} style='outline' size='s' />
+              <Button
+                value={t('reset')}
+                style='outline'
+                size='s'
+                onClick={() => {
+                  if (handleReset) handleReset();
+                  setIsOpen(false);
+                }}
+              />
             </div>
             <div className='flex w-20'>
               <Button
                 value={t('search')}
                 style='secondary'
                 size='s'
-                onClick={() => refetchData()}
+                onClick={() => {
+                  if (handleSearch) handleSearch();
+                  setIsOpen(false);
+                }}
               />
             </div>
           </div>

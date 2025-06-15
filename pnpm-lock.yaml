@@ -204,9 +204,6 @@ importers:
       graphql-tag:
         specifier: ^2.12.6
         version: 2.12.6(graphql@16.11.0)
-      immer:
-        specifier: ^10.1.1
-        version: 10.1.1
       jotai:
         specifier: ^2.12.4
         version: 2.12.5(@types/react@19.1.6)(react@19.1.0)
@@ -228,9 +225,6 @@ importers:
       react-icons:
         specifier: ^5.5.0
         version: 5.5.0(react@19.1.0)
-      use-immer:
-        specifier: ^0.11.0
-        version: 0.11.0(immer@10.1.1)(react@19.1.0)
     devDependencies:
       '@eslint/eslintrc':
         specifier: ^3
@@ -274,9 +268,6 @@ importers:
       '@repo/ui':
         specifier: workspace:*
         version: link:../../packages/ui
-      immer:
-        specifier: ^10.1.1
-        version: 10.1.1
       jotai:
         specifier: ^2.12.4
         version: 2.12.5(@types/react@19.1.6)(react@19.1.0)
@@ -295,9 +286,6 @@ importers:
       react-icons:
         specifier: ^5.5.0
         version: 5.5.0(react@19.1.0)
-      use-immer:
-        specifier: ^0.11.0
-        version: 0.11.0(immer@10.1.1)(react@19.1.0)
     devDependencies:
       '@eslint/eslintrc':
         specifier: ^3
@@ -4735,9 +4723,6 @@ packages:
     resolution: {integrity: sha512-Hs59xBNfUIunMFgWAbGX5cq6893IbWg4KnrjbYwX3tx0ztorVgTDA6B2sxf8ejHJ4wz8BqGUMYlnzNBer5NvGg==}
     engines: {node: '>= 4'}
 
-  immer@10.1.1:
-    resolution: {integrity: sha512-s2MPrmjovJcoMaHtx6K11Ra7oD05NT97w1IC5zpMkT6Atjr7H8LjaDd81iIxUYpMKSRRNMJE703M1Fhr/TctHw==}
-
   immutable@3.7.6:
     resolution: {integrity: sha512-AizQPcaofEtO11RZhPPHBOJRdo/20MKQF9mBLnVkBoyHi1/zXK8fzVdnEpSV9gxqtnh6Qomfp3F0xT5qP/vThw==}
     engines: {node: '>=0.8.0'}
@@ -7229,12 +7214,6 @@ packages:
 
   urlpattern-polyfill@10.1.0:
     resolution: {integrity: sha512-IGjKp/o0NL3Bso1PymYURCJxMPNAf/ILOpendP9f5B6e1rTJgdgiOvgfoT8VxCAdY+Wisb9uhGaJJf3yZ2V9nw==}
-
-  use-immer@0.11.0:
-    resolution: {integrity: sha512-RNAqi3GqsWJ4bcCd4LMBgdzvPmTABam24DUaFiKfX9s3MSorNRz9RDZYJkllJoMHUxVLMDetwAuCDeyWNrp1yA==}
-    peerDependencies:
-      immer: '>=8.0.0'
-      react: ^16.8.0 || ^17.0.1 || ^18.0.0 || ^19.0.0
 
   use-intl@4.1.0:
     resolution: {integrity: sha512-mQvDYFvoGn+bm/PWvlQOtluKCknsQ5a9F1Cj0hMfBjMBVTwnOqLPd6srhjvVdEQEQFVyHM1PfyifKqKYb11M9Q==}
@@ -12695,8 +12674,6 @@ snapshots:
 
   ignore@7.0.5: {}
 
-  immer@10.1.1: {}
-
   immutable@3.7.6: {}
 
   import-fresh@3.3.1:
@@ -15432,11 +15409,6 @@ snapshots:
       punycode: 2.3.1
 
   urlpattern-polyfill@10.1.0: {}
-
-  use-immer@0.11.0(immer@10.1.1)(react@19.1.0):
-    dependencies:
-      immer: 10.1.1
-      react: 19.1.0
 
   use-intl@4.1.0(react@19.1.0):
     dependencies:

@@ -129,6 +129,9 @@ query GetPcs($input: FindPcsInput) {
         }
       }
     }
+    totalCount
+    totalPages
+    hasNextPage    
   }
 }
 
@@ -261,9 +264,6 @@ query GetPc($id: Int!) {
         updatedAt
       }
     }
-    totalCount
-    totalPages
-    hasNextPage    
   }
 }
 

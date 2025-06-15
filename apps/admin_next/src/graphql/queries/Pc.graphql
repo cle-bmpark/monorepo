@@ -29,9 +29,7 @@ query GetPcList($input: FindPcsInput) {
         }
       }
     }
-    totalCount
     totalPages
-    hasNextPage
   }
 }
 

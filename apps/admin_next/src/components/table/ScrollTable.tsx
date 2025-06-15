@@ -7,18 +7,20 @@ interface ScrollTableProps<T extends object> {
   title: string;
   data: T[];
   filterBody?: () => filterBodyType[];
-  refetchData: (value?: string) => void;
   renderHeader: (key: keyof T) => ReactNode;
   renderCell: (row: T, key: keyof T) => ReactNode;
+  handleReset?: () => void;
+  handleSearch?: () => void;
 }
 
 export default function ScrollTable<T extends object>({
   title,
   data,
   filterBody,
-  refetchData,
   renderHeader,
   renderCell,
+  handleReset,
+  handleSearch,
 }: ScrollTableProps<T>) {
   if (data.length < 1)
     return (
@@ -32,7 +34,9 @@ export default function ScrollTable<T extends object>({
       <div className='flex flex-wrap items-center justify-between text-left'>
         <h3 className='text-grey-800'>{title}</h3>
         <div className='flex gap-2'>
-          {filterBody && <Filter filterBody={filterBody} refetchData={refetchData} />}
+          {filterBody && (
+            <Filter filterBody={filterBody} handleReset={handleReset} handleSearch={handleSearch} />
+          )}
         </div>
       </div>
 

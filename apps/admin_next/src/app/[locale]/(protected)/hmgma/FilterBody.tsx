@@ -1,5 +1,6 @@
 'use client';
 
+import { filterType } from '@/app/[locale]/(protected)/hmgma/page';
 import { filterBodyType } from '@/components/table/Filter';
 import {
   BrainEnum,
@@ -7,71 +8,51 @@ import {
   useGetPositionListQuery,
   useGetProcessListQuery,
 } from '@/graphql/generated/graphql';
-import { lineType, positionType, processType } from '@/types/graphql';
-import { getObjectKeys } from '@/utils/object';
 import Dropdown from '@repo/ui/src/components/button/Dropdown';
 import { DateRange } from '@repo/ui/src/components/headless/Calendar';
 import CalendarInput from '@repo/ui/src/components/headless/CalendarInput';
+import { SetStateAction } from 'jotai';
 import { useTranslations } from 'next-intl';
-import { useEffect } from 'react';
-import { useImmer } from 'use-immer';
+import { Dispatch } from 'react';
 
-const COMMON_ENTITY_INITIAL = {
-  id: 0,
-  code: '',
-  name: '',
-  createdAt: '',
-  updatedAt: '',
-};
+interface useFilterBodyProps {
+  filter: filterType;
+  setFilter: Dispatch<SetStateAction<filterType>>;
+}
 
-export default function useFilterBody(): filterBodyType[] {
+export default function useFilterBody({ filter, setFilter }: useFilterBodyProps): filterBodyType[] {
   const t = useTranslations('pc');
 
   const { data: line } = useGetLineListQuery();
   const { data: position } = useGetPositionListQuery();
   const { data: process } = useGetProcessListQuery();
 
-  const [filter, setFilter] = useImmer<{
-    line: lineType;
-    position: positionType;
-    process: processType;
-    brain: keyof typeof BrainEnum;
-    isLicense: boolean;
-    isNetwork: boolean;
-    isProgram: boolean;
-    launcherUpdateAt: DateRange;
-  }>({
-    line: COMMON_ENTITY_INITIAL,
-    position: COMMON_ENTITY_INITIAL,
-    process: COMMON_ENTITY_INITIAL,
-    brain: 'Main',
-    isLicense: true,
-    isNetwork: true,
-    isProgram: true,
-    launcherUpdateAt: {
-      from: new Date(),
-      to: new Date(),
-    },
-  });
+  function addAllToArrayOption<
+    T extends { id: number; code: string; name: string; createdAt: string; updatedAt: string },
+  >(arr: T[]) {
+    return [{ id: 0, code: 'ALL', name: 'ALL', createdAt: '', updatedAt: '' }, ...arr];
+  }
 
-  useEffect(() => {
-    setFilter((draft) => {
-      draft.line = line?.lineList[0] ?? COMMON_ENTITY_INITIAL;
-      draft.position = position?.positionList[0] ?? COMMON_ENTITY_INITIAL;
-      draft.process = process?.processList[0] ?? COMMON_ENTITY_INITIAL;
-    });
-  }, [line, position, process, setFilter]);
+  function addAllToArrayEnum<T extends string>(enumObject: Record<string, T>): T[] {
+    return Object.values(enumObject).filter((value) => typeof value === 'string');
+  }
+
+  function addAllToArray<T>(arr: T[]): (T | 'ALL')[] {
+    return ['ALL', ...arr];
+  }
 
   return [
     {
       title: t('launcherUpdatedAt'),
       content: (
         <CalendarInput
-          value={filter.launcherUpdateAt}
+          value={{ from: filter.launcherUpdatedAtStart, to: filter.launcherUpdatedAtEnd }}
           setValue={(value: DateRange) =>
-            setFilter((draft) => {
-              draft.launcherUpdateAt = value;
-            })
+            setFilter((prev) => ({
+              ...prev,
+              launcherUpdatedAtStart: value.from,
+              launcherUpdatedAtEnd: value.to,
+            }))
           }
           size='s'
         />
@@ -82,11 +63,12 @@ export default function useFilterBody(): filterBodyType[] {
       content: line ? (
         <Dropdown
           value={filter.line}
-          valueList={line.lineList}
+          valueList={addAllToArrayOption(line.lineList)}
           onClick={(value) => {
-            setFilter((draft) => {
-              draft.line = value;
-            });
+            setFilter((prev) => ({
+              ...prev,
+              line: value,
+            }));
           }}
           size='s'
           displayKey='name'
@@ -98,11 +80,12 @@ export default function useFilterBody(): filterBodyType[] {
       content: position ? (
         <Dropdown
           value={filter.position}
-          valueList={position.positionList}
+          valueList={addAllToArrayOption(position.positionList)}
           onClick={(value) => {
-            setFilter((draft) => {
-              draft.position = value;
-            });
+            setFilter((prev) => ({
+              ...prev,
+              position: value,
+            }));
           }}
           size='s'
           displayKey='name'
@@ -114,11 +97,12 @@ export default function useFilterBody(): filterBodyType[] {
       content: process ? (
         <Dropdown
           value={filter.process}
-          valueList={process.processList}
+          valueList={addAllToArrayOption(process.processList)}
           onClick={(value) => {
-            setFilter((draft) => {
-              draft.process = value;
-            });
+            setFilter((prev) => ({
+              ...prev,
+              process: value,
+            }));
           }}
           size='s'
           displayKey='name'
@@ -130,11 +114,12 @@ export default function useFilterBody(): filterBodyType[] {
       content: (
         <Dropdown
           value={filter.brain}
-          valueList={getObjectKeys(BrainEnum)}
+          valueList={addAllToArrayEnum(BrainEnum)}
           onClick={(value) => {
-            setFilter((draft) => {
-              draft.brain = value;
-            });
+            setFilter((prev) => ({
+              ...prev,
+              brain: value,
+            }));
           }}
           size='s'
         />
@@ -145,26 +130,12 @@ export default function useFilterBody(): filterBodyType[] {
       content: (
         <Dropdown
           value={filter.isLicense}
-          valueList={[true, false]}
+          valueList={addAllToArray([true, false])}
           onClick={(value) => {
-            setFilter((draft) => {
-              draft.isLicense = value;
-            });
-          }}
-          size='s'
-        />
-      ),
-    },
-    {
-      title: t('isNetwork'),
-      content: (
-        <Dropdown
-          value={filter.isNetwork}
-          valueList={[true, false]}
-          onClick={(value) => {
-            setFilter((draft) => {
-              draft.isNetwork = value;
-            });
+            setFilter((prev) => ({
+              ...prev,
+              isLicense: value,
+            }));
           }}
           size='s'
         />
@@ -175,11 +146,28 @@ export default function useFilterBody(): filterBodyType[] {
       content: (
         <Dropdown
           value={filter.isProgram}
-          valueList={[true, false]}
+          valueList={addAllToArray([true, false])}
           onClick={(value) => {
-            setFilter((draft) => {
-              draft.isProgram = value;
-            });
+            setFilter((prev) => ({
+              ...prev,
+              isProgram: value,
+            }));
+          }}
+          size='s'
+        />
+      ),
+    },
+    {
+      title: t('isNetwork'),
+      content: (
+        <Dropdown
+          value={filter.isNetwork}
+          valueList={addAllToArray([true, false])}
+          onClick={(value) => {
+            setFilter((prev) => ({
+              ...prev,
+              isNetwork: value,
+            }));
           }}
           size='s'
         />

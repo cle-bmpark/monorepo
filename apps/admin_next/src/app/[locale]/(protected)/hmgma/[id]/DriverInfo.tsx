@@ -4,7 +4,6 @@ import { formatTimestampToDate } from '@/utils/format';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { ReactNode } from 'react';
-import { HiOutlineSwitchVertical } from 'react-icons/hi';
 
 interface DriverInfoProps {
   data: pcDriversType;
@@ -14,10 +13,6 @@ export default function DriverInfo({ data }: DriverInfoProps) {
   const t = useTranslations('pc');
   const tHMGMA = useTranslations('hmgma');
   const actualData = data.map((item) => item.driver);
-
-  const refetchData = () => {
-    return;
-  };
 
   const renderHeader = (key: keyof driverType): ReactNode => {
     {
@@ -32,11 +27,6 @@ export default function DriverInfo({ data }: DriverInfoProps) {
           return (
             <div className='flex items-center gap-1'>
               <span>{t('driver-name')}</span>
-              <HiOutlineSwitchVertical
-                size={16}
-                className='shrink-0 cursor-pointer'
-                onClick={() => refetchData()}
-              />
             </div>
           );
 
@@ -44,11 +34,6 @@ export default function DriverInfo({ data }: DriverInfoProps) {
           return (
             <div className='flex items-center gap-1'>
               <span>{t(`${key}`)}</span>
-              <HiOutlineSwitchVertical
-                size={16}
-                className='shrink-0 cursor-pointer'
-                onClick={() => refetchData()}
-              />
             </div>
           );
       }
@@ -75,7 +60,6 @@ export default function DriverInfo({ data }: DriverInfoProps) {
     <ScrollTable
       title={tHMGMA('driver-title')}
       data={actualData}
-      refetchData={refetchData}
       renderHeader={renderHeader}
       renderCell={renderCell}
     />
