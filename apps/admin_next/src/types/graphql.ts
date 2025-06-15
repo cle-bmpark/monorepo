@@ -1,6 +1,7 @@
 import {
   GetLineListQuery,
   GetPcDetailQuery,
+  GetPcListByIdsQuery,
   GetPcListQuery,
   GetPositionListQuery,
   GetProcessListQuery,
@@ -19,6 +20,8 @@ export type pcProgramsType = pcDetailType['pcPrograms'];
 export type programsType = pcProgramsType[number]['program'];
 
 // pc list by ids
+export type pcListByIdsType = GetPcListByIdsQuery['pcsByIds'][number];
+
 export type pcDriversType = GetPcDetailQuery['pcDetail']['pcDrivers'];
 
 export type driverType = pcDriversType[number]['driver'];

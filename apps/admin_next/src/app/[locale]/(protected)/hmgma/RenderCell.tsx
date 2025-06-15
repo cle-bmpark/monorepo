@@ -37,17 +37,23 @@ export default function RenderCell({
 
   const [, setPopup] = useAtom(popupAtom);
   const [, setToast] = useAtom(toastAtom);
+  const isRowSelected = selectedPcs.some((item) => item.id === row.id);
 
   switch (rowKey) {
     case 'serialNumber':
       return (
         <div className='flex items-center gap-2'>
           <CheckBox
-            isCheck={selectedPcs.includes(row)}
+            isCheck={isRowSelected}
             onClick={() =>
-              setSelectedPcs((prev) =>
-                prev.includes(row) ? prev.filter((item) => item !== row) : [...prev, row],
-              )
+              setSelectedPcs((prev) => {
+                const alreadySelected = prev.some((item) => item.id === row.id);
+                if (alreadySelected) {
+                  return prev.filter((item) => item.id !== row.id);
+                } else {
+                  return [...prev, row];
+                }
+              })
             }
           />
           <LinkButton

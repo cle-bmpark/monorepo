@@ -4,7 +4,7 @@ import DriverInfo from '@/app/[locale]/(protected)/hmgma/[id]/DriverInfo';
 import ProgramInfo from '@/app/[locale]/(protected)/hmgma/[id]/ProgramInfo';
 import DefaultInfo from '@/app/[locale]/(protected)/hmgma/DefaultInfo';
 import { useGetPcListByIdsQuery } from '@/graphql/generated/graphql';
-import { pcListType } from '@/types/graphql';
+import { pcListByIdsType, pcListType } from '@/types/graphql';
 import Tooltip from '@repo/ui/src/components/modal/Tooltip';
 import useClickOutside from '@repo/ui/src/hooks/useClickOutside';
 import { useColorByTheme } from '@repo/ui/src/hooks/useColorByTheme';
@@ -33,6 +33,7 @@ export default function CompareModal({
 
   const pcIds = selectedPcs.map((pc) => pc.id);
   const { data } = useGetPcListByIdsQuery({ variables: { input: { ids: pcIds } } });
+  const [localData, setLocalData] = useState<pcListByIdsType[] | undefined>(data?.pcsByIds);
 
   const [isOpenIcon, setIsOpenIcon] = useState<boolean>(false);
   useClickOutside({
@@ -41,14 +42,22 @@ export default function CompareModal({
   });
 
   useEffect(() => {
-    if (selectedPcs.length < 1) setVisible(false);
-  }, [selectedPcs, setVisible]);
+    if (localData && localData.length < 1) {
+      setVisible(false);
+      setSelectedPcs([]);
+    }
+  }, [localData, setVisible, setSelectedPcs]);
+
+  useEffect(() => {
+    setLocalData(data?.pcsByIds);
+  }, [data]);
 
   useEffect(() => {
     // esc 키 클릭 시, 모달창 닫기
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         setVisible(false);
+        setSelectedPcs([]);
       }
     };
 
@@ -58,7 +67,7 @@ export default function CompareModal({
     };
   }, [setVisible]);
 
-  if (!visible || !data) return null;
+  if (!visible || !localData) return null;
 
   return (
     <div className='bg-grey-950/40 fixed bottom-0 left-0 right-0 top-0 z-20 flex flex-1 flex-wrap justify-between gap-4 overflow-y-auto p-4'>
@@ -78,7 +87,7 @@ export default function CompareModal({
         )}
       </div>
 
-      {data.pcsByIds.map((item) => (
+      {localData.map((item) => (
         <div
           key={`compare_serial_number_${item.serialNumber}`}
           className={`bg-grey-0 flex min-w-fit flex-1 flex-col gap-4 rounded-lg p-4 ${!item.isProgram && 'outline-primary-500 outline-2'}`}
@@ -89,7 +98,7 @@ export default function CompareModal({
               size={24}
               color={grey300}
               className='cursor-pointer'
-              onClick={() => setSelectedPcs((prev) => prev.filter((pc) => pc !== item))}
+              onClick={() => setLocalData((prev) => prev?.filter((pc) => pc !== item))}
             />
           </div>
 
