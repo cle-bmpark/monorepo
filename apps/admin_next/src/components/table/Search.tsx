@@ -1,6 +1,6 @@
 import IconInput from '@repo/ui/src/components/input/IconInput';
 import { useTranslations } from 'next-intl';
-import { KeyboardEvent, useState } from 'react';
+import { KeyboardEvent, useEffect, useState } from 'react';
 import { IoMdSearch } from 'react-icons/io';
 
 interface SearchProps {
@@ -17,6 +17,10 @@ export default function Search({ search, handleSearch }: SearchProps) {
       handleSearch(tempSearch);
     }
   };
+
+  useEffect(() => {
+    setTempSearch(search ?? '');
+  }, [search]);
 
   return (
     <div className='w-2xs'>

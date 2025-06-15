@@ -9,7 +9,7 @@ import Loading from '@/app/[locale]/loading';
 import ListTable, { paginationType } from '@/components/table/ListTable';
 import { BrainEnum, PcSortField, SortOrder, useGetPcListQuery } from '@/graphql/generated/graphql';
 import { lineType, pcListType, positionType, processType } from '@/types/graphql';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 import { ReactNode, useEffect, useState } from 'react';
 
 export interface filterType {
@@ -56,7 +56,6 @@ const filterInitial: filterType = {
 
 export default function HMGMAListPage() {
   const searchParams = useSearchParams();
-  const router = useRouter();
   const searchQuery = searchParams.get('search');
 
   const [isOpenProgram, setIsOpenProgram] = useState<boolean>(false);
@@ -100,33 +99,26 @@ export default function HMGMAListPage() {
   });
 
   const filterBody = useFilterBody({ filter: localFilter, setFilter: setLocalFilter });
+
   const handleFilterReset = () => {
-    setSearch(null);
     setOrder({});
+    setLocalFilter(filterInitial);
     setActiveFilter(filterInitial);
     setPagination((prev) => ({ ...prev, page: 1 }));
+    setSelectedPcs([]);
   };
   const handleFilterSearch = () => {
-    setSearch(null);
     setOrder({});
+    setLocalFilter(filterInitial);
     setActiveFilter(localFilter);
     setPagination((prev) => ({ ...prev, page: 1 }));
+    setSelectedPcs([]);
   };
-
   const handleSearch = (value?: string) => {
     setSearch(value);
     setOrder({});
-    setActiveFilter(filterInitial);
     setPagination((prev) => ({ ...prev, page: 1 }));
-
-    // url 에 검색 키워드 추가
-    const params = new URLSearchParams(window.location.search);
-    if (value) {
-      params.set('search', value);
-    } else {
-      params.delete('search');
-    }
-    router.replace(`?${params.toString()}`);
+    setSelectedPcs([]);
   };
 
   const renderHeader = (key: keyof pcListType): ReactNode | null => {
