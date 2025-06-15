@@ -133,8 +133,41 @@ input FindPcsByIds {
 }
 
 input FindPcsInput {
+  """PC 종류: MAIN, SPARE"""
+  brain: BrainEnum
+
+  """라이선스 여부"""
+  isLicense: Boolean
+
+  """네트워크 접속 여부"""
+  isNetwork: Boolean
+
+  """프로그램 작동 여부"""
+  isProgram: Boolean
+
+  """런처 업데이트 종료 일시 (ISO 8601 형식: YYYY-MM-DD)"""
+  launcherUpdatedAtEnd: String
+
+  """런처 업데이트 시작 일시 (ISO 8601 형식: YYYY-MM-DD)"""
+  launcherUpdatedAtStart: String
+
+  """라인 고유 ID"""
+  lineId: Int
+
   """정렬 기준 필드"""
   orderBy: PcSortField
+
+  """현재 페이지 번호 (1부터 시작)"""
+  page: Int = 1
+
+  """페이지당 항목 수"""
+  pageSize: Int = 10
+
+  """방향 고유 ID"""
+  positionId: Int
+
+  """공정 고유 ID"""
+  processId: Int
 
   """
   serial number, brain(main, spare), anydeskIp, line, position, process, driver, program 검색어

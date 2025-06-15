@@ -36,6 +36,41 @@ export class PcService {
       .leftJoinAndSelect('pc.pcPrograms', 'pcPrograms')
       .leftJoinAndSelect('pcPrograms.program', 'program');
 
+    // 필터 로직
+    if (input?.lineId !== undefined) {
+      queryBuilder.andWhere('pc.lineId = :lineId', { lineId: input.lineId });
+    }
+    if (input?.positionId !== undefined) {
+      queryBuilder.andWhere('pc.positionId = :positionId', { positionId: input.positionId });
+    }
+    if (input?.processId !== undefined) {
+      queryBuilder.andWhere('pc.processId = :processId', { processId: input.processId });
+    }
+    if (input?.brain !== undefined) {
+      queryBuilder.andWhere('pc.brain = :brain', { brain: input.brain });
+    }
+    if (input?.isLicense !== undefined) {
+      queryBuilder.andWhere('pc.isLicense = :isLicense', { isLicense: input.isLicense });
+    }
+    if (input?.isNetwork !== undefined) {
+      queryBuilder.andWhere('pc.isNetwork = :isNetwork', { isNetwork: input.isNetwork });
+    }
+    if (input?.isProgram !== undefined) {
+      queryBuilder.andWhere('pc.isProgram = :isProgram', { isProgram: input.isProgram });
+    }
+    if (input?.launcherUpdatedAtStart) {
+      const startDate = new Date(input.launcherUpdatedAtStart);
+      // 시간 정보가 없다면 해당 날짜의 시작 (00:00:00.000)으로 설정
+      startDate.setHours(0, 0, 0, 0);
+      queryBuilder.andWhere('pc.launcherUpdatedAt >= :startDate', { startDate });
+    }
+    if (input?.launcherUpdatedAtEnd) {
+      const endDate = new Date(input.launcherUpdatedAtEnd);
+      // 시간 정보가 없다면 해당 날짜의 끝 (23:59:59.999)으로 설정
+      endDate.setHours(23, 59, 59, 999);
+      queryBuilder.andWhere('pc.launcherUpdatedAt <= :endDate', { endDate });
+    }
+
     // 검색 로직
     if (input?.searchQuery) {
       const searchQuery = `%${input.searchQuery.toLowerCase()}%`;
@@ -120,6 +155,16 @@ export class PcService {
       queryBuilder.addOrderBy('pc.isNetwork', sortOrder);
       queryBuilder.addOrderBy('pc.id', sortOrder);
     }
+
+    // --- 4. 페이지네이션 로직 추가 ---
+    const page = input?.page ?? 1; // 기본값 1페이지
+    const pageSize = input?.pageSize ?? 10; // 기본값 페이지당 10개
+
+    const skip = (page - 1) * pageSize;
+    const take = pageSize;
+
+    queryBuilder.skip(skip);
+    queryBuilder.take(take);
 
     return queryBuilder.getMany();
   }
