@@ -39,7 +39,7 @@ export default function DefaultInfo({ data }: DefaultInfoProps) {
     key: keyof typeof data,
     value: (typeof data)[keyof typeof data],
   ): ReactNode => {
-    if (!value) return null;
+    if (value === undefined) return null;
 
     switch (key) {
       case 'anydeskIp':
