@@ -16,14 +16,17 @@ export default function TableBody<T extends object>({ data, renderCell }: TableB
           className={`border-grey-200 ${index !== data.length - 1 && 'border-b'}`}
           key={`table_row_${index}`}
         >
-          {keys.map((key) => (
-            <td
-              key={`${String(key)}_${String(row[key])}`}
-              className='items-center break-all px-3 py-2.5 align-top'
-            >
-              {renderCell(row, key)}
-            </td>
-          ))}
+          {keys.map(
+            (key) =>
+              renderCell(row, key) && (
+                <td
+                  key={`${String(key)}_${String(row[key])}`}
+                  className='items-center break-all px-3 py-2.5 align-top'
+                >
+                  {renderCell(row, key)}
+                </td>
+              ),
+          )}
         </tr>
       ))}
     </tbody>

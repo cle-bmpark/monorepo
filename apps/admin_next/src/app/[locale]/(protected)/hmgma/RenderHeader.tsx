@@ -104,10 +104,6 @@ export default function RenderHeader({
         </div>
       );
 
-    case '__typename':
-    case 'id':
-      return null;
-
     default:
       return (
         <div className='flex items-center gap-1'>

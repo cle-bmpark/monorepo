@@ -120,27 +120,34 @@ export default function HMGMAListPage() {
     router.replace(`?${params.toString()}`);
   };
 
-  const renderHeader = (key: keyof pcListType): ReactNode => (
-    <RenderHeader
-      headerKey={key}
-      isOpenProgram={isOpenProgram}
-      setIsOpenProgram={setIsOpenProgram}
-      selectedPcs={selectedPcs}
-      setIsOpenCompare={setIsOpenCompare}
-      order={order}
-      setOrder={setOrder}
-    />
-  );
+  const renderHeader = (key: keyof pcListType): ReactNode | null => {
+    if (key === '__typename' || key === 'id') return null;
 
-  const renderCell = (row: pcListType, key: keyof pcListType) => (
-    <RenderCell
-      row={row}
-      rowKey={key}
-      isOpenProgram={isOpenProgram}
-      selectedPcs={selectedPcs}
-      setSelectedPcs={setSelectedPcs}
-    />
-  );
+    return (
+      <RenderHeader
+        headerKey={key}
+        isOpenProgram={isOpenProgram}
+        setIsOpenProgram={setIsOpenProgram}
+        selectedPcs={selectedPcs}
+        setIsOpenCompare={setIsOpenCompare}
+        order={order}
+        setOrder={setOrder}
+      />
+    );
+  };
+  const renderCell = (row: pcListType, key: keyof pcListType) => {
+    if (key === '__typename' || key === 'id') return null;
+
+    return (
+      <RenderCell
+        row={row}
+        rowKey={key}
+        isOpenProgram={isOpenProgram}
+        selectedPcs={selectedPcs}
+        setSelectedPcs={setSelectedPcs}
+      />
+    );
+  };
 
   useEffect(() => {
     setPagination((prev) => ({

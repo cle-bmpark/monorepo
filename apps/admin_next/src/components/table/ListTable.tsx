@@ -40,7 +40,7 @@ export default function ListTable<T extends object>({
   handleFilterReset,
   handleFilterSearch,
 }: ListTableProps<T>) {
-  const PAGE_SIZE_LIST = [10, 30, 50];
+  const PAGE_SIZE_LIST = [10, 30, 50, 100];
 
   return (
     <div className='mt-8 flex flex-1 flex-col'>
@@ -52,7 +52,7 @@ export default function ListTable<T extends object>({
               value={pagination.pageSize}
               valueList={PAGE_SIZE_LIST}
               onClick={(value) => {
-                setPagination((prev) => ({ ...prev, pageSize: pagination.pageSize, page: value }));
+                setPagination((prev) => ({ ...prev, pageSize: value, page: 1 }));
               }}
               size='s'
             />
