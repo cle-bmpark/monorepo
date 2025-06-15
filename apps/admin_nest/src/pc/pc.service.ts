@@ -1,5 +1,6 @@
 import { CreatePcInput } from '@/pc/dto/create-pc.input';
 import { FindPcsInput } from '@/pc/dto/find-pc.input';
+import { PcPagination } from '@/pc/dto/find-pc.output';
 import { UpdatePcInput } from '@/pc/dto/update-pc.input';
 import { Pc } from '@/pc/entities/pc.entity';
 import { BrainEnum, PcSortField, SortOrder } from '@/pc/type/enum';
@@ -18,7 +19,7 @@ export class PcService {
     return 'This action adds a new pc';
   }
 
-  async findAll(input?: FindPcsInput): Promise<Pc[]> {
+  async findAll(input?: FindPcsInput): Promise<PcPagination> {
     const queryBuilder = this.pcRepository.createQueryBuilder('pc');
 
     queryBuilder
@@ -166,7 +167,16 @@ export class PcService {
     queryBuilder.skip(skip);
     queryBuilder.take(take);
 
-    return queryBuilder.getMany();
+    const [items, totalCount] = await queryBuilder.getManyAndCount();
+    const totalPages = Math.ceil(totalCount / pageSize);
+    const hasNextPage = page * pageSize < totalCount;
+
+    return {
+      items,
+      totalCount,
+      totalPages,
+      hasNextPage,
+    };
   }
 
   async findOne(id: number): Promise<Pc | null> {

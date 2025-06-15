@@ -1,32 +1,37 @@
 query GetPcList($input: FindPcsInput) {
   pcList(input: $input) {
-    id
-    serialNumber
-    line {
+    items{
       id
-      name
-    }
-    position {
-      id
-      name
-    }
-    process {
-      id
-      name
-    }
-    brain
-    isLicense
-    isProgram
-    isNetwork
-    anydeskIp
-    launcherUpdatedAt
-    pcPrograms {
-      program { 
-        image
+      serialNumber
+      line {
+        id
         name
-        version
+      }
+      position {
+        id
+        name
+      }
+      process {
+        id
+        name
+      }
+      brain
+      isLicense
+      isProgram
+      isNetwork
+      anydeskIp
+      launcherUpdatedAt
+      pcPrograms {
+        program { 
+            image
+            name
+            version
+        }
       }
     }
+    totalCount
+    totalPages
+    hasNextPage
   }
 }
 

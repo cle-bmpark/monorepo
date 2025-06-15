@@ -395,6 +395,20 @@ type PcDriver {
   updatedAt: String!
 }
 
+type PcPagination {
+  """다음 페이지가 있는지 여부"""
+  hasNextPage: Boolean!
+
+  """현재 페이지의 PC 목록 데이터"""
+  items: [Pc!]!
+
+  """전체 PC 항목의 총 개수"""
+  totalCount: Int!
+
+  """전체 페이지 수"""
+  totalPages: Int
+}
+
 type PcProgram {
   """생성 일시"""
   createdAt: String!
@@ -534,7 +548,7 @@ type Query {
   pcDriverList: [PcDriver!]!
 
   """PC 목록을 필터 및 검색 조건으로 조회"""
-  pcList(input: FindPcsInput): [Pc!]!
+  pcList(input: FindPcsInput): PcPagination!
 
   """특정 ID의 PC Program 정보 조회"""
   pcProgramDetail(id: Int!): PcProgram!
