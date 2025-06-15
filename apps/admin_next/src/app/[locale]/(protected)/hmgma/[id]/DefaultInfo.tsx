@@ -1,9 +1,9 @@
 import ObjectTable from '@/components/table/ObjectTable';
 import useClipboard from '@/hooks/useClipboard';
-import { popupAtom, toastAtom } from '@/jotai/modalAtoms';
 import Button from '@repo/ui/src/components/button/Button';
 import LinkButton from '@repo/ui/src/components/button/LinkButton';
 import CheckBox from '@repo/ui/src/components/radio/CheckBox';
+import { popupAtom, toastAtom } from '@ui/jotai/modalAtoms';
 
 import { useAtom } from 'jotai';
 import { useTranslations } from 'next-intl';

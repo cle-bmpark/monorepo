@@ -1,7 +1,7 @@
 import { PcSortField, SortOrder } from '@/graphql/generated/graphql';
-import { toastAtom } from '@/jotai/modalAtoms';
 import { pcListType } from '@/types/graphql';
 import Button from '@repo/ui/src/components/button/Button';
+import { toastAtom } from '@ui/jotai/modalAtoms';
 
 import { useAtom } from 'jotai';
 import { useTranslations } from 'next-intl';

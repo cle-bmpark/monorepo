@@ -1,13 +1,13 @@
 import ProgramAccordion from '@/app/[locale]/(protected)/hmgma/ProgramAccordion';
 import { BrainEnum } from '@/graphql/generated/graphql';
 import useClipboard from '@/hooks/useClipboard';
-import { popupAtom, toastAtom } from '@/jotai/modalAtoms';
 import { pcListType } from '@/types/graphql';
 import { formatTimestampToDate } from '@/utils/format';
 import Badge, { BadgeColors } from '@repo/ui/src/components/badge/Badge';
 import Button from '@repo/ui/src/components/button/Button';
 import LinkButton from '@repo/ui/src/components/button/LinkButton';
 import CheckBox from '@repo/ui/src/components/radio/CheckBox';
+import { popupAtom, toastAtom } from '@ui/jotai/modalAtoms';
 import { SetStateAction, useAtom } from 'jotai';
 import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';

@@ -1,4 +1,4 @@
-import { toastAtom } from '@/jotai/modalAtoms';
+import { toastAtom } from '@ui/jotai/modalAtoms';
 import { useAtom } from 'jotai';
 import { useTranslations } from 'next-intl';
 
