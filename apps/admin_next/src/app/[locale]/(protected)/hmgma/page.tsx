@@ -101,14 +101,23 @@ export default function HMGMAListPage() {
 
   const filterBody = useFilterBody({ filter: localFilter, setFilter: setLocalFilter });
   const handleFilterReset = () => {
+    setSearch(null);
+    setOrder({});
     setActiveFilter(filterInitial);
+    setPagination((prev) => ({ ...prev, page: 1 }));
   };
   const handleFilterSearch = () => {
+    setSearch(null);
+    setOrder({});
     setActiveFilter(localFilter);
+    setPagination((prev) => ({ ...prev, page: 1 }));
   };
 
   const handleSearch = (value?: string) => {
     setSearch(value);
+    setOrder({});
+    setActiveFilter(filterInitial);
+    setPagination((prev) => ({ ...prev, page: 1 }));
 
     // url 에 검색 키워드 추가
     const params = new URLSearchParams(window.location.search);

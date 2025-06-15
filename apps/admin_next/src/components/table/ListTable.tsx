@@ -64,7 +64,7 @@ export default function ListTable<T extends object>({
           <Search search={search} handleSearch={handleSearch} />
           <Filter
             filterBody={filterBody}
-            handleReset={() => handleFilterReset}
+            handleReset={handleFilterReset}
             handleSearch={handleFilterSearch}
           />
         </div>
