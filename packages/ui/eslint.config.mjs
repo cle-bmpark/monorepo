@@ -1,4 +1,4 @@
-import nextJsConfig from '@repo/eslint-config/next-mjs';
+import nextJsConfig from '@repo/eslint-config/next';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 

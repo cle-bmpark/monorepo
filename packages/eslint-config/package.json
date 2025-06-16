@@ -4,7 +4,8 @@
   "type": "module",
   "private": true,
   "exports": {
-    "./next-mjs": "./next.mjs"
+    "./next": "./next.mjs",
+    "./nest": "./nest.mjs"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^15.3.3",

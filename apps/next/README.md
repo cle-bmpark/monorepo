@@ -14,7 +14,7 @@
 - `tsconfig.json`:@repo/typescript-config/nextjs.json 파일을 따름
 - `prettier.config.mjs`: monorepo/prettier.config.mjs 파일을 따름
 - `postcss.config.mjs`: @repo/tailwind-config/postcss 파일을 따름
-- `eslint.config.mjs`: @repo/eslint-config/next-mjs 파일을 따름
+- `eslint.config.mjs`: @repo/eslint-config/next.mjs 파일을 따름
 
 ---
 
