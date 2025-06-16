@@ -24,6 +24,11 @@ export interface filterType {
   isNetwork: boolean | 'ALL';
 }
 
+export interface orderType {
+  orderBy?: PcSortField;
+  sortOrder?: SortOrder;
+}
+
 const filterInitial: filterType = {
   launcherUpdatedAtStart: new Date(new Date().setFullYear(new Date().getFullYear() - 10)),
   launcherUpdatedAtEnd: new Date(),
@@ -62,7 +67,7 @@ export default function HMGMAListPage() {
   const [isOpenCompare, setIsOpenCompare] = useState<boolean>(false);
   const [selectedPcs, setSelectedPcs] = useState<pcListType[]>([]);
   const [search, setSearch] = useState<string | undefined | null>(searchQuery);
-  const [order, setOrder] = useState<{ orderBy?: PcSortField; sortOrder?: SortOrder }>({});
+  const [order, setOrder] = useState<orderType>({});
   const [pagination, setPagination] = useState<paginationType>({
     page: 1,
     pageSize: 10,
@@ -109,7 +114,6 @@ export default function HMGMAListPage() {
   };
   const handleFilterSearch = () => {
     setOrder({});
-    setLocalFilter(filterInitial);
     setActiveFilter(localFilter);
     setPagination((prev) => ({ ...prev, page: 1 }));
     setSelectedPcs([]);
@@ -119,6 +123,10 @@ export default function HMGMAListPage() {
     setOrder({});
     setPagination((prev) => ({ ...prev, page: 1 }));
     setSelectedPcs([]);
+  };
+  const handleOrder = ({ orderBy, sortOrder }: orderType) => {
+    setOrder({ orderBy: orderBy, sortOrder: sortOrder });
+    setPagination((prev) => ({ ...prev, page: 1 }));
   };
 
   const renderHeader = (key: keyof pcListType): ReactNode | null => {
@@ -132,7 +140,7 @@ export default function HMGMAListPage() {
         selectedPcs={selectedPcs}
         setIsOpenCompare={setIsOpenCompare}
         order={order}
-        setOrder={setOrder}
+        setOrder={handleOrder}
       />
     );
   };

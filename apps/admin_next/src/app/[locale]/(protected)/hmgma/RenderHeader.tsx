@@ -7,6 +7,7 @@ import { useAtom } from 'jotai';
 import { useTranslations } from 'next-intl';
 import { Dispatch, SetStateAction } from 'react';
 import { HiOutlineSwitchVertical } from 'react-icons/hi';
+import { orderType } from './page';
 
 interface RenderHeaderProps {
   headerKey: keyof pcListType;
@@ -14,16 +15,8 @@ interface RenderHeaderProps {
   setIsOpenProgram: Dispatch<SetStateAction<boolean>>;
   selectedPcs: pcListType[];
   setIsOpenCompare: Dispatch<SetStateAction<boolean>>;
-  order: {
-    orderBy?: PcSortField;
-    sortOrder?: SortOrder;
-  };
-  setOrder: Dispatch<
-    SetStateAction<{
-      orderBy?: PcSortField;
-      sortOrder?: SortOrder;
-    }>
-  >;
+  order: orderType;
+  setOrder: ({ orderBy, sortOrder }: orderType) => void;
 }
 
 const headerKeySort: Partial<Record<keyof pcListType, PcSortField>> = {
