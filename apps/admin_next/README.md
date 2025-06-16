@@ -9,7 +9,8 @@
 - **`pnpm next build`** : 프로덕션을 위한 애플리케이션 빌드
 - **`pnpm next start`** : 프로덕션 서버 시작
 - **`pnpm next lint`** : ESLint 실행
-- **`pnpm lint-staged`** : 스테이징된 파일 코드 컨벤션 검사
+- **`pnpm run format`** : 코드 포멧팅 검사
+- **`pnpm run lint-staged`** : 스테이징된 파일 코드 컨벤션 검사
 - **`pnpm run i18n-check`** : 다국어 json 파일 일치 검사
 
 ---
@@ -44,6 +45,8 @@
 - 공통 컴포넌트에서 사용하는 type 은 따로 파일을 분리하지 않고, 맨 상단에 정의합니다.
 - types 폴더 내부에는 최대한 type을 정의하지 않습니다. type 이 발생하는 파일에 정의합니다.
 > type 추적을 용이하게 하기 위함입니다.
+- API 관련 타입은 `GraphQL Codegen` 파일을 사용합니다.
+- 피치 못하게 사용해야 하는 경우, GraphQL Codegen 에서 추출합니다.
 
 ---
 
@@ -156,9 +159,7 @@ en.json, ko.json 관련 키 누락, 불일치 등을 확인을 위해 다음 명
 
 # 🧩 **주요 라이브러리**
 
-- **Typia** : 런타임 타입 검증
 - **GraphQL** : API 런타임 환경
-- **Immer**: 상태의 불변성 관리
 
 ---
 

@@ -5,4 +5,4 @@
 ### monorepo
 
 1. 모노레포 폴더 구조를 가져갑니다.
-2. turborepo의 pnpm 사용합니다.
+2. `turborepo`의 `pnpm` 사용합니다.

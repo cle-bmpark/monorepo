@@ -896,6 +896,108 @@ export type UpdateTempStatusInput = {
   id: Scalars['Int']['input'];
 };
 
+export type GetCpuStatusListQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetCpuStatusListQuery = {
+  __typename?: 'Query';
+  cpuStatusList: Array<{
+    __typename?: 'CpuStatus';
+    id: number;
+    pcId: number;
+    name: string;
+    usage: number;
+    unit: string;
+    createdAt: string;
+    updatedAt: string;
+  }>;
+};
+
+export type GetCpuStatusQueryVariables = Exact<{
+  id: Scalars['Int']['input'];
+}>;
+
+export type GetCpuStatusQuery = {
+  __typename?: 'Query';
+  cpuStatusDetail: {
+    __typename?: 'CpuStatus';
+    id: number;
+    pcId: number;
+    name: string;
+    usage: number;
+    unit: string;
+    createdAt: string;
+    updatedAt: string;
+  };
+};
+
+export type GetDriverListQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetDriverListQuery = {
+  __typename?: 'Query';
+  driverList: Array<{
+    __typename?: 'Driver';
+    id: number;
+    image: string;
+    name: string;
+    version: string;
+    driverUpdatedAt: string;
+    createdAt: string;
+    updatedAt: string;
+  }>;
+};
+
+export type GetDriverDetailQueryVariables = Exact<{
+  id: Scalars['Int']['input'];
+}>;
+
+export type GetDriverDetailQuery = {
+  __typename?: 'Query';
+  driverDetail: {
+    __typename?: 'Driver';
+    id: number;
+    image: string;
+    name: string;
+    version: string;
+    driverUpdatedAt: string;
+    createdAt: string;
+    updatedAt: string;
+  };
+};
+
+export type GetGpuStatusListQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetGpuStatusListQuery = {
+  __typename?: 'Query';
+  gpuStatusList: Array<{
+    __typename?: 'GpuStatus';
+    id: number;
+    pcId: number;
+    name: string;
+    usage: number;
+    unit: string;
+    createdAt: string;
+    updatedAt: string;
+  }>;
+};
+
+export type GetGpuStatusDetailQueryVariables = Exact<{
+  id: Scalars['Int']['input'];
+}>;
+
+export type GetGpuStatusDetailQuery = {
+  __typename?: 'Query';
+  gpuStatusDetail: {
+    __typename?: 'GpuStatus';
+    id: number;
+    pcId: number;
+    name: string;
+    usage: number;
+    unit: string;
+    createdAt: string;
+    updatedAt: string;
+  };
+};
+
 export type GetPcsQueryVariables = Exact<{
   input?: InputMaybe<FindPcsInput>;
 }>;
@@ -1353,108 +1455,6 @@ export type GetPcsByIdsQuery = {
       };
     }>;
   }>;
-};
-
-export type GetCpuStatusListQueryVariables = Exact<{ [key: string]: never }>;
-
-export type GetCpuStatusListQuery = {
-  __typename?: 'Query';
-  cpuStatusList: Array<{
-    __typename?: 'CpuStatus';
-    id: number;
-    pcId: number;
-    name: string;
-    usage: number;
-    unit: string;
-    createdAt: string;
-    updatedAt: string;
-  }>;
-};
-
-export type GetCpuStatusQueryVariables = Exact<{
-  id: Scalars['Int']['input'];
-}>;
-
-export type GetCpuStatusQuery = {
-  __typename?: 'Query';
-  cpuStatusDetail: {
-    __typename?: 'CpuStatus';
-    id: number;
-    pcId: number;
-    name: string;
-    usage: number;
-    unit: string;
-    createdAt: string;
-    updatedAt: string;
-  };
-};
-
-export type GetDriverListQueryVariables = Exact<{ [key: string]: never }>;
-
-export type GetDriverListQuery = {
-  __typename?: 'Query';
-  driverList: Array<{
-    __typename?: 'Driver';
-    id: number;
-    image: string;
-    name: string;
-    version: string;
-    driverUpdatedAt: string;
-    createdAt: string;
-    updatedAt: string;
-  }>;
-};
-
-export type GetDriverDetailQueryVariables = Exact<{
-  id: Scalars['Int']['input'];
-}>;
-
-export type GetDriverDetailQuery = {
-  __typename?: 'Query';
-  driverDetail: {
-    __typename?: 'Driver';
-    id: number;
-    image: string;
-    name: string;
-    version: string;
-    driverUpdatedAt: string;
-    createdAt: string;
-    updatedAt: string;
-  };
-};
-
-export type GetGpuStatusListQueryVariables = Exact<{ [key: string]: never }>;
-
-export type GetGpuStatusListQuery = {
-  __typename?: 'Query';
-  gpuStatusList: Array<{
-    __typename?: 'GpuStatus';
-    id: number;
-    pcId: number;
-    name: string;
-    usage: number;
-    unit: string;
-    createdAt: string;
-    updatedAt: string;
-  }>;
-};
-
-export type GetGpuStatusDetailQueryVariables = Exact<{
-  id: Scalars['Int']['input'];
-}>;
-
-export type GetGpuStatusDetailQuery = {
-  __typename?: 'Query';
-  gpuStatusDetail: {
-    __typename?: 'GpuStatus';
-    id: number;
-    pcId: number;
-    name: string;
-    usage: number;
-    unit: string;
-    createdAt: string;
-    updatedAt: string;
-  };
 };
 
 export type GetLineListQueryVariables = Exact<{ [key: string]: never }>;
@@ -1991,6 +1991,421 @@ export type GetTempStatusDetailQuery = {
   };
 };
 
+export const GetCpuStatusListDocument = gql`
+  query GetCpuStatusList {
+    cpuStatusList {
+      id
+      pcId
+      name
+      usage
+      unit
+      createdAt
+      updatedAt
+    }
+  }
+`;
+
+/**
+ * __useGetCpuStatusListQuery__
+ *
+ * To run a query within a React component, call `useGetCpuStatusListQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetCpuStatusListQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetCpuStatusListQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetCpuStatusListQuery(
+  baseOptions?: Apollo.QueryHookOptions<GetCpuStatusListQuery, GetCpuStatusListQueryVariables>,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<GetCpuStatusListQuery, GetCpuStatusListQueryVariables>(
+    GetCpuStatusListDocument,
+    options,
+  );
+}
+export function useGetCpuStatusListLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<GetCpuStatusListQuery, GetCpuStatusListQueryVariables>,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<GetCpuStatusListQuery, GetCpuStatusListQueryVariables>(
+    GetCpuStatusListDocument,
+    options,
+  );
+}
+export function useGetCpuStatusListSuspenseQuery(
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<GetCpuStatusListQuery, GetCpuStatusListQueryVariables>,
+) {
+  const options =
+    baseOptions === Apollo.skipToken ? baseOptions : { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<GetCpuStatusListQuery, GetCpuStatusListQueryVariables>(
+    GetCpuStatusListDocument,
+    options,
+  );
+}
+export type GetCpuStatusListQueryHookResult = ReturnType<typeof useGetCpuStatusListQuery>;
+export type GetCpuStatusListLazyQueryHookResult = ReturnType<typeof useGetCpuStatusListLazyQuery>;
+export type GetCpuStatusListSuspenseQueryHookResult = ReturnType<
+  typeof useGetCpuStatusListSuspenseQuery
+>;
+export type GetCpuStatusListQueryResult = Apollo.QueryResult<
+  GetCpuStatusListQuery,
+  GetCpuStatusListQueryVariables
+>;
+export const GetCpuStatusDocument = gql`
+  query GetCpuStatus($id: Int!) {
+    cpuStatusDetail(id: $id) {
+      id
+      pcId
+      name
+      usage
+      unit
+      createdAt
+      updatedAt
+    }
+  }
+`;
+
+/**
+ * __useGetCpuStatusQuery__
+ *
+ * To run a query within a React component, call `useGetCpuStatusQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetCpuStatusQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetCpuStatusQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useGetCpuStatusQuery(
+  baseOptions: Apollo.QueryHookOptions<GetCpuStatusQuery, GetCpuStatusQueryVariables> &
+    ({ variables: GetCpuStatusQueryVariables; skip?: boolean } | { skip: boolean }),
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<GetCpuStatusQuery, GetCpuStatusQueryVariables>(
+    GetCpuStatusDocument,
+    options,
+  );
+}
+export function useGetCpuStatusLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<GetCpuStatusQuery, GetCpuStatusQueryVariables>,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<GetCpuStatusQuery, GetCpuStatusQueryVariables>(
+    GetCpuStatusDocument,
+    options,
+  );
+}
+export function useGetCpuStatusSuspenseQuery(
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<GetCpuStatusQuery, GetCpuStatusQueryVariables>,
+) {
+  const options =
+    baseOptions === Apollo.skipToken ? baseOptions : { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<GetCpuStatusQuery, GetCpuStatusQueryVariables>(
+    GetCpuStatusDocument,
+    options,
+  );
+}
+export type GetCpuStatusQueryHookResult = ReturnType<typeof useGetCpuStatusQuery>;
+export type GetCpuStatusLazyQueryHookResult = ReturnType<typeof useGetCpuStatusLazyQuery>;
+export type GetCpuStatusSuspenseQueryHookResult = ReturnType<typeof useGetCpuStatusSuspenseQuery>;
+export type GetCpuStatusQueryResult = Apollo.QueryResult<
+  GetCpuStatusQuery,
+  GetCpuStatusQueryVariables
+>;
+export const GetDriverListDocument = gql`
+  query GetDriverList {
+    driverList {
+      id
+      image
+      name
+      version
+      driverUpdatedAt
+      createdAt
+      updatedAt
+    }
+  }
+`;
+
+/**
+ * __useGetDriverListQuery__
+ *
+ * To run a query within a React component, call `useGetDriverListQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetDriverListQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetDriverListQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetDriverListQuery(
+  baseOptions?: Apollo.QueryHookOptions<GetDriverListQuery, GetDriverListQueryVariables>,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<GetDriverListQuery, GetDriverListQueryVariables>(
+    GetDriverListDocument,
+    options,
+  );
+}
+export function useGetDriverListLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<GetDriverListQuery, GetDriverListQueryVariables>,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<GetDriverListQuery, GetDriverListQueryVariables>(
+    GetDriverListDocument,
+    options,
+  );
+}
+export function useGetDriverListSuspenseQuery(
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<GetDriverListQuery, GetDriverListQueryVariables>,
+) {
+  const options =
+    baseOptions === Apollo.skipToken ? baseOptions : { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<GetDriverListQuery, GetDriverListQueryVariables>(
+    GetDriverListDocument,
+    options,
+  );
+}
+export type GetDriverListQueryHookResult = ReturnType<typeof useGetDriverListQuery>;
+export type GetDriverListLazyQueryHookResult = ReturnType<typeof useGetDriverListLazyQuery>;
+export type GetDriverListSuspenseQueryHookResult = ReturnType<typeof useGetDriverListSuspenseQuery>;
+export type GetDriverListQueryResult = Apollo.QueryResult<
+  GetDriverListQuery,
+  GetDriverListQueryVariables
+>;
+export const GetDriverDetailDocument = gql`
+  query GetDriverDetail($id: Int!) {
+    driverDetail(id: $id) {
+      id
+      image
+      name
+      version
+      driverUpdatedAt
+      createdAt
+      updatedAt
+    }
+  }
+`;
+
+/**
+ * __useGetDriverDetailQuery__
+ *
+ * To run a query within a React component, call `useGetDriverDetailQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetDriverDetailQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetDriverDetailQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useGetDriverDetailQuery(
+  baseOptions: Apollo.QueryHookOptions<GetDriverDetailQuery, GetDriverDetailQueryVariables> &
+    ({ variables: GetDriverDetailQueryVariables; skip?: boolean } | { skip: boolean }),
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<GetDriverDetailQuery, GetDriverDetailQueryVariables>(
+    GetDriverDetailDocument,
+    options,
+  );
+}
+export function useGetDriverDetailLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<GetDriverDetailQuery, GetDriverDetailQueryVariables>,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<GetDriverDetailQuery, GetDriverDetailQueryVariables>(
+    GetDriverDetailDocument,
+    options,
+  );
+}
+export function useGetDriverDetailSuspenseQuery(
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<GetDriverDetailQuery, GetDriverDetailQueryVariables>,
+) {
+  const options =
+    baseOptions === Apollo.skipToken ? baseOptions : { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<GetDriverDetailQuery, GetDriverDetailQueryVariables>(
+    GetDriverDetailDocument,
+    options,
+  );
+}
+export type GetDriverDetailQueryHookResult = ReturnType<typeof useGetDriverDetailQuery>;
+export type GetDriverDetailLazyQueryHookResult = ReturnType<typeof useGetDriverDetailLazyQuery>;
+export type GetDriverDetailSuspenseQueryHookResult = ReturnType<
+  typeof useGetDriverDetailSuspenseQuery
+>;
+export type GetDriverDetailQueryResult = Apollo.QueryResult<
+  GetDriverDetailQuery,
+  GetDriverDetailQueryVariables
+>;
+export const GetGpuStatusListDocument = gql`
+  query GetGpuStatusList {
+    gpuStatusList {
+      id
+      pcId
+      name
+      usage
+      unit
+      createdAt
+      updatedAt
+    }
+  }
+`;
+
+/**
+ * __useGetGpuStatusListQuery__
+ *
+ * To run a query within a React component, call `useGetGpuStatusListQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetGpuStatusListQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetGpuStatusListQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetGpuStatusListQuery(
+  baseOptions?: Apollo.QueryHookOptions<GetGpuStatusListQuery, GetGpuStatusListQueryVariables>,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<GetGpuStatusListQuery, GetGpuStatusListQueryVariables>(
+    GetGpuStatusListDocument,
+    options,
+  );
+}
+export function useGetGpuStatusListLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<GetGpuStatusListQuery, GetGpuStatusListQueryVariables>,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<GetGpuStatusListQuery, GetGpuStatusListQueryVariables>(
+    GetGpuStatusListDocument,
+    options,
+  );
+}
+export function useGetGpuStatusListSuspenseQuery(
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<GetGpuStatusListQuery, GetGpuStatusListQueryVariables>,
+) {
+  const options =
+    baseOptions === Apollo.skipToken ? baseOptions : { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<GetGpuStatusListQuery, GetGpuStatusListQueryVariables>(
+    GetGpuStatusListDocument,
+    options,
+  );
+}
+export type GetGpuStatusListQueryHookResult = ReturnType<typeof useGetGpuStatusListQuery>;
+export type GetGpuStatusListLazyQueryHookResult = ReturnType<typeof useGetGpuStatusListLazyQuery>;
+export type GetGpuStatusListSuspenseQueryHookResult = ReturnType<
+  typeof useGetGpuStatusListSuspenseQuery
+>;
+export type GetGpuStatusListQueryResult = Apollo.QueryResult<
+  GetGpuStatusListQuery,
+  GetGpuStatusListQueryVariables
+>;
+export const GetGpuStatusDetailDocument = gql`
+  query GetGpuStatusDetail($id: Int!) {
+    gpuStatusDetail(id: $id) {
+      id
+      pcId
+      name
+      usage
+      unit
+      createdAt
+      updatedAt
+    }
+  }
+`;
+
+/**
+ * __useGetGpuStatusDetailQuery__
+ *
+ * To run a query within a React component, call `useGetGpuStatusDetailQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetGpuStatusDetailQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetGpuStatusDetailQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useGetGpuStatusDetailQuery(
+  baseOptions: Apollo.QueryHookOptions<GetGpuStatusDetailQuery, GetGpuStatusDetailQueryVariables> &
+    ({ variables: GetGpuStatusDetailQueryVariables; skip?: boolean } | { skip: boolean }),
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<GetGpuStatusDetailQuery, GetGpuStatusDetailQueryVariables>(
+    GetGpuStatusDetailDocument,
+    options,
+  );
+}
+export function useGetGpuStatusDetailLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetGpuStatusDetailQuery,
+    GetGpuStatusDetailQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<GetGpuStatusDetailQuery, GetGpuStatusDetailQueryVariables>(
+    GetGpuStatusDetailDocument,
+    options,
+  );
+}
+export function useGetGpuStatusDetailSuspenseQuery(
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<GetGpuStatusDetailQuery, GetGpuStatusDetailQueryVariables>,
+) {
+  const options =
+    baseOptions === Apollo.skipToken ? baseOptions : { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<GetGpuStatusDetailQuery, GetGpuStatusDetailQueryVariables>(
+    GetGpuStatusDetailDocument,
+    options,
+  );
+}
+export type GetGpuStatusDetailQueryHookResult = ReturnType<typeof useGetGpuStatusDetailQuery>;
+export type GetGpuStatusDetailLazyQueryHookResult = ReturnType<
+  typeof useGetGpuStatusDetailLazyQuery
+>;
+export type GetGpuStatusDetailSuspenseQueryHookResult = ReturnType<
+  typeof useGetGpuStatusDetailSuspenseQuery
+>;
+export type GetGpuStatusDetailQueryResult = Apollo.QueryResult<
+  GetGpuStatusDetailQuery,
+  GetGpuStatusDetailQueryVariables
+>;
 export const GetPcsDocument = gql`
   query GetPcs($input: FindPcsInput) {
     pcList(input: $input) {
@@ -2529,421 +2944,6 @@ export type GetPcsByIdsSuspenseQueryHookResult = ReturnType<typeof useGetPcsById
 export type GetPcsByIdsQueryResult = Apollo.QueryResult<
   GetPcsByIdsQuery,
   GetPcsByIdsQueryVariables
->;
-export const GetCpuStatusListDocument = gql`
-  query GetCpuStatusList {
-    cpuStatusList {
-      id
-      pcId
-      name
-      usage
-      unit
-      createdAt
-      updatedAt
-    }
-  }
-`;
-
-/**
- * __useGetCpuStatusListQuery__
- *
- * To run a query within a React component, call `useGetCpuStatusListQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetCpuStatusListQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGetCpuStatusListQuery({
- *   variables: {
- *   },
- * });
- */
-export function useGetCpuStatusListQuery(
-  baseOptions?: Apollo.QueryHookOptions<GetCpuStatusListQuery, GetCpuStatusListQueryVariables>,
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<GetCpuStatusListQuery, GetCpuStatusListQueryVariables>(
-    GetCpuStatusListDocument,
-    options,
-  );
-}
-export function useGetCpuStatusListLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<GetCpuStatusListQuery, GetCpuStatusListQueryVariables>,
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<GetCpuStatusListQuery, GetCpuStatusListQueryVariables>(
-    GetCpuStatusListDocument,
-    options,
-  );
-}
-export function useGetCpuStatusListSuspenseQuery(
-  baseOptions?:
-    | Apollo.SkipToken
-    | Apollo.SuspenseQueryHookOptions<GetCpuStatusListQuery, GetCpuStatusListQueryVariables>,
-) {
-  const options =
-    baseOptions === Apollo.skipToken ? baseOptions : { ...defaultOptions, ...baseOptions };
-  return Apollo.useSuspenseQuery<GetCpuStatusListQuery, GetCpuStatusListQueryVariables>(
-    GetCpuStatusListDocument,
-    options,
-  );
-}
-export type GetCpuStatusListQueryHookResult = ReturnType<typeof useGetCpuStatusListQuery>;
-export type GetCpuStatusListLazyQueryHookResult = ReturnType<typeof useGetCpuStatusListLazyQuery>;
-export type GetCpuStatusListSuspenseQueryHookResult = ReturnType<
-  typeof useGetCpuStatusListSuspenseQuery
->;
-export type GetCpuStatusListQueryResult = Apollo.QueryResult<
-  GetCpuStatusListQuery,
-  GetCpuStatusListQueryVariables
->;
-export const GetCpuStatusDocument = gql`
-  query GetCpuStatus($id: Int!) {
-    cpuStatusDetail(id: $id) {
-      id
-      pcId
-      name
-      usage
-      unit
-      createdAt
-      updatedAt
-    }
-  }
-`;
-
-/**
- * __useGetCpuStatusQuery__
- *
- * To run a query within a React component, call `useGetCpuStatusQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetCpuStatusQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGetCpuStatusQuery({
- *   variables: {
- *      id: // value for 'id'
- *   },
- * });
- */
-export function useGetCpuStatusQuery(
-  baseOptions: Apollo.QueryHookOptions<GetCpuStatusQuery, GetCpuStatusQueryVariables> &
-    ({ variables: GetCpuStatusQueryVariables; skip?: boolean } | { skip: boolean }),
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<GetCpuStatusQuery, GetCpuStatusQueryVariables>(
-    GetCpuStatusDocument,
-    options,
-  );
-}
-export function useGetCpuStatusLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<GetCpuStatusQuery, GetCpuStatusQueryVariables>,
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<GetCpuStatusQuery, GetCpuStatusQueryVariables>(
-    GetCpuStatusDocument,
-    options,
-  );
-}
-export function useGetCpuStatusSuspenseQuery(
-  baseOptions?:
-    | Apollo.SkipToken
-    | Apollo.SuspenseQueryHookOptions<GetCpuStatusQuery, GetCpuStatusQueryVariables>,
-) {
-  const options =
-    baseOptions === Apollo.skipToken ? baseOptions : { ...defaultOptions, ...baseOptions };
-  return Apollo.useSuspenseQuery<GetCpuStatusQuery, GetCpuStatusQueryVariables>(
-    GetCpuStatusDocument,
-    options,
-  );
-}
-export type GetCpuStatusQueryHookResult = ReturnType<typeof useGetCpuStatusQuery>;
-export type GetCpuStatusLazyQueryHookResult = ReturnType<typeof useGetCpuStatusLazyQuery>;
-export type GetCpuStatusSuspenseQueryHookResult = ReturnType<typeof useGetCpuStatusSuspenseQuery>;
-export type GetCpuStatusQueryResult = Apollo.QueryResult<
-  GetCpuStatusQuery,
-  GetCpuStatusQueryVariables
->;
-export const GetDriverListDocument = gql`
-  query GetDriverList {
-    driverList {
-      id
-      image
-      name
-      version
-      driverUpdatedAt
-      createdAt
-      updatedAt
-    }
-  }
-`;
-
-/**
- * __useGetDriverListQuery__
- *
- * To run a query within a React component, call `useGetDriverListQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetDriverListQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGetDriverListQuery({
- *   variables: {
- *   },
- * });
- */
-export function useGetDriverListQuery(
-  baseOptions?: Apollo.QueryHookOptions<GetDriverListQuery, GetDriverListQueryVariables>,
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<GetDriverListQuery, GetDriverListQueryVariables>(
-    GetDriverListDocument,
-    options,
-  );
-}
-export function useGetDriverListLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<GetDriverListQuery, GetDriverListQueryVariables>,
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<GetDriverListQuery, GetDriverListQueryVariables>(
-    GetDriverListDocument,
-    options,
-  );
-}
-export function useGetDriverListSuspenseQuery(
-  baseOptions?:
-    | Apollo.SkipToken
-    | Apollo.SuspenseQueryHookOptions<GetDriverListQuery, GetDriverListQueryVariables>,
-) {
-  const options =
-    baseOptions === Apollo.skipToken ? baseOptions : { ...defaultOptions, ...baseOptions };
-  return Apollo.useSuspenseQuery<GetDriverListQuery, GetDriverListQueryVariables>(
-    GetDriverListDocument,
-    options,
-  );
-}
-export type GetDriverListQueryHookResult = ReturnType<typeof useGetDriverListQuery>;
-export type GetDriverListLazyQueryHookResult = ReturnType<typeof useGetDriverListLazyQuery>;
-export type GetDriverListSuspenseQueryHookResult = ReturnType<typeof useGetDriverListSuspenseQuery>;
-export type GetDriverListQueryResult = Apollo.QueryResult<
-  GetDriverListQuery,
-  GetDriverListQueryVariables
->;
-export const GetDriverDetailDocument = gql`
-  query GetDriverDetail($id: Int!) {
-    driverDetail(id: $id) {
-      id
-      image
-      name
-      version
-      driverUpdatedAt
-      createdAt
-      updatedAt
-    }
-  }
-`;
-
-/**
- * __useGetDriverDetailQuery__
- *
- * To run a query within a React component, call `useGetDriverDetailQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetDriverDetailQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGetDriverDetailQuery({
- *   variables: {
- *      id: // value for 'id'
- *   },
- * });
- */
-export function useGetDriverDetailQuery(
-  baseOptions: Apollo.QueryHookOptions<GetDriverDetailQuery, GetDriverDetailQueryVariables> &
-    ({ variables: GetDriverDetailQueryVariables; skip?: boolean } | { skip: boolean }),
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<GetDriverDetailQuery, GetDriverDetailQueryVariables>(
-    GetDriverDetailDocument,
-    options,
-  );
-}
-export function useGetDriverDetailLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<GetDriverDetailQuery, GetDriverDetailQueryVariables>,
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<GetDriverDetailQuery, GetDriverDetailQueryVariables>(
-    GetDriverDetailDocument,
-    options,
-  );
-}
-export function useGetDriverDetailSuspenseQuery(
-  baseOptions?:
-    | Apollo.SkipToken
-    | Apollo.SuspenseQueryHookOptions<GetDriverDetailQuery, GetDriverDetailQueryVariables>,
-) {
-  const options =
-    baseOptions === Apollo.skipToken ? baseOptions : { ...defaultOptions, ...baseOptions };
-  return Apollo.useSuspenseQuery<GetDriverDetailQuery, GetDriverDetailQueryVariables>(
-    GetDriverDetailDocument,
-    options,
-  );
-}
-export type GetDriverDetailQueryHookResult = ReturnType<typeof useGetDriverDetailQuery>;
-export type GetDriverDetailLazyQueryHookResult = ReturnType<typeof useGetDriverDetailLazyQuery>;
-export type GetDriverDetailSuspenseQueryHookResult = ReturnType<
-  typeof useGetDriverDetailSuspenseQuery
->;
-export type GetDriverDetailQueryResult = Apollo.QueryResult<
-  GetDriverDetailQuery,
-  GetDriverDetailQueryVariables
->;
-export const GetGpuStatusListDocument = gql`
-  query GetGpuStatusList {
-    gpuStatusList {
-      id
-      pcId
-      name
-      usage
-      unit
-      createdAt
-      updatedAt
-    }
-  }
-`;
-
-/**
- * __useGetGpuStatusListQuery__
- *
- * To run a query within a React component, call `useGetGpuStatusListQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetGpuStatusListQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGetGpuStatusListQuery({
- *   variables: {
- *   },
- * });
- */
-export function useGetGpuStatusListQuery(
-  baseOptions?: Apollo.QueryHookOptions<GetGpuStatusListQuery, GetGpuStatusListQueryVariables>,
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<GetGpuStatusListQuery, GetGpuStatusListQueryVariables>(
-    GetGpuStatusListDocument,
-    options,
-  );
-}
-export function useGetGpuStatusListLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<GetGpuStatusListQuery, GetGpuStatusListQueryVariables>,
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<GetGpuStatusListQuery, GetGpuStatusListQueryVariables>(
-    GetGpuStatusListDocument,
-    options,
-  );
-}
-export function useGetGpuStatusListSuspenseQuery(
-  baseOptions?:
-    | Apollo.SkipToken
-    | Apollo.SuspenseQueryHookOptions<GetGpuStatusListQuery, GetGpuStatusListQueryVariables>,
-) {
-  const options =
-    baseOptions === Apollo.skipToken ? baseOptions : { ...defaultOptions, ...baseOptions };
-  return Apollo.useSuspenseQuery<GetGpuStatusListQuery, GetGpuStatusListQueryVariables>(
-    GetGpuStatusListDocument,
-    options,
-  );
-}
-export type GetGpuStatusListQueryHookResult = ReturnType<typeof useGetGpuStatusListQuery>;
-export type GetGpuStatusListLazyQueryHookResult = ReturnType<typeof useGetGpuStatusListLazyQuery>;
-export type GetGpuStatusListSuspenseQueryHookResult = ReturnType<
-  typeof useGetGpuStatusListSuspenseQuery
->;
-export type GetGpuStatusListQueryResult = Apollo.QueryResult<
-  GetGpuStatusListQuery,
-  GetGpuStatusListQueryVariables
->;
-export const GetGpuStatusDetailDocument = gql`
-  query GetGpuStatusDetail($id: Int!) {
-    gpuStatusDetail(id: $id) {
-      id
-      pcId
-      name
-      usage
-      unit
-      createdAt
-      updatedAt
-    }
-  }
-`;
-
-/**
- * __useGetGpuStatusDetailQuery__
- *
- * To run a query within a React component, call `useGetGpuStatusDetailQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetGpuStatusDetailQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGetGpuStatusDetailQuery({
- *   variables: {
- *      id: // value for 'id'
- *   },
- * });
- */
-export function useGetGpuStatusDetailQuery(
-  baseOptions: Apollo.QueryHookOptions<GetGpuStatusDetailQuery, GetGpuStatusDetailQueryVariables> &
-    ({ variables: GetGpuStatusDetailQueryVariables; skip?: boolean } | { skip: boolean }),
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<GetGpuStatusDetailQuery, GetGpuStatusDetailQueryVariables>(
-    GetGpuStatusDetailDocument,
-    options,
-  );
-}
-export function useGetGpuStatusDetailLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    GetGpuStatusDetailQuery,
-    GetGpuStatusDetailQueryVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<GetGpuStatusDetailQuery, GetGpuStatusDetailQueryVariables>(
-    GetGpuStatusDetailDocument,
-    options,
-  );
-}
-export function useGetGpuStatusDetailSuspenseQuery(
-  baseOptions?:
-    | Apollo.SkipToken
-    | Apollo.SuspenseQueryHookOptions<GetGpuStatusDetailQuery, GetGpuStatusDetailQueryVariables>,
-) {
-  const options =
-    baseOptions === Apollo.skipToken ? baseOptions : { ...defaultOptions, ...baseOptions };
-  return Apollo.useSuspenseQuery<GetGpuStatusDetailQuery, GetGpuStatusDetailQueryVariables>(
-    GetGpuStatusDetailDocument,
-    options,
-  );
-}
-export type GetGpuStatusDetailQueryHookResult = ReturnType<typeof useGetGpuStatusDetailQuery>;
-export type GetGpuStatusDetailLazyQueryHookResult = ReturnType<
-  typeof useGetGpuStatusDetailLazyQuery
->;
-export type GetGpuStatusDetailSuspenseQueryHookResult = ReturnType<
-  typeof useGetGpuStatusDetailSuspenseQuery
->;
-export type GetGpuStatusDetailQueryResult = Apollo.QueryResult<
-  GetGpuStatusDetailQuery,
-  GetGpuStatusDetailQueryVariables
 >;
 export const GetLineListDocument = gql`
   query GetLineList {

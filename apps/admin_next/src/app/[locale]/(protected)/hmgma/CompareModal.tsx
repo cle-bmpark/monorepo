@@ -65,7 +65,7 @@ export default function CompareModal({
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [setVisible]);
+  }, [setVisible, setSelectedPcs]);
 
   if (!visible || !localData) return null;
 
