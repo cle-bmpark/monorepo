@@ -26,7 +26,7 @@
 - DB 구조(docs/db_diagram.svg): [text](https://dbdiagram.io/d/68468226058073439759dbef)
 
 ### PostgreSQL 로컬 DB 를 서버에 올리기
-
+- https://www.notion.so/springin98/DB-20f7138fea7b804da818fb9632df80f6?source=copy_link
 
 ## 네이밍 컨벤션
 - DB Column: [camelCase] TypeORM 은 기본적으로 camelCase 엔티티 필드명을 사용합니다.
