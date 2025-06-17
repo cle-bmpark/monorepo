@@ -403,136 +403,152 @@ query {
 
 query {
   pcList(input: {
-    searchQuery: "main",
-    orderBy:ANYDESK_IP,
-    sortOrder:DESC
+    # searchQuery: null,
+    orderBy: IS_LICENSE,
+    sortOrder: ASC,
+    # lineId: null,
+    # positionId:null,
+    # processId:null,
+    # brain: MAIN,
+    isLicense:true,
+    isNetwork:true,
+    isProgram:true,
+    launcherUpdatedAtStart:"2020-01-01",
+    launcherUpdatedAtEnd:"2026-01-01",
+    page: 1,
+    pageSize:100
   }) {
-    id
-    serialNumber
-    lineId
-    positionId
-    processId
-    brain
-    isLicense
-    isNetwork
-    isProgram
-    anydeskIp
-    ipv4
-    activeServer
-    launcherUpdatedAt
-    createdAt
-    updatedAt
-    line {
+    items{
       id
-      code
-      name
+      serialNumber
+      lineId
+      positionId
+      processId
+      brain
+      isLicense
+      isNetwork
+      isProgram
+      anydeskIp
+      ipv4
+      activeServer
+      launcherUpdatedAt
       createdAt
       updatedAt
-    }
-    position {
-      id
-      code
-      name
-      createdAt
-      updatedAt
-    }
-    process {
-     	id
-      code
-      name
-      createdAt
-      updatedAt
-    }
-    cpuStatus {
-      id
-      pcId
-      name
-      usage
-      unit
-      createdAt
-      updatedAt
-    }
-    gpuStatus {
-      id
-      pcId
-      name
-      usage
-      unit
-      createdAt
-      updatedAt
-    }
-    networkStatus {
-      id
-      pcId
-      send
-      receive
-      createdAt
-      updatedAt
-    }
-    ramStatus {
-      id
-      pcId
-      total
-      current
-      average
-      lowest
-      highest
-      unit
-      createdAt
-      updatedAt
-    }
-    storageStatuses {
-      id
-      pcId
-      name
-      total
-      usage
-      unit
-      createdAt
-      updatedAt
-    }
-    tempStatus {
-      id
-      pcId
-      current
-      average
-      lowest
-      highest
-      unit
-      createdAt
-      updatedAt
-    }
-    pcDrivers {
-      id
-      pcId
-      driverId
-      createdAt
-      updatedAt
-      driver { 
+      line {
         id
-        image
+        code
         name
-        version
-        driverUpdatedAt
         createdAt
         updatedAt
       }
-    }
-    pcPrograms {
-      id
-      pcId
-      programId
-      createdAt
-      updatedAt
-      program { 
+      position {
         id
-        image
+        code
         name
-        version
-        programUpdatedAt
         createdAt
         updatedAt
       }
+      process {
+       	id
+        code
+        name
+        createdAt
+        updatedAt
+      }
+      cpuStatus {
+        id
+        pcId
+        name
+        usage
+        unit
+        createdAt
+        updatedAt
+      }
+      gpuStatus {
+        id
+        pcId
+        name
+        usage
+        unit
+        createdAt
+        updatedAt
+      }
+      networkStatus {
+        id
+        pcId
+        send
+        receive
+        createdAt
+        updatedAt
+      }
+      ramStatus {
+        id
+        pcId
+        total
+        current
+        average
+        lowest
+        highest
+        unit
+        createdAt
+        updatedAt
+      }
+      storageStatuses {
+        id
+        pcId
+        name
+        total
+        usage
+        unit
+        createdAt
+        updatedAt
+      }
+      tempStatus {
+        id
+        pcId
+        current
+        average
+        lowest
+        highest
+        unit
+        createdAt
+        updatedAt
+      }
+      pcDrivers {
+        id
+        pcId
+        driverId
+        createdAt
+        updatedAt
+        driver { 
+            id
+            image
+            name
+            version
+            driverUpdatedAt
+            createdAt
+            updatedAt
+        }
+      }
+      pcPrograms {
+        id
+        pcId
+        programId
+        createdAt
+        updatedAt
+        program { 
+            id
+            image
+            name
+            version
+            programUpdatedAt
+            createdAt
+            updatedAt
+        }
+      }
     }
+    totalCount
+    totalPages
+    hasNextPage
   }
 }
