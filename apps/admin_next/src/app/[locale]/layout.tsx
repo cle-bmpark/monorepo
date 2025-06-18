@@ -16,6 +16,7 @@ import { ReactNode } from 'react';
 export const metadata: Metadata = {
   title: 'CLE',
   description: 'CLE 관리자 페이지',
+  icons: { icon: '/logo.svg' },
 };
 
 export default async function RootLayout({
