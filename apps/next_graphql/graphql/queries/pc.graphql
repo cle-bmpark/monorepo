@@ -1,0 +1,157 @@
+query GetPcList($input: FindPcsInput) {
+  pcList(input: $input) {
+    items{
+      id
+      serialNumber
+      line {
+        id
+        name
+      }
+      position {
+        id
+        name
+      }
+      process {
+        id
+        name
+      }
+      brain
+      isLicense
+      isProgram
+      isNetwork
+      anydeskIp
+      launcherUpdatedAt
+      pcPrograms {
+        program { 
+            image
+            name
+            version
+        }
+      }
+    }
+    totalPages
+  }
+}
+
+query GetPcDetail($id: Int!) {
+  pcDetail(id: $id) {
+    id
+    serialNumber
+    brain
+    isLicense
+    isNetwork
+    isProgram
+    anydeskIp
+    ipv4
+    activeServer
+    launcherUpdatedAt
+    line {
+      id
+      code
+      name
+    }
+    position {
+      id
+      code
+      name
+    }
+    process {
+      id
+      code
+      name
+    }
+    cpuStatus {
+      name
+      usage
+      unit
+    }
+    gpuStatus {
+      name
+      usage
+      unit
+    }
+    networkStatus {
+      send
+      receive
+      unit
+    }
+    ramStatus {
+      total
+      current
+      average
+      lowest
+      highest
+      unit
+    }
+    storageStatuses {
+      name
+      total
+      usage
+      unit
+    }
+    tempStatus {
+      current
+      average
+      lowest
+      highest
+      unit
+    }
+    pcDrivers {
+      driver { 
+        image
+        name
+        version
+        driverUpdatedAt
+      }
+    }
+    pcPrograms {
+      program { 
+        image
+        name
+        version
+        programUpdatedAt
+      }
+    }
+  }
+}
+
+query GetPcListByIds($input: FindPcsByIds!) {
+  pcsByIds(input: $input) {
+    id
+    serialNumber
+    line {
+      id
+      name
+    }
+    position {
+      id
+      name
+    }
+    process {
+      id
+      name
+    }
+    brain
+    isLicense
+    isNetwork
+    isProgram
+    anydeskIp
+    launcherUpdatedAt
+    pcPrograms {
+      program { 
+        image
+        name
+        version
+        programUpdatedAt
+      }
+    }
+    pcDrivers {
+      driver { 
+        image
+        name
+        version
+        driverUpdatedAt
+      }
+    }
+  }
+}
