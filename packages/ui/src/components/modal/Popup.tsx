@@ -18,7 +18,7 @@ export default function Popup() {
   return (
     <div className='fixed top-0 right-0 bottom-0 left-0 z-20 bg-grey-950/40'>
       <div
-        className='absolute top-1/2 left-1/2 flex max-h-[460px] w-[460px] -translate-x-1/2 -translate-y-1/2 transform flex-col gap-8 rounded-2xl border border-grey-200 bg-grey-0 p-6 shadow-strong'
+        className={`absolute top-1/2 left-1/2 flex max-h-[460px] -translate-x-1/2 -translate-y-1/2 transform flex-col gap-8 rounded-2xl border border-grey-200 bg-grey-0 p-6 shadow-strong ${popup.width ?? 'w-[460px]'}`}
         ref={popupRef}
       >
         {/* context */}

@@ -9,6 +9,7 @@ export const modalDefault: {
   onConfirm?: () => void;
   cancelLabel?: string;
   confirmLabel?: string;
+  width?: string;
 } = {
   visible: false,
   title: '',
@@ -21,6 +22,7 @@ export const modalAtom = atom<{
   onConfirm?: () => void;
   cancelLabel?: string;
   confirmLabel?: string;
+  width?: string;
 }>(modalDefault);
 
 export const popupDefault: {
@@ -31,6 +33,7 @@ export const popupDefault: {
   onConfirm?: () => void;
   cancelLabel?: string;
   confirmLabel?: string;
+  width?: string;
 } = {
   visible: false,
   title: '',
@@ -44,6 +47,7 @@ export const popupAtom = atom<{
   onConfirm?: () => void;
   cancelLabel?: string;
   confirmLabel?: string;
+  width?: string;
 }>(popupDefault);
 
 export const progressDefault: {
