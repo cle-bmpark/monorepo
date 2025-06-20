@@ -1,0 +1,34 @@
+query GetItemsById($id: ID!) {
+  items(ids: [$id]) {
+    id
+    column_values {
+      column {
+        id
+        title
+      }
+      text
+    }
+  }
+}
+
+query GetItemsByFilter(
+  $boardId: ID!,
+  $columnId: ID!,
+  $compareValue: CompareValue!
+  $operator: ItemsQueryRuleOperator
+) {
+  boards (ids: [$boardId]) {
+    items_page (query_params: {rules: [{column_id: $columnId, compare_value: $compareValue, operator: $operator}]}) {
+      items {
+        id
+        name
+        column_values {
+          column {
+            title
+          }
+          text
+        }
+      }
+    }
+  }
+}

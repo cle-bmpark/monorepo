@@ -226,6 +226,21 @@ importers:
 
   apps/issue_next:
     dependencies:
+      '@apollo/client':
+        specifier: ^3.13.8
+        version: 3.13.8(@types/react@19.1.6)(graphql-ws@6.0.4(graphql@16.11.0)(ws@8.18.1))(graphql@16.11.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(subscriptions-transport-ws@0.11.0(graphql@16.11.0))
+      '@graphql-codegen/cli':
+        specifier: ^5.0.7
+        version: 5.0.7(@types/node@20.17.57)(graphql@16.11.0)(typescript@5.8.3)
+      '@graphql-codegen/typescript':
+        specifier: ^4.1.6
+        version: 4.1.6(graphql@16.11.0)
+      '@graphql-codegen/typescript-operations':
+        specifier: ^4.6.1
+        version: 4.6.1(graphql@16.11.0)
+      '@graphql-codegen/typescript-react-apollo':
+        specifier: ^4.3.3
+        version: 4.3.3(graphql@16.11.0)
       '@repo/tailwind-config':
         specifier: workspace:*
         version: link:../../packages/tailwind-config
@@ -235,6 +250,9 @@ importers:
       '@repo/ui':
         specifier: workspace:*
         version: link:../../packages/ui
+      dotenv:
+        specifier: ^16.5.0
+        version: 16.5.0
       jotai:
         specifier: ^2.12.4
         version: 2.12.5(@types/react@19.1.6)(react@19.1.0)
@@ -472,6 +490,9 @@ importers:
       '@repo/ui':
         specifier: workspace:*
         version: link:../../packages/ui
+      dotenv:
+        specifier: ^16.5.0
+        version: 16.5.0
       jotai:
         specifier: ^2.12.4
         version: 2.12.5(@types/react@19.1.6)(react@19.1.0)

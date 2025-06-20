@@ -1,0 +1,17 @@
+query GetBoardById($id: ID!) {
+  boards(ids: [$id]) {
+    items_page {
+      items {
+        id
+        name
+        column_values {
+          column {
+            id
+            title
+          }
+          text
+        }
+      }
+    }
+  }
+}
