@@ -34,6 +34,7 @@ const nextJsConfig = [
     languageOptions: {
       globals: {
         ...commonJsGlobals.browser,
+        process: 'readonly',
       },
       parserOptions: {
         project: ['./tsconfig.json'], // TypeScript 프로젝트 설정 파일 경로 (type-checked 규칙에 필요)
