@@ -1,9 +1,9 @@
 import LoadingIcon from '@ui/components/svg/LoadingIcon';
-import React, { CSSProperties, JSX, MouseEventHandler } from 'react';
+import React, { CSSProperties, JSX } from 'react';
 import { AiOutlinePlus } from 'react-icons/ai';
 interface ButtonProps {
   value: string;
-  onClick?: MouseEventHandler<HTMLButtonElement>;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void | Promise<void>;
   size?: 'm' | 's';
   style?: 'primary' | 'secondary' | 'tertiary' | 'outline' | 'ghost';
   isDisabled?: boolean;
@@ -63,7 +63,11 @@ export default function Button({
     <button
       className={`flex flex-1 items-center justify-center gap-1 rounded-lg outline-0 ${variantStyle[variantKey].button} ${sizeStyle[size].button}`}
       disabled={isDisabled || isLoading}
-      onClick={onClick}
+      onClick={(e) => {
+        if (onClick) {
+          void onClick(e);
+        }
+      }}
     >
       {isLoading ? <LoadingIcon /> : <p className='whitespace-nowrap'>{value}</p>}
       {isIcon && styledIcon}
