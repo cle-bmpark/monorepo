@@ -1,6 +1,6 @@
 'use client';
 
-import { ChangeEventHandler, KeyboardEvent, useState } from 'react';
+import { ChangeEventHandler, HTMLInputTypeAttribute, KeyboardEvent, useState } from 'react';
 
 interface InputProps {
   value: string; // 입력값
@@ -12,6 +12,7 @@ interface InputProps {
   placeholder?: string; // 플레이스홀더 텍스트
   style?: 'default' | 'blue' | 'ghost'; // 색상 스타일
   size?: 'm' | 's'; // 사이즈
+  type?: HTMLInputTypeAttribute;
 }
 
 export default function Input({
@@ -24,6 +25,7 @@ export default function Input({
   placeholder = 'Text',
   style = 'default',
   size = 'm',
+  type = 'text',
 }: InputProps) {
   const [isFocus, setIsFocus] = useState<boolean>(false);
 
@@ -73,9 +75,10 @@ export default function Input({
           onFocus={() => setIsFocus(true)}
           onBlur={() => setIsFocus(false)}
           onKeyDown={onKeyDown}
+          type={type}
         />
       </div>
-      {errorMessage ? (
+      {errorMessage && isError ? (
         <p className='ml-2 animate-fade-in text-14 leading-20 break-words text-primary-600'>
           {errorMessage}
         </p>
