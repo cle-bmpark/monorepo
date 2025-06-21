@@ -1,5 +1,6 @@
-import Toggle from '@ui/components/toggle/Toggle';
 import { useState } from 'react';
+
+import Toggle from '@ui/components/toggle/Toggle';
 
 export default function ToggleView() {
   const [value, setValue] = useState<boolean>(false);

@@ -1,5 +1,6 @@
-import Pagination from '@ui/components/table/Pagination';
 import { useState } from 'react';
+
+import Pagination from '@ui/components/table/Pagination';
 
 export default function TableView() {
   const [page1, setPage1] = useState<number>(1);

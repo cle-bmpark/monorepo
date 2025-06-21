@@ -1,8 +1,9 @@
 'use client';
 
+import { useState } from 'react';
+
 import Calendar, { DateRange } from '@ui/components/headless/Calendar';
 import CalendarInput from '@ui/components/headless/CalendarInput';
-import { useState } from 'react';
 
 export default function CalendarView() {
   const initialDateRange: DateRange = {

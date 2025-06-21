@@ -1,12 +1,13 @@
 'use client';
 
+import { useRef } from 'react';
+
 import Button from '@ui/components/button/Button';
 import useClickOutside from '@ui/hooks/useClickOutside';
 import { useColorByTheme } from '@ui/hooks/useColorByTheme';
 import useScrollLock from '@ui/hooks/useScrollLock';
 import { modalAtom, modalDefault } from '@ui/jotai/modalAtoms';
 import { useAtom } from 'jotai';
-import { useRef } from 'react';
 import { IoCloseCircle } from 'react-icons/io5';
 
 export default function Modal() {

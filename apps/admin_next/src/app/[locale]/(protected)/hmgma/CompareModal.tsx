@@ -1,18 +1,20 @@
 'use client';
 
-import DriverInfo from '@/app/[locale]/(protected)/hmgma/[id]/DriverInfo';
-import ProgramInfo from '@/app/[locale]/(protected)/hmgma/[id]/ProgramInfo';
-import DefaultInfo from '@/app/[locale]/(protected)/hmgma/DefaultInfo';
-import { useGetPcListByIdsQuery } from '@/graphql/generated/graphql';
-import { pcListByIdsType, pcListType } from '@/types/graphql';
+import { Dispatch, useEffect, useRef, useState } from 'react';
+
 import Tooltip from '@repo/ui/src/components/modal/Tooltip';
 import useClickOutside from '@repo/ui/src/hooks/useClickOutside';
 import { useColorByTheme } from '@repo/ui/src/hooks/useColorByTheme';
 import { SetStateAction } from 'jotai';
 import { useTranslations } from 'next-intl';
-import { Dispatch, useEffect, useRef, useState } from 'react';
 import { BsInfoCircle } from 'react-icons/bs';
 import { IoCloseCircle } from 'react-icons/io5';
+
+import DefaultInfo from '@/app/[locale]/(protected)/hmgma/DefaultInfo';
+import DriverInfo from '@/app/[locale]/(protected)/hmgma/[id]/DriverInfo';
+import ProgramInfo from '@/app/[locale]/(protected)/hmgma/[id]/ProgramInfo';
+import { useGetPcListByIdsQuery } from '@/graphql/generated/graphql';
+import { pcListByIdsType, pcListType } from '@/types/graphql';
 
 interface CompareModalProps {
   visible: boolean;

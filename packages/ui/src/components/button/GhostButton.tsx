@@ -1,4 +1,5 @@
 import { MouseEventHandler } from 'react';
+
 import { CgChevronRight } from 'react-icons/cg';
 
 interface GhostButtonProps {

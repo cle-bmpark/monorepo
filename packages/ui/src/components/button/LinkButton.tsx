@@ -1,4 +1,5 @@
 import React, { JSX, MouseEventHandler } from 'react';
+
 import { CgChevronRight } from 'react-icons/cg';
 
 interface LinkButtonProps {

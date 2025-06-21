@@ -1,7 +1,9 @@
+import { ReactNode } from 'react';
+
+import { useTranslations } from 'next-intl';
+
 import ObjectTable from '@/components/table/ObjectTable';
 import { pcDetailType } from '@/types/graphql';
-import { useTranslations } from 'next-intl';
-import { ReactNode } from 'react';
 
 interface PCStatusProps {
   data: pcDetailType;

@@ -1,8 +1,9 @@
 'use client';
 
+import { useEffect, useState } from 'react';
+
 import Toggle from '@ui/components/toggle/Toggle';
 import UseSystemDarkMode from '@ui/hooks/useSystemDarkMode';
-import { useEffect, useState } from 'react';
 
 export default function ThemeMode() {
   const systemIsDark = UseSystemDarkMode();

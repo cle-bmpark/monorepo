@@ -1,5 +1,6 @@
-import { getObjectKeys } from '@/utils/object';
 import { ReactNode } from 'react';
+
+import { getObjectKeys } from '@/utils/object';
 
 interface TableHeaderProps<T extends object> {
   data: T[];

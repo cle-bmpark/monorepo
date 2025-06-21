@@ -1,6 +1,7 @@
+import { Test, TestingModule } from '@nestjs/testing';
+
 import { PositionResolver } from '@/position/position.resolver';
 import { PositionService } from '@/position/position.service';
-import { Test, TestingModule } from '@nestjs/testing';
 
 describe('PositionResolver', () => {
   let resolver: PositionResolver;

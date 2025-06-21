@@ -1,5 +1,6 @@
-import { PcService } from '@/pc/pc.service';
 import { Test, TestingModule } from '@nestjs/testing';
+
+import { PcService } from '@/pc/pc.service';
 
 describe('PcService', () => {
   let service: PcService;

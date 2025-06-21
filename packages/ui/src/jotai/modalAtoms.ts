@@ -1,5 +1,6 @@
-import { atom } from 'jotai';
 import { ReactElement } from 'react';
+
+import { atom } from 'jotai';
 
 export const modalDefault: {
   visible: boolean;

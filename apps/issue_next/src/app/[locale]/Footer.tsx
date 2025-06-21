@@ -1,4 +1,5 @@
 import Image from 'next/image';
+
 import CleCol from '../../../public/cle_col.svg';
 
 export default function Footer() {

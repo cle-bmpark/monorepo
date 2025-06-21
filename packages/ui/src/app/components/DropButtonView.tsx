@@ -1,6 +1,7 @@
+import { useState } from 'react';
+
 import DropButton from '@ui/components/button/DropButton';
 import Dropdown from '@ui/components/button/Dropdown';
-import { useState } from 'react';
 
 export default function DropButtonView() {
   const valueList = ['Option1', 'Option2', 'Option3', 'Option4', 'Option5', 'Option6'];

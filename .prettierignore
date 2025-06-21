@@ -1,1 +1,5 @@
 **/*.md
+
+# prettier format 에서 nest의 @모듈을 읽지 못하므로 pnpm run format 에서 오류가 납니다.
+apps/nest/**
+apps/admin_nest/**

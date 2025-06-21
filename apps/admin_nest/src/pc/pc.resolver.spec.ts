@@ -1,6 +1,7 @@
+import { Test, TestingModule } from '@nestjs/testing';
+
 import { PcResolver } from '@/pc/pc.resolver';
 import { PcService } from '@/pc/pc.service';
-import { Test, TestingModule } from '@nestjs/testing';
 
 describe('PcResolver', () => {
   let resolver: PcResolver;

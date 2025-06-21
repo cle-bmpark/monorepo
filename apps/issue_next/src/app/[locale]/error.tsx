@@ -1,4 +1,5 @@
 'use client';
+
 import Button from '@repo/ui/src/components/button/Button';
 import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';

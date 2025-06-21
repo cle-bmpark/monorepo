@@ -1,5 +1,6 @@
-import Slider from '@ui/components/slider/Slider';
 import { useState } from 'react';
+
+import Slider from '@ui/components/slider/Slider';
 
 export default function SliderView() {
   const [sliderValue, setSliderValue] = useState<number>(50);

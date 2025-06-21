@@ -1,5 +1,6 @@
-import { getObjectEntries } from '@/utils/object';
 import React, { ReactNode } from 'react';
+
+import { getObjectEntries } from '@/utils/object';
 
 interface ObjectTableProps<T extends object> {
   title?: string;

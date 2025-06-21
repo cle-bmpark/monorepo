@@ -1,5 +1,6 @@
-import { NetworkStatusService } from '@/network_status/network_status.service';
 import { Test, TestingModule } from '@nestjs/testing';
+
+import { NetworkStatusService } from '@/network_status/network_status.service';
 
 describe('NetworkStatusService', () => {
   let service: NetworkStatusService;

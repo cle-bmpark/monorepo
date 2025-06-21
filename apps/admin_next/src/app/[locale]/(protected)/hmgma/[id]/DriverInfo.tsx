@@ -1,9 +1,11 @@
+import { ReactNode } from 'react';
+
+import { useTranslations } from 'next-intl';
+import Image from 'next/image';
+
 import ScrollTable from '@/components/table/ScrollTable';
 import { driverType, pcDriversType } from '@/types/graphql';
 import { formatTimestampToDate } from '@/utils/format';
-import { useTranslations } from 'next-intl';
-import Image from 'next/image';
-import { ReactNode } from 'react';
 
 interface DriverInfoProps {
   data: pcDriversType;

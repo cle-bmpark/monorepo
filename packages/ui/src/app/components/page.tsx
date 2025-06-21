@@ -12,8 +12,8 @@ import LinkButtonView from '@ui/app/components/LinkButtonView';
 import ModalView from '@ui/app/components/ModalView';
 import RadioView from '@ui/app/components/RadioView';
 import SliderView from '@ui/app/components/SliderView';
-import TableView from '@ui/app/components/TableView';
 import TabView from '@ui/app/components/TabView';
+import TableView from '@ui/app/components/TableView';
 import TextFieldView from '@ui/app/components/TextFieldView';
 import ToggleView from '@ui/app/components/ToggleView';
 

@@ -1,5 +1,6 @@
-import { PcDriverService } from '@/pc_driver/pc_driver.service';
 import { Test, TestingModule } from '@nestjs/testing';
+
+import { PcDriverService } from '@/pc_driver/pc_driver.service';
 
 describe('PcDriverService', () => {
   let service: PcDriverService;

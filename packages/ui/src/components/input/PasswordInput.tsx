@@ -1,7 +1,8 @@
 'use client';
 
-import { useColorByTheme } from '@ui/hooks/useColorByTheme';
 import { ChangeEventHandler, KeyboardEvent, useState } from 'react';
+
+import { useColorByTheme } from '@ui/hooks/useColorByTheme';
 import { IoMdEye, IoMdEyeOff } from 'react-icons/io';
 
 interface PasswordInputProps {

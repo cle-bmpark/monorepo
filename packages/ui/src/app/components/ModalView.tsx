@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import Button from '@ui/components/button/Button';
 import Tooltip from '@ui/components/modal/Tooltip';
 import ModalViewContent from '@ui/dummy/ModalViewContent';
@@ -11,7 +13,6 @@ import {
   toastAtom,
 } from '@ui/jotai/modalAtoms';
 import { useAtom } from 'jotai';
-import { useState } from 'react';
 
 export default function ModalView() {
   const [, setModal] = useAtom(modalAtom);

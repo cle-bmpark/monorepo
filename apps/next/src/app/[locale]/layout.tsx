@@ -1,16 +1,17 @@
-import '@/app/[locale]/globals.css';
-import { routing } from '@/i18n/routing';
+import { ReactNode } from 'react';
+
 import Footer from '@repo/ui/src/components/layout/Footer';
 import Modal from '@repo/ui/src/components/modal/Modal';
 import Popup from '@repo/ui/src/components/modal/Popup';
 import ProgressModal from '@repo/ui/src/components/modal/ProgressModal';
 import Toast from '@repo/ui/src/components/modal/Toast';
 import { Provider } from 'jotai';
-
 import type { Metadata } from 'next';
-import { hasLocale, NextIntlClientProvider } from 'next-intl';
+import { NextIntlClientProvider, hasLocale } from 'next-intl';
 import { notFound } from 'next/navigation';
-import { ReactNode } from 'react';
+
+import '@/app/[locale]/globals.css';
+import { routing } from '@/i18n/routing';
 
 export const metadata: Metadata = {
   title: 'CLE',

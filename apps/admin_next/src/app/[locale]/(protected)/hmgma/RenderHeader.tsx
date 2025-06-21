@@ -1,13 +1,14 @@
-import { PcSortField, SortOrder } from '@/graphql/generated/graphql';
-import { pcListType } from '@/types/graphql';
+import { Dispatch, SetStateAction } from 'react';
+
 import Button from '@repo/ui/src/components/button/Button';
 import { toastAtom } from '@ui/jotai/modalAtoms';
-
 import { useAtom } from 'jotai';
 import { useTranslations } from 'next-intl';
-import { Dispatch, SetStateAction } from 'react';
 import { HiOutlineSwitchVertical } from 'react-icons/hi';
+
 import { orderType } from './page';
+import { PcSortField, SortOrder } from '@/graphql/generated/graphql';
+import { pcListType } from '@/types/graphql';
 
 interface RenderHeaderProps {
   headerKey: keyof pcListType;

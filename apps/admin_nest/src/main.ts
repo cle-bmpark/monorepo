@@ -1,7 +1,8 @@
-import { AppModule } from '@/app.module';
 import fastifyCsrf from '@fastify/csrf-protection';
 import { NestFactory } from '@nestjs/core';
 import { FastifyAdapter, NestFastifyApplication } from '@nestjs/platform-fastify';
+
+import { AppModule } from '@/app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestFastifyApplication>(AppModule, new FastifyAdapter());
@@ -17,7 +18,6 @@ async function bootstrap() {
   await app.listen(port, '0.0.0.0');
 }
 
-bootstrap().catch((error: unknown) => {
-  console.error('Application failed to start:', error);
+bootstrap().catch(() => {
   process.exit(1);
 });

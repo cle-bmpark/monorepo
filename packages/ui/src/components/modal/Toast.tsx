@@ -1,10 +1,11 @@
 'use client';
 
+import { useEffect, useRef, useState } from 'react';
+
 import useClickOutside from '@ui/hooks/useClickOutside';
 import { useColorByTheme } from '@ui/hooks/useColorByTheme';
 import { toastAtom, toastDefault } from '@ui/jotai/modalAtoms';
 import { useAtom } from 'jotai';
-import { useEffect, useRef, useState } from 'react';
 import { IoCheckmarkCircleOutline, IoClose, IoInformationCircle, IoWarning } from 'react-icons/io5';
 
 export default function Toast() {

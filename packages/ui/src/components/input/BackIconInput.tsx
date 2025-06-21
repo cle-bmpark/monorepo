@@ -1,7 +1,8 @@
 'use client';
 
-import { useColorByTheme } from '@ui/hooks/useColorByTheme';
 import React, { ChangeEventHandler, JSX, KeyboardEvent, useState } from 'react';
+
+import { useColorByTheme } from '@ui/hooks/useColorByTheme';
 
 interface BackIconInputProps {
   value: string;

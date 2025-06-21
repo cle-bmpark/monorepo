@@ -1,5 +1,6 @@
-import { useColorByTheme } from '@ui/hooks/useColorByTheme';
 import { MouseEventHandler } from 'react';
+
+import { useColorByTheme } from '@ui/hooks/useColorByTheme';
 import { AiOutlineMinus } from 'react-icons/ai';
 
 interface ToggleProps {

@@ -1,6 +1,8 @@
-import LoadingIcon from '@ui/components/svg/LoadingIcon';
 import React, { CSSProperties, JSX } from 'react';
+
+import LoadingIcon from '@ui/components/svg/LoadingIcon';
 import { AiOutlinePlus } from 'react-icons/ai';
+
 interface ButtonProps {
   value: string;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void | Promise<void>;

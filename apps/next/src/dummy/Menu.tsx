@@ -1,6 +1,7 @@
 import { MenuType } from '@repo/ui/src/components/layout/Navigation';
 import { LuLayoutDashboard } from 'react-icons/lu';
 import { MdDoNotDisturb } from 'react-icons/md';
+
 export const MENU: Record<string, MenuType> = {
   components: {
     key: 'components',

@@ -1,7 +1,8 @@
+import { useState } from 'react';
+
 import ScrollNavigation from '@ui/components/tab/ScrollNavigation';
 import SegmentControl from '@ui/components/tab/SegmentControl';
 import Tab, { TabType } from '@ui/components/tab/Tab';
-import { useState } from 'react';
 
 export default function TabView() {
   const valueList: TabType<string>[] = [

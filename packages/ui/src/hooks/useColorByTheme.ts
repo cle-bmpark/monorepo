@@ -1,5 +1,6 @@
-import { colors, darkColors } from '@ui/styles/color';
 import { useEffect, useState } from 'react';
+
+import { colors, darkColors } from '@ui/styles/color';
 
 export function useColorByTheme(colorKey: keyof typeof colors): string {
   const [isDark, setIsDark] = useState(false);

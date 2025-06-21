@@ -1,7 +1,8 @@
-import { pcDetailType } from '@/types/graphql';
 import { useColorByTheme } from '@repo/ui/src/hooks/useColorByTheme';
 import Slider from '@ui/components/slider/Slider';
 import { FiHardDrive } from 'react-icons/fi';
+
+import { pcDetailType } from '@/types/graphql';
 
 interface StorageInfoProps {
   data: pcDetailType['storageStatuses'];

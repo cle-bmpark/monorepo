@@ -1,8 +1,10 @@
 'use client';
 
-import client from '@/../apollo-client';
-import { ApolloProvider } from '@apollo/client';
 import React from 'react';
+
+import { ApolloProvider } from '@apollo/client';
+
+import client from '@/../apollo-client';
 
 interface ApolloClientProviderProps {
   children: React.ReactNode;

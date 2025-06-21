@@ -1,5 +1,6 @@
-import { PositionService } from '@/position/position.service';
 import { Test, TestingModule } from '@nestjs/testing';
+
+import { PositionService } from '@/position/position.service';
 
 describe('PositionService', () => {
   let service: PositionService;

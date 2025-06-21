@@ -1,6 +1,7 @@
+import { Test, TestingModule } from '@nestjs/testing';
+
 import { GpuStatusResolver } from '@/gpu_status/gpu_status.resolver';
 import { GpuStatusService } from '@/gpu_status/gpu_status.service';
-import { Test, TestingModule } from '@nestjs/testing';
 
 describe('GpuStatusResolver', () => {
   let resolver: GpuStatusResolver;

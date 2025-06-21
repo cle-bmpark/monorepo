@@ -1,8 +1,9 @@
 'use client';
 
+import React, { JSX } from 'react';
+
 import { useColorByTheme } from '@ui/hooks/useColorByTheme';
 import { usePathname, useRouter } from 'next/navigation';
-import React, { JSX } from 'react';
 
 export interface MenuType {
   key: string;

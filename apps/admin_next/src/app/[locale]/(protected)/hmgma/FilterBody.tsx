@@ -1,5 +1,13 @@
 'use client';
 
+import { Dispatch } from 'react';
+
+import Dropdown from '@repo/ui/src/components/button/Dropdown';
+import { DateRange } from '@repo/ui/src/components/headless/Calendar';
+import CalendarInput from '@repo/ui/src/components/headless/CalendarInput';
+import { SetStateAction } from 'jotai';
+import { useTranslations } from 'next-intl';
+
 import { filterType } from '@/app/[locale]/(protected)/hmgma/page';
 import { filterBodyType } from '@/components/table/Filter';
 import {
@@ -8,12 +16,6 @@ import {
   useGetPositionListQuery,
   useGetProcessListQuery,
 } from '@/graphql/generated/graphql';
-import Dropdown from '@repo/ui/src/components/button/Dropdown';
-import { DateRange } from '@repo/ui/src/components/headless/Calendar';
-import CalendarInput from '@repo/ui/src/components/headless/CalendarInput';
-import { SetStateAction } from 'jotai';
-import { useTranslations } from 'next-intl';
-import { Dispatch } from 'react';
 
 interface useFilterBodyProps {
   filter: filterType;

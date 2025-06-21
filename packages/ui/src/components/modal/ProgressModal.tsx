@@ -1,11 +1,12 @@
 'use client';
 
+import { useRef } from 'react';
+
 import Button from '@ui/components/button/Button';
 import useClickOutside from '@ui/hooks/useClickOutside';
 import useScrollLock from '@ui/hooks/useScrollLock';
 import { progressAtom, progressDefault } from '@ui/jotai/modalAtoms';
 import { useAtom } from 'jotai';
-import { useRef } from 'react';
 
 export default function ProgressModal() {
   const modalRef = useRef<HTMLDivElement>(null);

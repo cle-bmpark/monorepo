@@ -1,8 +1,9 @@
+import { useRef, useState } from 'react';
+
 import Calendar, { DateRange } from '@ui/components/headless/Calendar';
 import useClickOutside from '@ui/hooks/useClickOutside';
 import { useColorByTheme } from '@ui/hooks/useColorByTheme';
 import { formatToYYYYMMDD } from '@ui/utils/date';
-import { useRef, useState } from 'react';
 import { FaRegCalendar } from 'react-icons/fa';
 
 interface CalendarInputProps {

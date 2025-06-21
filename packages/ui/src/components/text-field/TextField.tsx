@@ -1,5 +1,6 @@
-import LoadingIcon from '@ui/components/svg/LoadingIcon';
 import { ChangeEventHandler, useRef } from 'react';
+
+import LoadingIcon from '@ui/components/svg/LoadingIcon';
 
 interface TextFieldProps {
   value: string; // 입력값

@@ -1,5 +1,7 @@
 'use client';
 
+import { useParams } from 'next/navigation';
+
 import DefaultInfo from '@/app/[locale]/(protected)/hmgma/[id]/DefaultInfo';
 import DriverInfo from '@/app/[locale]/(protected)/hmgma/[id]/DriverInfo';
 import PCStatus from '@/app/[locale]/(protected)/hmgma/[id]/PCStatus';
@@ -9,7 +11,6 @@ import Error from '@/app/[locale]/error';
 import Loading from '@/app/[locale]/loading';
 import { useGetPcDetailQuery } from '@/graphql/generated/graphql';
 import { formatTimestampToDate } from '@/utils/format';
-import { useParams } from 'next/navigation';
 
 export default function HMGMADetailPage() {
   const params = useParams();

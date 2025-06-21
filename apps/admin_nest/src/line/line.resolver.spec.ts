@@ -1,6 +1,7 @@
+import { Test, TestingModule } from '@nestjs/testing';
+
 import { LineResolver } from '@/line/line.resolver';
 import { LineService } from '@/line/line.service';
-import { Test, TestingModule } from '@nestjs/testing';
 
 describe('LineResolver', () => {
   let resolver: LineResolver;

@@ -1,6 +1,7 @@
+import { useState } from 'react';
+
 import CheckBox from '@ui/components/radio/CheckBox';
 import Radio from '@ui/components/radio/Radio';
-import { useState } from 'react';
 
 export default function RadioView() {
   const [radioValue, setRadioValue] = useState<boolean>(false);

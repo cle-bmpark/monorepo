@@ -1,11 +1,13 @@
+import { Dispatch, ReactNode } from 'react';
+
+import Dropdown from '@repo/ui/src/components/button/Dropdown';
+import Pagination from '@repo/ui/src/components/table/Pagination';
+import { SetStateAction } from 'jotai';
+
 import Filter, { filterBodyType } from '@/components/table/Filter';
 import Search from '@/components/table/Search';
 import TableBody from '@/components/table/TableBody';
 import TableHeader from '@/components/table/TableHeader';
-import Dropdown from '@repo/ui/src/components/button/Dropdown';
-import Pagination from '@repo/ui/src/components/table/Pagination';
-import { SetStateAction } from 'jotai';
-import { Dispatch, ReactNode } from 'react';
 
 export interface paginationType {
   page: number;

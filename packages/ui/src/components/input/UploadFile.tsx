@@ -1,8 +1,9 @@
 'use client';
 
+import React, { useState } from 'react';
+
 import LoadingIcon from '@ui/components/svg/LoadingIcon';
 import { useColorByTheme } from '@ui/hooks/useColorByTheme';
-import React, { useState } from 'react';
 import { IoMdClose } from 'react-icons/io';
 import { IoTrashOutline } from 'react-icons/io5';
 import { LuUpload } from 'react-icons/lu';

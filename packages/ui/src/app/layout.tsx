@@ -1,5 +1,7 @@
-import '@ui/app/globals.css';
+import { ReactNode } from 'react';
+
 import ThemeMode from '@ui/app/ThemeMode';
+import '@ui/app/globals.css';
 import Footer from '@ui/components/layout/Footer';
 import Navigation from '@ui/components/layout/Navigation';
 import Modal from '@ui/components/modal/Modal';
@@ -8,7 +10,6 @@ import ProgressModal from '@ui/components/modal/ProgressModal';
 import Toast from '@ui/components/modal/Toast';
 import { MENU } from '@ui/dummy/Menu';
 import type { Metadata } from 'next';
-import { ReactNode } from 'react';
 
 export const metadata: Metadata = {
   title: 'CLE',

@@ -1,5 +1,6 @@
-import useClickOutside from '@ui/hooks/useClickOutside';
 import { useRef, useState } from 'react';
+
+import useClickOutside from '@ui/hooks/useClickOutside';
 import { FaCheck } from 'react-icons/fa6';
 
 interface DropButtonProps<T> {

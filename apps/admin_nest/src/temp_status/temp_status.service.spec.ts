@@ -1,5 +1,6 @@
-import { TempStatusService } from '@/temp_status/temp_status.service';
 import { Test, TestingModule } from '@nestjs/testing';
+
+import { TempStatusService } from '@/temp_status/temp_status.service';
 
 describe('TempStatusService', () => {
   let service: TempStatusService;

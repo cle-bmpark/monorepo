@@ -1,5 +1,6 @@
-import CardRadio from '@ui/components/radio/CardRadio';
 import { useState } from 'react';
+
+import CardRadio from '@ui/components/radio/CardRadio';
 
 export default function CardRadioView() {
   const [value, setValue] = useState<boolean>(false);

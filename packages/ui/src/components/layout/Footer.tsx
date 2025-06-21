@@ -5,6 +5,7 @@ import { popupAtom } from '@ui/jotai/modalAtoms';
 import { useAtom } from 'jotai';
 import Image from 'next/image';
 import { IoMdPerson } from 'react-icons/io';
+
 import CleCol from '../../../public/images/cle_col.svg';
 
 export default function Footer() {

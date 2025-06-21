@@ -1,7 +1,9 @@
-import { PcProgramType } from '@/types/graphql';
-import Image from 'next/image';
 import { useEffect, useState } from 'react';
+
+import Image from 'next/image';
 import { FaAngleDown, FaAngleUp } from 'react-icons/fa6';
+
+import { PcProgramType } from '@/types/graphql';
 
 interface ProgramAccordianProps {
   list: PcProgramType[];

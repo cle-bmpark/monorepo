@@ -1,6 +1,7 @@
+import { useRef, useState } from 'react';
+
 import Tooltip from '@ui/components/modal/Tooltip';
 import { useColorByTheme } from '@ui/hooks/useColorByTheme';
-import { useRef, useState } from 'react';
 import { BsInfoCircle } from 'react-icons/bs';
 
 interface LabelProps {

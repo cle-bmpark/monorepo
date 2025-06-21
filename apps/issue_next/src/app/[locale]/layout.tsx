@@ -1,18 +1,19 @@
-import ApolloClientProvider from '@/app/[locale]/ApolloClientProvider';
-import Footer from '@/app/[locale]/Footer';
-import '@/app/[locale]/globals.css';
-import Header from '@/app/[locale]/Header';
-import { routing } from '@/i18n/routing';
+import { ReactNode } from 'react';
+
 import Modal from '@repo/ui/src/components/modal/Modal';
 import Popup from '@repo/ui/src/components/modal/Popup';
 import ProgressModal from '@repo/ui/src/components/modal/ProgressModal';
 import Toast from '@repo/ui/src/components/modal/Toast';
-
 import { Provider } from 'jotai';
 import type { Metadata } from 'next';
-import { hasLocale, NextIntlClientProvider } from 'next-intl';
+import { NextIntlClientProvider, hasLocale } from 'next-intl';
 import { notFound } from 'next/navigation';
-import { ReactNode } from 'react';
+
+import ApolloClientProvider from '@/app/[locale]/ApolloClientProvider';
+import Footer from '@/app/[locale]/Footer';
+import Header from '@/app/[locale]/Header';
+import '@/app/[locale]/globals.css';
+import { routing } from '@/i18n/routing';
 
 export const metadata: Metadata = {
   title: 'CLE',

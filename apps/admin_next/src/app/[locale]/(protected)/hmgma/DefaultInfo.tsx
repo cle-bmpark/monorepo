@@ -1,8 +1,9 @@
-import { pcListType } from '@/types/graphql';
 import Badge from '@repo/ui/src/components/badge/Badge';
 import LinkButton from '@repo/ui/src/components/button/LinkButton';
 import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
+
+import { pcListType } from '@/types/graphql';
 
 interface DefaultInfoProps {
   data: pcListType;

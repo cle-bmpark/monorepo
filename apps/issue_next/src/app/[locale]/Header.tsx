@@ -1,4 +1,5 @@
 import ThemeMode from '@repo/ui/src/app/ThemeMode';
+
 import LanguageSwitch from './LanguageSwitch';
 
 export default function Header() {

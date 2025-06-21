@@ -1,6 +1,7 @@
+import { Test, TestingModule } from '@nestjs/testing';
+
 import { DriverResolver } from '@/driver/driver.resolver';
 import { DriverService } from '@/driver/driver.service';
-import { Test, TestingModule } from '@nestjs/testing';
 
 describe('DriverResolver', () => {
   let resolver: DriverResolver;

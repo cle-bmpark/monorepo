@@ -1,10 +1,12 @@
 'use client';
 
+import { useRef, useState } from 'react';
+
 import useClickOutside from '@ui/hooks/useClickOutside';
 import { useColorByTheme } from '@ui/hooks/useColorByTheme';
-import { useRef, useState } from 'react';
 import { CgChevronDown, CgChevronUp } from 'react-icons/cg';
 import { FaCheck } from 'react-icons/fa6';
+
 interface DropInputProps<T> {
   value: T; // 선택된 값
   valueList: T[]; // 선택지 목록

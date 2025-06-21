@@ -1,6 +1,7 @@
+import { Test, TestingModule } from '@nestjs/testing';
+
 import { RamStatusResolver } from '@/ram_status/ram_status.resolver';
 import { RamStatusService } from '@/ram_status/ram_status.service';
-import { Test, TestingModule } from '@nestjs/testing';
 
 describe('RamStatusResolver', () => {
   let resolver: RamStatusResolver;
