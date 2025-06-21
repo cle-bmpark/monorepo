@@ -23,7 +23,7 @@ declare const messages: {
   };
   main: {
     request: 'Issue Request';
-    check: 'Issue Check';
+    search: 'Issue Search';
   };
   request: {
     itemName: 'Title';
@@ -44,6 +44,17 @@ declare const messages: {
     successPopupContent: 'Issue submitted successfully.';
     failPopupContent: 'Failed to submit issue.';
     successPopupTitle: 'Success';
+    failPopupTitle: 'Fail';
+  };
+  search: {
+    id: 'Issue ID';
+    email: 'Email';
+    phone: 'Phone';
+    search: 'Search';
+    helpText: 'Please enter either your ID, email, or phone number.';
+  };
+  result: {
+    failPopupContent: 'Failed to retrieve the issue. Please check the input value.';
     failPopupTitle: 'Fail';
   };
 };

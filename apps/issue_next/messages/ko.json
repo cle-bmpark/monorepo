@@ -9,7 +9,7 @@
   },
   "error": {
     "title": "페이지를 불러오는 중\n예상치 못한 오류가 발생했습니다.",
-    "content": "잠시 후 다시 시도하시거나,\n이전 페이지로 돌아가 주세요.",
+    "content": "잠시 후 다시 시도하시거나,\n이전 페이지로 돌아가 주십시오.",
     "backButton": "뒤로 가기",
     "refreshButton": "새로 고침"
   },
@@ -20,7 +20,7 @@
   },
   "main": {
     "request": "이슈 등록",
-    "check": "이슈 조회"
+    "search": "이슈 조회"
   },
   "request": {
     "itemName": "제목",
@@ -30,8 +30,8 @@
     "requestorPhone": "요청자 전화번호(선택)",
     "kakaoDescription1": "카카오톡 플러스친구",
     "kakaoDescription2": "에서 이슈 진행 상황을 확인하세요.",
-    "ErrorMessage": "최소 {minLength}자 이상 입력해 주세요.",
-    "emailErrorMessage": "이메일 주소의 형식을 확인해 주세요.",
+    "ErrorMessage": "최소 {minLength}자 이상 입력해 주십시요.",
+    "emailErrorMessage": "이메일 주소의 형식을 확인해 주십시오..",
     "itemNamePlaceholder": "이슈 제목",
     "descriptionPlaceholder": "이슈 내용(최대 2000자)",
     "requestorNamePlaceholder": "홍길동",
@@ -41,6 +41,17 @@
     "successPopupContent": "이슈가 등록되었습니다.",
     "failPopupContent": "이슈 등록에 실패하였습니다.",
     "successPopupTitle": "성공",
+    "failPopupTitle": "실패"
+  },
+  "search": {
+    "id": "이슈 ID",
+    "email": "이메일",
+    "phone": "전화번호",
+    "search": "검색하기",
+    "helpText": "ID, 이메일, 또는 전화번호 중 하나만 입력해 주세요."
+  },
+  "result": {
+    "failPopupContent": "이슈 조회에 실패했습니다. 입력값을 확인해 주십시오.",
     "failPopupTitle": "실패"
   }
 }

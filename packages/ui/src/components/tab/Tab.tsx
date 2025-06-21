@@ -1,5 +1,5 @@
 export interface TabType<T extends string> {
-  key: number;
+  key: number | string;
   value: T;
 }
 

@@ -1,17 +1,17 @@
-import { InputType as setItemInputType } from '@/app/[locale]/(public)/main/[status]/Request';
-import { useCreateItemMutation } from '@/graphql/generated/graphql';
 import { popupAtom } from '@ui/jotai/modalAtoms';
-
 import { useAtom } from 'jotai';
 import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
+
+import { InputType as setItemInputType } from '@/app/[locale]/(public)/main/[status]/Request';
+import { useCreateItemMutation } from '@/graphql/generated/graphql';
 
 export const useCreateItem = () => {
   const t = useTranslations('request');
   const router = useRouter();
 
   const [, setPopup] = useAtom(popupAtom);
-  const [setItem, { data, loading }] = useCreateItemMutation();
+  const [setItem, { loading }] = useCreateItemMutation();
 
   const mutationCreateItem = async (input: setItemInputType) => {
     const columnValues = {
@@ -28,7 +28,7 @@ export const useCreateItem = () => {
     };
 
     try {
-      await setItem({
+      const response = await setItem({
         variables: {
           boardId: process.env.NEXT_PUBLIC_ISSUE_BOARD,
           itemName: input.itemName,
@@ -41,7 +41,7 @@ export const useCreateItem = () => {
         content: t('successPopupContent'),
         width: 'w-2/3',
         onConfirm: () => {
-          router.push(`/main/check/${data?.create_item?.id}`);
+          router.push(`/result/id/${response.data?.create_item?.id}`);
         },
       });
     } catch (error) {

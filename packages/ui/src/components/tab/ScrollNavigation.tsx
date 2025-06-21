@@ -1,11 +1,9 @@
-export interface ScrollNavigationType<T extends string> {
-  key: number;
-  value: T;
-}
+import { TabType } from '@ui/components/tab/Tab';
+
 interface ScrollNavigationProps<T extends string> {
-  value: ScrollNavigationType<T>;
-  valueList: ScrollNavigationType<T>[];
-  onClick?: (value: ScrollNavigationType<T>) => void;
+  value: TabType<T>;
+  valueList: TabType<T>[];
+  onClick?: (value: TabType<T>) => void;
   align?: 'left' | 'right';
 }
 
