@@ -6,9 +6,9 @@ import { useAtom } from 'jotai';
 import { useTranslations } from 'next-intl';
 import { HiOutlineSwitchVertical } from 'react-icons/hi';
 
-import { orderType } from './page';
 import { PcSortField, SortOrder } from '@/graphql/generated/graphql';
 import { pcListType } from '@/types/graphql';
+import { orderType } from './page';
 
 interface RenderHeaderProps {
   headerKey: keyof pcListType;
