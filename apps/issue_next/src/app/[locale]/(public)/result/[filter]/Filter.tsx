@@ -44,9 +44,9 @@ export default function Filter({ filter, value }: FilterProps) {
             <div className='flex items-center'>
               <span className='text-grey-600'>ID&nbsp;</span>
               <LinkButton
-                value={value.toString()}
+                value={item.id}
                 onClick={() => {
-                  void copyToClipboard('ID', value.toString());
+                  void copyToClipboard('ID', item.id);
                 }}
               />
             </div>
