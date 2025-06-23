@@ -1,6 +1,7 @@
 query GetItemsById($id: ID!) {
   items(ids: [$id]) {
     id
+    name
     column_values {
       column {
         id
@@ -18,12 +19,27 @@ query GetItemsByFilter(
   $operator: ItemsQueryRuleOperator
 ) {
   boards (ids: [$boardId]) {
-    items_page (query_params: {rules: [{column_id: $columnId, compare_value: $compareValue, operator: $operator}]}) {
+    items_page (query_params: {
+      rules: [
+        {
+          column_id: $columnId,
+          compare_value: $compareValue,
+          operator: $operator
+        }
+      ],
+      order_by: [
+          {
+            column_id: "creation_log",
+            direction: desc
+          }
+        ]
+      }) {
       items {
         id
         name
         column_values {
           column {
+            id
             title
           }
           text

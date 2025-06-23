@@ -17,9 +17,9 @@ const prettierConfig = {
   proseWrap: 'always', // 긴 텍스트 줄바꿈
   parser: 'typescript', // TypeScript 파서
   plugins: [
+    '@trivago/prettier-plugin-sort-imports',
     'prettier-plugin-organize-imports',
     'prettier-plugin-tailwindcss',
-    '@trivago/prettier-plugin-sort-imports',
   ], // 사용할 플러그인
   importOrder: [
     // import 정렬 순서

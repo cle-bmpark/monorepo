@@ -82,6 +82,7 @@ export const toastDefault: {
   text: string;
   icon?: 'check' | 'warn' | 'info';
   style?: 'dark' | 'light';
+  width?: string;
 } = {
   visible: false,
   text: '',
@@ -93,4 +94,5 @@ export const toastAtom = atom<{
   text: string;
   icon?: 'check' | 'warn' | 'info';
   style?: 'dark' | 'light';
+  width?: string;
 }>(toastDefault);

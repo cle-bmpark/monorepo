@@ -41,7 +41,7 @@ export const useCreateItem = () => {
         content: t('successPopupContent'),
         width: 'w-2/3',
         onConfirm: () => {
-          router.push(`/result/id/${response.data?.create_item?.id}`);
+          router.push(`/result/id?value=${response.data?.create_item?.id}`);
         },
       });
     } catch (error) {

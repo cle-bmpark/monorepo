@@ -73,9 +73,9 @@ export default function Search() {
   const itemKeys = Object.keys(INPUT_ITEMS) as (keyof typeof INPUT_ITEMS)[];
 
   const onClick = () => {
-    if (input.id) router.push(`/result/id/${input.id}`);
-    else if (input.email) router.push(`/result/email/${input.email}`);
-    else if (input.phone) router.push(`/result/${input.phone}`);
+    if (input.id) router.push(`/result/id?value=${input.id}`);
+    else if (input.email) router.push(`/result/email?value=${encodeURIComponent(input.email)}`);
+    else if (input.phone) router.push(`/result/phone?value=${input.phone}`);
   };
 
   return (
@@ -105,7 +105,11 @@ export default function Search() {
           value={t('search')}
           style='secondary'
           onClick={onClick}
-          isDisabled={!input.id && !input.email && !input.phone}
+          isDisabled={
+            !input.id &&
+            (!input.email || (input.email.length > 0 && !isValidEmail(input.email))) &&
+            !input.phone
+          }
         />
         <p className='text-12 text-primary-600'>{t('helpText')}</p>
       </div>

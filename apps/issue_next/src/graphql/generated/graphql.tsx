@@ -1,6 +1,5 @@
 import * as Apollo from '@apollo/client';
 import { gql } from '@apollo/client';
-
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
@@ -5486,6 +5485,7 @@ export type GetItemsByIdQuery = {
   items?: Array<{
     __typename?: 'Item';
     id: string;
+    name: string;
     column_values: Array<
       | {
           __typename?: 'BoardRelationValue';
@@ -5712,202 +5712,202 @@ export type GetItemsByFilterQuery = {
           | {
               __typename?: 'BoardRelationValue';
               text?: string | null;
-              column: { __typename?: 'Column'; title: string };
+              column: { __typename?: 'Column'; id: string; title: string };
             }
           | {
               __typename?: 'ButtonValue';
               text?: string | null;
-              column: { __typename?: 'Column'; title: string };
+              column: { __typename?: 'Column'; id: string; title: string };
             }
           | {
               __typename?: 'CheckboxValue';
               text?: string | null;
-              column: { __typename?: 'Column'; title: string };
+              column: { __typename?: 'Column'; id: string; title: string };
             }
           | {
               __typename?: 'ColorPickerValue';
               text?: string | null;
-              column: { __typename?: 'Column'; title: string };
+              column: { __typename?: 'Column'; id: string; title: string };
             }
           | {
               __typename?: 'CountryValue';
               text?: string | null;
-              column: { __typename?: 'Column'; title: string };
+              column: { __typename?: 'Column'; id: string; title: string };
             }
           | {
               __typename?: 'CreationLogValue';
               text?: string | null;
-              column: { __typename?: 'Column'; title: string };
+              column: { __typename?: 'Column'; id: string; title: string };
             }
           | {
               __typename?: 'DateValue';
               text?: string | null;
-              column: { __typename?: 'Column'; title: string };
+              column: { __typename?: 'Column'; id: string; title: string };
             }
           | {
               __typename?: 'DependencyValue';
               text?: string | null;
-              column: { __typename?: 'Column'; title: string };
+              column: { __typename?: 'Column'; id: string; title: string };
             }
           | {
               __typename?: 'DirectDocValue';
               text?: string | null;
-              column: { __typename?: 'Column'; title: string };
+              column: { __typename?: 'Column'; id: string; title: string };
             }
           | {
               __typename?: 'DocValue';
               text?: string | null;
-              column: { __typename?: 'Column'; title: string };
+              column: { __typename?: 'Column'; id: string; title: string };
             }
           | {
               __typename?: 'DropdownValue';
               text?: string | null;
-              column: { __typename?: 'Column'; title: string };
+              column: { __typename?: 'Column'; id: string; title: string };
             }
           | {
               __typename?: 'EmailValue';
               text?: string | null;
-              column: { __typename?: 'Column'; title: string };
+              column: { __typename?: 'Column'; id: string; title: string };
             }
           | {
               __typename?: 'FileValue';
               text?: string | null;
-              column: { __typename?: 'Column'; title: string };
+              column: { __typename?: 'Column'; id: string; title: string };
             }
           | {
               __typename?: 'FormulaValue';
               text?: string | null;
-              column: { __typename?: 'Column'; title: string };
+              column: { __typename?: 'Column'; id: string; title: string };
             }
           | {
               __typename?: 'GroupValue';
               text?: string | null;
-              column: { __typename?: 'Column'; title: string };
+              column: { __typename?: 'Column'; id: string; title: string };
             }
           | {
               __typename?: 'HourValue';
               text?: string | null;
-              column: { __typename?: 'Column'; title: string };
+              column: { __typename?: 'Column'; id: string; title: string };
             }
           | {
               __typename?: 'IntegrationValue';
               text?: string | null;
-              column: { __typename?: 'Column'; title: string };
+              column: { __typename?: 'Column'; id: string; title: string };
             }
           | {
               __typename?: 'ItemIdValue';
               text?: string | null;
-              column: { __typename?: 'Column'; title: string };
+              column: { __typename?: 'Column'; id: string; title: string };
             }
           | {
               __typename?: 'LastUpdatedValue';
               text?: string | null;
-              column: { __typename?: 'Column'; title: string };
+              column: { __typename?: 'Column'; id: string; title: string };
             }
           | {
               __typename?: 'LinkValue';
               text?: string | null;
-              column: { __typename?: 'Column'; title: string };
+              column: { __typename?: 'Column'; id: string; title: string };
             }
           | {
               __typename?: 'LocationValue';
               text?: string | null;
-              column: { __typename?: 'Column'; title: string };
+              column: { __typename?: 'Column'; id: string; title: string };
             }
           | {
               __typename?: 'LongTextValue';
               text?: string | null;
-              column: { __typename?: 'Column'; title: string };
+              column: { __typename?: 'Column'; id: string; title: string };
             }
           | {
               __typename?: 'MirrorValue';
               text?: string | null;
-              column: { __typename?: 'Column'; title: string };
+              column: { __typename?: 'Column'; id: string; title: string };
             }
           | {
               __typename?: 'NumbersValue';
               text?: string | null;
-              column: { __typename?: 'Column'; title: string };
+              column: { __typename?: 'Column'; id: string; title: string };
             }
           | {
               __typename?: 'PeopleValue';
               text?: string | null;
-              column: { __typename?: 'Column'; title: string };
+              column: { __typename?: 'Column'; id: string; title: string };
             }
           | {
               __typename?: 'PersonValue';
               text?: string | null;
-              column: { __typename?: 'Column'; title: string };
+              column: { __typename?: 'Column'; id: string; title: string };
             }
           | {
               __typename?: 'PhoneValue';
               text?: string | null;
-              column: { __typename?: 'Column'; title: string };
+              column: { __typename?: 'Column'; id: string; title: string };
             }
           | {
               __typename?: 'ProgressValue';
               text?: string | null;
-              column: { __typename?: 'Column'; title: string };
+              column: { __typename?: 'Column'; id: string; title: string };
             }
           | {
               __typename?: 'RatingValue';
               text?: string | null;
-              column: { __typename?: 'Column'; title: string };
+              column: { __typename?: 'Column'; id: string; title: string };
             }
           | {
               __typename?: 'StatusValue';
               text?: string | null;
-              column: { __typename?: 'Column'; title: string };
+              column: { __typename?: 'Column'; id: string; title: string };
             }
           | {
               __typename?: 'SubtasksValue';
               text?: string | null;
-              column: { __typename?: 'Column'; title: string };
+              column: { __typename?: 'Column'; id: string; title: string };
             }
           | {
               __typename?: 'TagsValue';
               text?: string | null;
-              column: { __typename?: 'Column'; title: string };
+              column: { __typename?: 'Column'; id: string; title: string };
             }
           | {
               __typename?: 'TeamValue';
               text?: string | null;
-              column: { __typename?: 'Column'; title: string };
+              column: { __typename?: 'Column'; id: string; title: string };
             }
           | {
               __typename?: 'TextValue';
               text?: string | null;
-              column: { __typename?: 'Column'; title: string };
+              column: { __typename?: 'Column'; id: string; title: string };
             }
           | {
               __typename?: 'TimeTrackingValue';
               text?: string | null;
-              column: { __typename?: 'Column'; title: string };
+              column: { __typename?: 'Column'; id: string; title: string };
             }
           | {
               __typename?: 'TimelineValue';
               text?: string | null;
-              column: { __typename?: 'Column'; title: string };
+              column: { __typename?: 'Column'; id: string; title: string };
             }
           | {
               __typename?: 'UnsupportedValue';
               text?: string | null;
-              column: { __typename?: 'Column'; title: string };
+              column: { __typename?: 'Column'; id: string; title: string };
             }
           | {
               __typename?: 'VoteValue';
               text?: string | null;
-              column: { __typename?: 'Column'; title: string };
+              column: { __typename?: 'Column'; id: string; title: string };
             }
           | {
               __typename?: 'WeekValue';
               text?: string | null;
-              column: { __typename?: 'Column'; title: string };
+              column: { __typename?: 'Column'; id: string; title: string };
             }
           | {
               __typename?: 'WorldClockValue';
               text?: string | null;
-              column: { __typename?: 'Column'; title: string };
+              column: { __typename?: 'Column'; id: string; title: string };
             }
         >;
       }>;
@@ -6048,6 +6048,7 @@ export const GetItemsByIdDocument = gql`
   query GetItemsById($id: ID!) {
     items(ids: [$id]) {
       id
+      name
       column_values {
         column {
           id
@@ -6124,6 +6125,7 @@ export const GetItemsByFilterDocument = gql`
       items_page(
         query_params: {
           rules: [{ column_id: $columnId, compare_value: $compareValue, operator: $operator }]
+          order_by: [{ column_id: "creation_log", direction: desc }]
         }
       ) {
         items {
@@ -6131,6 +6133,7 @@ export const GetItemsByFilterDocument = gql`
           name
           column_values {
             column {
+              id
               title
             }
             text

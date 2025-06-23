@@ -1,7 +1,9 @@
 {
   "modal": {
     "cancelLabel": "취소",
-    "confirmLabel": "확인"
+    "confirmLabel": "확인",
+    "clipboard-success": "{key}가 클립보드에 복사되었습니다.",
+    "clipboard-error": "{key}가 클립보드 복사에 실패했습니다."
   },
   "root": {
     "theme-mode": "다크 모드",
@@ -52,6 +54,23 @@
   },
   "result": {
     "failPopupContent": "이슈 조회에 실패했습니다. 입력값을 확인해 주십시오.",
-    "failPopupTitle": "실패"
+    "failPopupTitle": "실패",
+    "noDataById": "제공된 ID와 일치하는 이슈가 존재하지 않습니다.",
+    "research": "재검색",
+    "search": "검색",
+    "Description": "설명",
+    "Created at": "이슈 신청일",
+    "Priority": "중요도",
+    "Assignee": "작업자",
+    "Status": "상태",
+    "Due date": "예상 종료일",
+    "Files": "파일",
+    "Type": "종류",
+    "SLA": "처리 시간",
+    "How long it's opened": "작업 시간",
+    "Requestor name": "요청자 이름",
+    "Requestor email": "요청자 이메일",
+    "Requestor phone": "요청자 전화번호",
+    "Department": "작업 부서"
   }
 }

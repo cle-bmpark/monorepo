@@ -62,7 +62,7 @@ export default function Toast() {
         ref={toastRef}
       >
         <div
-          className={`flex max-w-3xs min-w-96 items-center justify-between gap-2 rounded-lg px-4 py-3.5 shadow-light ${variantStyle[toast.style ?? 'dark'].wrapper}`}
+          className={`flex max-w-3xs items-center justify-between gap-2 rounded-lg px-4 py-3.5 shadow-light ${toast.width ?? 'min-w-96'} ${variantStyle[toast.style ?? 'dark'].wrapper}`}
         >
           {(toast.icon === 'check' || !toast.icon) && (
             <IoCheckmarkCircleOutline color={neogreen500} size={20} />

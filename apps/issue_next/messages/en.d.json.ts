@@ -5,6 +5,8 @@ declare const messages: {
   modal: {
     cancelLabel: 'Cancel';
     confirmLabel: 'Confirm';
+    'clipboard-success': 'Copied {key} to clipboard successfully.';
+    'clipboard-error': 'Failed {key} to copy to clipboard.';
   };
   root: {
     'theme-mode': 'Dark Mode';
@@ -56,6 +58,23 @@ declare const messages: {
   result: {
     failPopupContent: 'Failed to retrieve the issue. Please check the input value.';
     failPopupTitle: 'Fail';
+    noDataById: 'No issue found corresponding to the provided ID.';
+    research: 'Research';
+    search: 'Search';
+    Description: 'Description';
+    'Created at': 'Created at';
+    Priority: 'Priority';
+    Assignee: 'Assignee';
+    Status: 'Status';
+    'Due date': 'Due date';
+    Files: 'Files';
+    Type: 'Type';
+    SLA: 'SLA';
+    "How long it's opened": "How long it's opened";
+    'Requestor name': 'Requestor name';
+    'Requestor email': 'Requestor email';
+    'Requestor phone': 'Requestor phone';
+    Department: 'Department';
   };
 };
 export default messages;
