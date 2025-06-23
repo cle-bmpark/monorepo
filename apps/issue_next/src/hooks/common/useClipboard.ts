@@ -14,7 +14,7 @@ export default function useClipboard() {
         text: t('clipboard-success', { key }),
         icon: 'check',
         style: 'dark',
-        width: 'w-full',
+        width: 'w-80',
       });
     } catch {
       setToast({
@@ -22,7 +22,7 @@ export default function useClipboard() {
         text: t('clipboard-error', { key }),
         icon: 'check',
         style: 'dark',
-        width: 'w-full',
+        width: 'w-80',
       });
     }
   };
