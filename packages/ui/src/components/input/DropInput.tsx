@@ -98,7 +98,7 @@ export default function DropInput<T>({
         className={`flex items-center rounded-sm border-1 ${variantStyle[variantKey].wrapper} ${sizeStyle[size].inputWrapper}`}
       >
         <input
-          className={`flex min-w-0 flex-1 text-16 outline-0 ${variantStyle[variantKey].input}`}
+          className={`flex w-full min-w-0 flex-1 text-16 outline-0 ${variantStyle[variantKey].input}`}
           placeholder={placeholder}
           value={String(value)}
           onClick={handleClickInput}

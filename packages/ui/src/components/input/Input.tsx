@@ -62,12 +62,12 @@ export default function Input({
   const variantKey = isDisabled ? 'disabled' : isError ? 'error' : isFocus ? 'focus' : style;
 
   return (
-    <div className='flex flex-1 flex-col gap-1'>
+    <div className='flex flex-col gap-1'>
       <div
         className={`flex items-center gap-1 rounded-sm border-1 ${variantStyle[variantKey].wrapper} ${sizeStyle[size]}`}
       >
         <input
-          className={`flex flex-1 text-16 caret-blue-500 outline-0 ${variantStyle[variantKey].input}`}
+          className={`flex w-full flex-1 text-16 caret-blue-500 outline-0 ${variantStyle[variantKey].input}`}
           placeholder={placeholder}
           disabled={isDisabled}
           value={value}

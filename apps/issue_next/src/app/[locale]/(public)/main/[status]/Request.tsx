@@ -159,8 +159,8 @@ export default function Request() {
               return (
                 <div className='flex flex-col gap-2' key={item}>
                   <Label title={INPUT_ITEMS[item].title} isMark={INPUT_ITEMS[item].isMark} />
-                  <div className='flex gap-1'>
-                    <div className='w-20'>
+                  <div className='flex w-full min-w-0 gap-1'>
+                    <div className='w-20 shrink-0'>
                       <Dropdown
                         value={input.countryShortName}
                         valueList={['KR', 'US']}
@@ -169,7 +169,7 @@ export default function Request() {
                         }
                       />
                     </div>
-                    <div className='flex-1'>
+                    <div className='flex min-w-0'>
                       <Input
                         value={INPUT_ITEMS[item].value}
                         onChange={INPUT_ITEMS[item].onChange}

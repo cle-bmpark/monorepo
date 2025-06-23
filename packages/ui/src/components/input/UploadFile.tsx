@@ -118,7 +118,7 @@ export default function UploadFile({
             onChange={handleFileChange}
           />
           <input
-            className={`flex flex-1 text-16 caret-blue-500 outline-0 ${isDisabled ? 'cursor-not-allowed' : 'cursor-pointer'} ${variantStyle[variantKey].input}`}
+            className={`flex w-full flex-1 text-16 caret-blue-500 outline-0 ${isDisabled ? 'cursor-not-allowed' : 'cursor-pointer'} ${variantStyle[variantKey].input}`}
             value={fileName}
             placeholder='Upload file'
             readOnly

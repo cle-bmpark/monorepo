@@ -22,7 +22,7 @@ export default function InputView() {
       {/* Text Input */}
       <h2>Text Input</h2>
       <div className='flex flex-wrap gap-4 rounded-s-lg border-1 border-grey-300 p-4'>
-        <div className='flex flex-1 flex-col gap-4'>
+        <div className='flex min-w-60 flex-col gap-4'>
           <Input value={inputValue} onChange={(e) => setInputValue(e.target.value)} />
           <Input value={inputValue} onChange={(e) => setInputValue(e.target.value)} isDisabled />
           <Input
@@ -34,7 +34,7 @@ export default function InputView() {
           <Input value={inputValue} onChange={(e) => setInputValue(e.target.value)} style='ghost' />
           <Input value={inputValue} onChange={(e) => setInputValue(e.target.value)} style='blue' />
         </div>
-        <div className='flex flex-1 flex-col gap-4'>
+        <div className='flex min-w-60 flex-1 flex-col gap-4'>
           <DropInput
             value={dropValue}
             onClick={setDropValue}
@@ -66,7 +66,7 @@ export default function InputView() {
             style='blue'
           />
         </div>
-        <div className='flex flex-1 flex-col gap-4'>
+        <div className='flex min-w-60 flex-1 flex-col gap-4'>
           <IconInput
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
@@ -128,7 +128,7 @@ export default function InputView() {
             style='blue'
           />
         </div>
-        <div className='flex flex-1 flex-col gap-4'>
+        <div className='flex min-w-60 flex-1 flex-col gap-4'>
           <PasswordInput value={inputValue} onChange={(e) => setInputValue(e.target.value)} />
           <PasswordInput
             value={inputValue}
@@ -152,14 +152,14 @@ export default function InputView() {
             style='blue'
           />
         </div>
-        <div className='flex flex-1 flex-col gap-4'>
+        <div className='flex min-w-60 flex-1 flex-col gap-4'>
           <UploadFile />
           <UploadFile isDisabled />
           <UploadFile isError errorMessage='Error Message' />
           <UploadFile isUploading />
           <UploadFile style='blue' />
         </div>
-        <div className='flex flex-1 flex-col gap-4'>
+        <div className='flex min-w-60 flex-1 flex-col gap-4'>
           <LabeledInput
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
@@ -191,7 +191,7 @@ export default function InputView() {
             style='blue'
           />
         </div>
-        <div className='flex flex-1 flex-col gap-4'>
+        <div className='flex min-w-60 flex-1 flex-col gap-4'>
           <BackIconInput
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
@@ -253,7 +253,7 @@ export default function InputView() {
             style='blue'
           />
         </div>
-        <div className='flex flex-1 flex-col gap-4'>
+        <div className='flex min-w-60 flex-1 flex-col gap-4'>
           <StepperInput
             value={stepperValue}
             onChange={(e) => setStepperValue(Number(e.target.value))}
@@ -290,7 +290,7 @@ export default function InputView() {
             style='blue'
           />
         </div>
-        <div className='flex flex-1 flex-col gap-4'>
+        <div className='flex min-w-60 flex-1 flex-col gap-4'>
           <InputHide value={inputValue} onChange={(e) => setInputValue(e.target.value)} />
           <InputHide
             value={inputValue}

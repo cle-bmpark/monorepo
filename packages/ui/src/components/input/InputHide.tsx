@@ -34,7 +34,7 @@ export default function InputHide({
 
   return (
     <input
-      className={`flex rounded-sm border-1 border-none text-16 caret-blue-500 outline-0 placeholder:text-grey-500 ${variantStyle[variantKey]} ${sizeStyle[size]}`}
+      className={`flex w-full rounded-sm border-1 border-none text-16 caret-blue-500 outline-0 placeholder:text-grey-500 ${variantStyle[variantKey]} ${sizeStyle[size]}`}
       placeholder={placeholder}
       value={value}
       onChange={onChange}

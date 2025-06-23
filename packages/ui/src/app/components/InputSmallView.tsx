@@ -22,7 +22,7 @@ export default function InputSmallView() {
       {/* Text Input */}
       <h2>Small Text Input</h2>
       <div className='flex flex-wrap gap-4 rounded-s-lg border-1 border-grey-300 p-4'>
-        <div className='flex flex-1 flex-col gap-4'>
+        <div className='flex min-w-60 flex-1 flex-col gap-4'>
           <Input value={inputValue} onChange={(e) => setInputValue(e.target.value)} size='s' />
           <Input
             value={inputValue}
@@ -50,7 +50,7 @@ export default function InputSmallView() {
             size='s'
           />
         </div>
-        <div className='flex flex-1 flex-col gap-4'>
+        <div className='flex min-w-60 flex-1 flex-col gap-4'>
           <DropInput
             value={dropValue}
             onClick={setDropValue}
@@ -87,7 +87,7 @@ export default function InputSmallView() {
             size='s'
           />
         </div>
-        <div className='flex flex-1 flex-col gap-4'>
+        <div className='flex min-w-60 flex-1 flex-col gap-4'>
           <IconInput
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
@@ -154,7 +154,7 @@ export default function InputSmallView() {
             size='s'
           />
         </div>
-        <div className='flex flex-1 flex-col gap-4'>
+        <div className='flex min-w-60 flex-1 flex-col gap-4'>
           <PasswordInput
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
@@ -186,14 +186,14 @@ export default function InputSmallView() {
             size='s'
           />
         </div>
-        <div className='flex flex-1 flex-col gap-4'>
+        <div className='flex min-w-60 flex-1 flex-col gap-4'>
           <UploadFile size='s' />
           <UploadFile isDisabled size='s' />
           <UploadFile isError errorMessage='Error Message' size='s' />
           <UploadFile isUploading size='s' />
           <UploadFile style='blue' size='s' />
         </div>
-        <div className='flex flex-1 flex-col gap-4'>
+        <div className='flex min-w-60 flex-1 flex-col gap-4'>
           <LabeledInput
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
@@ -230,7 +230,7 @@ export default function InputSmallView() {
             size='s'
           />
         </div>
-        <div className='flex flex-1 flex-col gap-4'>
+        <div className='flex min-w-60 flex-1 flex-col gap-4'>
           <BackIconInput
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
@@ -297,7 +297,7 @@ export default function InputSmallView() {
             size='s'
           />
         </div>
-        <div className='flex flex-1 flex-col gap-4'>
+        <div className='flex min-w-60 flex-1 flex-col gap-4'>
           <StepperInput
             value={stepperValue}
             onChange={(e) => setStepperValue(Number(e.target.value))}
@@ -339,7 +339,7 @@ export default function InputSmallView() {
             size='s'
           />
         </div>
-        <div className='flex flex-1 flex-col gap-4'>
+        <div className='flex min-w-60 flex-1 flex-col gap-4'>
           <InputHide value={inputValue} onChange={(e) => setInputValue(e.target.value)} size='s' />
           <InputHide
             value={inputValue}
