@@ -12,6 +12,7 @@ import { notFound } from 'next/navigation';
 import Footer from '@/app/[locale]/Footer';
 import '@/app/[locale]/globals.css';
 import { routing } from '@/i18n/routing';
+import ClientProvider from './ClientProvider';
 
 export const metadata: Metadata = {
   title: 'CLE Labeling',
@@ -35,14 +36,16 @@ export default async function RootLayout({
       <body className='min-w-3xl flex h-screen flex-col justify-between'>
         <Provider>
           <NextIntlClientProvider>
-            <main className='flex flex-1 flex-col'>{children}</main>
-            <footer className='border-grey-500 border-t'>
-              <Footer />
-            </footer>
-            <Modal />
-            <Popup />
-            <ProgressModal />
-            <Toast />
+            <ClientProvider>
+              <main className='flex flex-1 flex-col'>{children}</main>
+              <footer className='border-grey-500 border-t'>
+                <Footer />
+              </footer>
+              <Modal />
+              <Popup />
+              <ProgressModal />
+              <Toast />
+            </ClientProvider>
           </NextIntlClientProvider>
         </Provider>
       </body>
