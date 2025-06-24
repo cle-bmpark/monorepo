@@ -43,7 +43,7 @@ export default function Modal() {
         {/* button */}
         <div className='flex items-center justify-end gap-2.5 px-6 py-4'>
           {modal.onCancel && (
-            <div className='flex w-[120px]'>
+            <div className='flex min-w-[120px]'>
               <Button
                 value={modal.cancelLabel ?? '취소'}
                 style='outline'
@@ -54,7 +54,7 @@ export default function Modal() {
               />
             </div>
           )}
-          <div className='flex w-[120px]'>
+          <div className='flex min-w-[120px]'>
             <Button
               value={modal.confirmLabel ?? '확인'}
               style='secondary'

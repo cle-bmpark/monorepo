@@ -14,12 +14,14 @@ export default function KeyList() {
     <div className='flex flex-col gap-2'>
       <h2>Shortcut Key List</h2>
       <table className='text-12'>
-        {keys.map((item) => (
-          <tr key={item.key}>
-            <td className='font-700 text-grey-900 border border-gray-400 p-1'>{item.key}</td>
-            <td className='border border-gray-400 p-1'>{item.action}</td>
-          </tr>
-        ))}
+        <tbody>
+          {keys.map((item) => (
+            <tr key={item.key}>
+              <td className='font-700 text-grey-900 border border-gray-400 p-1'>{item.key}</td>
+              <td className='border border-gray-400 p-1'>{item.action}</td>
+            </tr>
+          ))}
+        </tbody>
       </table>
     </div>
   );
