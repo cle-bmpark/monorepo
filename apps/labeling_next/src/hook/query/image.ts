@@ -41,7 +41,7 @@ export interface ImageFileType {
   objects: ImageFileObjectType[];
 }
 
-interface SelectImageType {
+export interface SelectImageType {
   image_folder: string;
   image_name: string;
   height: number;
