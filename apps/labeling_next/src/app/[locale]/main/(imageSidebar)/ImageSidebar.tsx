@@ -54,7 +54,7 @@ export default function ImageSidebar({
   return (
     <div className='border-grey-500 flex flex-col border-l'>
       {/* Header */}
-      <div className='flex gap-28 p-4'>
+      <div className='flex justify-between p-4'>
         <div className='flex items-center gap-1'>
           <h2>Images</h2>
           <h4>
@@ -75,7 +75,7 @@ export default function ImageSidebar({
         {imageData?.map((item, index) => (
           <li key={item.name} className='flex flex-1'>
             <button
-              className={`hover:bg-grey-100 flex flex-1 cursor-pointer items-center justify-between p-4 ${item.name === selectedImage?.name && 'bg-primary-200'}`}
+              className={`hover:bg-grey-100 flex flex-1 cursor-pointer items-center justify-between gap-12 p-4 ${item.name === selectedImage?.name && 'bg-primary-200'}`}
               onClick={() => onClick(index, item)}
             >
               <Image
