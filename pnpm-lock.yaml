@@ -329,6 +329,9 @@ importers:
       jotai:
         specifier: ^2.12.4
         version: 2.12.5(@types/react@19.1.6)(react@19.1.0)
+      konva:
+        specifier: ^9.3.20
+        version: 9.3.20
       next:
         specifier: 15.3.2
         version: 15.3.2(@babel/core@7.27.4)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -490,6 +493,9 @@ importers:
       '@repo/ui':
         specifier: workspace:*
         version: link:../../packages/ui
+      dotenv:
+        specifier: ^16.5.0
+        version: 16.5.0
       jotai:
         specifier: ^2.12.4
         version: 2.12.5(@types/react@19.1.6)(react@19.1.0)
@@ -5571,6 +5577,9 @@ packages:
   kleur@3.0.3:
     resolution: {integrity: sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w==}
     engines: {node: '>=6'}
+
+  konva@9.3.20:
+    resolution: {integrity: sha512-7XPD/YtgfzC8b1c7z0hhY5TF1IO/pBYNa29zMTA2PeBaqI0n5YplUeo4JRuRcljeAF8lWtW65jePZZF7064c8w==}
 
   language-subtag-registry@0.3.23:
     resolution: {integrity: sha512-0K65Lea881pHotoGEa5gDlMxt3pctLi2RplBb7Ezh4rRdLEOtgi7n4EwK9lamnUCkKBqaeKRVebTq6BAxSkpXQ==}
@@ -13755,6 +13764,8 @@ snapshots:
   kind-of@6.0.3: {}
 
   kleur@3.0.3: {}
+
+  konva@9.3.20: {}
 
   language-subtag-registry@0.3.23: {}
 
