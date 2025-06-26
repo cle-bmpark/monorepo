@@ -6,7 +6,7 @@ import { useAtom } from 'jotai';
 import Image from 'next/image';
 import { IoMdPerson } from 'react-icons/io';
 
-import CleCol from '../../../public/images/cle-col.svg';
+import CleCol from '@ui/../public/images/cle-col.svg';
 
 export default function Footer() {
   const [, setPopup] = useAtom(popupAtom);
@@ -21,12 +21,12 @@ export default function Footer() {
           onClick={() =>
             setPopup({
               visible: true,
-              title: '[CLE] Front-End',
-              content: `개발\n[박보민] bmpark@cle.vision`,
+              title: '[CLE] Labeling Program',
+              content: `[Front-End] 박보민 bmpark@cle.vision\n[Back-End] 강재석 jskang@cle.vision`,
             })
           }
         />
-        <p className='text-14 leading-20 text-ellipsis text-grey-500'>
+        <p className='text-14 leading-20 text-grey-500 text-ellipsis'>
           © 2025. CLE Inc. All rights reserved.
         </p>
       </div>

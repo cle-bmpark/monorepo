@@ -1,5 +1,5 @@
 {
-  "name": "next-base",
+  "name": "monitoring-admin",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -11,19 +11,27 @@
     "format": "prettier --write \"**/*.{ts,tsx}\"",
     "prepare": "husky",
     "i18n-check": "i18n-check --locales messages --source en --format icu --only missingKeys invalidKeys unused undefined --unused src --reporter console",
-    "lint-staged": "lint-staged"
+    "lint-staged": "lint-staged",
+    "graphql:codegen": "graphql-codegen --config codegen.ts"
   },
   "dependencies": {
-    "@repo/typescript-config": "workspace:*",
+    "@apollo/client": "^3.13.8",
+    "@graphql-codegen/cli": "^5.0.7",
+    "@graphql-codegen/typescript": "^4.1.6",
+    "@graphql-codegen/typescript-operations": "^4.6.1",
+    "@graphql-codegen/typescript-react-apollo": "^4.3.3",
     "@repo/tailwind-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
     "@repo/ui": "workspace:*",
+    "graphql": "^16.11.0",
+    "graphql-tag": "^2.12.6",
     "jotai": "^2.12.4",
+    "lint-staged": "^16.1.0",
     "next": "15.3.2",
     "next-intl": "^4.1.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-icons": "^5.5.0",
-    "dotenv": "^16.5.0"
+    "react-icons": "^5.5.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -38,7 +46,7 @@
     "typescript": "^5.8.3"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": ["npx eslint --fix", "npx prettier --write"],
-    "*.json": ["npx prettier --write"]
+    "*.{js,jsx,ts,tsx}": ["pnpm eslint --fix", "pnpm prettier --write"],
+    "*.json": ["pnpm prettier --write"]
   }
 }
