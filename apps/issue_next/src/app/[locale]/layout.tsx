@@ -1,5 +1,10 @@
 import { ReactNode } from 'react';
 
+import ApolloClientProvider from '@/app/[locale]/ApolloClientProvider';
+import Footer from '@/app/[locale]/Footer';
+import Header from '@/app/[locale]/Header';
+import '@/app/[locale]/globals.css';
+import { routing } from '@/i18n/routing';
 import Modal from '@repo/ui/src/components/modal/Modal';
 import Popup from '@repo/ui/src/components/modal/Popup';
 import ProgressModal from '@repo/ui/src/components/modal/ProgressModal';
@@ -9,15 +14,10 @@ import type { Metadata } from 'next';
 import { NextIntlClientProvider, hasLocale } from 'next-intl';
 import { notFound } from 'next/navigation';
 
-import ApolloClientProvider from '@/app/[locale]/ApolloClientProvider';
-import Footer from '@/app/[locale]/Footer';
-import Header from '@/app/[locale]/Header';
-import '@/app/[locale]/globals.css';
-import { routing } from '@/i18n/routing';
-
 export const metadata: Metadata = {
   title: 'CLE',
-  description: 'CLE 관리자 페이지',
+  description: 'CLE 이슈',
+  icons: { icon: '/logo.svg' },
 };
 
 export default async function RootLayout({

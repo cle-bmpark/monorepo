@@ -17,6 +17,7 @@ import ClientProvider from './ClientProvider';
 export const metadata: Metadata = {
   title: 'CLE Labeling',
   description: 'CLE 라벨링 프로그램',
+  icons: { icon: '/logo.svg' },
 };
 
 export default async function RootLayout({
