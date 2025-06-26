@@ -1,4 +1,4 @@
-import { ImageFolderType } from '@/hook/query/image';
+import { ImageFolderType } from '@/hooks/queries/image';
 import ThemeMode from '@repo/ui/src/app/ThemeMode';
 import Button from '@ui/components/button/Button';
 import { modalAtom } from '@ui/jotai/modalAtoms';

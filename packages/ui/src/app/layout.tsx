@@ -8,7 +8,7 @@ import Modal from '@ui/components/modal/Modal';
 import Popup from '@ui/components/modal/Popup';
 import ProgressModal from '@ui/components/modal/ProgressModal';
 import Toast from '@ui/components/modal/Toast';
-import { MENU } from '@ui/dummy/Menu';
+import { MENU } from '@ui/dummies/Menu';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {

@@ -9,7 +9,7 @@ import {
   ImageFolderType,
   useImageFoldersQuery,
   useSelectedImageQuery,
-} from '@/hook/query/image';
+} from '@/hooks/queries/image';
 import { useEffect, useState } from 'react';
 
 export default function Page() {

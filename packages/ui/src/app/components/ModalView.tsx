@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import Button from '@ui/components/button/Button';
 import Tooltip from '@ui/components/modal/Tooltip';
-import ModalViewContent from '@ui/dummy/ModalViewContent';
+import ModalViewContent from '@ui/dummies/ModalViewContent';
 import {
   modalAtom,
   modalDefault,

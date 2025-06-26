@@ -1,4 +1,4 @@
-import { SelectImageType } from '@/hook/query/image';
+import { SelectImageType } from '@/hooks/queries/image';
 import Image from 'next/image';
 
 interface SelectedImageProps {

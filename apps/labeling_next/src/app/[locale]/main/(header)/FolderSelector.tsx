@@ -1,4 +1,4 @@
-import { ImageFolderType, useImageFoldersQuery } from '@/hook/query/image';
+import { ImageFolderType, useImageFoldersQuery } from '@/hooks/queries/image';
 import Image from 'next/image';
 
 interface FolderSelectorProps {

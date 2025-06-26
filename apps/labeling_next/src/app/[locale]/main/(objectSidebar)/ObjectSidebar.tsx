@@ -1,6 +1,6 @@
 import KeyList from '@/app/[locale]/main/(objectSidebar)/KeyList';
 import Objects from '@/app/[locale]/main/(objectSidebar)/Objects';
-import { ImageFileObjectType } from '@/hook/query/image';
+import { ImageFileObjectType } from '@/hooks/queries/image';
 
 interface SidebarProps {
   data?: ImageFileObjectType[];

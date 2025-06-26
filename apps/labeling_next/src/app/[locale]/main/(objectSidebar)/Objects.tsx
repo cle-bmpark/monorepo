@@ -1,5 +1,5 @@
-import { objectColors } from '@/contant/objectColors';
-import { ImageFileObjectType } from '@/hook/query/image';
+import { objectColors } from '@/contants/objectColors';
+import { ImageFileObjectType } from '@/hooks/queries/image';
 import Button from '@ui/components/button/Button';
 
 interface ObjectsProps {

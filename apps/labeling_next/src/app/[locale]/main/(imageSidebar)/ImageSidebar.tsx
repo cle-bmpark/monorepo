@@ -3,7 +3,7 @@ import {
   ImageFileType,
   ImageFolderType,
   useImagesQuery,
-} from '@/hook/query/image';
+} from '@/hooks/queries/image';
 import CheckBox from '@ui/components/radio/CheckBox';
 import { SetStateAction } from 'jotai';
 import Image from 'next/image';

@@ -3,8 +3,8 @@ import { ReactNode } from 'react';
 import ThemeMode from '@repo/ui/src/app/ThemeMode';
 
 import LanguageSwitch from '@/app/[locale]/LanguageSwitch';
-import Navigation from '@/component/layout/Navigation';
-import { MENU } from '@/dummy/Menu';
+import Navigation from '@/components/layout/Navigation';
+import { MENU } from '@/dummies/Menu';
 
 export default function Layout({
   children,
