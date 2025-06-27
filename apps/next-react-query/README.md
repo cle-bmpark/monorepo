@@ -1,15 +1,5 @@
 # 🛠️ **시작하기**
 
-### Next 템플렛 시작하기
-1. 이 템플렛은 다국어, 다크 모드, 디자인 시스템 컴포넌트 지원합니다.
-2. 적용할 때, monorepo/package.json 파일에서 아래 설정을 추가하십시오.
-- `i18n-check`: ... && npm --prefix ./apps/폴더명 run i18n-check
-- `lint`: ... && npm --prefix ./apps/폴더명 run lint
-- `format`: ... && npm --prefix ./apps/폴더명 run format
-- `lint-staged`: ... && npm --prefix ./apps/폴더명 run lint-staged
-
----
-
 ### packages 호출 파일
 - `tsconfig.json`:@repo/typescript-config/nextjs.json 파일을 따름
 - `prettier.config.mjs`: monorepo/prettier.config.mjs 파일을 따름
@@ -29,6 +19,7 @@
 - **`pnpm next lint`** : ESLint 실행
 - **`pnpm lint-staged`** : 스테이징된 파일 코드 컨벤션 검사
 - **`pnpm run i18n-check`** : 다국어 json 파일 일치 검사
+- **`pnpm run orval:codegen`**: swagger generated.ts 파일 생성
 
 ---
 
