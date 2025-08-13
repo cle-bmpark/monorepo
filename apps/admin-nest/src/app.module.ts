@@ -43,9 +43,9 @@ import { join } from 'path';
       type: 'postgres',
       host: process.env.DB_HOST,
       port: 5432,
-      username: 'monitoring_admin_db_oq1m_user',
+      username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
-      database: 'monitoring_admin_db_oq1m',
+      database: process.env.DB_DATABASE,
       entities: [__dirname + '/**/*.entity.{ts,js}'],
       // synchronize: true, // 개발 시 true (운영 환경에서는 false 권장)
       logging: 'all',
