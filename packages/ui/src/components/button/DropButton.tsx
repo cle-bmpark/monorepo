@@ -57,7 +57,7 @@ export default function DropButton<T>({
       {/* dropDown */}
       {isOpen && (
         <ul
-          className={`absolute z-10 flex max-h-48 w-fit flex-col gap-1 overflow-auto rounded-sm border border-grey-300 bg-grey-0 p-1 shadow-strong ${positionClass}`}
+          className={`absolute z-10 flex max-h-48 w-fit min-w-max flex-col gap-1 overflow-auto rounded-sm border border-grey-300 bg-grey-0 p-1 shadow-strong ${positionClass}`}
           role='listbox'
           ref={dropdownRef}
         >
