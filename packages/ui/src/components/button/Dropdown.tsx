@@ -2,6 +2,7 @@
 
 import { useRef, useState } from 'react';
 
+import { useAutoPlacement } from '@ui/hooks/useAutoPlacement';
 import useClickOutside from '@ui/hooks/useClickOutside';
 import { useColorByTheme } from '@ui/hooks/useColorByTheme';
 import { CgChevronDown, CgChevronUp } from 'react-icons/cg';
@@ -24,8 +25,16 @@ export default function Dropdown<T>({
   size = 'm',
   displayKey,
 }: DropdownProps<T>) {
+  const containerRef = useRef<HTMLDivElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const { positionClass } = useAutoPlacement({
+    triggerRef: containerRef,
+    dropdownRef,
+    isOpen,
+    margin: 4,
+  });
 
   const grey300 = useColorByTheme('grey-300');
   const grey500 = useColorByTheme('grey-500');
@@ -73,7 +82,7 @@ export default function Dropdown<T>({
   useClickOutside({ ref: dropdownRef, onClick: () => setIsOpen(false) });
 
   return (
-    <div className='relative flex flex-1 flex-col gap-1' ref={dropdownRef}>
+    <div ref={containerRef} className='relative flex flex-1 flex-col gap-1'>
       <div
         className={`flex items-center rounded-sm border-1 ${variantStyle[style].wrapper} ${sizeStyle[size].inputWrapper}`}
       >
@@ -92,8 +101,8 @@ export default function Dropdown<T>({
 
       {isOpen && (
         <div
-          className='absolute left-0 z-10 max-h-48 w-[100%] overflow-auto rounded-sm border border-grey-300 bg-grey-0 p-1 shadow-strong'
-          style={{ top: `calc(100% + 4px)` }}
+          ref={dropdownRef}
+          className={`absolute left-0 z-10 max-h-48 w-[100%] overflow-auto rounded-sm border border-grey-300 bg-grey-0 p-1 shadow-strong ${positionClass}`}
         >
           <ul className='flex flex-1 animate-fade-in flex-col gap-1'>
             {valueList.map((item) => (

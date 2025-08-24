@@ -12,12 +12,14 @@ export default function DropButtonView() {
       {/* Drop Button */}
       <h2>Drop Button</h2>
       <div className='flex flex-1 flex-wrap justify-between gap-12 rounded-s-lg border-1 border-grey-300 p-4'>
-        <DropButton
-          title='Button'
-          value={value}
-          valueList={valueList}
-          onClick={(item: string) => setValue(item)}
-        />
+        <div>
+          <DropButton
+            title='Button'
+            value={value}
+            valueList={valueList}
+            onClick={(item: string) => setValue(item)}
+          />
+        </div>
         <div className='flex flex-col gap-4'>
           <Dropdown
             value={value}

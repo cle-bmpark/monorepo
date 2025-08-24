@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react';
 
+import { useAutoPlacement } from '@ui/hooks/useAutoPlacement';
 import useClickOutside from '@ui/hooks/useClickOutside';
 import { useColorByTheme } from '@ui/hooks/useColorByTheme';
 import { CgChevronDown, CgChevronUp } from 'react-icons/cg';
@@ -22,8 +23,15 @@ export default function DropLineTextField<T>({
   placeholder = 'Text',
   style = 'default',
 }: DropLineTextFieldProps<T>) {
+  const containerRef = useRef<HTMLDivElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const { positionClass } = useAutoPlacement({
+    triggerRef: containerRef,
+    dropdownRef,
+    isOpen,
+  });
 
   const blue500 = useColorByTheme('blue-500');
 
@@ -75,7 +83,7 @@ export default function DropLineTextField<T>({
   useClickOutside({ ref: dropdownRef, onClick: () => setIsOpen(false) });
 
   return (
-    <div className='relative flex flex-col' ref={dropdownRef}>
+    <div className='relative flex flex-col' ref={containerRef}>
       <div
         className={`flex items-center justify-center gap-1 px-4 py-3 ${variantStyle[variantKey].wrapper}`}
       >
@@ -95,7 +103,10 @@ export default function DropLineTextField<T>({
         )}
       </div>
       {isOpen && (
-        <div className='absolute top-[110%] left-0 z-10 max-h-48 w-[100%] overflow-auto rounded-sm border-grey-300 bg-grey-0 p-1 shadow-strong'>
+        <div
+          ref={dropdownRef}
+          className={`absolute left-0 z-10 max-h-48 w-[100%] overflow-auto rounded-sm border-grey-300 bg-grey-0 p-1 shadow-strong ${positionClass}`}
+        >
           <ul className='flex animate-fade-in flex-col gap-1'>
             {valueList.map((item) => (
               <button

@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react';
 
+import { useAutoPlacement } from '@ui/hooks/useAutoPlacement';
 import useClickOutside from '@ui/hooks/useClickOutside';
 import { FaCheck } from 'react-icons/fa6';
 
@@ -18,8 +19,15 @@ export default function DropButton<T>({
   onClick,
   size = 'm',
 }: DropButtonProps<T>) {
+  const containerRef = useRef<HTMLDivElement>(null);
   const dropdownRef = useRef<HTMLUListElement>(null);
   const [isOpen, setIsOpen] = useState(false);
+
+  const { positionClass } = useAutoPlacement({
+    triggerRef: containerRef,
+    dropdownRef,
+    isOpen,
+  });
 
   const sizeStyle = {
     m: 'px-4 py-2',
@@ -38,7 +46,7 @@ export default function DropButton<T>({
   useClickOutside({ ref: dropdownRef, onClick: () => setIsOpen(false) });
 
   return (
-    <div className='relative'>
+    <div ref={containerRef} className='relative'>
       <button
         className='cursor-pointer text-14 leading-20 whitespace-nowrap text-grey-700 underline'
         onClick={handleClickButton}
@@ -49,7 +57,8 @@ export default function DropButton<T>({
       {/* dropDown */}
       {isOpen && (
         <ul
-          className='absolute z-10 flex max-h-48 w-fit flex-col gap-1 overflow-auto rounded-sm border border-grey-300 bg-grey-0 p-1 shadow-strong'
+          className={`absolute z-10 flex max-h-48 w-fit flex-col gap-1 overflow-auto rounded-sm border border-grey-300 bg-grey-0 p-1 shadow-strong ${positionClass}`}
+          role='listbox'
           ref={dropdownRef}
         >
           {valueList.map((item) => (
