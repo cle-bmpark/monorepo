@@ -1,0 +1,44 @@
+{
+  "modal": {
+    "cancelLabel": "취소",
+    "confirmLabel": "확인"
+  },
+  "root": {
+    "theme-mode": "다크 모드",
+    "language-switch": "한국어"
+  },
+  "error": {
+    "title": "페이지를 불러오는 중 예상치 못한 오류가 발생했습니다.",
+    "content": "잠시 후 다시 시도하시거나, 이전 페이지로 돌아가 주세요.",
+    "backButton": "뒤로 가기",
+    "refreshButton": "새로 고침"
+  },
+  "not-found": {
+    "title": "404 PAGE NOT FOUND",
+    "content": "존재하지 않는 페이지 입니다.",
+    "button": "홈으로"
+  },
+  "common": {
+    "Intrinsic": "내부 파라미터",
+    "BirdEye": "버드아이",
+    "HandEye": "핸드아이",
+    "HandToHand": "로봇 간 캘리브레이션"
+  },
+  "main": {
+    "project-list": "프로젝트 목록",
+    "new-project": "새 프로젝트",
+    "project-type": "프로젝트 유형",
+    "project-name": "프로젝트 명",
+    "camera-model": "카메라 모델",
+    "serial-number": "시리얼 번호",
+    "robot-model": "로봇 모델",
+    "ip": "IP",
+    "calibration-image-path": "캘리브레이션 이미지 경로",
+    "image-count": "촬영 장수",
+    "modified-date": "최종 수정일",
+    "no-project": "등록된 프로젝트가 없습니다.",
+    "image(s)": "장",
+    "copy": "복사",
+    "delete": "삭제"
+  }
+}

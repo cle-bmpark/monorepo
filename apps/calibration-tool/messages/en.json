@@ -1,0 +1,44 @@
+{
+  "modal": {
+    "cancelLabel": "Cancel",
+    "confirmLabel": "Confirm"
+  },
+  "root": {
+    "theme-mode": "Dark Mode",
+    "language-switch": "English"
+  },
+  "error": {
+    "title": "An unexpected error occurred while loading the page.",
+    "content": "Please try again shortly, or go back to the previous page.",
+    "backButton": "Go Back",
+    "refreshButton": "Refresh"
+  },
+  "not-found": {
+    "title": "404 PAGE NOT FOUND",
+    "content": "This page doesn't exist.",
+    "button": "Go to Home"
+  },
+  "common": {
+    "Intrinsic": "Intrinsic",
+    "BirdEye": "Bird eye",
+    "HandEye": "Hand eye",
+    "HandToHand": "Hand to hand"
+  },
+  "main": {
+    "project-list": "List",
+    "new-project": "New Project",
+    "project-type": "Project type",
+    "project-name": "Project name",
+    "camera-model": "Camera model",
+    "serial-number": "Serial number",
+    "robot-model": "Robot model",
+    "ip": "IP",
+    "calibration-image-path": "Calibration image path",
+    "image-count": "image(s)",
+    "modified-date": "Modified date",
+    "no-project": "No registered projects.",
+    "image(s)": "Image(s)",
+    "copy": "Copy",
+    "delete": "Delete"
+  }
+}
