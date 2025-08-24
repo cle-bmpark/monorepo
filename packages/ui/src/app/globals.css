@@ -399,3 +399,108 @@ body {
     white-space: pre-line;
   }
 }
+
+/* font */
+
+@utility text-bold-24 {
+  font-family: var(--font-pretendard);
+  font-size: var(--text-24);
+  font-weight: var(--font-weight-700);
+  line-height: var(--leading-32);
+}
+
+@utility text-bold-20 {
+  font-family: var(--font-pretendard);
+  font-size: var(--text-20);
+  font-weight: var(--font-weight-700);
+  line-height: var(--leading-28);
+}
+
+@utility text-bold-16 {
+  font-family: var(--font-pretendard);
+  font-size: var(--text-16);
+  font-weight: var(--font-weight-700);
+  line-height: var(--leading-24);
+}
+
+@utility text-bold-14 {
+  font-family: var(--font-pretendard);
+  font-size: var(--text-14);
+  font-weight: var(--font-weight-700);
+  line-height: var(--leading-20);
+}
+
+@utility text-bold-12 {
+  font-family: var(--font-pretendard);
+  font-size: var(--text-24);
+  font-weight: var(--font-weight-700);
+  line-height: var(--leading-16);
+}
+@utility text-medium-24 {
+  font-family: var(--font-pretendard);
+  font-size: var(--text-24);
+  font-weight: var(--font-weight-500);
+  line-height: var(--leading-32);
+}
+
+@utility text-medium-20 {
+  font-family: var(--font-pretendard);
+  font-size: var(--text-20);
+  font-weight: var(--font-weight-500);
+  line-height: var(--leading-28);
+}
+
+@utility text-medium-16 {
+  font-family: var(--font-pretendard);
+  font-size: var(--text-16);
+  font-weight: var(--font-weight-500);
+  line-height: var(--leading-24);
+}
+
+@utility text-medium-14 {
+  font-family: var(--font-pretendard);
+  font-size: var(--text-14);
+  font-weight: var(--font-weight-500);
+  line-height: var(--leading-20);
+}
+
+@utility text-medium-12 {
+  font-family: var(--font-pretendard);
+  font-size: var(--text-24);
+  font-weight: var(--font-weight-500);
+  line-height: var(--leading-16);
+}
+@utility text-regular-24 {
+  font-family: var(--font-pretendard);
+  font-size: var(--text-24);
+  font-weight: var(--font-weight-400);
+  line-height: var(--leading-32);
+}
+
+@utility text-regular-20 {
+  font-family: var(--font-pretendard);
+  font-size: var(--text-20);
+  font-weight: var(--font-weight-400);
+  line-height: var(--leading-28);
+}
+
+@utility text-regular-16 {
+  font-family: var(--font-pretendard);
+  font-size: var(--text-16);
+  font-weight: var(--font-weight-400);
+  line-height: var(--leading-24);
+}
+
+@utility text-regular-14 {
+  font-family: var(--font-pretendard);
+  font-size: var(--text-14);
+  font-weight: var(--font-weight-400);
+  line-height: var(--leading-20);
+}
+
+@utility text-regular-12 {
+  font-family: var(--font-pretendard);
+  font-size: var(--text-24);
+  font-weight: var(--font-weight-400);
+  line-height: var(--leading-16);
+}
