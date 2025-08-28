@@ -11,10 +11,16 @@ interface PaginationProps {
   selectPage: number;
   setSelectPage: (value: number) => void;
   totalPages: number;
+  pageSize?: number;
 }
 
-export default function Pagination({ selectPage, setSelectPage, totalPages }: PaginationProps) {
-  const STEP = 10;
+export default function Pagination({
+  selectPage,
+  setSelectPage,
+  totalPages,
+  pageSize = 10,
+}: PaginationProps) {
+  const STEP = pageSize;
   const [startPage, setStartPage] = useState<number>(1);
 
   const variantStyle = {
