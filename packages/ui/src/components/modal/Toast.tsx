@@ -58,7 +58,7 @@ export default function Toast() {
   return (
     <div className='fixed top-0 right-0 bottom-0 left-0 z-20'>
       <div
-        className={`absolute top-5/6 left-1/2 flex -translate-x-1/2 -translate-y-5/6 transform ${isSlide ? 'animate-slide-in' : 'animate-slide-out'}`}
+        className={`absolute left-1/2 flex -translate-x-1/2 -translate-y-5/6 transform ${isSlide ? 'animate-slide-in' : 'animate-slide-out'} ${toast.top ?? 'top-5/6'}`}
         ref={toastRef}
       >
         <div
