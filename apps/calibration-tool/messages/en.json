@@ -39,6 +39,8 @@
     "no-project": "No registered projects.",
     "image(s)": "Image(s)",
     "copy": "Copy",
-    "delete": "Delete"
+    "delete": "Delete",
+    "copy-msg": "Project copied.",
+    "delete-msg": "Project deleted."
   }
 }

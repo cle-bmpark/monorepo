@@ -3,6 +3,8 @@
 import { useAutoPlacement } from '@ui/hooks/useAutoPlacement';
 import useClickOutside from '@ui/hooks/useClickOutside';
 import { useColorByTheme } from '@ui/hooks/useColorByTheme';
+import { toastAtom } from '@ui/jotai/modalAtoms';
+import { useAtom } from 'jotai';
 import { useTranslations } from 'next-intl';
 import { useRef, useState } from 'react';
 import { PiDotsThreeOutlineVerticalFill } from 'react-icons/pi';
@@ -10,6 +12,7 @@ import { PiDotsThreeOutlineVerticalFill } from 'react-icons/pi';
 export default function TableSelectButton() {
   const containerRef = useRef<HTMLDivElement>(null);
   const dropdownRef = useRef<HTMLUListElement>(null);
+  const [, setToast] = useAtom(toastAtom);
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const t = useTranslations('main');
@@ -26,9 +29,19 @@ export default function TableSelectButton() {
   };
   const handleClickCopy = () => {
     setIsOpen(false);
+    setToast({
+      visible: true,
+      text: t('copy-msg'),
+      top: 'top-1/18',
+    });
   };
   const handleClickDelete = () => {
     setIsOpen(false);
+    setToast({
+      visible: true,
+      text: t('delete-msg'),
+      top: 'top-1/18',
+    });
   };
 
   useClickOutside({ ref: dropdownRef, onClick: () => setIsOpen(false) });
