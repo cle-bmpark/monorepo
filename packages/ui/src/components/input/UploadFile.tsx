@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { ComponentPropsWithoutRef, useState } from 'react';
 
 import LoadingIcon from '@ui/components/svg/LoadingIcon';
 import { useColorByTheme } from '@ui/hooks/useColorByTheme';
@@ -8,17 +8,21 @@ import { IoMdClose } from 'react-icons/io';
 import { IoTrashOutline } from 'react-icons/io5';
 import { LuUpload } from 'react-icons/lu';
 
-interface UploadFileProps {
-  isUploading?: boolean;
-  isDisabled?: boolean;
-  isError?: boolean;
+type NativeInputProps = ComponentPropsWithoutRef<'input'>;
+type UiVariant = 'default' | 'blue' | 'ghost';
+type UiSize = 'm' | 's';
+
+interface UploadFileProps extends Omit<NativeInputProps, 'size' | 'style' | 'disabled'> {
   errorMessage?: string;
   handleOpenFile?: () => void;
   clickUpload?: () => void;
   clickDelete?: () => void;
   clickCancel?: () => void;
-  style?: 'default' | 'blue' | 'ghost';
-  size?: 'm' | 's';
+  style?: UiVariant;
+  size?: UiSize;
+  isUploading?: boolean;
+  isDisabled?: boolean;
+  isError?: boolean;
 }
 
 export default function UploadFile({
@@ -32,6 +36,7 @@ export default function UploadFile({
   clickCancel,
   style = 'default',
   size = 'm',
+  ...rest
 }: UploadFileProps) {
   const fileInputRef = React.useRef<HTMLInputElement>(null);
   const [fileName, setFileName] = useState<string>('');
@@ -126,6 +131,7 @@ export default function UploadFile({
             onClick={() => {
               if (!isDisabled) fileInputRef.current?.click();
             }}
+            {...rest}
           />
           {fileName.length > 0 ? (
             <IoTrashOutline

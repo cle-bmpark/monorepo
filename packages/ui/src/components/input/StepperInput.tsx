@@ -1,37 +1,35 @@
 'use client';
 
-import { ChangeEventHandler, KeyboardEvent, useState } from 'react';
+import { ComponentPropsWithoutRef, useState } from 'react';
 
 import { useColorByTheme } from '@ui/hooks/useColorByTheme';
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
 import { RxDividerVertical } from 'react-icons/rx';
 
-interface StepperInputProps {
-  value: number;
-  onChange: ChangeEventHandler<HTMLInputElement>;
-  onKeyDown?: (e: KeyboardEvent<HTMLInputElement>) => void;
-  isDisabled?: boolean;
-  isError?: boolean;
+type NativeInputProps = ComponentPropsWithoutRef<'input'>;
+type UiVariant = 'default' | 'blue' | 'ghost';
+type UiSize = 'm' | 's';
+
+interface StepperInputProps extends Omit<NativeInputProps, 'size' | 'style' | 'disabled'> {
   errorMessage?: string;
-  placeholder?: string;
   clickPlus?: () => void;
   clickMinus?: () => void;
-  style?: 'default' | 'blue' | 'ghost';
-  size?: 'm' | 's';
+  style?: UiVariant;
+  size?: UiSize;
+  isDisabled?: boolean;
+  isError?: boolean;
 }
 
 export default function StepperInput({
-  value,
-  onChange,
-  onKeyDown,
-  isDisabled = false,
-  isError = false,
   errorMessage,
-  placeholder = 'Number',
   clickPlus,
   clickMinus,
   style = 'default',
   size = 'm',
+  isDisabled = false,
+  isError = false,
+  placeholder = 'Number',
+  ...rest
 }: StepperInputProps) {
   const [isFocus, setIsFocus] = useState<boolean>(false);
 
@@ -80,12 +78,10 @@ export default function StepperInput({
           className={`flex w-full flex-1 text-16 caret-blue-500 outline-0 $${variantStyle[variantKey].input}`}
           placeholder={placeholder}
           disabled={isDisabled}
-          value={value}
-          onChange={onChange}
           onFocus={() => setIsFocus(true)}
           onBlur={() => setIsFocus(false)}
           type='number'
-          onKeyDown={onKeyDown}
+          {...rest}
         />
         <div className='flex items-center'>
           <AiOutlineMinus

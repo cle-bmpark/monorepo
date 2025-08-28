@@ -1,33 +1,31 @@
 'use client';
 
-import React, { ChangeEventHandler, JSX, KeyboardEvent, useState } from 'react';
+import React, { ComponentPropsWithoutRef, JSX, useState } from 'react';
 
 import { useColorByTheme } from '@ui/hooks/useColorByTheme';
 
-interface BackIconInputProps {
-  value: string;
-  onChange: ChangeEventHandler<HTMLInputElement>;
-  icon: JSX.Element; // 아이콘 컴포넌트 (아이콘 클릭 시 이벤트 함수 전달)
-  onKeyDown?: (e: KeyboardEvent<HTMLInputElement>) => void;
+type NativeInputProps = ComponentPropsWithoutRef<'input'>;
+type UiVariant = 'default' | 'blue' | 'ghost';
+type UiSize = 'm' | 's';
+
+interface BackIconInputProps extends Omit<NativeInputProps, 'size' | 'style' | 'disabled'> {
+  icon: JSX.Element;
+  errorMessage?: string;
+  style?: UiVariant;
+  size?: UiSize;
   isDisabled?: boolean;
   isError?: boolean;
-  errorMessage?: string;
-  placeholder?: string;
-  style?: 'default' | 'blue' | 'ghost';
-  size?: 'm' | 's';
 }
 
 export default function BackIconInput({
-  value,
-  onChange,
   icon,
-  onKeyDown,
-  isDisabled = false,
-  isError = false,
   errorMessage,
-  placeholder = 'Text',
   style = 'default',
   size = 'm',
+  isDisabled = false,
+  isError = false,
+  placeholder = 'Text',
+  ...rest
 }: BackIconInputProps) {
   const [isFocus, setIsFocus] = useState<boolean>(false);
 
@@ -102,11 +100,9 @@ export default function BackIconInput({
             className={`flex w-full flex-1 text-16 caret-blue-500 outline-0 ${variantStyle[variantKey].input}`}
             placeholder={placeholder}
             disabled={isDisabled}
-            value={value}
-            onChange={onChange}
             onFocus={() => setIsFocus(true)}
             onBlur={() => setIsFocus(false)}
-            onKeyDown={onKeyDown}
+            {...rest}
           />
         </div>
         {styledIcon}

@@ -1,32 +1,30 @@
 'use client';
 
-import { ChangeEventHandler, KeyboardEvent, useState } from 'react';
+import { ComponentPropsWithoutRef, useState } from 'react';
 
 import { useColorByTheme } from '@ui/hooks/useColorByTheme';
 import { IoMdEye, IoMdEyeOff } from 'react-icons/io';
 
-interface PasswordInputProps {
-  value: string;
-  onChange: ChangeEventHandler<HTMLInputElement>;
-  onKeyDown?: (e: KeyboardEvent<HTMLInputElement>) => void;
+type NativeInputProps = ComponentPropsWithoutRef<'input'>;
+type UiVariant = 'default' | 'blue' | 'ghost';
+type UiSize = 'm' | 's';
+
+interface PasswordInputProps extends Omit<NativeInputProps, 'size' | 'style' | 'disabled'> {
+  errorMessage?: string;
+  style?: UiVariant;
+  size?: UiSize;
   isDisabled?: boolean;
   isError?: boolean;
-  errorMessage?: string;
-  placeholder?: string;
-  style?: 'default' | 'blue' | 'ghost';
-  size?: 'm' | 's';
 }
 
 export default function PasswordInput({
-  value,
-  onChange,
-  onKeyDown,
-  isDisabled = false,
-  isError = false,
   errorMessage,
-  placeholder = 'Text',
   style = 'default',
   size = 'm',
+  isDisabled = false,
+  isError = false,
+  placeholder = 'Text',
+  ...rest
 }: PasswordInputProps) {
   const [isShow, setIsShow] = useState<boolean>(false);
   const [isFocus, setIsFocus] = useState<boolean>(false);
@@ -75,12 +73,10 @@ export default function PasswordInput({
           className={`flex w-full flex-1 text-16 caret-blue-500 outline-0 ${variantStyle[variantKey].input}`}
           placeholder={placeholder}
           disabled={isDisabled}
-          value={value}
-          onChange={onChange}
           onFocus={() => setIsFocus(true)}
           onBlur={() => setIsFocus(false)}
           type={isShow ? 'text' : 'password'}
-          onKeyDown={onKeyDown}
+          {...rest}
         />
         {isShow ? (
           <IoMdEye

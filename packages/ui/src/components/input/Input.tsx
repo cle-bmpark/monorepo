@@ -1,31 +1,27 @@
 'use client';
 
-import { ChangeEventHandler, HTMLInputTypeAttribute, KeyboardEvent, useState } from 'react';
+import { ComponentPropsWithoutRef, useState } from 'react';
 
-interface InputProps {
-  value: string; // 입력값
-  onChange: ChangeEventHandler<HTMLInputElement>; // 입력값 변경 핸들러
-  onKeyDown?: (e: KeyboardEvent<HTMLInputElement>) => void;
+type NativeInputProps = ComponentPropsWithoutRef<'input'>;
+type UiVariant = 'default' | 'blue' | 'ghost';
+type UiSize = 'm' | 's';
+
+interface InputProps extends Omit<NativeInputProps, 'size' | 'style' | 'disabled'> {
+  errorMessage?: string; // 에러 메시지 (에러 상태일 때만 표시)
+  style?: UiVariant; // 색상 스타일
+  size?: UiSize; // 사이즈
   isDisabled?: boolean; // 입력 비활성화 여부
   isError?: boolean; // 에러 상태 여부
-  errorMessage?: string; // 에러 메시지 (에러 상태일 때만 표시)
-  placeholder?: string; // 플레이스홀더 텍스트
-  style?: 'default' | 'blue' | 'ghost'; // 색상 스타일
-  size?: 'm' | 's'; // 사이즈
-  type?: HTMLInputTypeAttribute;
 }
 
 export default function Input({
-  value,
-  onChange,
-  onKeyDown,
+  errorMessage,
   isDisabled = false,
   isError = false,
-  errorMessage,
-  placeholder = 'Text',
   style = 'default',
   size = 'm',
-  type = 'text',
+  placeholder = 'Text',
+  ...rest
 }: InputProps) {
   const [isFocus, setIsFocus] = useState<boolean>(false);
 
@@ -70,12 +66,9 @@ export default function Input({
           className={`flex w-full flex-1 text-16 caret-blue-500 outline-0 ${variantStyle[variantKey].input}`}
           placeholder={placeholder}
           disabled={isDisabled}
-          value={value}
-          onChange={onChange}
           onFocus={() => setIsFocus(true)}
           onBlur={() => setIsFocus(false)}
-          onKeyDown={onKeyDown}
-          type={type}
+          {...rest}
         />
       </div>
       {errorMessage && isError ? (

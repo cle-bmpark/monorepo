@@ -1,31 +1,29 @@
 'use client';
 
-import { ChangeEventHandler, KeyboardEvent, useState } from 'react';
+import { ComponentPropsWithoutRef, useState } from 'react';
 
-interface LabeledInputProps {
-  value: string;
-  onChange: ChangeEventHandler<HTMLInputElement>;
+type NativeInputProps = ComponentPropsWithoutRef<'input'>;
+type UiVariant = 'default' | 'blue' | 'ghost';
+type UiSize = 'm' | 's';
+
+interface LabeledInputProps extends Omit<NativeInputProps, 'size' | 'style' | 'disabled'> {
   label: string;
-  onKeyDown?: (e: KeyboardEvent<HTMLInputElement>) => void;
+  errorMessage?: string;
+  style?: UiVariant;
+  size?: UiSize;
   isDisabled?: boolean;
   isError?: boolean;
-  errorMessage?: string;
-  placeholder?: string;
-  style?: 'default' | 'blue' | 'ghost';
-  size?: 'm' | 's';
 }
 
 export default function LabeledInput({
-  value,
-  onChange,
   label,
-  onKeyDown,
-  isDisabled = false,
-  isError = false,
   errorMessage,
-  placeholder = 'Text',
   style = 'default',
   size = 'm',
+  isDisabled = false,
+  isError = false,
+  placeholder = 'Text',
+  ...rest
 }: LabeledInputProps) {
   const [isFocus, setIsFocus] = useState<boolean>(false);
 
@@ -70,11 +68,9 @@ export default function LabeledInput({
           className={`flex w-full flex-1 text-16 caret-blue-500 outline-0 ${variantStyle[variantKey].input}`}
           placeholder={placeholder}
           disabled={isDisabled}
-          value={value}
-          onChange={onChange}
           onFocus={() => setIsFocus(true)}
           onBlur={() => setIsFocus(false)}
-          onKeyDown={onKeyDown}
+          {...rest}
         />
         <span className='text-grey-500'>{label}</span>
       </div>
