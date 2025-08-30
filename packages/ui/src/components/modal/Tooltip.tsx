@@ -1,4 +1,4 @@
-interface TooltipProps {
+export interface TooltipProps {
   title?: string;
   detail: string;
   titleStyle?: string;
