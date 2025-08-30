@@ -42,5 +42,19 @@
     "delete": "Delete",
     "copy-msg": "Project copied.",
     "delete-msg": "Project deleted."
+  },
+  "new-project-modal": {
+    "new-project": "New Project",
+    "tooltip-intrinsic": "These are parameters related to the characteristics of the camera itself, such as the focal length, principal point, and distortion coefficients.",
+    "tooltip-birdeye": "None",
+    "tooltip-handeye": "None",
+    "tooltip-handtohand": "None",
+    "project-name": "Project name",
+    "calibration-image-path": "Calibration image path",
+    "calibration-image-path-placeholder": "Select a path.",
+    "calibration-type": "Calibration type",
+    "create-project": "Create project",
+    "input-error-include": "Special characters can only include _(underscores).",
+    "input-error-already": "The project name already exists. Please enter a different name."
   }
 }
