@@ -16,7 +16,7 @@ const compat = new FlatCompat({
 
 const nextJsConfig = [
   {
-    ignores: ['eslint.config.mjs', 'postcss.config.mjs', 'prettier.config.mjs'],
+    ignores: ['eslint.config.mjs', 'postcss.config.mjs', 'prettier.config.mjs', 'scripts/*'],
   },
   ...compat.extends(
     'eslint:recommended', // ESLint 기본 권장 규칙
