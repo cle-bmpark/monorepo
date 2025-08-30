@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import Button from '@ui/components/button/Button';
+import IconTooltip from '@ui/components/modal/IconTooltip';
 import Tooltip from '@ui/components/modal/Tooltip';
 import ModalViewContent from '@ui/dummies/ModalViewContent';
 import {
@@ -188,6 +189,10 @@ export default function ModalView() {
               })
             }
           />
+        </div>
+        <div className='flex flex-wrap justify-center gap-12'>
+          <IconTooltip title='Title' detail='Detail' style='dark' size={24} />
+          <IconTooltip title='Title' detail='Detail' style='light' size={24} />
         </div>
       </div>
     </div>

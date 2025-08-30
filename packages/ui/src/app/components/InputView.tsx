@@ -7,6 +7,7 @@ import Input from '@ui/components/input/Input';
 import InputHide from '@ui/components/input/InputHide';
 import LabeledInput from '@ui/components/input/LabeledInput';
 import PasswordInput from '@ui/components/input/PasswordInput';
+import SelectFileInput from '@ui/components/input/SelectFileInput';
 import StepperInput from '@ui/components/input/StepperInput';
 import UploadFile from '@ui/components/input/UploadFile';
 import { AiOutlinePlus } from 'react-icons/ai';
@@ -297,6 +298,13 @@ export default function InputView() {
             onChange={(e) => setInputValue(e.target.value)}
             style='primary'
           />
+        </div>
+        <div className='flex min-w-60 flex-1 flex-col gap-4'>
+          <SelectFileInput />
+          <SelectFileInput isDisabled />
+          <SelectFileInput isError errorMessage='Error Message' />
+          <SelectFileInput style='ghost' />
+          <SelectFileInput style='blue' />
         </div>
       </div>
     </div>
