@@ -1,6 +1,6 @@
 'use client';
 
-import React, { ComponentPropsWithoutRef, useState } from 'react';
+import { ChangeEvent, ComponentPropsWithoutRef, useRef, useState } from 'react';
 
 import LoadingIcon from '@ui/components/svg/LoadingIcon';
 import { useColorByTheme } from '@ui/hooks/useColorByTheme';
@@ -39,7 +39,7 @@ export default function UploadFile({
   size = 'm',
   ...rest
 }: UploadFileProps) {
-  const fileInputRef = React.useRef<HTMLInputElement>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const [fileName, setFileName] = useState<string>('');
 
   const grey300 = useColorByTheme('grey-300');
@@ -73,7 +73,7 @@ export default function UploadFile({
   };
   const variantKey = isDisabled ? 'disabled' : isError ? 'error' : style;
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (isDisabled) return;
 
     // 선택한 파일명 업데이트
@@ -118,8 +118,8 @@ export default function UploadFile({
           <input
             className='hidden'
             type='file'
-            accept='image/*' // 변경 필요
-            multiple={true} // 변경 필요
+            accept={rest.accept}
+            multiple={rest.multiple}
             ref={fileInputRef}
             onChange={handleFileChange}
           />
