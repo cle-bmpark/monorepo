@@ -4,6 +4,7 @@
 node_modules
 .pnp
 .pnp.js
+**/en.d.json.ts
 
 # Local env files
 .env
