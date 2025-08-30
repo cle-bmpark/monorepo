@@ -201,7 +201,7 @@ export default function Request() {
 
       {/* 등록하기 버튼 */}
       <div className='flex flex-col gap-1'>
-        <Button value={t('submit')} style='secondary' onClick={onClick} isLoading={loading} />
+        <Button value={t('submit')} style='secondary' onClick={() => onClick} isLoading={loading} />
 
         <p className='text-12 text-grey-800'>
           <span>{t('kakaoDescription1')}</span>
