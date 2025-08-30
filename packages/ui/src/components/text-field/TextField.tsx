@@ -1,29 +1,24 @@
-import { ChangeEventHandler, useRef } from 'react';
+import { ChangeEventHandler, ComponentPropsWithoutRef, useRef } from 'react';
 
 import LoadingIcon from '@ui/components/svg/LoadingIcon';
 
-interface TextFieldProps {
-  value: string; // 입력값
-  onChange: ChangeEventHandler<HTMLTextAreaElement>; // 입력값 변경 핸들러
+type NativeTextareaProps = ComponentPropsWithoutRef<'textarea'>;
+interface TextFieldProps
+  extends Omit<NativeTextareaProps, 'disabled' | 'className' | 'ref' | 'rows'> {
   isLoading?: boolean; // 로딩 상태 여부
   isDisabled?: boolean; // 입력 비활성화 여부
   isError?: boolean; // 에러 상태 여부
   errorMessage?: string; // 에러 메시지 (에러 상태일 때만 표시)
-  placeholder?: string; // 플레이스홀더 텍스트
   size?: 'm' | 's'; // 폰트 사이즈
-  maxLength?: number; // 최대 글자수
 }
 
 export default function TextField({
-  value,
-  onChange,
   isLoading = false,
   isDisabled = false,
   isError = false,
   errorMessage,
-  placeholder = 'Text',
   size = 'm',
-  maxLength,
+  ...rest
 }: TextFieldProps) {
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
 
@@ -49,7 +44,7 @@ export default function TextField({
   };
 
   const handleChange: ChangeEventHandler<HTMLTextAreaElement> = (event) => {
-    onChange(event);
+    rest.onChange?.(event);
 
     if (textareaRef.current) {
       // 사용자 입력에 따라 textarea 높이가 변경됩니다.
@@ -71,13 +66,11 @@ export default function TextField({
         ) : (
           <textarea
             className={`flex flex-1 resize-none caret-blue-500 outline-none placeholder:text-grey-500 ${variantStyle[variantKey].textarea} ${fontStyle[size]}`}
-            value={value}
             onChange={handleChange}
-            placeholder={placeholder}
             disabled={isDisabled}
             rows={1}
             ref={textareaRef}
-            maxLength={maxLength}
+            {...rest}
           />
         )}
       </div>

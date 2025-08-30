@@ -9,17 +9,18 @@ import { IoTrashOutline } from 'react-icons/io5';
 import { LuUpload } from 'react-icons/lu';
 
 type NativeInputProps = ComponentPropsWithoutRef<'input'>;
-type UiVariant = 'default' | 'blue' | 'ghost';
-type UiSize = 'm' | 's';
-
-interface UploadFileProps extends Omit<NativeInputProps, 'size' | 'style' | 'disabled'> {
+interface UploadFileProps
+  extends Omit<
+    NativeInputProps,
+    'size' | 'style' | 'className' | 'disabled' | 'value' | 'placeholder' | 'onClick'
+  > {
   errorMessage?: string;
   handleOpenFile?: () => void;
   clickUpload?: () => void;
   clickDelete?: () => void;
   clickCancel?: () => void;
-  style?: UiVariant;
-  size?: UiSize;
+  style?: 'default' | 'blue' | 'ghost';
+  size?: 'm' | 's';
   isUploading?: boolean;
   isDisabled?: boolean;
   isError?: boolean;

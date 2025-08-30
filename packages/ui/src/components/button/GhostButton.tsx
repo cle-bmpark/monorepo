@@ -1,10 +1,11 @@
-import { MouseEventHandler } from 'react';
+import { ComponentPropsWithoutRef } from 'react';
 
 import { CgChevronRight } from 'react-icons/cg';
 
-interface GhostButtonProps {
+type NativeButtonProps = ComponentPropsWithoutRef<'button'>;
+interface GhostButtonProps
+  extends Omit<NativeButtonProps, 'style' | 'value' | 'className' | 'disabled'> {
   value: string;
-  onClick?: MouseEventHandler<HTMLButtonElement>;
   isDisabled?: boolean;
   size?: 'm' | 's';
   style?: 'default' | 'primary';
@@ -13,11 +14,11 @@ interface GhostButtonProps {
 
 export default function GhostButton({
   value,
-  onClick,
   isDisabled = false,
   size = 'm',
   style = 'default',
   iconPosition = 'none',
+  ...rest
 }: GhostButtonProps) {
   const variantStyle = {
     default: isDisabled
@@ -36,8 +37,8 @@ export default function GhostButton({
   return (
     <button
       className={`flex w-fit items-center justify-center gap-1 py-0.5 pr-0.5 ${variantStyle[style]}`}
-      onClick={onClick}
       disabled={isDisabled}
+      {...rest}
     >
       {iconPosition === 'left' && <CgChevronRight size={sizeStyle[size].icon} />}
       <p className={`whitespace-nowrap ${sizeStyle[size].text}`}>{value}</p>

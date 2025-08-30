@@ -1,21 +1,23 @@
-import { JSX, MouseEventHandler } from 'react';
+import { BadgeColor } from '@ui/components/badge/Badge';
+import { ComponentPropsWithoutRef, JSX } from 'react';
 
-interface IconBadgeProps {
+type uiSize = 'l' | 'm' | 's';
+type NativeButtonProps = ComponentPropsWithoutRef<'button'>;
+interface IconBadgeProps extends Omit<NativeButtonProps, 'className'> {
   value: string;
   icon: JSX.Element;
-  onClick?: MouseEventHandler<HTMLButtonElement>;
-  color?: 'yellow' | 'blue' | 'green' | 'purple' | 'grey' | 'red' | 'neo-green';
-  size?: 'l' | 'm' | 's';
+  color?: BadgeColor;
+  size?: uiSize;
 }
 
 export default function IconBadge({
   value,
   icon,
-  onClick,
   color = 'grey',
   size = 'm',
+  ...rest
 }: IconBadgeProps) {
-  const variantStyle = {
+  const variantStyle: Record<BadgeColor, { button: string }> = {
     yellow: {
       button: 'border-yellow-500 bg-yellow-100 text-yellow-950',
     },
@@ -39,7 +41,7 @@ export default function IconBadge({
     },
   };
 
-  const sizeStyle = {
+  const sizeStyle: Record<uiSize, { button: string }> = {
     s: { button: 'px-2 py-1 text-12 leading-16' },
     m: { button: 'px-3 py-1 text-14 leading-16' },
     l: { button: 'px-3 py-1 text-16 leading-24' },
@@ -48,7 +50,7 @@ export default function IconBadge({
   return (
     <button
       className={`text-medium flex w-fit cursor-pointer items-center gap-2 rounded-lg border-1 ${variantStyle[color].button} ${sizeStyle[size].button}`}
-      onClick={onClick}
+      {...rest}
     >
       {icon}
       <p> {value}</p>

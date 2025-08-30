@@ -1,11 +1,12 @@
-import React, { CSSProperties, JSX } from 'react';
+import React, { ComponentPropsWithoutRef, CSSProperties, JSX } from 'react';
 
 import LoadingIcon from '@ui/components/svg/LoadingIcon';
 import { AiOutlinePlus } from 'react-icons/ai';
 
-interface ButtonProps {
+type NativeButtonProps = ComponentPropsWithoutRef<'button'>;
+interface ButtonProps
+  extends Omit<NativeButtonProps, 'style' | 'value' | 'className' | 'disabled'> {
   value: string;
-  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void | Promise<void>;
   size?: 'm' | 's';
   style?: 'primary' | 'secondary' | 'tertiary' | 'outline' | 'ghost';
   isDisabled?: boolean;
@@ -16,13 +17,13 @@ interface ButtonProps {
 
 export default function Button({
   value,
-  onClick,
   size = 'm',
   style = 'primary',
   isDisabled = false,
   isLoading = false,
   isIcon = false,
   icon = <AiOutlinePlus />,
+  ...rest
 }: ButtonProps) {
   const variantStyle = {
     primary: {
@@ -65,11 +66,7 @@ export default function Button({
     <button
       className={`flex flex-1 items-center justify-center gap-1 rounded-lg outline-0 ${variantStyle[variantKey].button} ${sizeStyle[size].button}`}
       disabled={isDisabled || isLoading}
-      onClick={(e) => {
-        if (onClick) {
-          void onClick(e);
-        }
-      }}
+      {...rest}
     >
       {isLoading ? <LoadingIcon /> : <p className='whitespace-nowrap'>{value}</p>}
       {isIcon && styledIcon}

@@ -3,14 +3,15 @@
 import { ComponentPropsWithoutRef, useState } from 'react';
 
 type NativeInputProps = ComponentPropsWithoutRef<'input'>;
-type UiVariant = 'default' | 'blue' | 'ghost';
-type UiSize = 'm' | 's';
-
-interface LabeledInputProps extends Omit<NativeInputProps, 'size' | 'style' | 'disabled'> {
+interface LabeledInputProps
+  extends Omit<
+    NativeInputProps,
+    'size' | 'style' | 'className' | 'disabled' | 'onFocus' | 'onBlur'
+  > {
   label: string;
   errorMessage?: string;
-  style?: UiVariant;
-  size?: UiSize;
+  style?: 'default' | 'blue' | 'ghost';
+  size?: 'm' | 's';
   isDisabled?: boolean;
   isError?: boolean;
 }

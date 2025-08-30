@@ -1,8 +1,8 @@
-import { MouseEventHandler } from 'react';
+import { ComponentPropsWithoutRef } from 'react';
 
-interface CardRadioProps {
+type NativeButtonProps = ComponentPropsWithoutRef<'button'>;
+interface CardRadioProps extends Omit<NativeButtonProps, 'style' | 'value' | 'className'> {
   value: boolean;
-  onClick: MouseEventHandler<HTMLButtonElement>;
   title: string;
   subTitle: string;
   style?: 'default' | 'dark';
@@ -10,10 +10,10 @@ interface CardRadioProps {
 
 export default function CardRadio({
   value,
-  onClick,
   title,
   subTitle,
   style = 'default',
+  ...rest
 }: CardRadioProps) {
   const variantStyle = {
     default: {
@@ -31,7 +31,7 @@ export default function CardRadio({
   return (
     <button
       className={`flex h-20 cursor-pointer items-center gap-2 rounded-lg border p-4 ${variantStyle[style].button}`}
-      onClick={onClick}
+      {...rest}
     >
       <div
         className={`flex h-5 w-5 items-center justify-center rounded-full border-2 bg-grey-0 ${variantStyle[style].circle}`}

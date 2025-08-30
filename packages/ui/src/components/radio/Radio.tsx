@@ -1,9 +1,9 @@
-import { MouseEventHandler } from 'react';
+import { ComponentPropsWithoutRef } from 'react';
 
-interface RadioProps {
+type NativeButtonProps = ComponentPropsWithoutRef<'button'>;
+interface RadioProps extends Omit<NativeButtonProps, 'style' | 'className' | 'disabled'> {
   label: string;
   isCheck: boolean;
-  onClick: MouseEventHandler<HTMLButtonElement>;
   isDisabled?: boolean;
   style?: 'default' | 'primary500' | 'primary600';
   size?: 'm' | 's';
@@ -12,10 +12,10 @@ interface RadioProps {
 export default function Radio({
   label,
   isCheck,
-  onClick,
   isDisabled = false,
   style = 'default',
   size = 'm',
+  ...rest
 }: RadioProps) {
   const variantStyle = {
     default: {
@@ -53,8 +53,8 @@ export default function Radio({
   return (
     <button
       className={`flex items-center gap-2 ${variantStyle[variantKey].button}`}
-      onClick={onClick}
       disabled={isDisabled}
+      {...rest}
     >
       <div
         className={`flex h-5 w-5 items-center justify-center rounded-full border-2 ${variantStyle[variantKey].circle}`}

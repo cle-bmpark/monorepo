@@ -5,14 +5,15 @@ import React, { ComponentPropsWithoutRef, JSX, useState } from 'react';
 import { useColorByTheme } from '@ui/hooks/useColorByTheme';
 
 type NativeInputProps = ComponentPropsWithoutRef<'input'>;
-type UiVariant = 'default' | 'blue' | 'ghost';
-type UiSize = 'm' | 's';
-
-interface BackIconInputProps extends Omit<NativeInputProps, 'size' | 'style' | 'disabled'> {
+interface BackIconInputProps
+  extends Omit<
+    NativeInputProps,
+    'size' | 'style' | 'className' | 'disabled' | 'onFocus' | 'onBlur'
+  > {
   icon: JSX.Element;
   errorMessage?: string;
-  style?: UiVariant;
-  size?: UiSize;
+  style?: 'default' | 'blue' | 'ghost';
+  size?: 'm' | 's';
   isDisabled?: boolean;
   isError?: boolean;
 }

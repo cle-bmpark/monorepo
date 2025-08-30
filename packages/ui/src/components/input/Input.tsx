@@ -3,13 +3,14 @@
 import { ComponentPropsWithoutRef, useState } from 'react';
 
 type NativeInputProps = ComponentPropsWithoutRef<'input'>;
-type UiVariant = 'default' | 'blue' | 'ghost';
-type UiSize = 'm' | 's';
-
-interface InputProps extends Omit<NativeInputProps, 'size' | 'style' | 'disabled'> {
+interface InputProps
+  extends Omit<
+    NativeInputProps,
+    'size' | 'style' | 'className' | 'disabled' | 'onFocus' | 'onBlur'
+  > {
   errorMessage?: string; // 에러 메시지 (에러 상태일 때만 표시)
-  style?: UiVariant; // 색상 스타일
-  size?: UiSize; // 사이즈
+  style?: 'default' | 'blue' | 'ghost'; // 색상 스타일
+  size?: 'm' | 's'; // 사이즈
   isDisabled?: boolean; // 입력 비활성화 여부
   isError?: boolean; // 에러 상태 여부
 }

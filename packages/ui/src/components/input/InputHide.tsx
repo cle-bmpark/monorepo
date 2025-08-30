@@ -3,12 +3,10 @@
 import { ComponentPropsWithoutRef, useState } from 'react';
 
 type NativeInputProps = ComponentPropsWithoutRef<'input'>;
-type UiVariant = 'default' | 'primary';
-type UiSize = 'm' | 's';
-
-interface InputHideProps extends Omit<NativeInputProps, 'size' | 'style'> {
-  size?: UiSize;
-  style?: UiVariant;
+interface InputHideProps
+  extends Omit<NativeInputProps, 'size' | 'style' | 'className' | 'onFocus' | 'onBlur'> {
+  size?: 'm' | 's';
+  style?: 'default' | 'primary';
 }
 
 export default function InputHide({

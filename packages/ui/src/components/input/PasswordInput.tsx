@@ -6,13 +6,14 @@ import { useColorByTheme } from '@ui/hooks/useColorByTheme';
 import { IoMdEye, IoMdEyeOff } from 'react-icons/io';
 
 type NativeInputProps = ComponentPropsWithoutRef<'input'>;
-type UiVariant = 'default' | 'blue' | 'ghost';
-type UiSize = 'm' | 's';
-
-interface PasswordInputProps extends Omit<NativeInputProps, 'size' | 'style' | 'disabled'> {
+interface PasswordInputProps
+  extends Omit<
+    NativeInputProps,
+    'size' | 'style' | 'className' | 'disabled' | 'onFocus' | 'onBlur' | 'type'
+  > {
   errorMessage?: string;
-  style?: UiVariant;
-  size?: UiSize;
+  style?: 'default' | 'blue' | 'ghost';
+  size?: 'm' | 's';
   isDisabled?: boolean;
   isError?: boolean;
 }

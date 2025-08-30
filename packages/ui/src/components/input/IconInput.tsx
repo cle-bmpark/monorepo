@@ -5,14 +5,15 @@ import React, { ComponentPropsWithoutRef, JSX, useState } from 'react';
 import { useColorByTheme } from '@ui/hooks/useColorByTheme';
 
 type NativeInputProps = ComponentPropsWithoutRef<'input'>;
-type UiVariant = 'default' | 'blue' | 'ghost';
-type UiSize = 'm' | 's';
-
-interface IconInputProps extends Omit<NativeInputProps, 'size' | 'style' | 'disabled'> {
+interface IconInputProps
+  extends Omit<
+    NativeInputProps,
+    'size' | 'style' | 'className' | 'disabled' | 'onFocus' | 'onBlur'
+  > {
   icon: JSX.Element; // 아이콘 컴포넌트 (아이콘 클릭 시 이벤트 함수 전달)
   errorMessage?: string;
-  style?: UiVariant;
-  size?: UiSize;
+  style?: 'default' | 'blue' | 'ghost';
+  size?: 'm' | 's';
   isDisabled?: boolean;
   isError?: boolean;
 }

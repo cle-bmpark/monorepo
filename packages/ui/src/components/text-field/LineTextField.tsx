@@ -1,19 +1,15 @@
-import { ChangeEventHandler, useRef } from 'react';
+import { ChangeEventHandler, ComponentPropsWithoutRef, useRef } from 'react';
 
-interface LineTextFieldProps {
-  value: string;
-  onChange: ChangeEventHandler<HTMLTextAreaElement>;
+type NativeTextareaProps = ComponentPropsWithoutRef<'textarea'>;
+interface LineTextFieldProps extends Omit<NativeTextareaProps, 'disabled' | 'className' | 'style'> {
   isDisabled?: boolean;
-  placeholder?: string;
   style?: 'default' | 'line' | 'gray' | 'blue';
 }
 
 export default function LineTextField({
-  value,
-  onChange,
   isDisabled = false,
-  placeholder = 'Text',
   style = 'default',
+  ...rest
 }: LineTextFieldProps) {
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
 
@@ -42,7 +38,7 @@ export default function LineTextField({
   const variantKey = isDisabled ? 'disabled' : style;
 
   const handleChange: ChangeEventHandler<HTMLTextAreaElement> = (event) => {
-    onChange(event);
+    rest.onChange?.(event);
 
     if (textareaRef.current) {
       // 사용자 입력에 따라 textarea 높이가 변경됩니다.
@@ -60,12 +56,11 @@ export default function LineTextField({
     >
       <textarea
         className={`flex flex-1 resize-none caret-blue-500 outline-none ${variantStyle[variantKey].textarea}`}
-        value={value}
         onChange={handleChange}
-        placeholder={placeholder}
         disabled={isDisabled}
         rows={1}
         ref={textareaRef}
+        {...rest}
       />
     </div>
   );

@@ -1,12 +1,12 @@
-import { MouseEventHandler } from 'react';
+import { ComponentPropsWithoutRef } from 'react';
 
 import { useColorByTheme } from '@ui/hooks/useColorByTheme';
 import { FaCheck } from 'react-icons/fa6';
 
-interface CheckBoxProps {
+type NativeButtonProps = ComponentPropsWithoutRef<'button'>;
+interface CheckBoxProps extends Omit<NativeButtonProps, 'style' | 'className' | 'disabled'> {
   label?: string;
   isCheck: boolean;
-  onClick?: MouseEventHandler<HTMLButtonElement>;
   isDisabled?: boolean;
   style?: 'default' | 'primary500' | 'primary600';
   size?: 'm' | 's';
@@ -15,10 +15,10 @@ interface CheckBoxProps {
 export default function CheckBox({
   label,
   isCheck,
-  onClick,
   isDisabled = false,
   style = 'default',
   size = 'm',
+  ...rest
 }: CheckBoxProps) {
   const grey0 = useColorByTheme('grey-0');
 
@@ -54,8 +54,8 @@ export default function CheckBox({
   return (
     <button
       className={`flex items-center gap-2 ${variantStyle[variantKey].button}`}
-      onClick={onClick}
       disabled={isDisabled}
+      {...rest}
     >
       <div
         className={`flex h-5 w-5 items-center justify-center rounded-xs border-2 ${variantStyle[variantKey].box}`}

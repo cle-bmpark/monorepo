@@ -7,15 +7,16 @@ import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
 import { RxDividerVertical } from 'react-icons/rx';
 
 type NativeInputProps = ComponentPropsWithoutRef<'input'>;
-type UiVariant = 'default' | 'blue' | 'ghost';
-type UiSize = 'm' | 's';
-
-interface StepperInputProps extends Omit<NativeInputProps, 'size' | 'style' | 'disabled'> {
+interface StepperInputProps
+  extends Omit<
+    NativeInputProps,
+    'size' | 'style' | 'className' | 'disabled' | 'onFocus' | 'onBlur' | 'type'
+  > {
   errorMessage?: string;
   clickPlus?: () => void;
   clickMinus?: () => void;
-  style?: UiVariant;
-  size?: UiSize;
+  style?: 'default' | 'blue' | 'ghost';
+  size?: 'm' | 's';
   isDisabled?: boolean;
   isError?: boolean;
 }

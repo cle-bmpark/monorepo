@@ -1,10 +1,11 @@
-import React, { JSX, MouseEventHandler } from 'react';
+import React, { ComponentPropsWithoutRef, JSX } from 'react';
 
 import { CgChevronRight } from 'react-icons/cg';
 
-interface LinkButtonProps {
+type NativeButtonProps = ComponentPropsWithoutRef<'button'>;
+interface LinkButtonProps
+  extends Omit<NativeButtonProps, 'value' | 'style' | 'className' | 'disabled'> {
   value: string;
-  onClick?: MouseEventHandler<HTMLButtonElement>;
   isDisabled?: boolean;
   size?: 'm' | 's';
   style?: 'default' | 'primary';
@@ -14,12 +15,12 @@ interface LinkButtonProps {
 
 export default function LinkButton({
   value,
-  onClick,
   isDisabled = false,
   size = 'm',
   style = 'default',
   icon = <CgChevronRight />,
   iconPosition = 'none',
+  ...rest
 }: LinkButtonProps) {
   const variantStyle = {
     default: isDisabled
@@ -46,8 +47,8 @@ export default function LinkButton({
   return (
     <button
       className={`flex w-fit items-center justify-center gap-1 py-0.5 pr-0.5 ${variantStyle[style]}`}
-      onClick={onClick}
       disabled={isDisabled}
+      {...rest}
     >
       {iconPosition === 'left' && styledIcon}
       <p className={`whitespace-nowrap underline ${sizeStyle[size].text}`}>{value}</p>

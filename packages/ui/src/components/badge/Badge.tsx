@@ -1,4 +1,4 @@
-import { MouseEventHandler } from 'react';
+import { ComponentPropsWithoutRef } from 'react';
 
 export const BadgeColors = [
   'yellow',
@@ -9,17 +9,17 @@ export const BadgeColors = [
   'red',
   'neo-green',
 ] as const;
-export type BadgeColor = 'yellow' | 'blue' | 'green' | 'purple' | 'grey' | 'red' | 'neo-green';
+export type BadgeColor = (typeof BadgeColors)[number];
 
-interface BadgeProps {
+type NativeButtonProps = ComponentPropsWithoutRef<'button'>;
+interface BadgeProps extends Omit<NativeButtonProps, 'value' | 'color' | 'size' | 'className'> {
   value: string;
-  onClick?: MouseEventHandler<HTMLButtonElement>;
   color?: BadgeColor;
   size?: 'l' | 'm' | 's';
 }
 
-export default function Badge({ value, onClick, color = 'grey', size = 'm' }: BadgeProps) {
-  const variantStyle = {
+export default function Badge({ value, color = 'grey', size = 'm', ...rest }: BadgeProps) {
+  const variantStyle: Record<BadgeColor, string> = {
     yellow: 'border-yellow-500 bg-yellow-100 text-yellow-950',
     blue: 'border-sky-500 bg-sky-100 text-sky-950',
     green: 'border-green-500 bg-green-100 text-green-950',
@@ -37,8 +37,8 @@ export default function Badge({ value, onClick, color = 'grey', size = 'm' }: Ba
 
   return (
     <button
-      className={`text-medium flex w-fit items-center gap-2 rounded-lg border-1 ${variantStyle[color]} ${sizeStyle[size]} ${onClick && 'cursor-pointer'}`}
-      onClick={onClick}
+      className={`text-medium flex w-fit items-center gap-2 rounded-lg border-1 ${variantStyle[color]} ${sizeStyle[size]} ${rest.onClick && 'cursor-pointer'}`}
+      {...rest}
     >
       <p className='whitespace-nowrap'>{value}</p>
     </button>
